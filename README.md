@@ -10,6 +10,7 @@
 - [Class](#class)
 - [Exception](#exception)
 - [File Management](#file-management)
+- [Date](#date)
 
 ## Variable
 ***
@@ -448,3 +449,129 @@ Read file contents line by line.
         for line in lines:
             print(line)
 
+Find OS name.
+
+    import os
+    from os import path
+
+    print(os.name)
+
+Check if file exists
+
+    import os
+    from os import path
+
+    print("Item exists:", str(path.exists("test.txt")))
+    print("Item is a file:", str(path.isfile("test.txt")))
+    print("Item is a directory:", str(path.isdir("test.txt")))
+    print("Item's file path:", str(path.realpath("test.txt")))
+    print("Item's directory and filename:", str(path.split(path.realpath("test.txt"))))
+
+Last modification time
+
+    import os
+    from os import path
+    import time
+    import datetime
+    from datetime import date, time, timedelta
+
+    print(time.ctime(path.getmtime("test.txt")))
+    print(datetime.datetime.fromtimestamp(path.getmtime("test.txt")))
+
+How long ago the file was modified    
+
+    td = datetime.datetime.now() - datetime.datetime.fromtimestamp(path.getmtime("test.txt"))
+    print("It has been", td, "since the file was modified.")
+    print("Or,", td.total_seconds(), "seconds.")
+
+Using filesystem shell methods
+
+    import os
+    from os import path
+    import shutil
+    from shutil import make_archive
+
+    if path.exists("test.txt"):
+        src = path.realpath("test.txt")
+        dst = src + ".bak"
+        shutil.copy(src, dst)
+
+        os.rename("test.txt", "newtest.txt")
+
+Archive folder
+
+    import os
+    from os import path
+    import shutil
+    from shutil import make_archive
+    from zipfile import ZipFile
+
+    if path.exists("test.txt.bak"):
+        src = path.realpath("test.txt.bak")
+        root_dir, tail = path.split(src)
+        shutil.make_archive("archive", "zip", root_dir)
+
+        with ZipFile("test.zip", "w") as newzip:
+            newzip.write("newtest.txt")
+            newzip.write("test.txt.bak")
+
+File info
+
+    import os
+
+    def file_info():
+        totalbytes = 0
+        folder = "deps"
+        dirlist = os.listdir(folder)
+        for entry in dirlist:
+            if os.path.isfile(folder + "/" + entry) and entry.endswith(".txt"):
+                filesize = os.path.getsize(folder + "/" + entry)
+                totalbytes += filesize
+        return totalbytes
+
+## Date
+***
+
+    # Import class date, time and datetime from the module datetime
+    from datetime import date
+    from datetime import time
+    from datetime import datetime
+
+    today = date.today()
+    print("Today's date is", today)
+    print("Date components:", today.day, today.month, today.year)
+    print("Today's weekday # is", today.weekday())
+
+    days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    print("Which is a", days[today.weekday()])
+
+    now = datetime.now()
+    print("The current date and time is", now)
+
+    t = datetime.time(now)
+    print("The current time is", t)
+
+Format datetime
+
+`%y / %Y` Year
+`%a / %A` Weekday
+`%b / %B` Month
+`%d` day of month
+`%c` Locale's date and time
+`%x` Locale's date
+`%X` Locale's time
+`%I / %H` 12/24 Hour
+`%M` Minute
+`%S` Second
+`%p` Locale's AM/PM
+`
+    print(now.strftime("The current year: %Y"))
+    print(now.strftime("%a, %d %B, %y"))
+
+    print(now.strftime("Local's date and time: %c"))
+    print(now.strftime("Local's date: %x"))
+    print(now.strftime("Local's time: %X"))
+
+    print(now.strftime("Current time is %I:%M:%S %p"))
+    print(now.strftime("24-hour time is %H:%M:%S %p"))
+    
