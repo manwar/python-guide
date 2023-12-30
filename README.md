@@ -308,36 +308,36 @@ The code would print like below
                     sum of digits before last digit + last digit
 
     def sumDigits(n):
-          if n < 10:
-              return n
-          else:
-              all_but_last = n // 10
-              last = n % 10
-              return sumDigits(all_but_last) + last
+        if n < 10:
+            return n
+        else:
+            all_but_last = n // 10
+            last = n % 10
+            return sumDigits(all_but_last) + last
 
 #### c) nth Fibonacci number
 
-      def fib(n):
-          if n == 1:
-              return 0
-          elif n == 2:
-              return 1
-          else:
-              fib(n-1) + fib(n-2)
+    def fib(n):
+        if n == 1:
+            return 0
+        elif n == 2:
+            return 1
+        else:
+            fib(n-1) + fib(n-2)
 
 #### d) Check Palindrome
 
-      def palindrome(s):
-          if len(s) <= 1:
-              return True
-          else:
-              return s[0] == s[-1] and palindrome(s[1:-1])
+    def palindrome(s):
+        if len(s) <= 1:
+            return True
+        else:
+            return s[0] == s[-1] and palindrome(s[1:-1])
 
     def isPalindrome(s):
         temp = s.lower()
         newstr = ""
         for c in temp:
-            if c.isalnm():
+            if c.isalnum():
                 newstr += c
 
         reversestr = ""
@@ -354,33 +354,33 @@ The code would print like below
 ***
 
     class Vehicle():
-          def __init__(self, bodystyle):
-              self.bodystyle = bodystyle
+          def __init__(self, bodyStyle):
+              self.bodystyle = bodyStyle
 
           def drive(self, speed):
               self.mode = "driving"
               self.speed = speed
 
     class Car(Vehicle):
-          def __init__(self, enginetype):
+          def __init__(self, engineType):
               super().__init__("Car")
               self.wheels = 4
               self.doors = 4
-              self.enginetype = enginetype
+              self.enginetype = engineType
 
           def drive(self, speed):
               super().drive(speed)
               print("Driving my", self.enginetype, "car at", self.speed)
 
     class Motorcycle(Vehicle):
-          def __init__(self, enginetype, hassidecar):
+          def __init__(self, engineType, hasSideCar):
               super().__init__("Motorvehicle")
-              if (hassidecar):
+              if (hasSideCar):
                   self.wheels = 3
               else:
                   self.wheels = 2
               self.doors = 0
-              self.enginetype = enginetype
+              self.enginetype = engineType
 
           def drive(self, speed):
               super().drive(speed)
@@ -403,19 +403,14 @@ The code would print like below
 
 Exception is handle using `try` block
 
-        try:
-            answer = prompt("What should I divide 10 by?")
-            num = int(answer)
-            print(10/num)
-        except ZeroDivisionError as e:
-            print("You can't devide by 0")
-        except ValueError as e:
-            print("You didn't give me a valid number!")
-            print(e)
-        finally:
-            print("This code always runs")
-
-        
-
-Multiple exceptions
-
+    try:
+        answer = prompt("What should I divide 10 by?")
+        num = int(answer)
+        print(10/num)
+    except ZeroDivisionError as e:
+        print("You can't devide by 0")
+    except ValueError as e:
+        print("You didn't give me a valid number!")
+        print(e)
+    finally:
+        print("This code always runs")
