@@ -25,6 +25,16 @@ List: Square bracket `[]` can be used to create a list
     list[2] = 60
     print(list[2]) #  now prints 60
 
+Slice a list using syntax `list[startindex: endindex: step]`
+Default `startndex` is `0` and default `step` is `1`.
+
+    print(list[1:3])   # prints [4, 6]
+    print(list[0:5,2]) # prints [2, 6, 10]
+
+Reverse a given list using the slice syntax
+
+    print(list[::-1]) # prints [10, 8, 6, 4, 2]
+
 #### NOTE: Elements in a list can be changed. Also elements do not have to be of one type. You can have elements of different data types.
 
     list = ["Adam", 50, True, 1.5]
@@ -36,6 +46,12 @@ List: Square bracket `[]` can be used to create a list
 
     tyoe(child) # prints tuple
 
+**Dictionary** is a key-value list, just like `hash` in **Perl**.
+
+    users = { "name": "Joe", "age": 20 }
+    print(users["name"]) # prints Joe
+    print(users["age"])  # prints 20
+    
 Built-in function `type()` can be used to identify the data type.
 
 ## Function
@@ -50,8 +66,9 @@ Built-in functions in Python
 
 #### a) print("") 
 #### b) input("") returns string typed user data.
-#### c) int() return integer value of the input data.
-#### d) + operator can be used for string concatenation e.g. print("Hello " + name)
+#### c) int() returns integer value of the input data.
+#### d) str() returns string value of the input data.
+#### e) + operator can be used for string concatenation e.g. print("Hello " + name)
 
 ## Module
 ***
