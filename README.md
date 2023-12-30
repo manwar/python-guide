@@ -5,7 +5,6 @@
 - [DataType](#datatype)
 - [Function](#function)
 - [Module](#module)
-- [List/Tuples](#listtuples)
 - [Condition](#condition)
 - [Loop](#loop)
 - [Recursion](#recursion)
@@ -20,6 +19,24 @@
 2) Integer defined with keyword int
 3) Floating defined with keyword float
 4) String defined with keyword str
+
+  List: [] used to create a list
+
+  list = [2, 4, 6, 8, 10]
+  print(list[2]) # prints 6
+
+  list[2] = 60
+  print(list[2]) #  now prints 60
+
+  NOTE: Elements in a list can be changed. Also elements do not have to be of one type. You can have elements of different data types.
+
+  list = ["Adam", 50, True, 1.5]
+  
+  Tuples: () is used to create tuples. Elements in tuples CAN NOT be changed unlike List.
+  child = ("Joe", "male", 2, "UK")
+  print(child[0]) # prints child name
+
+  tyoe(child) # prints tuple
 
 Built-in function type() can be used to identify the data type.
 
@@ -62,38 +79,16 @@ Most commonly used modules in Python are calendar, math, random
   random.shuffle(alpha)
 
 ***
-## List/Tuple
-***
-
-  List: [] used to create a list
-
-  list = [2, 4, 6, 8, 10]
-  print(list[2]) # prints 6
-
-  list[2] = 60
-  print(list[2]) #  now prints 60
-
-  NOTE: Elements in a list can be changed. Also elements do not have to be of one type. You can have elements of different data types.
-
-  list = ["Adam", 50, True, 1.5]
-  
-  Tuples: () is used to create tuples. Elements in tuples CAN NOT be changed unlike List.
-  child = ("Joe", "male", 2, "UK")
-  print(child[0]) # prints child name
-
-  tyoe(child) # prints tuple
-
-***
 ## Condition
 ***
 
-  age = 10
-  if age > 5:
-      print("age is more than 5.")
-  elif age == 5:
-      print("age is 5")
-  else:
-      print("age is less than 5.")
+    age = 10
+    if age > 5:
+        print("age is more than 5.")
+     elif age == 5:
+        print("age is 5")
+     else:
+        print("age is less than 5.")
 
   Conditions can be comnined using keyword "and"
 
