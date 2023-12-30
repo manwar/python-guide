@@ -17,7 +17,7 @@
 3) Floating defined with keyword `float`
 4) String defined with keyword `str`
 
-List: Square bracket `[]` used to create a list
+List: Square bracket `[]` can be used to create a list
 
     list = [2, 4, 6, 8, 10]
     print(list[2]) # prints 6
@@ -29,7 +29,7 @@ List: Square bracket `[]` used to create a list
 
     list = ["Adam", 50, True, 1.5]
   
-  Tuples: Braces `()` is used to create `Tuple`. Elements in tuples **CAN NOT** be changed unlike `List`.
+  Tuples: Braces `()` can be used to create `Tuple`. Elements in tuples **CAN NOT** be changed unlike `List`.
 
     child = ("Joe", "male", 2, "UK")
     print(child[0]) # prints child name
@@ -38,7 +38,6 @@ List: Square bracket `[]` used to create a list
 
 Built-in function `type()` can be used to identify the data type.
 
-***
 ## Function
 ***
 
@@ -54,7 +53,6 @@ Built-in functions in Python
 #### c) int() return integer value of the input data.
 #### d) + operator can be used for string concatenation e.g. print("Hello " + name)
 
-***
 ## Module
 ***
 
@@ -81,7 +79,6 @@ Shuffle the given list
       
       random.shuffle(alpha)
 
-***
 ## Condition
 ***
 
@@ -95,7 +92,6 @@ Shuffle the given list
 
   Conditions can be comnined using keyword `"and"`
 
-***
 ## Loop
 ***
 
@@ -137,7 +133,6 @@ Same with While loop
           print(vowels[i])
           i += 1
 
-***
 ## Recursion
 ***
 
@@ -181,7 +176,6 @@ Same with While loop
           else:
               return s[0] == s[-1] and palindrome(s[1:-1])
 
-***
 ## Class
 ***
 
@@ -201,7 +195,6 @@ Same with While loop
     dog.age += 1
     print(dog.age())
 
-***
 ## Inheritance
 ***
 
