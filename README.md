@@ -553,25 +553,29 @@ File info
 
 Format datetime
 
-`%y / %Y` Year
-`%a / %A` Weekday
-`%b / %B` Month
-`%d` day of month
-`%c` Locale's date and time
-`%x` Locale's date
-`%X` Locale's time
-`%I / %H` 12/24 Hour
-`%M` Minute
-`%S` Second
-`%p` Locale's AM/PM
-`
-    print(now.strftime("The current year: %Y"))
-    print(now.strftime("%a, %d %B, %y"))
+1) `%y / %Y` Year
+2) `%a / %A` Weekday
+3) `%b / %B` Month
+4) `%d` day of month
+5) `%c` Locale's date and time
+6) `%x` Locale's date
+7) `%X` Locale's time
+8) `%I / %H` 12/24 Hour
+9) `%M` Minute
+10) `%S` Second
+11) `%p` Locale's AM/PM
 
-    print(now.strftime("Local's date and time: %c"))
-    print(now.strftime("Local's date: %x"))
-    print(now.strftime("Local's time: %X"))
+        from datetime import datetime
 
-    print(now.strftime("Current time is %I:%M:%S %p"))
-    print(now.strftime("24-hour time is %H:%M:%S %p"))
+        now = datetime.now()
+        
+        print(now.strftime("The current year: %Y"))
+        print(now.strftime("%a, %d %B, %y"))
+
+        print(now.strftime("Local's date and time: %c"))
+        print(now.strftime("Local's date: %x"))
+        print(now.strftime("Local's time: %X"))
+
+        print(now.strftime("Current time is %I:%M:%S %p"))
+        print(now.strftime("24-hour time is %H:%M:%S %p"))
     
