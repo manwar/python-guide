@@ -185,21 +185,21 @@ Same with While loop
 ## Class
 ***
 
-        class Dog():
-            def __init__(self, name, age):
-                self.name = name
-                self.age = age
+    class Dog():
+        def __init__(self, name, age):
+            self.name = name
+            self.age = age
 
-            def bark(self):
-                print("Woof Woof")
+        def bark(self):
+            print("Woof Woof")
 
-        dog = Dog("Foo", 12)
-        dog.bark()
-        print(dog.name())
-        print(dog.age())
+    dog = Dog("Foo", 12)
+    dog.bark()
+    print(dog.name())
+    print(dog.age())
 
-        dog.age += 1
-        print(dog.age())
+    dog.age += 1
+    print(dog.age())
 
 ***
 ## Inheritance
@@ -219,7 +219,7 @@ Same with While loop
           def getInfo(self):
               print(self.name + " is " + self.age + " years old.")
 
-      class Poodle(Dog):
+    class Poodle(Dog):
           def __init__(self, name, age, color, weight):
               self.name = name
               self.age = age
@@ -232,7 +232,7 @@ Same with While loop
           def getInfo(self):
               print(f"{self.name} is a {self.age} years old {self.color} poodle and weighs {self.weight} pounds.")
 
-      class Corgi(Dog):
+    class Corgi(Dog):
           def __init__(self, name, age, color, weight):
               self.name = name
               self.age = age
