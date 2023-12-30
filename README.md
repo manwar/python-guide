@@ -1,6 +1,20 @@
-A notes for Python Guide.
+***
+## Table of Contents
+***
 
-1) DataTypes
+- [DataType](#datatype)
+- [Function](#function)
+- [Module](#module)
+- [List/Tuples](#listtuples)
+- [Condition](#condition)
+- [Loop](#loop)
+- [Recursion](#recursion)
+- [Class](#class)
+- [Inheritance](#inheritance)
+
+***
+## DataType
+***
 
 1) Boolean defined with keyword bool and can only have value True/False
 2) Integer defined with keyword int
@@ -9,7 +23,9 @@ A notes for Python Guide.
 
 Built-in function type() can be used to identify the data type.
 
-2) Functions
+***
+## Function
+***
 
 User can define function using keyword def as below
 
@@ -23,7 +39,9 @@ c) int() return integer value of the input data.
 
 + operator can be used to string concatenation e.g. print("Hello " + name)
 
-4) Modules
+***
+## Module
+***
 
 Most commonly used modules in Python are calendar, math, random
 
@@ -43,7 +61,9 @@ Most commonly used modules in Python are calendar, math, random
   Shuffle the given list
   random.shuffle(alpha)
 
-3) List/Tuples
+***
+## List/Tuple
+***
 
   List: [] used to create a list
 
@@ -63,7 +83,9 @@ Most commonly used modules in Python are calendar, math, random
 
   tyoe(child) # prints tuple
 
-4) Conditions
+***
+## Condition
+***
 
   age = 10
   if age > 5:
@@ -74,8 +96,10 @@ Most commonly used modules in Python are calendar, math, random
       print("age is less than 5.")
 
   Conditions can be comnined using keyword "and"
-  
-5) Loops
+
+***
+## Loop
+***
 
   Count vowels in a word
 
@@ -111,7 +135,9 @@ Most commonly used modules in Python are calendar, math, random
       print(vowels[i])
       i += 1
 
-6) Recursion
+***
+## Recursion
+***
 
   a) Factorial using the formula n! = n * (n-1)!
 
@@ -152,7 +178,9 @@ Most commonly used modules in Python are calendar, math, random
       else:
           return s[0] == s[-1] and palindrome(s[1:-1])
 
-7) Class
+***
+## Class
+***
 
   class Dog():
       def __init__(self, name, age):
@@ -170,7 +198,9 @@ Most commonly used modules in Python are calendar, math, random
   dog.age += 1
   print(dog.age())
 
-8) Inheritance
+***
+## Inheritance
+***
 
   class Dog():
       def __init__(self, name, age):
