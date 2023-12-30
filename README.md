@@ -11,6 +11,7 @@
 - [Exception](#exception)
 - [File Management](#file-management)
 - [Date](#date)
+- [Calendar](#calendar)
 
 ## Variable
 ***
@@ -578,4 +579,85 @@ Format datetime
 
         print(now.strftime("Current time is %I:%M:%S %p"))
         print(now.strftime("24-hour time is %H:%M:%S %p"))
-    
+
+Timedelta
+
+        from datetime import datetime
+        from datetime import timedelta
+
+        print(timedelta(days = 365, hours=5, minutes=2))
+
+        now = datetime.now()
+        print("Today is", now)
+        print("One year from now it will be", str(now + timedelta(days=365)))
+        print("In 2 weeks and 3 days from now it will be", str(now + timedelta(weeks=2, days=3)))
+
+        t = now - timedelta(weeks=1)
+        s = t.strftime("%A %B %d, %y")
+        print("One week ago it was", s)
+
+        # How many days until next April Fools Day
+        today = date.today()
+        afd = date(today.year, 4, 1)
+        if afd < today:
+            print("April Fools day already went by:", ((today-afd).days))
+            afd = afd.replace(year = today.year + 1)
+
+        time_to_afd = afd - today
+        print("It is", time_to_afd.days, "days unitl the next April Fools Day")
+
+## Calendar
+***
+
+        import calendar
+
+        # Calendar week starts with Sunday        
+        c = calendar.TextCalendar(calendar.SUNDAY)
+        str = c.formatmonth(2024, 1, 0, 0)
+        print(str)
+
+        # Calendar week starts with Monday        
+        c = calendar.TextCalendar(calendar.MONDAY)
+        str = c.formatmonth(2024, 1, 0, 0)
+        print(str)
+
+        c = calendar.HTMLCalendar(calendar.SUNDAY)
+        str = c.formatmonth(2024, 1, 0, 0)
+        print(str)
+
+        # Loop over days of a month
+        for i in c.itermonthdays(2024,1):
+            print(i)
+
+        for name in calendar.month_name:
+            print(name)
+
+        for day in calendar.day_name:
+            print(day)
+
+        # First Friday of each month
+        for m in range(1, 13):
+            cal = calendar.monthcalendar(2024, m)
+            weekone = cal[0]
+            weektwo = cal[1]
+            if weekone[calendar.FRIDAY] != 0:
+                meetday = weekone[calendar.FRIDAY]
+            else:
+                meetday = weektwo[calendar.FRIDAY]
+
+            print(calendar.month_name[m], meetday)
+
+
+        import calendar
+
+        def count_days(year, month, whichday):
+            # returns an array of weeklist
+            # [
+            #    [0,0,1,1,1,1,1],
+            #    [1,1,1,1,1,1,1],
+            #    [1,1,1,1,1,1,1],
+            #    [1,1,1,1,1,0,0],            
+            # ]
+            m = calendar.monthcalendar(year,month)
+            d = sum(1 for x in m if x[whichday] != 0)
+            return d
