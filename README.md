@@ -197,7 +197,23 @@ The above condition can also be done in one line.
 
     print("x is less than y") if x < y else print("x is greater or equal to y")
 
-  Conditions can be comnined using keyword `"and"`
+For `Python 3.10` or above, we can use the following construct.
+
+    value = "one"
+    match value:
+        case "one":
+            result = 1
+        case "two":
+            result = 2
+        case "three" | "four":
+            result = (3, 4)
+        case _:
+            result = -1
+
+    print(result)
+
+
+Conditions can be comnined using keyword `"and"`
 
 ## Loop
 ***
