@@ -9,6 +9,7 @@
 - [Recursion](#recursion)
 - [Class](#class)
 - [Exception](#exception)
+- [File Management](#file-management)
 
 ## Variable
 ***
@@ -414,3 +415,36 @@ Exception is handle using `try` block
         print(e)
     finally:
         print("This code always runs")
+
+## File Management
+***
+
+Open file for writing and create it if doesn't exist.
+
+    myfile = open("test.txt", "w+")
+    for i in range(10):
+        myfile.write("This is demo line.\n")
+    myfile.close()
+
+Open file and append new text at the end.
+
+    myfile = open("test.txt", "a+")
+    for i in range(10):
+        myfile.write("This is additional demo line.\n")
+    myfile.close()
+
+Read the file contents. You do **NOT** need to close the file.
+
+    myfile = open("test.txt", "r")
+    if myfile.mode == 'r':
+        contents = myfile.read() # read the entire contents in one go
+        print(contents)
+
+Read file contents line by line.
+
+    myfile = open("test.txt", "r")
+    if myfile.mode == 'r':
+        lines = myfile.readlines()
+        for line in lines:
+            print(line)
+
