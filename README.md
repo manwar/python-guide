@@ -12,6 +12,7 @@
 - [File Management](#file-management)
 - [Date](#date)
 - [Calendar](#calendar)
+- [Data Formats](#data-formats)
 
 ## Variable
 ***
@@ -635,7 +636,8 @@ Timedelta
         for day in calendar.day_name:
             print(day)
 
-        # First Friday of each month
+First Friday of each month
+
         for m in range(1, 13):
             cal = calendar.monthcalendar(2024, m)
             weekone = cal[0]
@@ -647,6 +649,7 @@ Timedelta
 
             print(calendar.month_name[m], meetday)
 
+Count the given day in month year
 
         import calendar
 
@@ -661,3 +664,110 @@ Timedelta
             m = calendar.monthcalendar(year,month)
             d = sum(1 for x in m if x[whichday] != 0)
             return d
+
+## Data Formats
+***
+
+    import urllib.request
+
+    weburl = urllib.request.urlopen("http://www.google.com")
+    print("Result code:", weburl.getcode())
+
+    data = weburl.read()
+    print(data)
+
+#### JSON 
+
+    import urllib.request
+    import json
+
+    def printresults(data):
+        thejson = json.loads(data)
+        if "title" in thejson["metadata"]:
+            print(thejson["metadata"]["title"])
+        
+        count = thejson["metadata"]["count"]
+        print(count, "events recorded")
+
+        for i in thejson["features"]:
+            print(i["properties"]["place"])
+        print("--------\n")
+
+        for i in thejson["features"]:
+            if i["properties"]["mag"] > 4.0:
+                print(i["properties"]["place"])
+        print("--------\n")
+
+        print("Events that were felt:")
+        for i in thejson["features"]:
+            feltreports = i["properties"]["felt"]
+            if feltreports != None:
+                if feltreports > 0:
+                    print(i["properties"]["place"], feltreports, "times")
+        print("--------\n")
+
+    urldata = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson"
+    weburl = urllib.request.urlopen(urldata)
+    print("Result code:", str(weburl.getcode())
+    if weburl.getcode() == 200:
+        data = weburl.read()
+        printresults(data)
+    else:
+        print("Error received", weburl.getcode())
+
+#### HTML
+
+sample.html
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <title>sample HTML Document</title>
+        </head>
+        <body>
+            <!-- This is a comment -->
+            <h1>HTML Sample File</h1>
+            <p>This is some text</p>
+            <p><a href="/hello">Hello</a></p>
+        </body>
+    </html>
+
+
+    from html.parser import HTMLParser
+
+    paragraphs = 0
+    
+    class myHTMLParser(HTMLParser):
+        def handle_comment(self, data):
+            print("Encountered a comment:", data)
+            pos = self.getpos()
+            print("At line:", pos[0], " position", pos[1])
+
+        def handle_starttag(self, tag, attrs):
+            print("Encountered a start tag:", tag)
+            pos = self.getpos()
+            print("At line:", pos[0], " position", pos[1])
+
+            global paragraphs
+            if tag == "p":
+                paragraphs += 1
+
+            if len(attrs) > 0:
+                print("Attributes:")
+                for a in attrs:
+                    print("\t",a[0],"=",a[1])
+
+        def handle_data(self, data):
+            if data.isspace():
+                return
+            print("Encountered a text data:", data)
+            pos = self.getpos()
+            print("At line:", pos[0], " position", pos[1])
+
+    parser = myHTMLParser()
+    f = open("sample.html")
+    if f.mode == "r":
+        contents = f.read()
+        parser.feeds(contents)
+        
+    print("Paragraph tags:", paragraphs)
