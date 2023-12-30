@@ -732,6 +732,7 @@ sample.html
         </body>
     </html>
 
+Create subclass myHTMLParser
 
     from html.parser import HTMLParser
 
@@ -763,6 +764,8 @@ sample.html
             print("Encountered a text data:", data)
             pos = self.getpos()
             print("At line:", pos[0], " position", pos[1])
+
+Use myHTMLParser to parse the html data
 
     parser = myHTMLParser()
     f = open("sample.html")
