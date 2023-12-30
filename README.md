@@ -20,23 +20,24 @@
 3) Floating defined with keyword float
 4) String defined with keyword str
 
-  List: [] used to create a list
+List: [] used to create a list
 
-  list = [2, 4, 6, 8, 10]
-  print(list[2]) # prints 6
+    list = [2, 4, 6, 8, 10]
+    print(list[2]) # prints 6
 
-  list[2] = 60
-  print(list[2]) #  now prints 60
+    list[2] = 60
+    print(list[2]) #  now prints 60
 
-  NOTE: Elements in a list can be changed. Also elements do not have to be of one type. You can have elements of different data types.
+#### NOTE: Elements in a list can be changed. Also elements do not have to be of one type. You can have elements of different data types.
 
-  list = ["Adam", 50, True, 1.5]
+    list = ["Adam", 50, True, 1.5]
   
   Tuples: () is used to create tuples. Elements in tuples CAN NOT be changed unlike List.
-  child = ("Joe", "male", 2, "UK")
-  print(child[0]) # prints child name
 
-  tyoe(child) # prints tuple
+    child = ("Joe", "male", 2, "UK")
+    print(child[0]) # prints child name
+
+    tyoe(child) # prints tuple
 
 Built-in function type() can be used to identify the data type.
 
@@ -46,13 +47,14 @@ Built-in function type() can be used to identify the data type.
 
 User can define function using keyword def as below
 
-def addFive(n):
-    return n + 5
+    def addFive(n):
+        return n + 5
 
 Built-in functions in Python
-a) print("") 
-b) input("") returns string typed user data.
-c) int() return integer value of the input data.
+
+#### a) print("") 
+#### b) input("") returns string typed user data.
+#### c) int() return integer value of the input data.
 
 + operator can be used to string concatenation e.g. print("Hello " + name)
 
@@ -63,20 +65,20 @@ c) int() return integer value of the input data.
 Most commonly used modules in Python are calendar, math, random
 
   Return calendar for the month Jan 2024
-  cal = calendar.month(2024, 1)
+      cal = calendar.month(2024, 1)
 
   Square root of a given number and returns result in floating number
-  result = math.sqrt(49) # 7.0
+      result = math.sqrt(49) # 7.0
 
   Return random number between 1 and 10 inclusive
-  rand = random.randint(1, 10)
+      rand = random.randint(1, 10)
 
   Pick random entry from the given sequence
-  alpha = [ "a", "b", "c", "d" ]
-  rand = random.choice(alpha)
+      alpha = [ "a", "b", "c", "d" ]
+      rand = random.choice(alpha)
 
   Shuffle the given list
-  random.shuffle(alpha)
+      random.shuffle(alpha)
 
 ***
 ## Condition
