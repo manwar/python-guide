@@ -8,6 +8,7 @@
 - [Loop](#loop)
 - [Recursion](#recursion)
 - [Class](#class)
+- [Exception](#exception)
 
 ## Variable
 ***
@@ -332,6 +333,23 @@ The code would print like below
           else:
               return s[0] == s[-1] and palindrome(s[1:-1])
 
+    def isPalindrome(s):
+        temp = s.lower()
+        newstr = ""
+        for c in temp:
+            if c.isalnm():
+                newstr += c
+
+        reversestr = ""
+        strindx = len(newstr) - 1
+        while (strindx > 0):
+            reversestr += newstr[strindx]
+            strindx -= 1
+
+        if newstr == reversestr:
+            return True
+        return False
+
 ## Class
 ***
 
@@ -377,5 +395,27 @@ The code would print like below
     print(car2.doors)
 
     car1.drive(30)
-    car2.drive(49)
+    car2.drive(40)
     mc1.drive(50)
+
+## Exception
+***
+
+Exception is handle using `try` block
+
+        try:
+            answer = prompt("What should I divide 10 by?")
+            num = int(answer)
+            print(10/num)
+        except ZeroDivisionError as e:
+            print("You can't devide by 0")
+        except ValueError as e:
+            print("You didn't give me a valid number!")
+            print(e)
+        finally:
+            print("This code always runs")
+
+        
+
+Multiple exceptions
+
