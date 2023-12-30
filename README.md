@@ -8,7 +8,6 @@
 - [Loop](#loop)
 - [Recursion](#recursion)
 - [Class](#class)
-- [Inheritance](#inheritance)
 
 ## Variable
 ***
@@ -256,6 +255,40 @@ Same with While loop
           print(vowels[i])
           i += 1
 
+Use of `break` in loop structure
+
+    for i in range(5, 10):
+        if i == 7:
+            break
+        print(i)
+
+The above code prints only `5,6` as when it reached `7` the loop terminates.
+
+Use of `continue` in loop
+
+    for i in range(5, 10):
+        if i % 2 == 0:
+            continue
+        print(i)
+
+The above code skips even number and only prints odd number between 5 and 10 i.e. `5, 7, 9`.
+
+Enumerate a list in loop
+
+    days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    for i,d in enumarate(days):
+        print(i, d)
+
+The code would print like below
+
+    0 Mon
+    1 Tue
+    2 Wed
+    3 Thu
+    4 Fri
+    5 Sat
+    6 Sun
+
 ## Recursion
 ***
 
@@ -302,61 +335,26 @@ Same with While loop
 ## Class
 ***
 
-    class Dog():
-        def __init__(self, name, age):
-            self.name = name
-            self.age = age
+    class Vehicle():
+          def __init__(self, bodystyle):
+              self.bodystyle = bodystyle
 
-        def bark(self):
-            print("Woof Woof")
+    class Car(Vehicle):
+          def __init__(self, enginetype):
+              super().__init__("Car")
+              self.wheels = 4
+              self.doors = 4
+              self.enginetype = enginetype
 
-    dog = Dog("Foo", 12)
-    dog.bark()
-    print(dog.name())
-    print(dog.age())
+    class Motorcycle(Vehicle):
+          def __init__(self, enginetype, hassidecar):
+              super().__init__("Motorvehicle")
+              if (hassidecar):
+                  self.wheels = 3
+              else:
+                  self.wheels = 2
+              self.doors = 0
+              self.enginetype = enginetype
 
-    dog.age += 1
-    print(dog.age())
-
-## Inheritance
-***
-
-    class Dog():
-          def __init__(self, name, age):
-              self.name = name
-              self.age = age
-
-          def bark(self):
-              print(self.name + " is barking.")
-
-          def addYear(self):
-              self.age += 1
-
-          def getInfo(self):
-              print(self.name + " is " + self.age + " years old.")
-
-    class Poodle(Dog):
-          def __init__(self, name, age, color, weight):
-              self.name = name
-              self.age = age
-              self.color = color
-              self.weight = weight
-
-          def bark(self, manner = "energetically"):
-              print(f"{self.name} is barking {manner}.")
-
-          def getInfo(self):
-              print(f"{self.name} is a {self.age} years old {self.color} poodle and weighs {self.weight} pounds.")
-
-    class Corgi(Dog):
-          def __init__(self, name, age, color, weight):
-              self.name = name
-              self.age = age
-              self.color = color
-              self.weight = weight
-
-          def bark(self, manner = "briefly"):
-              print(f"{self.name} is barking {manner}.")
-
-          def getInfo(self):
-              print(f"{self.name} is a {self.age} years old {self.color} corgi and weighs {self.weight} pounds.")
+    car1 = Car("gas")
+    car2 = Car("Electric")
