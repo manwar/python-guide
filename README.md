@@ -1,5 +1,6 @@
 ## Table of Contents
 ***
+- [Variable](#variable)
 - [DataType](#datatype)
 - [Function](#function)
 - [Module](#module)
@@ -9,6 +10,52 @@
 - [Class](#class)
 - [Inheritance](#inheritance)
 
+## Variable
+***
+
+Variable declaration
+
+    name = "Joe"
+    age = 20
+
+or you can combined both in one line as below
+
+    name, age = "Joe", 20
+
+Global/Local variable
+
+    # Global variable
+    name = "Joe"
+
+    def showName():
+        # Local variable
+        name = "Blog"
+        print(name)
+
+    showName()   # prints Blog
+    print(name)  # prints Joe
+
+Override global variable inside the function
+
+    # Global variable
+    name = "Joe"
+
+    def showName():
+        # Override global variable
+        global name
+        name = "Blog"
+        print(name)
+
+    showName()   # prints Blog
+    print(name)  # prints Blog
+
+You can even undefine a variable
+
+    name = "Joe"
+    print(name) # prints Joe
+    del name
+    print(name) # throw error
+    
 ## DataType
 ***
 
@@ -62,6 +109,37 @@ User can define function using keyword `def` as below
     def addFive(n):
         return n + 5
 
+    result = addFive(10)
+    print(result)  # prints 15
+    print(addFive) # prints object name assgined to the function addFive()
+
+Function with default value.
+
+    def power(n, x = 1):
+        result = 1
+        for i in range(x):
+            result = result * n
+
+        return result
+
+    print(power(2))     # prints 2
+    print(power(2, 3))  # prints 8
+
+Function can be called with named parameter in any order.
+
+    print(power(x = 3, n = 2)) # prints 8
+
+Function with variable number of parameters.
+
+    def addAll(*args):
+        result = 0
+        for i in args:
+            result = result + i
+        return result
+
+    print(addAll(1,2,3))    # prints 6
+    print(addAll(1,2,3,4))  # prints 10
+    
 Built-in functions in Python
 
 #### a) print("") 
@@ -106,6 +184,18 @@ Shuffle the given list
         print("age is 5")
      else:
         print("age is less than 5.")
+
+Compact `if-else` condition
+
+    x, y = 1, 2
+    if x < y:
+        print("x is less than y")
+    else:
+        print("x is greater than or equal to y")
+
+The above condition can also be done in one line.
+
+    print("x is less than y") if x < y else print("x is greater or equal to y")
 
   Conditions can be comnined using keyword `"and"`
 
