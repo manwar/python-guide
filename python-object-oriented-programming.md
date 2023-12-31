@@ -477,11 +477,11 @@ Let's re-create class `Book` as below
 
 Use the class now
 
-    b1 = Book("Perl Hacks", 60, "Damian", "Conway")
-    b1.addchapter("Chapter 1", 101)
-    b1.addchapter("Chapter 2", 102)
-    b1.addchapter("Chapter 3", 103)
-    print(b1.title)
+    b = Book("Perl Hacks", 60, "Damian", "Conway")
+    b.addchapter("Chapter 1", 101)
+    b.addchapter("Chapter 2", 102)
+    b.addchapter("Chapter 3", 103)
+    print(b.title)
 
 It would be nice to extract out author information in its own class
 
@@ -539,12 +539,12 @@ Let's add method `getbookpagecount()` to the `Book` class
 Finally we can use the new `Book` class like below
 
     author = Author("Damian", "Conway")
-    b1 = Book("Perl Hacks", 60, author)
-    b1.addchapter(Chapter("Chapter 1", 101))
-    b1.addchapter(Chapter("Chapter 2", 102))
-    b1.addchapter(Chapter("Chapter 3", 103)
+    b = Book("Perl Hacks", 60, author)
+    b.addchapter(Chapter("Chapter 1", 101))
+    b.addchapter(Chapter("Chapter 2", 102))
+    b.addchapter(Chapter("Chapter 3", 103)
     
-    print(b1.title)
-    print(b1.author)
-    print(b1.getbookpagecount())
+    print(b.title)
+    print(b.author)
+    print(b.getbookpagecount())
     
