@@ -850,7 +850,7 @@ So the following definition would throw error
         pages: int = 0
         price: float
 
-You can also `field()` function to provide default value.
+You can also use `field()` function to provide default value.
 
     from dataclasses import dataclass, field
 
@@ -892,4 +892,40 @@ Test the random default using function
     print(b1) # prints Book(title='Learning Perl', author='brian d foy', pages=800, price=21.0)
     print(b2) # prints Book(title='Perl Hacks', author='Damian Conway', pages=600, price=28.0)    
 
+#### Immutable Data Class
 
+    from dataclasses import dataclass
+
+    @dataclass(Frozen = True)
+    class ImmutableClass:
+        value1: str = "Value 1"
+        value2: int = 0
+
+Test the immutable data class
+
+    c = ImmutableClass()
+    print(c.value1, c.value2)
+    c.value1 = "Another value" # throw error
+
+Even function wouldn't allow change as below
+
+    from dataclasses import dataclass
+
+    @dataclass(Frozen = True)
+    class ImmutableClass:
+        value1: str = "Value 1"
+        value2: int = 0
+
+        def some_func(self, newval):
+            self.value2 = newval
+
+Try this, you should see error
+
+    c = ImmutableClass()
+    c.some_func(10)
+
+You must note, object creation stage you can set any value you like
+
+    c = ImmutableClass("New Val", 10)
+    print(c.value1, c.value2)   # prints New Val 10
+    c.some_func(10)             # this still throws error
