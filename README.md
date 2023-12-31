@@ -1,4 +1,4 @@
-## Table of Contents
+## Introduction to Python
 ***
 - [Variable](#variable)
 - [DataType](#datatype)
