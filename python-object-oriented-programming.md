@@ -287,7 +287,7 @@ Assume we have class `A` and `B` defined as below
             super().__init__()
             self.prop2 = "prop2"            
 
-Then we have another class `C` inherits both class `A` and `B` in the same order.
+Then we have another class `C` which inherits both class `A` and `B` in the order.
 
     class C(A, B):
         def __init__(self):
@@ -302,7 +302,9 @@ Time for some action now
     c = C()
     c.showprops() # prints "prop1" and "prop2" as expected
 
-So far so good. What if the super classes share common attributes as below
+So far so good.
+
+What if the super classes share common attributes as below
 
     class A:
         def __init__(self):
@@ -338,8 +340,12 @@ It would print something like
     prop2
     Class A
 
-Do you know why? Well the order of inheritance is the key, class `A` is the first in the list and hence the attribute `name` gets printed.
+Do you know why? 
+
+Well the order of inheritance is the key, class `A` is the first in the list and hence the attribute `name` gets printed.
+
 Here `Python` used something called `method resolution order (mro)`.
+
 So it starts with the current class, if not find what they are looking for then jump to the first super class in the list and still can't find then go the next one in the list, so on so forth.
 
 In the above case, the attribute `name` is not defined the current class `C`, so the next step would be look into the first super class in the list i.e. `A` and then `B`.
