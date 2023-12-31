@@ -7,6 +7,7 @@
 - [Abstract Class](#abstract-class)
 - [Multiple Inheritance](#multiple-inheritance)
 - [Interface](#interface)
+- [Composition](#composition)
 
 ## Basic Class
 ***
@@ -443,3 +444,107 @@ Time for some action
     c = Circle(10)
     print(c.calc_area()) # prints 314
     print(c.toJSON())    # prints {'Circle': 314 }
+
+## Composition
+***
+
+We have done `Interface` earlier something like
+
+    Publication -> Book
+                -> Periodical -> Magazine
+
+`Composition` is slightly different as below
+
+    Book -> Title
+            Price
+            Author -> First Name
+                      Last Name
+
+Let's re-create class `Book` as below
+
+    class Book:
+        def __init__(self, title, price, authorfname, authorlname):
+            self.title = title
+            self.price = price
+
+            self.authorfname = authorfname
+            self.authorlname = authorlname
+
+            self.chapters = []
+
+        def addchapter(self, name, pages):
+            self.chapters.append((name, pages))
+
+Use the class now
+
+    b1 = Book("Perl Hacks", 60, "Damian", "Conway")
+    b1.addchapter("Chapter 1", 101)
+    b1.addchapter("Chapter 2", 102)
+    b1.addchapter("Chapter 3", 103)
+    print(b1.title)
+
+It would be nice to extract out author information in its own class
+
+    class Author:
+        def __init__(self, firstname, lastname):
+            self.firstname = firstname
+            self.lastname  = lastname
+
+Let's override builtin `str()` function to return the string representation of the object
+
+        def __str__(self):
+            return f"{self.firstname} {self.lastname}"
+
+We can now redefine `Book` class to use the `Author` class
+
+    class Book:
+        def __init__(self, title, price, author = None):
+            self.title  = title
+            self.price  = price
+            self.author = author
+
+            self.chapters = []
+
+        def addchapter(self, name, pages):
+            self.chapters.append((name, pages))
+
+We can now do the same with `Chapter` class
+
+    class Chapter:
+        def __init__(self, name, pagecount):
+            self.name = name
+            self.pagecount = pagecount
+
+Time for another attempt to use `Chapter`
+
+    class Book:
+        def __init__(self, title, price, author = None):
+            self.title  = title
+            self.price  = price
+            self.author = author
+
+            self.chapters = []
+
+        def addchapter(self, chapter):
+            self.chapters.append(chapter)
+
+Let's add method `getbookpagecount()` to the `Book` class
+
+        def getbookpagecount(self):
+            count = 0
+            for chapter in self.chapters:
+                count += chapter.pagecount
+            return count
+
+Finally we can use the new `Book` class like below
+
+    author = Author("Damian", "Conway")
+    b1 = Book("Perl Hacks", 60, author)
+    b1.addchapter(Chapter("Chapter 1", 101))
+    b1.addchapter(Chapter("Chapter 2", 102))
+    b1.addchapter(Chapter("Chapter 3", 103)
+    
+    print(b1.title)
+    print(b1.author)
+    print(b1.getbookpagecount())
+    
