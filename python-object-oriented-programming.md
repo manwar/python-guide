@@ -4,6 +4,7 @@
 - [Instance Type](#instance-type)
 - [Class Method Attribute](#class-method-attribute)
 - [Inheritance](#inheritance)
+- [Abstract Class](#abstract-class)
 
 ## Basic Class
 ***
@@ -194,3 +195,78 @@ Use the new refined class definitions like below
     print(b1.author)
     print(n1.publisher)
     print(b1.price, m1.price, n1.price)
+
+## Abstract Class
+***
+
+Suppose we have the following class definition
+
+    class GraphicalShape:
+        def __init__(self):
+            super().__init__()
+
+        def calc_area(self):
+            pass
+
+    class Circle(GraphicalShape):
+        def __init__(self, radius):
+            self.radius = radius
+
+     class Square(GraphicalShape):
+        def __init__(self, side):
+            self.side = side
+
+Make use of the above classes
+
+    g = GraphicalShape()
+    c = Circle(10)
+    print(c.calc_area()) # prints None
+    s = Square(12)
+    print(s.calc_area()) # prints None
+
+Here we want to enforce two things, first stop user to create an instance of class `GraphicalShape` and make sure anyone inheriting `GraphicalShape` must implement `calc_area()`.
+
+We can use the module `abc` and import class `ABC` and `abstractmethod`
+
+Let's change the class `GraphicalShape` definition and make it inherit class `ABC`. Also turn the method `calc_area()` into `abstract method`.
+
+    class GraphicalShape(ABC):
+        def __init__(self):
+            super().__init__()
+
+        @abstractmethod
+        def calc_area(self):
+            pass
+
+Now run the above code would throw error as you can't instantiate abstract class
+
+    g = GraphicalShape()
+
+Even the following line would throw error as it expects class `Circle` to implement method `calc_area()`
+
+    c = Circle(10)
+
+We can resolve this very easily
+
+    class Circle(GraphicalShape):
+        def __init__(self, radius):
+            self.radius = radius
+
+        def calc_area(self):
+            return 3.14 * (self.radius ** 2)
+
+Similarly we can fix the class `Square`
+
+     class Square(GraphicalShape):
+        def __init__(self, side):
+            self.side = side
+
+        def calc_area(self):
+            return self.side * self.side            
+
+Let's run the same code, you should see the result as below
+
+    c = Circle(10)
+    print(c.calc_area()) # prints 314
+    s = Square(12)
+    print(s.calc_area()) # prints 144
