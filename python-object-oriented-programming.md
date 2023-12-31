@@ -780,6 +780,8 @@ In `Python 3.7`, the data class was introduced to automate the attribute setting
         pages: int
         price: float
 
+Test the data class now
+
     b1 = Book("Learning Perl", "brian d foy", 800, 50.0)
     b2 = Book("Perl Hacks", "Damian Conway", 600, 60.0)  
     b3 = Book("Learning Perl", "brian d foy", 800, 50.0)
@@ -805,6 +807,8 @@ You can even add regular method to data class
         def bookinfo(self):
             return f"{self.title} by {self.author}"
 
+Try the regular method in data class
+
     b1 = Book("Learning Perl", "brian d foy", 800, 50.0)   
     print(b1.bookinfo()) # prints Learning Perl by brian d foy
 
@@ -812,5 +816,7 @@ You can manage the post initialisation stage by overriding magic method `__post_
 
         def __post_init__(self):
             self.description = f"{self.title} by {self.author}, {self.pages} pages"
+
+Magic works eventually
 
     print(b1.description) # prints Learning Perl by brian d foy, 800           
