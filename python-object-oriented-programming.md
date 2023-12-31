@@ -594,11 +594,11 @@ Now check how it behaves
 
 #### `__eq__()`
 
-Let us two objects of class `Book` with exactly same data.
+Let us compare two objects of class `Book` with exactly same data.
 
     b1 = Book("Learning Perl", "brian d foy", 50)
     b2 = Book("Learning Perl", "brian d foy", 50)
-    b3 = Book("Perl Hacks", "Damian Conway", 600, 60)
+    b3 = Book("Perl Hacks", "Damian Conway", 60)
 
 What do you expect this would return?
 
@@ -768,3 +768,49 @@ Time for some action now
 
 ## Data Class
 ***    
+
+In `Python 3.7`, the data class was introduced to automate the attribute settings. You also get magic method `__eq__()` and `__repr__()` for **FREE**.
+
+    from dataclasses import dataclass
+
+    @dataclass
+    class Book:
+        title: str
+        author: str
+        pages: int
+        price: float
+
+    b1 = Book("Learning Perl", "brian d foy", 800, 50.0)
+    b2 = Book("Perl Hacks", "Damian Conway", 600, 60.0)  
+    b3 = Book("Learning Perl", "brian d foy", 800, 50.0)
+    
+    print(b1.title)
+    print(b2.author)
+
+    print(b1)       # repr() gets used here
+    print(b1 == b3) # True
+    print(b1 == b2) # False
+
+You can even add regular method to data class
+
+    from dataclasses import dataclass
+
+    @dataclass
+    class Book:
+        title: str
+        author: str
+        pages: int
+        price: float
+
+        def bookinfo(self):
+            return f"{self.title} by {self.author}"
+
+    b1 = Book("Learning Perl", "brian d foy", 800, 50.0)   
+    print(b1.bookinfo()) # prints Learning Perl by brian d foy
+
+You can manage the post initialisation stage by overriding magic method `__post_init__()`
+
+        def __post_init__(self):
+            self.description = f"{self.title} by {self.author}, {self.pages} pages"
+
+    print(b1.description) # prints Learning Perl by brian d foy, 800           
