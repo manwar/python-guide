@@ -9,6 +9,7 @@
 - [Interface](#interface)
 - [Composition](#composition)
 - [Magic Methods](#magic-methods)
+- [Data Class](#data-class)
 
 ## Basic Class
 ***
@@ -694,3 +695,76 @@ Since we have implemented `__lt__()` magic method, we can now sort the object to
     print([ book.title for book in books ])
 
 #### `__getattribute__()`
+
+It gets called everytime we try to access an object attribute.
+
+    class Book:
+        def __init__(self, title, author, price):
+            super().__init__()
+            self.title  = title
+            self.price  = price
+            self.author = author
+            self._discount = 0.1 # 10% discount
+
+        def __str__(self):
+            return f"{self.title} by {self.author} costs {self.price}"
+
+        def __getattribute__(self, name):
+            if name == "price":
+                p = super().__getattribute__("price")
+                d = super().__getattribute__("_discount")
+                return p - (p * d)
+            return super().__getattribute__(name)
+
+Now test the magic method
+
+    b1 = Book("Learning Perl", "brian d foy", 50)
+    print(b1) # prints Learning Perl by brian d foy costs 45
+
+#### `__getattr__()`  
+
+The magic method `__getattr__()` only kicks in when `__getattribute__()` lookup fails.
+
+        def __getattr__(self, name):
+            return name + " is not here!"
+
+So this would get caught
+
+    print(b1.unknownprop) # print unknownprop is not here!
+
+#### `__setattr__()`  
+
+ Now we will try to intercept setting attribute action by overriding magic method `__setattr__()`
+
+         def __setattr__(self, name, value):
+            if name == "price":
+                if type(value) is not float:
+                    raise ValueError("The 'price' attribute must be a float.")
+            return super().__setattr__(name, value)       
+
+Test the change
+
+    b1.price = 50 # throw exception as the value is not float
+
+We can work around this by cast
+
+    b1.price = float(50) # all good now
+
+#### `__call__()`
+
+The magic method `__call__()` can be used to call the object like a function.
+
+        def __call__(self, title, author, price):
+            self.title  = title
+            self.author = author
+            self.price  = price
+
+Time for some action now
+
+    b1 = Book("Learning Perl", "brian d foy", 50)
+    print(b1) # prints Learning Perl by brian d foy costs 50
+    b1("Learning Perl", "dummy", 40)
+    print(b1) # prints Learning Perl by dummy costs 40
+
+## Data Class
+***    
