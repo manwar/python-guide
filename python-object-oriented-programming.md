@@ -568,7 +568,7 @@ Standard use of the class
     print(b1) # prints internal object representation of b1
     print(b2) # prints internal object representation of b2
 
-#### __str__()
+#### `__str__()`
 
 We can solve the above problem by overriding `__str__()` magic method
 
@@ -580,7 +580,7 @@ Check the reselt now
     print(b1) # prints Learning Perl by brian d foy costs 50
     print(str(b1))  # sames as print(b1)
 
-#### __repr__()
+#### `__repr__()`
 
 We will now another magic method `__repr__()`
 
@@ -591,7 +591,7 @@ Now check how it behaves
 
     print(repr(b2)) # prints title=Perl Hacks, author=Damian Conway price=60    
 
-#### __eq__()
+#### `__eq__()`
 
 Let us two objects of class `Book` with exactly same data.
 
@@ -623,7 +623,7 @@ Let's do the comparison now
     print(b1 == b3) # prints False
     print(b1 == 12) # throw exception as expected
 
-#### __ge__()
+#### `__ge__()`
 
 We can overried magic method `__ge__()` to test greater than or equal comparison
 
@@ -638,7 +638,7 @@ Test the comparison
     print(b1 >= b2) # prints False
     print(b2 >= b1) # prints True
 
-#### __gt__()
+#### `__gt__()`
 
 We can overried magic method `__gt__()` to test greater than comparison
 
@@ -653,7 +653,7 @@ Test the comparison
     print(b1 > b2) # prints False
     print(b2 > b1) # prints True
 
-#### __le__()
+#### `__le__()`
 
 We can overried magic method `__le__()` to test less than or equal comparison
 
@@ -668,7 +668,7 @@ Test the comparison
     print(b1 <= b2) # prints True
     print(b2 <= b1) # prints False
 
-#### __lt__()
+#### `__lt__()`
 
 We can overried magic method `__lt__()` to test less than comparison
 
