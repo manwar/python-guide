@@ -774,3 +774,37 @@ Use myHTMLParser to parse the html data
         parser.feeds(contents)
         
     print("Paragraph tags:", paragraphs)
+
+#### XML
+
+sample.xml
+
+    <?xml version = "1.0" encoding="UTF-8" ?>
+    <person>
+        <firstname>Joe</firstname>
+        <lastname>Blog</lastname>
+        <home>London</home>
+        <skill name="Perl"/>
+        <skill name="Python"/>
+        <skill name="Raku"/>
+    </person>
+
+    
+    import xml.dom.minidom
+
+    doc = xml.dom.minidom.parse("sample.xml")
+    print(doc.nodeName)
+    print(doc.firstChild.tagName)
+
+    skills = doc.getElementsbyTagName("skill")
+    print(skills.length, " skills are listed")
+    for skill in skills:
+        print(skill.getAttribute("name"))
+
+    newskill = doc.createElement("skill")
+    newskill.setAttribute("name", "SQL")
+    doc.firstChild.appendChild(newskill)
+
+    skills = doc.getElementsbyTagName("skill")
+    for skill in skills:
+        print(skill.getAttribute("name"))
