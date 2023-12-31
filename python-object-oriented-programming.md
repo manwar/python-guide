@@ -490,7 +490,7 @@ It would be nice to extract out author information in its own class
             self.firstname = firstname
             self.lastname  = lastname
 
-Let's override builtin `str()` function to return the string representation of the object
+Let's override built-in `str()` function to return the string representation of the object
 
         def __str__(self):
             return f"{self.firstname} {self.lastname}"
