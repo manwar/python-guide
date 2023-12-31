@@ -412,3 +412,34 @@ Let's take a look of the above class definitions
 
         def calc_area(self):
             return self.side * self.side  
+
+Suppose we want to have JSONify feature in the `Circle` and `Square` class, we could add that in the base class `GraphicalShape`. 
+
+What if we want the same in other base class?          
+
+We could just create another abstract class `JSONify`
+
+    class JSONify(ABC):
+        @abstractmethod
+        def toJSON(self):
+            pass
+
+Now we can use the abstract class `JSONify` like below
+
+    class Circle(GraphicalShape, JSONify):
+        def __init__(self, radius):
+            self.radius = radius
+
+        def calc_area(self):
+            return 3.14 * (self.radius ** 2)
+
+We would now need to implement the abstract method `toJSON()`
+
+        def toJSON(self):
+            return f"{{'Circle': {str(self.calc_area())}}}"
+
+Time for some action
+
+    c = Circle(10)
+    print(c.calc_area()) # prints 314
+    print(c.toJSON())    # prints {'Circle': 314 }
