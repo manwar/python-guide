@@ -8,6 +8,7 @@
 - [Multiple Inheritance](#multiple-inheritance)
 - [Interface](#interface)
 - [Composition](#composition)
+- [Magic Methods](#magic-methods)
 
 ## Basic Class
 ***
@@ -548,3 +549,47 @@ Finally we can use the new `Book` class like below
     print(b.author)
     print(b.getbookpagecount())
     
+## Magic Methods
+***
+
+Let's re-use the `Book` class from earlier chapter
+
+    class Book:
+        def __init__(self, title, author, price):
+            self.title  = title
+            self.author = author
+            self.price  = price
+
+Standard use of the class
+
+    b1 = Book("Learning Perl", "brian d foy", 50)
+    b2 = Book("Perl Hacks", "Damian Conway", 60)
+
+    print(b1) # prints internal object representation of b1
+    print(b2) # prints internal object representation of b2
+
+#### __str__()
+
+We can solve the above problem by overriding `__str__()` magic method
+
+        def __str__(self):
+            return f"{self.title} by {self.author} costs {self.price}"
+
+Check the reselt now
+
+    print(b1) # prints Learning Perl by brian d foy costs 50
+    print(str(b1))  # sames as print(b1)
+
+#### __repr__()
+
+We will now another magic method `__repr__()`
+
+        def __repr__(self):
+            return f"title={self.title}, author={self.author}, price={self.price}"
+
+Now check how it behaves
+
+    print(repr(b2)) # prints title=Perl Hacks, author=Damian Conway price=60    
+
+#### __eq__()
+
