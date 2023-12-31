@@ -682,3 +682,15 @@ Test the comparison
 
     print(b1 < b2) # prints True
     print(b2 < b1) # prints False    
+
+Since we have implemented `__lt__()` magic method, we can now sort the object too from low to high price.
+
+**NOTE:** The built-in `sort()` function uses the magic method `__lt__()` for comparison.
+
+    b1 = Book("Learning Perl", "brian d foy", 50)
+    b2 = Book("Perl Hacks", "Damian Conway", 600, 60)
+    books = [b2, b1]
+    books.sort()
+    print([ book.title for book in books ])
+
+#### `__getattribute__()`
