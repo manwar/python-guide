@@ -5,6 +5,7 @@
 - [Class Method Attribute](#class-method-attribute)
 - [Inheritance](#inheritance)
 - [Abstract Class](#abstract-class)
+- [Multiple Inheritance](#multiple-inheritance)
 
 ## Basic Class
 ***
@@ -270,3 +271,108 @@ Let's run the same code, you should see the result as below
     print(c.calc_area()) # prints 314
     s = Square(12)
     print(s.calc_area()) # prints 144
+
+## Multiple Inheritance
+***
+
+Assume we have class `A` and `B` defined as below
+
+    class A:
+        def __init__(self):
+            super().__init__()
+            self.prop1 = "prop1"
+
+    class B:
+        def __init__(self):
+            super().__init__()
+            self.prop2 = "prop2"            
+
+Then we have another class `C` inherits both class `A` and `B` in the same order.
+
+    class C(A, B):
+        def __init__(self):
+            super().__init__()
+
+        def showprops(self):
+            print(self.prop1)
+            print(self.prop2)
+
+Time for some action now
+
+    c = C()
+    c.showprops() # prints "prop1" and "prop2" as expected
+
+So far so good. What if the super classes share common attributes as below
+
+    class A:
+        def __init__(self):
+            super().__init__()
+            self.prop1 = "prop1"
+            self.name = "Class A"
+
+    class B:
+        def __init__(self):
+            super().__init__()
+            self.prop2 = "prop2"
+            self.name = "Class B"
+
+Now update the method `showprops()` in the class `C`
+
+    class C(A, B):
+        def __init__(self):
+            super().__init__()
+
+        def showprops(self):
+            print(self.prop1)
+            print(self.prop2)
+            print(self.name)
+
+What do you expect the following code would print?
+
+    c = C()
+    c.showprops()
+
+It would print something like
+
+    prop1
+    prop2
+    Class A
+
+Do you know why? Well the order of inheritance is the key, class `A` is the first in the list and hence the attribute `name` gets printed.
+Here `Python` used something called `method resolution order (mro)`.
+So it starts with the current class, if not find what they are looking for then jump to the first super class in the list and still can't find then go the next one in the list, so on so forth.
+
+In the above case, the attribute `name` is not defined the current class `C`, so the next step would be look into the first super class in the list i.e. `A` and then `B`.
+Since we have attribute `name` defined in the class `A`, the search stops there and we get the result as above.
+
+Let's prove the theory now by changing the order of super class
+
+    class C(B, A):
+        def __init__(self):
+            super().__init__()
+
+        def showprops(self):
+            print(self.prop1)
+            print(self.prop2)
+            print(self.name)
+
+Execute the code below
+
+    c = C()
+    c.showprops()
+
+It would now print something like
+
+    prop1
+    prop2
+    Class B
+
+If you are interesting in finding the method resolution order, you can do so using the special class attribute `__mro__`
+
+    print(C.__mro__)
+
+You should see something like this:
+
+    (<class '__main__.C'>, <class '__main__.B'>, <class '__main__.A'>, <class 'object'>)
+
+    
