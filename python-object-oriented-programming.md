@@ -542,7 +542,7 @@ Finally we can use the new `Book` class like below
     b = Book("Perl Hacks", 60, author)
     b.addchapter(Chapter("Chapter 1", 101))
     b.addchapter(Chapter("Chapter 2", 102))
-    b.addchapter(Chapter("Chapter 3", 103)
+    b.addchapter(Chapter("Chapter 3", 103))
     
     print(b.title)
     print(b.author)
