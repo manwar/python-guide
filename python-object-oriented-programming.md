@@ -819,4 +819,77 @@ You can manage the post initialisation stage by overriding magic method `__post_
 
 Magic works eventually
 
-    print(b1.description) # prints Learning Perl by brian d foy, 800           
+    print(b1.description) # prints Learning Perl by brian d foy, 800
+
+How about setting default values to data class?
+
+    from dataclasses import dataclass
+
+    @dataclass
+    class Book:
+        title: str = "No Title"
+        author: str = "No Author"
+        pages: int = 0
+        price: float = 0.0
+
+Test the default values
+
+    b = Book()
+    print(b) # prints Book(title='No Title', author='No Author', pages=0, price=0.0)
+
+**NOTE:** Non default attributes should come first then default value attribute
+
+So the following definition would throw error
+
+    from dataclasses import dataclass
+
+    @dataclass
+    class Book:
+        title: str = "No Title"
+        author: str = "No Author"
+        pages: int = 0
+        price: float
+
+You can also `field()` function to provide default value.
+
+    from dataclasses import dataclass, field
+
+    @dataclass
+    class Book:
+        title: str = "No Title"
+        author: str = "No Author"
+        pages: int = 0
+        price: float = field(default = 10.0)
+
+Let's checkout the change
+
+    b1 = Book("Learning Perl", "brian d foy", 800)
+    b2 = Book("Perl Hacks", "Damian Conway", 600)
+
+    print(b1) # prints Book(title='Learning Perl', author='brian d foy', pages=800, price=10.0)
+    print(b2) # prints Book(title='Perl Hacks', author='Damian Conway', pages=600, price=10.0)
+
+You can use function for default value too.
+
+    from dataclasses import dataclass, field
+    import random
+
+    def price_func():
+        return float(random.randrange(20, 30))
+
+    @dataclass
+    class Book:
+        title: str = "No Title"
+        author: str = "No Author"
+        pages: int = 0
+        price: float = field(default_factory=price_func)
+
+Test the random default using function
+
+    b1 = Book("Learning Perl", "brian d foy", 800)
+    b2 = Book("Perl Hacks", "Damian Conway", 600)
+
+    print(b1) # prints Book(title='Learning Perl', author='brian d foy', pages=800, price=21.0)
+    print(b2) # prints Book(title='Perl Hacks', author='Damian Conway', pages=600, price=28.0)    
+
+
