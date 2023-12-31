@@ -593,3 +593,92 @@ Now check how it behaves
 
 #### __eq__()
 
+Let us two objects of class `Book` with exactly same data.
+
+    b1 = Book("Learning Perl", "brian d foy", 50)
+    b2 = Book("Learning Perl", "brian d foy", 50)
+    b3 = Book("Perl Hacks", "Damian Conway", 600, 60)
+
+What do you expect this would return?
+
+    print(b1 == b2)
+
+Believe it or not, it would print `False` but why?
+
+Because `Python` doesn't do attribute comparison.
+
+We can solve this issue by overriding magic method `__eq__()` like below
+
+        def __eq__(self, otherobject):
+            if not isinstance(otherobject, Book):
+                raise ValueError("Can't compare book to non-book.")
+                
+            return (self.title == otherobject.title and
+                    self.author == otherobject.author and
+                    self.price == otherobject.price)
+
+Let's do the comparison now
+
+    print(b1 == b2) # prints True
+    print(b1 == b3) # prints False
+    print(b1 == 12) # throw exception as expected
+
+#### __ge__()
+
+We can overried magic method `__ge__()` to test greater than or equal comparison
+
+        def __ge__(self, otherobject):
+            if not isinstance(otherobject, Book):
+                raise ValueError("Can't compare book to non-book.")
+                
+            return self.price >= otherobject.price
+
+Test the comparison
+
+    print(b1 >= b2) # prints False
+    print(b2 >= b1) # prints True
+
+#### __gt__()
+
+We can overried magic method `__gt__()` to test greater than comparison
+
+        def __gt__(self, otherobject):
+            if not isinstance(otherobject, Book):
+                raise ValueError("Can't compare book to non-book.")
+                
+            return self.price > otherobject.price
+
+Test the comparison
+
+    print(b1 > b2) # prints False
+    print(b2 > b1) # prints True
+
+#### __le__()
+
+We can overried magic method `__le__()` to test less than or equal comparison
+
+        def __le__(self, otherobject):
+            if not isinstance(otherobject, Book):
+                raise ValueError("Can't compare book to non-book.")
+                
+            return self.price <= otherobject.price
+
+Test the comparison
+
+    print(b1 <= b2) # prints True
+    print(b2 <= b1) # prints False
+
+#### __lt__()
+
+We can overried magic method `__lt__()` to test less than comparison
+
+        def __lt__(self, otherobject):
+            if not isinstance(otherobject, Book):
+                raise ValueError("Can't compare book to non-book.")
+                
+            return self.price < otherobject.price
+
+Test the comparison
+
+    print(b1 < b2) # prints True
+    print(b2 < b1) # prints False    
