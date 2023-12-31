@@ -6,6 +6,7 @@
 - [Inheritance](#inheritance)
 - [Abstract Class](#abstract-class)
 - [Multiple Inheritance](#multiple-inheritance)
+- [Interface](#interface)
 
 ## Basic Class
 ***
@@ -380,5 +381,34 @@ If you are interesting in finding the method resolution order, you can do so usi
 You should see something like this:
 
     (<class '__main__.C'>, <class '__main__.B'>, <class '__main__.A'>, <class 'object'>)
-
     
+## Interface
+***
+
+The interface feature of `OOP` can be implemented using the `Abstract Class` and `Multiple Inheritance` features of the `Python` language as there is no native direct implementation.
+
+`Interface` is like making a promise to provide certain behaviour.
+
+Let's take a look of the above class definitions
+
+    class GraphicalShape(ABC):
+        def __init__(self):
+            super().__init__()
+
+        @abstractmethod
+        def calc_area(self):
+            pass
+
+    class Circle(GraphicalShape):
+        def __init__(self, radius):
+            self.radius = radius
+
+        def calc_area(self):
+            return 3.14 * (self.radius ** 2)
+
+     class Square(GraphicalShape):
+        def __init__(self, side):
+            self.side = side
+
+        def calc_area(self):
+            return self.side * self.side  
