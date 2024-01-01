@@ -193,6 +193,63 @@ Now using the `any()` function, we can do something like below
         return any(c.isdigit()
             for c in n)
 
+#### enumerate(iterable)
+
+    countries = ['Netherlands', 'Nigeria', 'Jordan', 'Nepal', 'Niger', 'Japan']
+    for i in range(len(countries)):
+        print(f"{i+1}. {countries[i]}")
+
+You should see something like this:
+
+    1. Netherlands
+    2. Nigeria
+    3. Jordan
+    4. Nepal
+    5. Niger
+    6. Japan
+    
+The above can be re-written using `enumerate()`
+
+    for i in enumerate(countries, start=1):
+        print(i)
+
+Similar output but not exactly
+
+    (1, 'Netherlands')
+    (2, 'Nigeria')
+    (3, 'Jordan')
+    (4, 'Nepal')
+    (5, 'Niger')
+    (6, 'Japan')
+
+Let's get it output how we wanted.
+
+    for i, c in enumerate(countries, start=1):
+        print(f"{i}. {c}")
+
+Much cleaner and get the desired result
+
+    1. Netherlands
+    2. Nigeria
+    3. Jordan
+    4. Nepal
+    5. Niger
+    6. Japan
+
+For simple use case
+
+    for c in countries:
+        print(c)
+
+We get this
+
+    Netherlands
+    Nigeria
+    Jordan
+    Nepal
+    Niger
+    Japan
+
 ## Module
 ***
 
