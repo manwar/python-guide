@@ -146,11 +146,52 @@ Function with variable number of parameters.
     
 Built-in functions in Python
 
-#### a) print("") 
-#### b) input("") returns string typed user data.
-#### c) int() returns integer value of the input data.
-#### d) str() returns string value of the input data.
-#### e) + operator can be used for string concatenation e.g. print("Hello " + name)
+    a) print("") 
+    b) input("") returns string typed user data.
+    c) int() returns integer value of the input data.
+    d) str() returns string value of the input data.
+    e) + operator can be used for string concatenation e.g. print("Hello " + name)
+
+Let's try some most usefull built-in functions
+
+#### all(iterable)
+
+**NOTE:** An iterable is anythihg you can loop over using a `for` loop. For example, `lists`, `tuples`, `strings`, `sets` and `dictionaries`.
+
+    def valid_rgb(rgb): -> bool
+        for v in rgb:
+            if not 0 <= v <= 255:
+                return False
+            return True
+
+The above function can be re-written with the help of `all()` as below
+
+    def valid_rgb(rgb): -> bool
+        return all(0 <= v <= 255
+            for v in rgb)
+
+The syntax for `all()` can take the form below, it expects every condition to be true
+
+    all(
+        condition(item)
+        for item in iterable
+    )
+
+#### any(iterable)
+
+Similar to `all()`, but it expects atleast one condition to be true
+
+    def contains_digit(n):
+        for c in n:
+            if c.isdigit():
+                return True
+        return False
+
+Now using the `any()` function, we can do something like below
+
+    def contains_digit(n):
+        return any(c.isdigit()
+            for c in n)
 
 ## Module
 ***
