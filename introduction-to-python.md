@@ -362,6 +362,44 @@ In a nutshell, there are three ways to reverse a sequence
         - returns a reverse iterator
         - scales well to millions of items
         - used for both mutable and immutable sequences
+
+#### `min() / max()`
+
+    countries = ['Netherlands', 'Nigeria', 'Jordan', 'Nepal', 'Niger', 'Japan']
+    populations = [17_500_000, 198_000_000, 10_000_000, 30_000_000, 24_000_000, 128_000_000]
+
+    max(population) # 190000000
+    min(countries)  # Japan (alphabetically smalles)
+
+Suppose we want to find out the country with the smallest population.
+
+First create tuple by zipping countries and population
+
+    print(list(zip(countries, population))  
+
+You should get something like this:
+
+    [('Netherlands', 17500000), ('Nigeria', 190000000), ('Jordan', 10000000), ('Nepal', 30000000), ('Niger', 24000000), ('Japan', 128000000)]
+
+Now try `min()` to the tuples as below:
+
+    print(min(zip(countries, population))) # ('Japan', 128000000)
+
+We can even provide function to the `min()` function like below:
+
+    def get_population(pair):
+        country, population = pair
+        return population
+
+    print(min(zip(countries, population), key=get_population)) # ('Jordan', 100000000)
+    
+We can solve the same problem with the help of `lambda` function
+
+    print(min(zip(countries, population), key=lambda x: x[1])) # ('Jordan', 100000000)
+
+Here is anoher cheat solution by changing the order of zip, in this case we don't need anything else
+
+    print(min(zip(population. countries))) # ('Jordan', 100000000)
     
 ## Module
 ***
