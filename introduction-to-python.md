@@ -348,20 +348,20 @@ Here is the output
 
 In a nutshell, there are three ways to reverse a sequence
 
-a) reverse()
-    - reverse a mutable sequence in-place
-    - not avaialbe for immutable sequences
+    a) reverse()
+        - reverse a mutable sequence in-place
+        - not avaialbe for immutable sequences
     
-b) slicing[::-1]
-    - creates a reversed copy of a sequence
-    - Fastest but makes a copy of the sequence
-    - memory considerations to reverse millions of items?
-    - used for both mutable and immutable sequences
+    b) slicing[::-1]
+        - creates a reversed copy of a sequence
+        - Fastest but makes a copy of the sequence
+        - memory considerations to reverse millions of items?
+        - used for both mutable and immutable sequences
 
-c) reversed()
-    - returns a reverse iterator
-    - scales well to millions of items
-    - used for both mutable and immutable sequences
+    c) reversed()
+        - returns a reverse iterator
+        - scales well to millions of items
+        - used for both mutable and immutable sequences
     
 ## Module
 ***
