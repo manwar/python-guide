@@ -408,7 +408,7 @@ Here is anoher cheat solution by changing the order of zip, in this case we don'
             self.name = name
             self.population = population
         def __repr__(self):
-            return f'Country {self.country}, {self.population}'
+            return f'Country {self.name}, {self.population}'
 
 
     country_list = [
@@ -434,7 +434,7 @@ Then you get the following
 
 Sort order is reversed now 
 
-    [Country('Nigeria', 198_000_000), Country('Japan', 128_000_000), Country('Nepal', 30_000_000), Country('Niger', 24_000_000), Country('Taiwan', 24_000_000), Country('Netherlands', 17_500_000), Country('Jordan', 10_000_000), Country('Portugal', 10_000_000)]
+    [Country('Nigeria', 198_000_000), Country('Japan', 128_000_000), Country('Nepal', 30_000_000), Country('Taiwan', 24_000_000), Country('Niger', 24_000_000),  Country('Netherlands', 17_500_000), Country('Portugal', 10_000_000), Country('Jordan', 10_000_000)]
 
 We can get the same result doing this
 
@@ -442,11 +442,15 @@ We can get the same result doing this
 
 Reverse order as before
 
+    [Country('Nigeria', 198_000_000), Country('Japan', 128_000_000), Country('Nepal', 30_000_000), Country('Taiwan', 24_000_000), Country('Niger', 24_000_000),  Country('Netherlands', 17_500_000), Country('Portugal', 10_000_000), Country('Jordan', 10_000_000)]
+
+If you noticed, Taiwan and Niger both have the populations 24_000_000 but Taiwan appears before Niger. In theory Niger should come first.
+
+Let sort in decreasing order of population and increasing alphabetically
+
+    sorted(country_list, key=lambda x: (-x.population, x.name))
+
     [Country('Nigeria', 198_000_000), Country('Japan', 128_000_000), Country('Nepal', 30_000_000), Country('Niger', 24_000_000), Country('Taiwan', 24_000_000), Country('Netherlands', 17_500_000), Country('Jordan', 10_000_000), Country('Portugal', 10_000_000)]
-
-
-
-
     
 ## Module
 ***
