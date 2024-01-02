@@ -250,6 +250,81 @@ We get this
     Niger
     Japan
 
+#### zip(*iterables)
+
+    countries = ['Netherlands', 'Nigeria', 'Jordan', 'Nepal', 'Niger', 'Japan']
+    capitals = ['Amsterdam', 'Abuja', 'Amman', 'Kathmandu', 'Niamey', 'Tokyo']
+
+    for country, capital in zip(countries, capitals):
+        print(f'The capital city of {country} is {capital}')
+
+Here is the output of the above code
+
+    The capital city of Netherlands is Amsterdam
+    The capital city of Nigeria is Abuja
+    The capital city of Jordan is Amman
+    The capital city of Nepal is Kathmandu
+    The capital city of Niger is Niamey
+    The capital city of Japan is Tokyo
+
+If the both list has same number of elements, you get the above result/
+
+However what if one has less elements than the other?
+
+    countries = ['Netherlands', 'Nigeria', 'Jordan', 'Nepal', 'Niger', 'Japan']
+    capitals = ['Amsterdam', 'Abuja', 'Amman', 'Kathmandu']
+
+    for country, capital in zip(countries, capitals):
+        print(f'The capital city of {country} is {capital}')
+        
+You only output for elements in the smaller list as below
+
+    The capital city of Netherlands is Amsterdam
+    The capital city of Nigeria is Abuja
+    The capital city of Jordan is Amman
+    The capital city of Nepal is Kathmandu
+
+What if we wanted the entire list, we could import `zip_longest` from `itertools` module to handle the missing entries.
+
+    from iterutils import zip_longest
+    
+    countries = ['Netherlands', 'Nigeria', 'Jordan', 'Nepal', 'Niger', 'Japan']
+    capitals = ['Amsterdam', 'Abuja', 'Amman', 'Kathmandu']
+
+    for country, capital in zip_longest(countries, capitals, fillvalue='Unknown'):
+        print(f'The capital city of {country} is {capital}')
+
+We now have missing entries listed too.
+
+    The capital city of Netherlands is Amsterdam
+    The capital city of Nigeria is Abuja
+    The capital city of Jordan is Amman
+    The capital city of Nepal is Kathmandu
+    The capital city of Niger is Unknown
+    The capital city of Japan is Unknown
+
+There is no `unzip()` function in `Python`, why? Because we don't need it as shown below
+
+    countries = ['Netherlands', 'Nigeria', 'Jordan', 'Nepal', 'Niger', 'Japan']
+    capitals = ['Amsterdam', 'Abuja', 'Amman', 'Kathmandu', 'Niamey', 'Tokyo']
+    pairs = list(zip(countries, capitals))
+
+    countries, capitals = zip(*pairs)
+    print(countries)  # ('Netherlands', 'Nigeria', 'Jordan', 'Nepal', 'Niger', 'Japan')
+    print(capitals)   # ('Amsterdam', 'Abuja', 'Amman', 'Kathmandu', 'Niamey', 'Tokyo')
+    
+#### reversed(sequence)    
+
+**Sequence** is a subset of iterables that have a length, an index and can be sliced. For examples `strings`, `lists` and `tuples`.
+
+Example of iterables that are not sequences are `dictionaries`, `files`, `sets` and `generators`.
+
+The `reverse()` function reverses a sequence in-place.
+
+    countries = ['Netherlands', 'Nigeria', 'Jordan', 'Nepal', 'Niger', 'Japan']
+    countries.reverse()
+    print(countries) # ('Japan', 'Niger', 'Nepal', 'Jordan', 'Nigeria', 'Netherlands')
+    
 ## Module
 ***
 
