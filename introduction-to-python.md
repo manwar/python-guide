@@ -110,7 +110,7 @@ Built-in function `type()` can be used to identify the data type.
 
 User can define function using keyword `def` as below
 
-    def addFive(n):
+    def addFive(n): -> int
         return n + 5
 
     result = addFive(10)
@@ -152,7 +152,7 @@ Built-in functions in Python
     d) str() returns string value of the input data.
     e) + operator can be used for string concatenation e.g. print("Hello " + name)
 
-Let's try some most usefull built-in functions
+Let's try some most useful built-in functions
 
 #### all(iterable)
 
@@ -222,7 +222,7 @@ Similar output but not exactly
     (5, 'Niger')
     (6, 'Japan')
 
-Let's get it output how we wanted.
+Let's get it output the result how we wanted.
 
     for i, c in enumerate(countries, start=1):
         print(f"{i}. {c}")
@@ -267,7 +267,7 @@ Here is the output of the above code
     The capital city of Niger is Niamey
     The capital city of Japan is Tokyo
 
-If the both list has same number of elements, you get the above result/
+If the both list has same number of elements, you get the above result.
 
 However what if one has less elements than the other?
 
@@ -277,7 +277,7 @@ However what if one has less elements than the other?
     for country, capital in zip(countries, capitals):
         print(f'The capital city of {country} is {capital}')
         
-You only output for elements in the smaller list as below
+You only see the result for elements in the smaller list as below
 
     The capital city of Netherlands is Amsterdam
     The capital city of Nigeria is Abuja
@@ -329,7 +329,7 @@ The `reverse()` function reverses a sequence in-place.
 
     print(counties[::-1]) # ('Netherlands', 'Nigeria', 'Jordan', 'Nepal', 'Niger', 'Japan')
 
-You must be aware that `slicing` takes lot of memory compare to `reverse()`.
+You must be aware that `slicing` takes lot of memory as compare to `reverse()` function.
 
 The `reversed()` function returns an iterator.
 
@@ -363,7 +363,7 @@ In a nutshell, there are three ways to reverse a sequence
         - scales well to millions of items
         - used for both mutable and immutable sequences
 
-#### `min() / max()`
+#### min() / max()
 
     countries = ['Netherlands', 'Nigeria', 'Jordan', 'Nepal', 'Niger', 'Japan']
     populations = [17_500_000, 198_000_000, 10_000_000, 30_000_000, 24_000_000, 128_000_000]
@@ -399,7 +399,54 @@ We can solve the same problem with the help of `lambda` function
 
 Here is anoher cheat solution by changing the order of zip, in this case we don't need anything else
 
-    print(min(zip(population. countries))) # ('Jordan', 100000000)
+    print(min(zip(population, countries))) # ('Jordan', 100000000)
+
+#### sorted(iterable, *, key=None, reverse=False)
+
+    class Country:
+        def __init__(self, name, population):
+            self.name = name
+            self.population = population
+        def __repr__(self):
+            return f'Country {self.country}, {self.population}'
+
+
+    country_list = [
+                    Country('Taiwan', 24_000_000),
+                    Country('Portugal', 10_000_000),
+                    Country('Netherlands', 17_500_000),
+                    Country('Nigeria', 198_000_000),
+                    Country('Jordan', 10_000_000),
+                    Country('Nepal', 30_000_000),
+                    Country('Niger', 24_000_000),
+                    Country('Japan', 128_000_000)
+    ]
+
+Sort the country by population
+
+    sorted(country_list, key=lambda x: x.population)
+
+Then you get the following
+
+    [Country('Portugal', 10_000_000), Country('Jordan', 10_000_000), Country('Netherlands', 17_500_000), Country('Taiwan', 24_000_000), Country('Niger', 24_000_000), Country('Nepal', 30_000_000), Country('Japan', 128_000_000), Country('Nigeria', 198_000_000)]
+
+    sorted(country_list, key=lambda x: x.population, reverse=True)
+
+Sort order is reversed now 
+
+    [Country('Nigeria', 198_000_000), Country('Japan', 128_000_000), Country('Nepal', 30_000_000), Country('Niger', 24_000_000), Country('Taiwan', 24_000_000), Country('Netherlands', 17_500_000), Country('Jordan', 10_000_000), Country('Portugal', 10_000_000)]
+
+We can get the same result doing this
+
+    sorted(country_list, key=lambda x: -x.population)
+
+Reverse order as before
+
+    [Country('Nigeria', 198_000_000), Country('Japan', 128_000_000), Country('Nepal', 30_000_000), Country('Niger', 24_000_000), Country('Taiwan', 24_000_000), Country('Netherlands', 17_500_000), Country('Jordan', 10_000_000), Country('Portugal', 10_000_000)]
+
+
+
+
     
 ## Module
 ***
