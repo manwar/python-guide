@@ -29,6 +29,12 @@ Or something like this
     hello = 'Hello {} !!'
     print(hello.format(name))  # prints Hello World !!
 
+Look up environment name
+
+    import os
+    print(os.environ.get("ENV_NAME", "development")) # print value of environment name "development".
+    
+
 ## Variable
 ***
 
