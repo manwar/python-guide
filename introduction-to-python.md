@@ -781,7 +781,9 @@ If you play with csv file then you would need to import `csv` module.
     from pprint import pprint
 
     # Suppose we have csv file sample.csv containing data like this:
-    # Joe,Blogg,2020-01-01,2024-01-01,England,"make this world safe place"
+    # firstname,surname,age,sex,location
+    # Joe,Blogg,20,"m","Lodon"
+    # Christie,Slate,18,"f","Dublin"
 
     with open("sample.csv", "r") as f:
         reader = csv.DictReader(f)
@@ -790,6 +792,14 @@ If you play with csv file then you would need to import `csv` module.
             if line["surname"] == "Blogg":
                 pprint(line)
                 break
+
+You should see something like this:
+
+    {'age': '20',
+     'firstname': 'Joe',
+     'location': 'London',
+     'sex': 'm',
+     'surname': 'Blogg'}
     
 Find OS name.
 
