@@ -36,7 +36,7 @@ Look up environment name
 
     $ export ENV_NAME="local"    
 
-    print(os.environ.get("ENV_NAME", "")) # prints local
+    print(os.environ.get("ENV_NAME")) # prints local
 
 ## Variable
 ***
