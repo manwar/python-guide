@@ -19,7 +19,7 @@
 ***
     print('Hello World !!')
 
-Let's try spcial `f''` function
+Let's try special `f''` function
 
     name = 'World'
     print(f'Hello {name} !!')  # prints Hello World !!
