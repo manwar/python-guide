@@ -788,7 +788,7 @@ If you play with csv file then you would need to import `csv` module.
     with open("sample.csv", "r") as f:
         reader = csv.DictReader(f)
         lines = list(reader)
-        foreach line in lines:
+        for line in lines:
             if line["surname"] == "Blogg":
                 pprint(line)
                 break
