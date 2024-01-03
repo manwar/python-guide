@@ -1,5 +1,6 @@
 ## Introduction to Python
 ***
+- [Hello World](#hello-world]
 - [Variable](#variable)
 - [DataType](#datatype)
 - [Function](#function)
@@ -13,6 +14,20 @@
 - [Date](#date)
 - [Calendar](#calendar)
 - [Data Formats](#data-formats)
+
+## Hello World
+***
+    print('Hello World !!')
+
+Let's try spcial `f''` function
+
+    name = 'World'
+    print(f'Hello {name} !!')  # prints Hello World !!
+
+Or something like this
+
+    hello = 'Hello {} !!'
+    print(hello.format(name))  # prints Hello World !!
 
 ## Variable
 ***
