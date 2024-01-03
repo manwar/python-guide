@@ -32,8 +32,11 @@ Or something like this
 Look up environment name
 
     import os
-    print(os.environ.get("ENV_NAME", "development")) # print value of environment name "development".
-    
+    print(os.environ.get("ENV_NAME")) # prints value of environment name "ENV_NAME".
+
+    $ export ENV_NAME="local"    
+
+    print(os.environ.get("ENV_NAME", "")) # prints local
 
 ## Variable
 ***
