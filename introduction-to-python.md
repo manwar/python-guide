@@ -1,6 +1,6 @@
 ## Introduction to Python
 ***
-- [Hello World](#hello-world]
+- [Hello World](#hello-world)
 - [Variable](#variable)
 - [DataType](#datatype)
 - [Function](#function)
