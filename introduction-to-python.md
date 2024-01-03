@@ -775,6 +775,22 @@ Read file contents line by line.
         for line in lines:
             print(line)
 
+If you play with csv file then you would need to import `csv` module.
+
+    import csv
+    from pprint import pprint
+
+    # Suppose we have csv file sample.csv containing data like this:
+    # Joe,Blogg,2020-01-01,2024-01-01,England,"make this world safe place"
+
+    with open("sample.csv", "r") as f:
+        reader = csv.DictReader(f)
+        lines = list(reader)
+        foreach line in lines:
+            if line["surname"] == "Blogg":
+                pprint(line)
+                break
+    
 Find OS name.
 
     import os
