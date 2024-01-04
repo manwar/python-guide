@@ -816,7 +816,6 @@ Now if we want to read `sample.csv` file and create a new `sample.json` file.
 
     import csv
     import json
-    from pprint import pprint
 
     # Suppose we have csv file sample.csv containing data like this:
     # firstname,surname,age,sex,location
