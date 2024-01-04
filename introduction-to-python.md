@@ -775,7 +775,7 @@ Read file contents line by line.
         for line in lines:
             print(line)
 
-If you play with csv file then you would need to import `csv` module.
+If you want to play with csv file then you would need to import `csv` module.
 
     import csv
     from pprint import pprint
@@ -801,9 +801,9 @@ You should see something like this:
      'sex': 'm',
      'surname': 'Blogg'}
 
-And if you want to play `JSON` then there is a `json` module.
+And if you want to play with `JSON` then there is a `json` module.
 
-To convert a `dictionary` into `JSON` we could something like to the above code
+To convert a `dictionary` into `JSON` we could do something like below to the above code
 
     import json
     json_line = json.dump(line)
