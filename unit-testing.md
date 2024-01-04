@@ -102,12 +102,12 @@ Let us apply what we learnt so far in the `FizzBuzz` example. First we will crea
     import pytest
 
     # case 1: can call fzzBuzz()?
-    def test_cancallFizzBuzz():
+    def test_can_call_fizzBuzz():
         fizzBuzz(1)
 
 We just entered the `RED` phase by creating the first fail unit test as shown below
 
-    test_fizzbuzz.py::test_canCallFizzBuzz FAILED
+    test_fizzbuzz.py::test_can_call_fizzBuzz FAILED
 
 Now time to write enough production code to get into `GREEN` phase.
 
