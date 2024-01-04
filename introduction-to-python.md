@@ -14,6 +14,7 @@
 - [Date](#date)
 - [Calendar](#calendar)
 - [Data Formats](#data-formats)
+- [Web Framework](#web-framework)
 
 ## Hello World
 ***
@@ -844,8 +845,6 @@ You can install the module if missing using the command `pip install requests` o
         print(f'{year["date"]}: {year["value"]}', "=" * display_width)
 
 
-
-    
 Find OS name.
 
     import os
@@ -1203,3 +1202,54 @@ sample.xml
     skills = doc.getElementsbyTagName("skill")
     for skill in skills:
         print(skill.getAttribute("name"))
+
+## Web Framework
+***
+
+Let's play with Python's web framework `Flask`.
+
+You can install the framework using command `pip install Flask`
+
+    from flask import Flask
+
+    app = Flask(__name__)
+
+    @app.route("/")
+    def hello():
+        return "Hello, World!"
+    
+    app.run(debug=True)
+
+Now we will extend the web application to dump the data from sample file used above.
+
+    from flask import Flask, render_template, jsonify
+
+    app = Flask(__name__)
+
+    with open("sample.csv", "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        lines = list(reader)
+
+    @app.route("/")
+    def index():
+        return render_template("index.html") # template/index.html
+
+    @app.route("/users/")
+    def users():
+        return jsonify(lines)
+
+    @app.route("/users/")
+    def user_list():
+        results = []
+        if not request.args.get("surname"):
+            return jsonify(results)
+        
+        search_string = request.args.get("surname").lower().strip()
+
+        for line in lines:
+            if search_string in lines["surname"].lower():
+                results.append(line)
+
+        return jsonify(results)
+                
+    app.run(debug=True)
