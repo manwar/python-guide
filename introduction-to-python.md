@@ -800,7 +800,18 @@ You should see something like this:
      'location': 'London',
      'sex': 'm',
      'surname': 'Blogg'}
-    
+
+And if you want to play `JSON` then there is a `json` module.
+
+To convert a `dictionary` into `JSON` we could something like to the above code
+
+    import json
+    json_line = json.dump(line)
+
+Then back to `dictionary`
+
+    dict_line = json.loads(json_line)
+
 Find OS name.
 
     import os
