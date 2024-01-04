@@ -94,5 +94,103 @@ If you noticed, `pytest` ignored the class `IgnoreMe`.
 ## FizzBuzz Example
 ***
 
-Let us apply what we learnt so far in the `FizzBuzz` example.
+Let us apply what we learnt so far in the `FizzBuzz` example. First We will create file named `test_fizzbuzz.py`
 
+    # production code
+
+    # unit test code
+    import pytest
+
+    # case 1: can call fzzBuzz()?
+    def test_cancallFizzBuzz():
+        fizzBuzz(1)
+
+We just entered the `RED` phase by creating the first fail unit test as shown below
+
+    test_fizzbuzz.py::test_canCallFizzBuzz FAILED
+
+Now time to write enough production code to get into `GREEN` phase.
+
+    # production code
+    def fizzBuzz(value):
+        return
+
+    # unit test code
+    import pytest
+
+    # case 1: can call fzzBuzz()?
+    def test_cancallFizzBuzz():
+        fizzBuzz(1)
+
+We are now in `GREEN` phase after completing the production enough to pass the test
+
+    test_fizzbuzz.py::test_canCallFizzBuzz PASSED
+
+We now have pass unit test. Time to get into `REFACTOR` phase if needed.
+
+Do we need it? I don't think so.
+
+So we will repeat the cycle and get into `RED` phase again by create another fail test.
+
+    # production code
+    def fizzBuzz(value):
+        return
+
+    # unit test code
+    import pytest
+
+    # case 1: can call fzzBuzz()?
+    def test_can_call_FizzBuzz():
+        fizzBuzz(1)
+    # case 2: return 1 when 1 passed in
+    def test_return_1_when_1_passed_in():
+        retVal = fizzBuzz(1)
+        assert(retVal == 1)
+
+We are in `RED` phase as shown below
+
+    test_fizzbuzz.py::test_canCallFizzBuzz PASSED
+    test_fizzbuzz.py::test_return_1_when_1_passed_in FAILED
+    
+Let's update production code to make the test pass
+
+    # production code
+    def fizzBuzz(value) -> str:
+        return "1"
+
+    # unit test code
+    import pytest
+
+    # case 1: can call fzzBuzz()?
+    def test_can_call_FizzBuzz():
+        fizzBuzz(1)
+    # case 2: return 1 when 1 passed in
+    def test_return_1_when_1_passed_in():
+        retVal = fizzBuzz(1)
+        assert retVal == "1"
+
+We in `GREEN` phase now.
+
+    test_fizzbuzz.py::test_canCallFizzBuzz PASSED
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+
+To do some refactor? 
+
+We can some duplication code now. The method `fizzBuzz()` called twice. Let's clean up the code.
+
+    # production code
+    def fizzBuzz(value) -> str:
+        return "1"
+
+    # unit test code
+    import pytest
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return 1 when 1 passed in
+    def test_return_1_when_1_passed_in():
+        retVal = fizzBuzz(1)
+        assert retVal == "1"
+
+The test method `test_return_1_when_1_passed_in()` covered both use cases. The test still pass after refactor as shown here
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
