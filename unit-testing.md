@@ -119,12 +119,12 @@ Now time to write enough production code to get into `GREEN` phase.
     import pytest
 
     # case 1: can call fzzBuzz()?
-    def test_cancallFizzBuzz():
+    def test_can_call_fizzBuzz():
         fizzBuzz(1)
 
 We are now in `GREEN` phase after completing the production enough to pass the test
 
-    test_fizzbuzz.py::test_canCallFizzBuzz PASSED
+    test_fizzbuzz.py::test_can_call_fizzBuzz PASSED
 
 We now have pass unit test. Time to get into `REFACTOR` phase if needed.
 
@@ -140,7 +140,7 @@ So we will repeat the cycle and get into the `RED` phase again by creating anoth
     import pytest
 
     # case 1: can call fzzBuzz()?
-    def test_can_call_FizzBuzz():
+    def test_can_call_fizzBuzz():
         fizzBuzz(1)
 
     # case 2: return 1 when 1 passed in
@@ -150,7 +150,7 @@ So we will repeat the cycle and get into the `RED` phase again by creating anoth
 
 We are in `RED` phase as shown below
 
-    test_fizzbuzz.py::test_canCallFizzBuzz PASSED
+    test_fizzbuzz.py::test_can_call_fizzBuzz PASSED
     test_fizzbuzz.py::test_return_1_when_1_passed_in FAILED
     
 Let's update the production code to make the test pass
@@ -163,7 +163,7 @@ Let's update the production code to make the test pass
     import pytest
 
     # case 1: can call fzzBuzz()?
-    def test_can_call_FizzBuzz():
+    def test_can_call_fizzBuzz():
         fizzBuzz(1)
 
     # case 2: return 1 when 1 passed in
@@ -173,7 +173,7 @@ Let's update the production code to make the test pass
 
 We are in `GREEN` phase now.
 
-    test_fizzbuzz.py::test_canCallFizzBuzz PASSED
+    test_fizzbuzz.py::test_can_call_fizzBuzz PASSED
     test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
 
 To do some refactor? 
