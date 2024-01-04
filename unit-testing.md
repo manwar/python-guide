@@ -94,7 +94,7 @@ If you noticed, `pytest` ignored the class `IgnoreMe`.
 ## FizzBuzz Example
 ***
 
-Let us apply what we learnt so far in the `FizzBuzz` example. First We will create file named `test_fizzbuzz.py`
+Let us apply what we learnt so far in the `FizzBuzz` example. First we will create file named `test_fizzbuzz.py`
 
     # production code
 
