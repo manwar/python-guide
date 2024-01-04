@@ -143,10 +143,10 @@ So we will repeat the cycle and get into the `RED` phase again by creating anoth
     def test_can_call_fizzBuzz():
         fizzBuzz(1)
 
-    # case 2: return 1 when 1 passed in
+    # case 2: return "1" when 1 passed in
     def test_return_1_when_1_passed_in():
         retVal = fizzBuzz(1)
-        assert(retVal == 1)
+        assert(retVal == "1")
 
 We are in `RED` phase as shown below
 
@@ -166,7 +166,7 @@ Let's update the production code to make the test pass
     def test_can_call_fizzBuzz():
         fizzBuzz(1)
 
-    # case 2: return 1 when 1 passed in
+    # case 2: return "1" when 1 passed in
     def test_return_1_when_1_passed_in():
         retVal = fizzBuzz(1)
         assert retVal == "1"
@@ -188,7 +188,7 @@ We can clearly see some code duplication now. The method `fizzBuzz()` is called 
     import pytest
 
     # case 1: can call fzzBuzz()?
-    # case 2: return 1 when 1 passed in
+    # case 2: return "1" when 1 passed in
     def test_return_1_when_1_passed_in():
         retVal = fizzBuzz(1)
         assert retVal == "1"
@@ -196,3 +196,596 @@ We can clearly see some code duplication now. The method `fizzBuzz()` is called 
 The test method `test_return_1_when_1_passed_in()` covered both use cases. The test still pass after refactor as shown here
 
     test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+
+Let's get to the third use case and get into the `RED` phase again.
+
+    # production code
+    def fizzBuzz(value) -> str:
+        return "1"
+
+    # unit test code
+    import pytest
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        retVal = fizzBuzz(1)
+        assert retVal == "1"
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        retVal = fizzBuzz(2)
+        assert retVal == "2"
+
+This is what we get when we run the command `pytest -v`.
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in FAILED
+
+Let update production to get into the `GREEN` phase.
+
+    # production code
+    def fizzBuzz(value) -> str:
+        return str(value)
+
+    # unit test code
+    import pytest
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        retVal = fizzBuzz(1)
+        assert retVal == "1"
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        retVal = fizzBuzz(2)
+        assert retVal == "2"
+
+Just one line change in production code make the test pass again.
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
+
+We now move into `REFACTOR` phase. We can plenty of duplicate unit test code. Let's refactor that.
+
+    # production code
+    def fizzBuzz(value) -> str:
+        return str(value)
+
+    # unit test code
+    import pytest
+
+    def checkFizzBuzz(value, expectedValue) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedValue
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        assert checkFizzBuzz(1, "1")
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        assert checkFizzBuzz(2, "2")
+
+After code refactor, we still have all test paased.
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
+
+Time to go for the fourth use case and get into `RED` phase.
+
+    # production code
+    def fizzBuzz(value) -> str:
+        return str(value)
+
+    # unit test code
+    import pytest
+
+    def checkFizzBuzz(value, expectedValue) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedValue
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        assert checkFizzBuzz(1, "1")
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        assert checkFizzBuzz(2, "2")
+
+    # case 4: return "Fizz" when 3 passed in
+    def test_return_Fizz_when_3_passed_in():
+        assert checkFizzBuzz(3, "Fizz")
+
+With that we enter into `RED` phase.
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_3_passed_in FAILED
+
+Time to update the production code to get into `GREEN` phase
+
+    # production code
+    def fizzBuzz(value) -> str:
+        if value == 3:
+            return "Fizz"
+        return str(value)
+
+    # unit test code
+    import pytest
+
+    def checkFizzBuzz(value, expectedValue) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedValue
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        assert checkFizzBuzz(1, "1")
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        assert checkFizzBuzz(2, "2")
+
+    # case 4: return "Fizz" when 3 passed in
+    def test_return_Fizz_when_3_passed_in():
+        assert checkFizzBuzz(3, "Fizz")
+
+With small changes to the production code, we are back in `GREEN` phase
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_3_passed_in PASSED
+
+Let's get to the fifth use case, similar to the fourth use case
+
+    # production code
+    def fizzBuzz(value) -> str:
+        if value == 3:
+            return "Fizz"
+        return str(value)
+
+    # unit test code
+    import pytest
+
+    def checkFizzBuzz(value, expectedValue) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedValue
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        assert checkFizzBuzz(1, "1")
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        assert checkFizzBuzz(2, "2")
+
+    # case 4: return "Fizz" when 3 passed in
+    def test_return_Fizz_when_3_passed_in():
+        assert checkFizzBuzz(3, "Fizz")
+
+    # case 5: return "Buzz" when 5 passed in
+    def test_return_Buzz_when_5_passed_in():
+        assert checkFizzBuzz(5, "Buzz")
+
+As expected with the addition new unit test function we are back in the `RED` phase
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_3_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_5_passed_in FAILED
+
+Time to update the production code to get into `GREEN` phase
+
+    # production code
+    def fizzBuzz(value) -> str:
+        if value == 3:
+            return "Fizz"
+        if value == 5:
+            return "Buzz"
+        return str(value)
+
+    # unit test code
+    import pytest
+
+    def checkFizzBuzz(value, expectedValue) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedValue
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        assert checkFizzBuzz(1, "1")
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        assert checkFizzBuzz(2, "2")
+
+    # case 4: return "Fizz" when 3 passed in
+    def test_return_Fizz_when_3_passed_in():
+        assert checkFizzBuzz(3, "Fizz")
+
+    # case 5: return "Buzz" when 5 passed in
+    def test_return_Buzz_when_5_passed_in():
+        assert checkFizzBuzz(5, "Buzz")
+
+That was easy change, we are in `GREEN` now.
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_3_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_5_passed_in PASSED
+    
+Anything to refactor now? Nothing for now.
+
+Now we will add the sixth use case to the unit test code.
+
+    # production code
+    def fizzBuzz(value) -> str:
+        if value == 3:
+            return "Fizz"
+        if value == 5:
+            return "Buzz"
+        return str(value)
+
+    # unit test code
+    import pytest
+
+    def checkFizzBuzz(value, expectedValue) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedValue
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        assert checkFizzBuzz(1, "1")
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        assert checkFizzBuzz(2, "2")
+
+    # case 4: return "Fizz" when 3 passed in
+    def test_return_Fizz_when_3_passed_in():
+        assert checkFizzBuzz(3, "Fizz")
+
+    # case 5: return "Buzz" when 5 passed in
+    def test_return_Buzz_when_5_passed_in():
+        assert checkFizzBuzz(5, "Buzz")
+
+    # case 6: return "Fizz" when 6 passed in (a multiple of 3)
+    def test_return_Fizz_when_6_passed_in():
+        assert checkFizzBuzz(6, "Fizz")
+
+We are again in `RED` phase as shown below        
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_3_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_5_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_6_passed_in FAILED
+
+Time to modify production code to get in the `GREEN` phase
+
+    # production code
+    def fizzBuzz(value) -> str:
+        if value % 3 == 0:
+            return "Fizz"
+        if value == 5:
+            return "Buzz"
+        return str(value)
+
+    # unit test code
+    import pytest
+
+    def checkFizzBuzz(value, expectedValue) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedValue
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        assert checkFizzBuzz(1, "1")
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        assert checkFizzBuzz(2, "2")
+
+    # case 4: return "Fizz" when 3 passed in
+    def test_return_Fizz_when_3_passed_in():
+        assert checkFizzBuzz(3, "Fizz")
+
+    # case 5: return "Buzz" when 5 passed in
+    def test_return_Buzz_when_5_passed_in():
+        assert checkFizzBuzz(5, "Buzz")
+
+    # case 6: return "Fizz" when 6 passed in (a multiple of 3)
+    def test_return_Fizz_when_6_passed_in():
+        assert checkFizzBuzz(6, "Fizz")
+
+One line change in the production code got us into the `GREEN` phase
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_3_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_5_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_6_passed_in PASSED
+
+Let us work on the 7th use case.
+
+    # production code
+    def fizzBuzz(value) -> str:
+        if value % 3 == 0:
+            return "Fizz"
+        if value == 5:
+            return "Buzz"
+        return str(value)
+
+    # unit test code
+    import pytest
+
+    def checkFizzBuzz(value, expectedValue) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedValue
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        assert checkFizzBuzz(1, "1")
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        assert checkFizzBuzz(2, "2")
+
+    # case 4: return "Fizz" when 3 passed in
+    def test_return_Fizz_when_3_passed_in():
+        assert checkFizzBuzz(3, "Fizz")
+
+    # case 5: return "Buzz" when 5 passed in
+    def test_return_Buzz_when_5_passed_in():
+        assert checkFizzBuzz(5, "Buzz")
+
+    # case 6: return "Fizz" when 6 passed in (a multiple of 3)
+    def test_return_Fizz_when_6_passed_in():
+        assert checkFizzBuzz(6, "Fizz")
+
+    # case 7: return "Buzz" when 10 passed in (a multiple of 5)
+    def test_return_Buzz_when_10_passed_in():
+        assert checkFizzBuzz(10, "Buzz") 
+
+We are back in the `RED` phase
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_3_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_5_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_6_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_10_passed_in FAILED
+
+Let quickly update the production code to get the test pass.
+
+    # production code
+    def fizzBuzz(value) -> str:
+        if value % 3 == 0:
+            return "Fizz"
+        if value % 5 == 0:
+            return "Buzz"
+        return str(value)
+
+    # unit test code
+    import pytest
+
+    def checkFizzBuzz(value, expectedValue) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedValue
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        assert checkFizzBuzz(1, "1")
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        assert checkFizzBuzz(2, "2")
+
+    # case 4: return "Fizz" when 3 passed in
+    def test_return_Fizz_when_3_passed_in():
+        assert checkFizzBuzz(3, "Fizz")
+
+    # case 5: return "Buzz" when 5 passed in
+    def test_return_Buzz_when_5_passed_in():
+        assert checkFizzBuzz(5, "Buzz")
+
+    # case 6: return "Fizz" when 6 passed in (a multiple of 3)
+    def test_return_Fizz_when_6_passed_in():
+        assert checkFizzBuzz(6, "Fizz")
+
+    # case 7: return "Buzz" when 10 passed in (a multiple of 5)
+    def test_return_Buzz_when_10_passed_in():
+        assert checkFizzBuzz(10, "Buzz")
+
+Again with one line change, we are in the `GREEN` phase now.
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_3_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_5_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_6_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_10_passed_in PASSED
+
+We have a duplicate production code, lets get in the `REFACTOR` phase and clean the code.
+
+    # production code
+    def isMultiple(value, mod) -> bool:
+        return (value % mod) == 0
+ 
+    def fizzBuzz(value) -> str:
+        if isMultiple(value, 3):
+            return "Fizz"
+        if isMultiple(value, 5):
+            return "Buzz"
+        return str(value)
+
+    # unit test code
+    import pytest
+
+    def checkFizzBuzz(value, expectedValue) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedValue
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        assert checkFizzBuzz(1, "1")
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        assert checkFizzBuzz(2, "2")
+
+    # case 4: return "Fizz" when 3 passed in
+    def test_return_Fizz_when_3_passed_in():
+        assert checkFizzBuzz(3, "Fizz")
+
+    # case 5: return "Buzz" when 5 passed in
+    def test_return_Buzz_when_5_passed_in():
+        assert checkFizzBuzz(5, "Buzz")
+
+    # case 6: return "Fizz" when 6 passed in (a multiple of 3)
+    def test_return_Fizz_when_6_passed_in():
+        assert checkFizzBuzz(6, "Fizz")
+
+    # case 7: return "Buzz" when 10 passed in (a multiple of 5)
+    def test_return_Buzz_when_10_passed_in():
+        assert checkFizzBuzz(10, "Buzz")
+
+After code refactor, all the test still passed.
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_3_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_5_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_6_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_10_passed_in PASSED
+
+Last use case to deal with now.
+
+    # production code
+    def isMultiple(value, mod) -> bool:
+        return (value % mod) == 0
+ 
+    def fizzBuzz(value) -> str:
+        if isMultiple(value, 3):
+            return "Fizz"
+        if isMultiple(value, 5):
+            return "Buzz"
+        return str(value)
+
+    # unit test code
+    import pytest
+
+    def checkFizzBuzz(value, expectedValue) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedValue
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        assert checkFizzBuzz(1, "1")
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        assert checkFizzBuzz(2, "2")
+
+    # case 4: return "Fizz" when 3 passed in
+    def test_return_Fizz_when_3_passed_in():
+        assert checkFizzBuzz(3, "Fizz")
+
+    # case 5: return "Buzz" when 5 passed in
+    def test_return_Buzz_when_5_passed_in():
+        assert checkFizzBuzz(5, "Buzz")
+
+    # case 6: return "Fizz" when 6 passed in (a multiple of 3)
+    def test_return_Fizz_when_6_passed_in():
+        assert checkFizzBuzz(6, "Fizz")
+
+    # case 7: return "Buzz" when 10 passed in (a multiple of 5)
+    def test_return_Buzz_when_10_passed_in():
+        assert checkFizzBuzz(10, "Buzz")
+
+    # case 8: return "FizzBuzz" when 15 passed in (a multiple of 3 and 5)
+    def test_return_FizzBuzz_when_15_passed_in():
+        assert checkFizzBuzz(15, "FizzBuzz")
+
+With the new unit test, we are in the `RED` phase
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_3_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_5_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_6_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_10_passed_in PASSED
+    test_fizzbuzz.py::test_return_FizzBuzz_when_15_passed_in FAILED
+
+Time to update the production code to make the test pass.
+
+    # production code
+    def isMultiple(value, mod) -> bool:
+        return (value % mod) == 0
+ 
+    def fizzBuzz(value) -> str:
+        if isMultiple(value, 3):
+            if isMultiple(value, 5):
+                return "FizzBuzz"
+            return "Fizz"
+        if isMultiple(value, 5):
+            return "Buzz"
+        return str(value)
+
+    # unit test code
+    import pytest
+
+    def checkFizzBuzz(value, expectedValue) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedValue
+
+    # case 1: can call fzzBuzz()?
+    # case 2: return "1" when 1 passed in
+    def test_return_1_when_1_passed_in():
+        assert checkFizzBuzz(1, "1")
+
+    # case 3: return "2" when 2 passed in
+    def test_return_2_when_2_passed_in():
+        assert checkFizzBuzz(2, "2")
+
+    # case 4: return "Fizz" when 3 passed in
+    def test_return_Fizz_when_3_passed_in():
+        assert checkFizzBuzz(3, "Fizz")
+
+    # case 5: return "Buzz" when 5 passed in
+    def test_return_Buzz_when_5_passed_in():
+        assert checkFizzBuzz(5, "Buzz")
+
+    # case 6: return "Fizz" when 6 passed in (a multiple of 3)
+    def test_return_Fizz_when_6_passed_in():
+        assert checkFizzBuzz(6, "Fizz")
+
+    # case 7: return "Buzz" when 10 passed in (a multiple of 5)
+    def test_return_Buzz_when_10_passed_in():
+        assert checkFizzBuzz(10, "Buzz")
+
+    # case 8: return "FizzBuzz" when 15 passed in (a multiple of 3 and 5)
+    def test_return_FizzBuzz_when_15_passed_in():
+        assert checkFizzBuzz(15, "FizzBuzz")
+
+Finally we have all test pass and nothing to refactor too.
+
+    test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
+    test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_3_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_5_passed_in PASSED
+    test_fizzbuzz.py::test_return_Fizz_when_6_passed_in PASSED
+    test_fizzbuzz.py::test_return_Buzz_when_10_passed_in PASSED
+    test_fizzbuzz.py::test_return_FizzBuzz_when_15_passed_in PASSED
