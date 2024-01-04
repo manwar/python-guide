@@ -831,6 +831,21 @@ Now if we want to read `sample.csv` file and create a new `sample.json` file.
 
 **NOTE**: Here we have used `json.dump()` and not `json.dumps()`.
 
+There is also a very handy `requests` module for pulling data from web. 
+
+You can install the module if missing using the command `pip install requests` or `python3 -m pip install requests`.
+
+    import requests
+    response = requests.get("http://api.worldbank.org/v2/countries/USA/indicators/SP.POP.TOTL?perlpage=5000&format=json")
+
+    last_twenty_years = response.json()[1][:20]
+    for year in last_twenty_years:
+        display_width = year["value"] // 10_000_000
+        print(f'{year["date"]}: {year["value"]}', "=" * display_width)
+
+
+
+    
 Find OS name.
 
     import os
