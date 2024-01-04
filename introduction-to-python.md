@@ -476,7 +476,41 @@ Let sort in decreasing order of population and increasing alphabetically
     sorted(country_list, key=lambda x: (-x.population, x.name))
 
     [Country('Nigeria', 198_000_000), Country('Japan', 128_000_000), Country('Nepal', 30_000_000), Country('Niger', 24_000_000), Country('Taiwan', 24_000_000), Country('Netherlands', 17_500_000), Country('Jordan', 10_000_000), Country('Portugal', 10_000_000)]
-    
+
+What if we want to sort reverse by name too? Well you can't do `-x.name`, instead you would need to do like below
+
+    print(sorted(country_list, key=lambda x: (x.population, x.name), reverse=True)) # reverse osrt by population and name
+
+Now if you want to sort on field that haa alphnumeric characters, something like below
+
+    iso = [('Taiwan', 'iso24000000'), ('Portual', 'iso10000000'), ('Netherlands', 'iso17500000'), ('Nigeria', 'iso198000000'), ('Jordan', 'iso100000    00'), ('Nepal', 'iso30000000'), ('Niger', 'iso24000000'), ('Japan', 'iso128000000')]
+
+As you see the population has the three letter codes `iso` at the start.
+
+    def get_population(pair):
+        country, population = pair
+        return population[3:] # ignore the first three letters i.e. iso
+ 
+     print(sorted(iso, key=get_population))
+
+Below is what we get back
+
+    [('Portual', 'iso10000000'), ('Jordan', 'iso10000000'), ('Japan', 'iso128000000'), ('Netherlands', 'iso17500000'), ('Nigeria', 'iso198000000')    , ('Taiwan',         'iso24000000'), ('Niger', 'iso24000000'), ('Nepal', 'iso30000000')]
+
+Did you notice it didn't quite done correctly? Japan comes before Netherlands since sorting done alphabetically 128000000 appears before 17000000.    
+
+We can handle this issue very easily using type cast
+
+    def get_population1(pair):
+        country, population = pair
+        return int(population[3:]) # ignore the first three letters i.e. iso
+ 
+     print(sorted(iso, key=get_population1))
+
+Finally we have done it correctly
+
+    [('Portual', 'iso10000000'), ('Jordan', 'iso10000000'), ('Netherlands', 'iso17500000'), ('Taiwan', 'iso24000000'), ('Niger', 'iso24000000'), (    'Nepal', 'iso30000000'), ('Japan', 'iso128000000'), ('Nigeria', 'iso198000000')]
+
 ## Module
 ***
 
