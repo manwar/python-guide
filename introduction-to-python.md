@@ -775,7 +775,7 @@ Read file contents line by line.
         for line in lines:
             print(line)
 
-If you want to play with csv file then you would need to import `csv` module.
+If you want to play with csv file then you would need to import `csv` module. We are also using `pprint` module for pretty print data structure.
 
     import csv
     from pprint import pprint
@@ -806,11 +806,31 @@ And if you want to play with `JSON` then there is a `json` module.
 To convert a `dictionary` into `JSON` we could do something like below to the above code
 
     import json
-    json_line = json.dump(line)
+    json_line = json.dumps(line)
 
 Then back to `dictionary`
 
     dict_line = json.loads(json_line)
+
+Now if we want to read `sample.csv` file and create a new `sample.json` file.
+
+    import csv
+    import json
+    from pprint import pprint
+
+    # Suppose we have csv file sample.csv containing data like this:
+    # firstname,surname,age,sex,location
+    # Joe,Blogg,20,"m","Lodon"
+    # Christie,Slate,18,"f","Dublin"
+
+    with open("sample.csv", "r") as f:
+        reader = csv.DictReader(f)
+        lines = list(reader)
+
+    with open("sample.json", "w") as f:
+        json.dump(lines, f, indent=2)
+
+**NOTE**: Here we have used `json.dump()` and not `json.dumps()`.
 
 Find OS name.
 
