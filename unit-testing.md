@@ -91,7 +91,7 @@ Try again the same command `pytest -v`. You should see something like below:
 
 If you noticed, `pytest` ignored the class `IgnoreMe`.
 
-## FizzBuzz Exanple
+## FizzBuzz Example
 ***
 
 Let us apply what we learnt so far in the `FizzBuzz` example.
