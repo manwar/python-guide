@@ -1,6 +1,7 @@
 ## Unit Testing
 ***
 - [Overview](#overview)
+- [FizzBuzz Example](#fizzbuzz-example)
 
 ## Overview
 ***
@@ -15,12 +16,32 @@ c) **System Testing**: Tests the external interface of a system
 
 d) **Performance Testing**: Testing at system level to verify timing and resource usages.
 
-Unit test structure made up of three layers
+**Unit test** structure made up of three layers
 
   1) setup
   2) action
   3) assert
 
+**Test Driven Development (TDD)** expect us to do the following
+
+  1) Write unit test before any production code
+  2) **DO NOT** write all unit test or production code at once.
+  3) Test and production code are written for one use case at a time
+
+`TDD` follows 3 phases:
+
+  1) **RED**: Write a failing unit test
+  2) **GREEN**: Write just `ENOUGH` production code to make test pass
+  3) **REFACTOR**: clean up and remove duplicate code from unit test and production code
+
+Repeat the cycle until you have covered all the use cases.
+
+The `THREE` laws of `TDD`
+
+  1) Do not write any production code until you have written a failing test
+  2) Do not write more than the needed unit test to fail
+  3) Do not write more than the needed production code to pass the test
+     
 `pytest` automatically discovers test based on standard naming conventions.
 
   1) test function name should start with 'test'
@@ -28,9 +49,10 @@ Unit test structure made up of three layers
   3) Filename should start or end with 'test'
 
 Suppose in the current folder we have only 3 files as below
-    1) test_file.py
-    2) file_test.py
-    3) ignore-me.py
+
+  1) test_file.py
+  2) file_test.py
+  3) ignore-me.py
 
 They all have the following lines of code
 
@@ -68,4 +90,9 @@ Try again the same command `pytest -v`. You should see something like below:
     test_file.py::test_2 PASSED
 
 If you noticed, `pytest` ignored the class `IgnoreMe`.
+
+## FizzBuzz Exanple
+***
+
+Let us apply what we learnt so far in the `FizzBuzz` example.
 
