@@ -130,7 +130,7 @@ We now have pass unit test. Time to get into `REFACTOR` phase if needed.
 
 Do we need it? I don't think so.
 
-So we will repeat the cycle and get into `RED` phase again by create another fail test.
+So we will repeat the cycle and get into the `RED` phase again by creating another fail test.
 
     # production code
     def fizzBuzz(value):
@@ -142,6 +142,7 @@ So we will repeat the cycle and get into `RED` phase again by create another fai
     # case 1: can call fzzBuzz()?
     def test_can_call_FizzBuzz():
         fizzBuzz(1)
+
     # case 2: return 1 when 1 passed in
     def test_return_1_when_1_passed_in():
         retVal = fizzBuzz(1)
@@ -152,7 +153,7 @@ We are in `RED` phase as shown below
     test_fizzbuzz.py::test_canCallFizzBuzz PASSED
     test_fizzbuzz.py::test_return_1_when_1_passed_in FAILED
     
-Let's update production code to make the test pass
+Let's update the production code to make the test pass
 
     # production code
     def fizzBuzz(value) -> str:
@@ -164,19 +165,20 @@ Let's update production code to make the test pass
     # case 1: can call fzzBuzz()?
     def test_can_call_FizzBuzz():
         fizzBuzz(1)
+
     # case 2: return 1 when 1 passed in
     def test_return_1_when_1_passed_in():
         retVal = fizzBuzz(1)
         assert retVal == "1"
 
-We in `GREEN` phase now.
+We are in `GREEN` phase now.
 
     test_fizzbuzz.py::test_canCallFizzBuzz PASSED
     test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
 
 To do some refactor? 
 
-We can some duplication code now. The method `fizzBuzz()` called twice. Let's clean up the code.
+We can clearly see some code duplication now. The method `fizzBuzz()` is called twice. Let's clean up the code.
 
     # production code
     def fizzBuzz(value) -> str:
