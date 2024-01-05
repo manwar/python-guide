@@ -3,6 +3,7 @@
 - [Overview](#overview)
 - [FizzBuzz Example](#fizzbuzz-example)
 - [XUnit](#xunit)
+- [Test Fixtures](@test-fixtures)
 
 **Disclaimer:** These are my notes after attending the course [**Unit Testing and Test Driven Development in Python**](https://www.linkedin.com/learning/unit-testing-and-test-driven-development-in-python)
 
@@ -541,19 +542,19 @@ We will first try `setup_function()` and `teardown_function()` as below:
 
     def setup_function(function):
         if function == test_1:
-            print("setup test_1")
+            print("\nsetup test_1")
         elif function == test_2:
-            print("setup test_2")
+            print("\nsetup test_2")
         else:
-            print("setup unknown")
+            print("\nsetup unknown")
 
     def teardown_function(function):
         if function == test_1:
-            print("teardown test_1")
+            print("\nteardown test_1")
         elif function == test_2:
-            print("teardown test_2")
+            print("\nteardown test_2")
         else:
-            print("teardown unknown")
+            print("\nteardown unknown")
 
 The above `setup_function()` and `teardown_function()` gets executed for each unit test function.
 
@@ -574,10 +575,10 @@ Let's check the result by using the command `pytest -v -s`. The `-v` switch we u
 What if we want similar function but one for `module`      
 
     def setup_module():
-        print("setup module")
+        print("\nsetup module")
 
      def teardown_module():
-        print("teardown module")      
+        print("\nteardown module")      
 
 Let see what happens now
 
@@ -606,27 +607,27 @@ We will re-use the above code and change it to class.
     class TestClass():
         @classmethod
         def setup_class(cls):
-            print("setup TestClass")
+            print("\nsetup TestClass")
 
         @classmethod
         def teardown_class(cls):
-            print("teardown TestClass")
+            print("\nteardown TestClass")
 
         def setup_method(self, method):
             if method == self.test_1:
-                print("setup test_1")
+                print("\nsetup test_1")
             elif method == self.test_2:
-                print("setup test_2")
+                print("\nsetup test_2")
             else:
-                print("setup unknown")
+                print("\nsetup unknown")
 
         def teardown_method(self, method):
             if method == self.test_1:
-                print("teardown test_1")
+                print("\nteardown test_1")
             elif method == self.test_2:
-                print("teardown test_2")
+                print("\nteardown test_2")
             else:
-                print("teardown unknown")
+                print("\nteardown unknown")
                 
         def test_1(self):
             print("executing test_1")
@@ -640,17 +641,304 @@ After running the command `pytest -v -s` we get this
 
     test_xunit.py::TestClass::test_1 
     setup TestClass
+    
     setup test_1
-    executing test 1
+    executing test_1
     PASSED
     teardown test_1
 
     test_xunit.py::TestClass::test_2 
     setup test_2
-    executing test 2
+    executing test_2  
     PASSED
     teardown test_2
+    
     teardown TestClass
 
 As you see `setup_class()` and `teardown_class()` only executed once. But `setup_method()` and `teardown_method()` got executed once for each method in the class.
+
+## Test Fixtures
+***
+
+Test fixtures allow for re-use of setup and teardown code across tests.
+
+Let's start with the basic unit test in a file named `test_fixtures.py`
+
+    import pytest
+
+    @pytest.fixture()
+    def setup():
+        print("\nsetup test")
+
+    def test_1():
+        print("\nexecuting test_1")
+        assert True
+
+    def test_2():
+        print("\nexecuting test_2")
+        assert True
+
+It is exactly the same code we used before except we added function `setup()` with decorator `@pytest.fixture()` 
+
+    test_fixture.py::test_1 
+    executing test_1
+    PASSED
+    test_fixture.py::test_2 
+    executing test_2
+    PASSED
+
+If you noticed `setup()` didn't get executed. Let configure unit test `test_1()` to execute the test fixture `setup()`
+
+    def test_1(setup):
+        print("executing test_1")
+        assert True
+
+You now see this when you run the test. The fixture `setup()` is executed before `test_1()` only.
+
+    test_fixture.py::test_1 
+    setup test
+    executing test_1
+    PASSED
+    test_fixture.py::test_2 
+    executing test_2
+    PASSED
+
+There is another way you can use test fixture using the decorator `@pytest.mark.usefixtures()` as we see below
+
+    @pytest.mark.usefixtures("setup")
+    def test_2():
+        print("\nexecuting test_2")
+        assert True
+
+You now see `setup()` gets execute before both unit tests.
+
+    test_fixture.py::test_1 
+    setup test
+    executing test_1
+    PASSED
+    test_fixture.py::test_2 
+    setup test    
+    executing test_2
+    PASSED
+
+If we want test fixture to be use before each unit test then it is a big job to change each unit test.
+
+There is shortcut tothat issue like below
+
+    @pytest.fixture(autouse=True)
+    def setup():
+        print("\nsetup test")
+
+Then you don't need to do anything to your unit test.
+
+    def test_1():
+        print("executing test_1")
+        assert True
+
+    def test_2():
+        print("executing test_2")
+        assert True
+
+Here is the result:
+
+    test_fixture.py::test_1 
+    setup test
+    executing test_1
+    PASSED
+    test_fixture.py::test_2 
+    setup test    
+    executing test_2
+    PASSED
+
+Test fixture can also have their own optional teardown code which is called after a fixture goes out of scope.
+
+There are two methods to specify teardown code.
+
+    1) yield keyword
+    2) request-context object's addfinalizer method
+
+The `yield` keyword is a replacement for the `return` keyword so any return values are also specified in the `yield` statement.
+
+    @pytest.fixture()
+    def setup():
+        print("\nsetup test")
+        yield
+        print("\teardown!")
+
+Here is outcome:
+
+    test_fixture.py::test_1
+    setup test
+    executing test_1
+    PASSED
+    teardown!
+
+    test_fixture.py::test_2
+    setup test
+    executing test_2
+    PASSED
+    teardown!
+
+With the `addfinalizer()` method a teardown method is defined added via the `request.context`'s addfinalizer method.
+
+Multiple finalization functions can be specified.
+
+    @pytest.fixture()
+    def setup2(request):
+        print("\nsetup 2")
+
+        def teardown_a():
+            print("\nteardown A")
+
+        def teardown_b():
+            print("\nteardown B")
+
+        request.addfinalizer(teardown_a)
+        request.addfinalizer(teardown_b)
+
+Updated the following two unit tests, one uses `setup()` and other uses `setup2()` test fixture.
+
+    def test_1(setup):
+        print("executing test_1")
+        assert True
+
+    def test_2(setup2):
+        print("executing test_2")
+        assert True   
+
+Time for some result.
+
+    test_fixture.py::test_1 
+    setup test
+    executing test_1
+    PASSED
+    teardown!
+    
+    test_fixture.py::test_2 
+    setup 2  
+    executing test_2
+    PASSED
+    teardown B!
+    teardown A!
+
+Test fixtures Scope
+
+    1) Function - Run the fixture once for each test
+    2) Class - Run the fixture once for each class of tests
+    3) Module - Run once the module goes in scope
+    4) Session - The fixture is run whey pytest starts
+
+Let us see in action, we would two modules, say `test_fixture.py` and `test_fixture2.py`
+
+Below is the content of `test_fixture.py`
+
+    import pytest
+
+    @pytest.fixture(scope="session", autouse=True)
+    def setup_session():
+        print("\nsetup session")
+
+    @pytest.fixture(scope="module", autouse=True)
+    def setup_module():
+        print("\nsetup module")
+
+    @pytest.fixture(scope="function", autouse=True)
+    def setup_function():
+        print("\nsetup function")
+
+    def test_1():
+        print("\nexecuting test_1")
+        assert True
+
+    def test_2():
+        print("\nexecuting test_2")
+        assert True
+
+Below is the content of `test_fixture2.py`
+
+    import pytest
+
+    @pytest.fixture(scope="module", autouse=True)
+    def setup_module():
+        print("\nsetup module")
+
+    @pytest.fixture(scope="class", autouse=True)
+    def setup_class():
+        print("\nsetup class")
+
+    @pytest.fixture(scope="function", autouse=True)
+    def setup_function():
+        print("\nsetup function")
+
+    class TestClass:
+        def test_1(self):
+            print("\nexecuting test_1")
+            assert True
+
+        def test_2(self):
+            print("\nexecuting test_2")
+            assert True
+
+Testing the fixtures by command `pytest -s`
+
+      test_fixture.py
+      setup session
+
+      setup module
+
+      setup function
+      executing test_1
+      .
+      setup function
+      executing test_2
+      .
+      test_fixture2.py
+      setup module
+
+      setup class
+
+      setup function
+      executing test_1
+      .
+      setup function
+      executing test_2
+      .
+
+Test fixtures can optionally return data which can be used in the test. 
+
+The optional `"params"` array argument in the fixture decorator can be used to specify the data returned to the test.
+
+When a `"params"` argument is specified then the test will be called one time with each value specified.
+
+We will show the use in the example below
+
+    import pytest
+    
+    @pytest.fixture(params = [1,2,3)
+    def setup(request):
+        retVal = request.param
+        print("\nSetup: retVal = {}".format(retVal))
+        return retVal
+
+    def test_1(setup):
+        print("\nsetup = {}".format(setup))
+        assert True
+
+Checkout the result as below:
+
+    test_fixture.py
+    Setup: retVal = 1
+
+    setup = 1
+    .    
+    Setup: retVal = 2
+
+    setup = 2
+    .
+    Setup: retVal = 3
+
+    setup = 3
+    .
+
+    
 
