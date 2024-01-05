@@ -209,7 +209,7 @@ Then update the unit test to use it
     def test_return_2_when_2_passed_in():
         assert checkFizzBuzz(2, "2")
 
-After code refactor, we still have all test paased.
+After code refactor, we still have all test passed.
 
     test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
     test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
