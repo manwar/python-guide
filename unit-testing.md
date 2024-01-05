@@ -424,6 +424,10 @@ The complete solution looks like this after the exercise.
     # unit test code
     import pytest
 
+    def checkFizzBuzz(value, expectedValue) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedValue
+
     # case 1: can call fzzBuzz()?
     # case 2: return "1" when 1 passed in
     def test_return_1_when_1_passed_in():
