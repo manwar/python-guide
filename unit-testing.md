@@ -519,7 +519,7 @@ For that, I am using another module `unittest` and here is the complete `FizzBuz
 ## XUnit
 ***
 
-`Python` provides `XUnit` styled setup/teardonw functions that get executed before and after.
+`Python` provides `XUnit` styled setup/teardown functions that get executed before and after.
 
     module: setup_module() / teardown_module()
     function: setup_function() / teardown_function()
