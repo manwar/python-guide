@@ -2,6 +2,7 @@
 ***
 - [Overview](#overview)
 - [FizzBuzz Example](#fizzbuzz-example)
+- [XUnit](#xunit)
 
 **Disclaimer:** These are my notes after attending the course [**Unit Testing and Test Driven Development in Python**](https://www.linkedin.com/learning/unit-testing-and-test-driven-development-in-python)
 
@@ -514,4 +515,142 @@ For that, I am using another module `unittest` and here is the complete `FizzBuz
             self.assertTrue(checkFizzBuzz(15, "FizzBuzz"))
 
     unittest.main()
+
+## XUnit
+***
+
+`Python` provides `XUnit` styled setup/teardonw functions that get executed before and after.
+
+    module: setup_module() / teardown_module()
+    function: setup_function() / teardown_function()
+    class: setup_class() / teardown_class() / setup_method() / teardown_method()
+
+Let us see in action and create a file named `test_xunit.py`
+
+    import pytest
+
+    def test_1():
+        print("executing test_1")
+        assert True
+
+    def test_2():
+        print("executing test_2")
+        assert True   
+
+We will first try `setup_function()` and `teardown_function()` as below:
+
+    def setup_function(function):
+        if function == test_1:
+            print("setup test_1")
+        elif function == test_2:
+            print("setup test_2")
+        else:
+            print("setup unknown")
+
+    def teardown_function(function):
+        if function == test_1:
+            print("teardown test_1")
+        elif function == test_2:
+            print("teardown test_2")
+        else:
+            print("teardown unknown")
+
+The above `setup_function()` and `teardown_function()` gets executed for each unit test function.
+
+Let's check the result by using the command `pytest -v -s`. The `-v` switch we used earlier also is for running test in `verbose` mode. And the `-s` swith is to allow dump print to the console.
+
+      test_xunit.py::test_1 
+      setup test_1
+      executing test_1
+      PASSED
+      teardown test_1
+
+      test_xunit.py::test_2
+      setup test_2
+      executing test_2
+      PASSED
+      teardown test_2
+
+What if we want similar function but one for `module`      
+
+    def setup_module():
+        print("setup module")
+
+     def teardown_module():
+        print("teardown module")      
+
+Let see what happens now
+
+      test_xunit.py::test_1
+      setup module
+      setup test_1
+      executing test_1
+      PASSED
+      teardown test_1
+
+      test_xunit.py::test_2
+      setup test_2
+      executing test_2
+      PASSED
+      teardown test_2
+      teardown module
+
+Did you notice, `setup_module()` executed only once before the first test and `teardown_module()` gets executed only once at the end of last test?
+
+Now the fun starts with class level setup and teardown.
+
+We will re-use the above code and change it to class.
+
+    import pytest
+
+    class TestClass():
+        @classmethod
+        def setup_class(cls):
+            print("setup TestClass")
+
+        @classmethod
+        def teardown_class(cls):
+            print("teardown TestClass")
+
+        def setup_method(self, method):
+            if method == self.test_1:
+                print("setup test_1")
+            elif method == self.test_2:
+                print("setup test_2")
+            else:
+                print("setup unknown")
+
+        def teardown_method(self, method):
+            if method == self.test_1:
+                print("teardown test_1")
+            elif method == self.test_2:
+                print("teardown test_2")
+            else:
+                print("teardown unknown")
+                
+        def test_1(self):
+            print("executing test_1")
+            assert True
+
+        def test_2(self):
+            print("executing test_2")
+            assert True   
+
+After running the command `pytest -v -s` we get this
+
+    test_xunit.py::TestClass::test_1 
+    setup TestClass
+    setup test_1
+    executing test 1
+    PASSED
+    teardown test_1
+
+    test_xunit.py::TestClass::test_2 
+    setup test_2
+    executing test 2
+    PASSED
+    teardown test_2
+    teardown TestClass
+
+As you see `setup_class()` and `teardown_class()` only executed once. But `setup_method()` and `teardown_method()` got executed once for each method in the class.
 
