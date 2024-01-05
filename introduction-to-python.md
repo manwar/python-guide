@@ -16,6 +16,8 @@
 - [Data Formats](#data-formats)
 - [Web Framework](#web-framework)
 
+**Disclaimer:** These are my notes after attending the courses [[**Python Quick Start**](https://www.linkedin.com/learning/python-quick-start-22667553)], [[**Learning Python**](https://www.linkedin.com/learning/learning-python-14393370)] and [[**8 Things You Must Know in Python**](https://www.linkedin.com/learning/8-things-you-must-know-in-python)].
+
 ## Hello World
 ***
     print('Hello World !!')
