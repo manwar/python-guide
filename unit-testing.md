@@ -458,3 +458,60 @@ The complete solution looks like this after the exercise.
     # case 8: return "FizzBuzz" when 15 passed in (a multiple of 3 and 5)
     def test_return_FizzBuzz_when_15_passed_in():
         assert checkFizzBuzz(15, "FizzBuzz")        
+
+Having done the unit testing using the standard module `pytest`, I wanted to try something where I can create unit test in a class.
+
+For that, I am using another module `unittest` and here is the complete `FizzBuzz` solution.
+
+    # production code
+    def isMultiple(value, mod) -> bool:
+        return (value % mod) == 0
+
+    def fizzBuzz(value) -> str:
+        if isMultiple(value, 3):
+            if isMultiple(value, 5):
+                return "FizzBuzz"
+            return "Fizz"
+        if isMultiple(value, 5):
+            return "Buzz"
+        return str(value)
+
+    # unit test code
+    import unittest
+
+    def checkFizzBuzz(value, expectedRetVal) -> bool:
+        retVal = fizzBuzz(value)
+        return retVal == expectedRetVal
+
+    class TestFizzBuzz(unittest.TestCase):
+        # case 1: can call fzzBuzz()?
+        # case 2: return "1" when 1 passed in
+        def test_return_1_when_1_passed_in(self):
+            self.assertTrue(checkFizzBuzz(1, "1"))
+
+        # case 3: return "2" when 2 passed in
+        def test_return_2_when_2_passed_in(self):
+            self.assertTrue(checkFizzBuzz(2, "2"))
+
+        # case 4: return "Fizz" when 3 passed in
+        def test_return_Fizz_when_3_passed_in(self):
+            self.assertTrue(checkFizzBuzz(3, "Fizz"))
+
+        # case 5: return "Buzz" when 5 passed in
+        def test_return_Buzz_when_5_passed_in(self):
+            self.assertTrue(checkFizzBuzz(5, "Buzz"))
+
+         # case 6: return "Fizz" when 6 passed in (a multiple of 3)
+        def test_return_Fizz_when_6_passed_in(self):
+            self.assertTrue(checkFizzBuzz(6, "Fizz"))
+
+        # case 7: return "Buzz" when 10 passed in (a multiple of 5)
+        def test_return_Buzz_when_10_passed_in(self):
+            self.assertTrue(checkFizzBuzz(10, "Buzz"))
+
+        # case 8: return "FizzBuzz" when 15 passed in (a multiple of 3 and 5)
+        def test_return_FizzBuzz_when_15_passed_in(self):
+            self.assertTrue(checkFizzBuzz(15, "FizzBuzz"))
+
+    unittest.main()
+
