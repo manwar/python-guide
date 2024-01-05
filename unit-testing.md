@@ -3,6 +3,8 @@
 - [Overview](#overview)
 - [FizzBuzz Example](#fizzbuzz-example)
 
+**Disclaimer:** These are my notes after attending the course [**Unit Testing and Test Driven Development in Python**](https://www.linkedin.com/learning/unit-testing-and-test-driven-development-in-python)
+
 ## Overview
 ***
 
