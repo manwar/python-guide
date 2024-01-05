@@ -87,7 +87,7 @@ A better comparison would be to use function `isinstance()`.
     print(isinstance(author, Author)) # True
     print(isinstance(author, Book))   # False
 
-Every class in `Python` is a sub class of generic class `object`. So this is perfectly OK.
+Every class in `Python` is a sub class of generic super class `object`. So this is perfectly OK.
 
     print(isinstance(book1, object)   # True
 
