@@ -1162,7 +1162,7 @@ Types of Test Doubles
 
     These objects are pre-programmed to expect specific calls and parameters
 
-`Python` provides mocking frmaework called `unittest.mock`
+`Python` provides mocking framework called `unittest.mock`
 
 Mock provides many initialization parameters that can be used to control the mock behaviour.
 
@@ -1187,7 +1187,7 @@ Mock provides additional attributes for verification
 4) call_args - The arguments the mock was last called with
 5) call_args_list - A list containing the arguments that were used for each call to the mock
 
-The `unittest.mock` also provides `MagicMock` class and it is derived from `Mock` class and provides a default implementation of many of the default magic methods. For example `__str__()`. However there are some not implemented by default, like `__getattr__`, `__setattr__`, `__init__`, `__new__`, `__prepare__`, `__instancecheck__`, `__subclascheck__` and `__del__`.
+The `unittest.mock` also provides `MagicMock` class and it is derived from `Mock` class and provides a default implementation of many of the default magic methods. For example `__str__`. However there are some not implemented by default, like `__getattr__`, `__setattr__`, `__init__`, `__new__`, `__prepare__`, `__instancecheck__`, `__subclascheck__` and `__del__`.
 
 `pytest` provides the `monekypatch` test fixture to allow a test to dynamically replace the followings:
 
