@@ -4,7 +4,7 @@
 - [FizzBuzz Example](#fizzbuzz-example)
 - [XUnit](#xunit)
 - [Test Fixtures](#test-fixtures)
-- [Data Comparison[(#data-comparison)
+- [Data Comparison](#data-comparison)
 - [Exceptions](#exceptions)
 - [PyTest CLI](#pytest-cli)
 
