@@ -1189,7 +1189,7 @@ Mock provides additional attributes for verification
 
 The `unittest.mock` also provides `MagicMock` class and it is derived from `Mock` class and provides a default implementation of many of the default magic methods. For example `__str__()`. However there are some not implemented by default, like `__getattr__`, `__setattr__`, `__init__`, `__new__`, `__prepare__`, `__instancecheck__`, `__subclascheck__` and `__del__`.
 
-`pytest` provides the `monekypatch` test fixture to allow a test to dynamically replacw rhw followings:
+`pytest` provides the `monekypatch` test fixture to allow a test to dynamically replace the followings:
 
 1) module and class attributes
 2) dictionary entries
