@@ -1076,7 +1076,7 @@ Now if we want to run the `test_file_1.py` module only then we would like below
 
 As you see, it only executed tests in the specified module `test_file_1.py`.
 
-What if I want to run only tests found in a spcified directory?
+What if I want to run only tests found in a specified directory?
 
     pytest -v -s testsubdirectory/
 
@@ -1103,7 +1103,7 @@ If we want to run test named  `"test_2"` or `"test_3"`
     Test 3
     PASSED    
 
-Now we wlll try `-m` command line arguments. For this we will have add the decorator `@pytest.mark`
+Now we wlll try `-m` command line arguments. For this we need to add the decorator `@pytest.mark`
 
 For demo purpose, we would only mark `test_1` and `test_3` as below
 
