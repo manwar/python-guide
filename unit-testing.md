@@ -1031,7 +1031,7 @@ Some other useful command line arguments are
     --ignore: specfiy the directory path to ignore when discovery tests
     --maxfail: Specify the maximum fails before the test stops
     
-Let's do some test run. For that we created 3 test files as below
+Let's do some test run. For that we created 3 moduless as below
 
     # test_file_1.py
     import pytest
