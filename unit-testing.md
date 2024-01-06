@@ -4,6 +4,9 @@
 - [FizzBuzz Example](#fizzbuzz-example)
 - [XUnit](#xunit)
 - [Test Fixtures](#test-fixtures)
+- [Data Comparison[(#data-comparison)
+- [Exceptions](#exceptions)
+- [PyTest CLI](#pytest-cli)
 
 **Disclaimer:** These are my notes after attending the course [**Unit Testing and Test Driven Development in Python**](https://www.linkedin.com/learning/unit-testing-and-test-driven-development-in-python)
 
@@ -940,5 +943,62 @@ Checkout the result as below:
     setup = 3
     .
 
-    
+## Data Comparison
+***    
 
+`Python` assert statements can be used data verification in unit test. All Python data can be compared using the following standard operators.
+
+    1) >
+    2) <
+    3) ==
+    4) >=
+    5) <=
+    6) !=
+
+Examples?
+
+    from pytest import approx
+
+    def test_int_assert():
+        assert 1 == 1
+    def test_str_assert()
+        assert "a" == "a"
+    def test_float_assert()
+        assert 1.0 == 1.0
+    def test_array_assert()
+        assert [1,2,3] == [1,2,3]
+    def test_dict_assert()
+        assert {"1": 1} == {"1": 1}
+
+**NOTE**: Be careful comparing floating point values
+
+    def test_bad_float_values()
+        assert (0.1 + 0.2) == 0.3
+
+The above test would `FAIL`.
+
+`pytest` provdes `approx()` function to deal with the issue.
+
+    def test_good_float_values()
+        assert (0.1 + 0.2) == approx(0.3)
+      
+## Exceptiona
+***  
+
+Python provides the `raises` helper to verify exception using the `with` keyword.
+
+    from pytest import raises
+
+    def testValueException():
+        raise ValueError
+
+    def test_exception():
+        with raises(ValueError):
+            raiseValueException()
+
+Test the code now by command `pytest -v`
+
+    test_exceptions.py::test_exception PASSED
+
+## PyTest CLI
+***
