@@ -7,6 +7,7 @@
 - [Data Comparison](#data-comparison)
 - [Exceptions](#exceptions)
 - [PyTest CLI](#pytest-cli)
+- [Test Doubles]#test-doubles)
 
 **Disclaimer:** These are my notes after attending the course [**Unit Testing and Test Driven Development in Python**](https://www.linkedin.com/learning/unit-testing-and-test-driven-development-in-python)
 
@@ -1133,3 +1134,76 @@ We are ready to try the `-m` switch as below:
     testsubdirectory/test_file_3.py::test_3
     Test 3
     PASSED    
+
+## Test Doubles
+***
+
+Test doubles are objects that are used in unit tests as replacements to the real production systems.
+
+Types of Test Doubles
+
+1) Dummy
+
+    Objects that can be passed around as necessary but do not have any type of test implementation
+
+2) Fake
+
+    These object generally have a simplified functional implementation for testing only
+
+3) Stub
+
+    These object provide implementationa with canned answera that are suitable for the test
+
+4) Spies
+
+    These object provide implementationa that record the value that were passed in so they can be used in the test
+
+5) Mock
+
+    These objects are pre-programmed to expect specific calls and parameters
+
+`Python` provides mocking frmaework called `unittest.mock`
+
+Mock provides many initialization parameters that can be used to control the mock behaviour.
+
+1) The `spec` parameter specifies the interface that Mock object is implementing
+2) The `side_effect` parameter specifies a function that should be called when the mock is called
+3) The `return_value` parameter specifies the return value when the mock is called
+
+Mock verification
+
+1) assert_called: Assert the mock was called
+2) assert_called_once - Assert the mock was called once
+3) assert_called_with - Assert the last call to the mock was with the specified parameters
+4) assert_called_once_with - Assert the mock was called once with the specified parameters
+5) assert_any_call - Assert the mock was ever called with the specified parameters
+6) assert_not_called - Assert the mock was not called
+
+Mock provides additional attributes for verification
+
+1) assert_has_calls - Assert the mock was called with the list of calls
+2) called - A boolean value indicating if the mock was ever called
+3) call_count - An integer value reoresenting the number of times the mock object was called
+4) call_args - The arguments the mock was last called with
+5) call_args_list - A list containing the arguments that were used for each call to the mock
+
+The `unittest.mock` also provides `MagicMock` class and it is derived from `Mock` class and provides a default implementation of many of the default magic methods. For example `__str__()`. However there are some not implemented by default, like `__getattr__`, `__setattr__`, `__init__`, `__new__`, `__prepare__`, `__instancecheck__`, `__subclascheck__` and `__del__`.
+
+`pytest` provides the `monekypatch` test fixture to allow a test to dynamically replacw rhw followings:
+
+1) module and class attributes
+2) dictionary entries
+3) environment variables
+
+
+
+
+
+
+   
+
+
+
+
+
+   
