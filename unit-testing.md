@@ -1002,3 +1002,134 @@ Test the code now by command `pytest -v`
 
 ## PyTest CLI
 ***
+
+By default `pytest` automatically discovers all unit test following the standard naming standards/
+
+But there are many command line arguments for controlling which discovered tests actually are executed.
+
+1) modulename
+
+    Simply specify the module name to run only tests from the module.
+
+2) directoryname
+
+    Runs any tests found in the specified directory.
+
+3) -k "expression"
+
+    It can include module name, class name or function name.
+
+4) -m "expression"
+
+     It matches tests that have `pytest.mark` decorator. 
+
+Some other useful command line arguments are
+
+    -v: runs the test in verbose mode
+    -q: runs the test in quiet mode
+    -s: show print statements on the console
+    --ignore: specfiy the directory path to ignore when discovery tests
+    --maxfail: Specify the maximum fails before the test stops
+    
+Let's do some test run. For that we created 3 test files as below
+
+    # test_file_1.py
+    import pytest
+
+    def test_1():
+        print("\nTest 1")
+        assert True
+
+    # test_file_2.py
+    import pytest
+
+    def test_2():
+        print("\nTest 2")
+        assert True
+
+    # testsubdirectory/test_file_3.py
+    import pytest
+
+    def test_3():
+        print("\nTest 3")
+        assert True        
+
+Running the command `pytest -v -s` shows this:
+
+    test_file_1.py::test_1
+    Test 1
+    PASSED
+    test_file_2.py::test_2
+    Test 2
+    PASSED
+    testsubdirectory/test_file_3.py::test_3
+    Test 3
+    PASSED
+
+Now if we want to run the `test_file_1.py` module only then we would like below
+
+    pytest -v -s test_file_1.py
+
+    test_file_1.py::test_1
+    Test 1
+    PASSED
+
+As you see, it only executed tests in the specified module `test_file_1.py`.
+
+What if I want to run only tests found in a spcified directory?
+
+    pytest -v -s testsubdirectory/
+
+    testsubdirectory/test_file_3.py::test_3
+    Test 3
+    PASSED
+
+Let's try `-k` parameter. Here we want to run only test named `test_2`
+
+    pytest -v -s -k "test_2"
+
+    test_file_2.py::test_2
+    Test 2
+    PASSED
+
+If we want to run test named  `"test_2"` or `"test_3"`
+
+    pytest -v -s -k "test_2 or test_3"
+
+    test_file_2.py::test_2
+    Test 2
+    PASSED
+    testsubdirectory/test_file_3.py::test_3
+    Test 3
+    PASSED    
+
+Now we wlll try `-m` command line arguments. For this we will have add the decorator `@pytest.mark`
+
+For demo purpose, we would only mark `test_1` and `test_3` as below
+
+    # test_file_1.py
+    import pytest
+
+    @pytest.mark.test_1
+    def test_1():
+        print("\nTest 1")
+        assert True
+
+    # testsubdirectory/test_file_3.py
+    import pytest
+
+    @pytest.mark.test_3
+    def test_3():
+        print("\nTest 3")
+        assert True
+
+We are ready to try the `-m` switch as below:
+
+    pytest -v -s -m "test_2 or test_3"
+
+    test_file_1.py::test_1
+    Test 1
+    PASSED
+    testsubdirectory/test_file_3.py::test_3
+    Test 3
+    PASSED    
