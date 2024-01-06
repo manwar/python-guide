@@ -1030,7 +1030,7 @@ Some other useful command line arguments are
     -q: runs the test in quiet mode
     -s: show print statements on the console
     --ignore: specfiy the directory path to ignore when discovery tests
-    --maxfail: Specify the maximum fails before the test stops
+    --maxfail: specify the maximum fails before the test stops
     
 Let's do some test run. For that we created 3 modules as below
 
@@ -1067,7 +1067,7 @@ Running the command `pytest -v -s` shows this:
     Test 3
     PASSED
 
-Now if we want to run the `test_file_1.py` module only then we would like below
+Now if we want to run the `test_file_1.py` module only then we would do something like below
 
     pytest -v -s test_file_1.py
 
@@ -1104,7 +1104,7 @@ If we want to run test named  `"test_2"` or `"test_3"`
     Test 3
     PASSED    
 
-Now we wlll try `-m` command line arguments. For this we need to add the decorator `@pytest.mark`
+Now we wlll try `-m` command line argument. For this we need to add the decorator `@pytest.mark`
 
 For demo purpose, we would only mark `test_1` and `test_3` as below
 
@@ -1152,11 +1152,11 @@ Types of Test Doubles
 
 3) Stub
 
-    These object provide implementationa with canned answera that are suitable for the test
+    These object provide implementations with canned answers that are suitable for the test
 
 4) Spies
 
-    These object provide implementationa that record the value that were passed in so they can be used in the test
+    These object provide implementationas that record the value that were passed in so they can be used in the test
 
 5) Mock
 
