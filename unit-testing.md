@@ -982,7 +982,7 @@ The above test would `FAIL`.
     def test_good_float_values()
         assert (0.1 + 0.2) == approx(0.3)
       
-## Exceptiona
+## Exceptions
 ***  
 
 Python provides the `raises` helper to verify exception using the `with` keyword.
