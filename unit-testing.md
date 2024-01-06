@@ -1003,7 +1003,7 @@ Test the code now by command `pytest -v`
 ## PyTest CLI
 ***
 
-By default `pytest` automatically discovers all unit test following the standard naming standards/
+By default `pytest` automatically discovers all unit test following the standard naming convention.
 
 But there are many command line arguments for controlling which discovered tests actually are executed.
 
