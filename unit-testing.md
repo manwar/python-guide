@@ -7,7 +7,7 @@
 - [Data Comparison](#data-comparison)
 - [Exceptions](#exceptions)
 - [PyTest CLI](#pytest-cli)
-- [Test Doubles]#test-doubles)
+- [Test Doubles](#test-doubles)
 
 **Disclaimer:** These are my notes after attending the course [**Unit Testing and Test Driven Development in Python**](https://www.linkedin.com/learning/unit-testing-and-test-driven-development-in-python)
 
