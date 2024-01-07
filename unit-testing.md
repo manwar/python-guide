@@ -1200,7 +1200,90 @@ The test now PASSED with the above changes.
 
     test_mock.py::test_can_call_readFromFile PASSED
 
+Now we will add another test case as below and `from unittest.mock import MagicMock` at the top.
 
+    # case 2 readFromFile returns correct string
+    def test_return_correct_string(monkeypatch):
+        mock_file = MagicMock()
+        mock_file.readline = MagicMock(return_value = "test line")
+        mock_open = MagicMock(return_value = mock_file)
+        monkeypatch.setattr("builtins.open", mock_open)
+        result = readFromFile("blah")
+        mock_open.assert_called_once_with("blah", "r")
+        assert result == "test line"
 
+Now have failed test again as expected
 
+    test_mock.py::test_can_call_readFromFile PASSED
+    test_mock.py::test_return_correct_string FAILED
    
+To get into `GREEN` phase, lets update production code
+
+    # LineReader.py
+    def readFromFile(filename):
+        infile = open(filename, "r")
+        line = infile.readline()
+        return line
+
+This now passed the newly added test `test_return_correct_string()` but made the first test `test_can_call_readFromFile()` failed.
+
+    test_mock.py::test_can_call_readFromFile FAILED
+    test_mock.py::test_return_correct_string PASSED
+    
+If you noticed the first unit test `test_can_call_readFromFile()` no longer needed as we already cover that case in the second unit test.
+
+Let's clean up the unit test.
+
+    # test_mock.py
+    import pytest
+    from LineReader import readFromFile
+
+    # case 1: can call readFromFile()
+    # case 2: readFromFile returns correct string
+    def test_return_correct_string(monkeypatch):
+        mock_file = MagicMock()
+        mock_file.readline = MagicMock(return_value = "test line")
+        mock_open = MagicMock(return_value = mock_file)
+        monkeypatch.setattr("builtins.open", mock_open)
+        result = readFromFile("blah")
+        mock_open.assert_called_once_with("blah", "r")
+        assert result == "test line"
+
+Now we are good to go as test passed.
+
+    test_mock.py::test_return_correct_string PASSED
+
+Finally let get the last use case defined
+
+    # test_mock.py
+    import pytest
+    from pytest import raises
+    from LineReader import readFromFile
+
+    # case 1: can call readFromFile()
+    # case 2: readFromFile returns correct string
+    def test_return_correct_string(monkeypatch):
+        mock_file = MagicMock()
+        mock_file.readline = MagicMock(return_value = "test line")
+        mock_open = MagicMock(return_value = mock_file)
+        monkeypatch.setattr("builtins.open", mock_open)
+        result = readFromFile("blah")
+        mock_open.assert_called_once_with("blah", "r")
+        assert result == "test line"
+
+    # case 3: readFromFile throws exception when file doesn't exist
+    def test_throwsException(monkeypatch):
+        mock_file = MagicMock()
+        mock_file.readline = MagicMock(return_value = "test line")
+        mock_open = MagicMock(return_value = mock_file)
+        monkeypatch.setattr("builtins.open", mock_open)
+        mock_exists = MagicMock(return_value = False)
+        monkeypatch.setattr("os.path.exists", mock_exists)
+        with raises(Exception):
+            result = readFromFile("blah")
+
+As expected. we have a failed test.
+
+    test_mock.py::test_return_correct_string PASSED
+    test_mock.py::test_throws_exception_with_bad_file FAILED
+
