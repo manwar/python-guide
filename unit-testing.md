@@ -24,12 +24,6 @@ c) **System Testing**: Tests the external interface of a system
 
 d) **Performance Testing**: Testing at system level to verify timing and resource usages.
 
-**Unit test** structure made up of three layers
-
-  1) setup
-  2) action
-  3) assert
-
 **Test Driven Development (TDD)** expect us to do the following
 
   1) Write unit test before any production code
