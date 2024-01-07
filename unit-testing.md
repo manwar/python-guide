@@ -1236,6 +1236,7 @@ Let's clean up the unit test.
 
     # test_mock.py
     import pytest
+    from unittest.mock import MagicMock
     from LineReader import readFromFile
 
     # case 1: can call readFromFile()
@@ -1253,11 +1254,12 @@ Now we are good to go as test passed.
 
     test_mock.py::test_return_correct_string PASSED
 
-Finally let get the last use case defined
+Finally let get the last use case defined and import function `raises()`.
 
     # test_mock.py
     import pytest
     from pytest import raises
+    from unittest.mock import MagicMock
     from LineReader import readFromFile
 
     # case 1: can call readFromFile()
@@ -1303,7 +1305,7 @@ This now made the first test **FAILED** now as below
     test_mock.py::test_return_correct_string FAILED
     test_mock.py::test_throws_exception_with_bad_file PASSED
 
-We would need to update the `test_return_correct_string()` to handle the file exists case as production code now checks that.
+We would need to update the unit test `test_return_correct_string()` to handle the file exists case as production code now checks that.
 
     # case 1: can call readFromFile()
     # case 2: readFromFile returns correct string
