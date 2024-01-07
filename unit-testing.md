@@ -1254,7 +1254,7 @@ Now we are good to go as test passed.
 
     test_mock.py::test_return_correct_string PASSED
 
-Finally let get the last use case defined and import function `raises()`.
+Finally let us get the last use case defined and import function `raises()`.
 
     # test_mock.py
     import pytest
