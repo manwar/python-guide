@@ -1289,7 +1289,7 @@ As expected. we have a failed test.
     test_mock.py::test_return_correct_string PASSED
     test_mock.py::test_throws_exception_with_bad_file FAILED
 
-Get the production code raise exception when file doesn't exists.
+Get the production code raise exception when file doesn't exist.
 
     # LineReader.py
     import os
