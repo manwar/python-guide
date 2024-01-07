@@ -1196,11 +1196,11 @@ With this, we now import the module `LineReader` in unit test
     def test_can_call_readFromFile():
         readFromFile("blah")
 
-The test now PASSED with the above changes.
+The test now **PASSED** with the above changes.
 
     test_mock.py::test_can_call_readFromFile PASSED
 
-Now we will add another test case as below and `from unittest.mock import MagicMock` at the top.
+Now we will add another test case as below and also import `MagicMock` at the top.
 
     # case 2 readFromFile returns correct string
     def test_return_correct_string(monkeypatch):
@@ -1287,3 +1287,73 @@ As expected. we have a failed test.
     test_mock.py::test_return_correct_string PASSED
     test_mock.py::test_throws_exception_with_bad_file FAILED
 
+Get the production code raise exception when file doesn't exists.
+
+    # LineReader.py
+    import os
+    def readFromFile(filename):
+        if not os.path.exists(filename):
+            raise Exception("Bad File")
+        infile = open(filename, "r")
+        line = infile.readline()
+        return line
+
+This now made the first test **FAILED** now as below
+
+    test_mock.py::test_return_correct_string FAILED
+    test_mock.py::test_throws_exception_with_bad_file PASSED
+
+We would need to update the `test_return_correct_string()` to handle the file exists case as production code now checks that.
+
+    # case 1: can call readFromFile()
+    # case 2: readFromFile returns correct string
+    def test_return_correct_string(monkeypatch):
+        mock_file = MagicMock()
+        mock_file.readline = MagicMock(return_value = "test line")
+        mock_open = MagicMock(return_value = mock_file)
+        monkeypatch.setattr("builtins.open", mock_open)
+        mock_exists = MagicMock(return_value = True)
+        monkeypatch.setattr("os.path.exists", mock_exists)
+        result = readFromFile("blah")
+        mock_open.assert_called_once_with("blah", "r")
+        assert result == "test line"
+
+Finally we have both tests passed.
+
+    test_mock.py::test_return_correct_string PASSED
+    test_mock.py::test_throws_exception_with_bad_file PASSED
+
+Anything to refactor now?
+
+Yes. plenty of scope. We see lots code repetion. We will use `fixture` to clean up the unit test.
+
+    @pytest.fixture()
+    def mock_open(monkeypatch):
+        mock_file = MagicMock()
+        mock_file.readline = MagicMock(return_value = "test line")
+        mock_open = MagicMock(return_value = mock_file)#
+        monkeypatch.setattr("builtins.open", mock_open)
+        return mock_open
+
+With the test fixture `mock_opent()` we will now update both unit test to use it.
+
+    # case 1: can call readFromFile()
+    # case 2: readFromFile returns correct string
+    def test_return_correct_string(mock_open, monkeypatch):
+        mock_exists = MagicMock(return_value = True)
+        monkeypatch.setattr("os.path.exists", mock_exists)
+        result = readFromFile("blah")
+        mock_open.assert_called_once_with("blah", "r")
+        assert result == "test line"
+
+    # case 3: readFromFile throws exception when file doesn't exist
+    def test_throwsException(mock_open, monkeypatch):
+        mock_exists = MagicMock(return_value = False)
+        monkeypatch.setattr("os.path.exists", mock_exists)
+        with raises(Exception):
+            result = readFromFile("blah")
+
+After code refactor, we still have both test passed.
+
+    test_mock.py::test_return_correct_string PASSED
+    test_mock.py::test_throws_exception_with_bad_file PASSED
