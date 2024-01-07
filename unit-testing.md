@@ -1314,8 +1314,8 @@ We would need to update the unit test `test_return_correct_string()` to handle t
         mock_file.readline = MagicMock(return_value = "test line")
         mock_open = MagicMock(return_value = mock_file)
         monkeypatch.setattr("builtins.open", mock_open)
-        mock_exists = MagicMock(return_value = True)
-        monkeypatch.setattr("os.path.exists", mock_exists)
+        mock_exists = MagicMock(return_value = True)             # Line added
+        monkeypatch.setattr("os.path.exists", mock_exists)       # Line added
         result = readFromFile("blah")
         mock_open.assert_called_once_with("blah", "r")
         assert result == "test line"
