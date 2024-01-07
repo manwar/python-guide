@@ -1008,6 +1008,8 @@ Some other useful command line arguments are
     
 Let's do some test run. For that we created 3 modules as below
 
+## test_file_1.py
+
     # test_file_1.py
     import pytest
 
@@ -1015,12 +1017,16 @@ Let's do some test run. For that we created 3 modules as below
         print("\nTest 1")
         assert True
 
+## test_file_2.py
+
     # test_file_2.py
     import pytest
 
     def test_2():
         print("\nTest 2")
         assert True
+
+## testsubdirectory/test_file_3.py
 
     # testsubdirectory/test_file_3.py
     import pytest
