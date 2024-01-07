@@ -1165,7 +1165,7 @@ The `unittest.mock` also provides `MagicMock` class and it is derived from `Mock
 ## Mock Example
 ***
 
-Let's try to show how `MagicMock` works. For this we a module `LineReader.py` and unit test `test_mock.py`.
+Let's try to show how `MagicMock` works. For this we would create a module `LineReader.py` and unit test `test_mock.py`.
 
 Following the **TDD** rules, we will create a test and get into `RED` phase
 
