@@ -993,17 +993,17 @@ By default `pytest` automatically discovers all unit test following the standard
 
 But there are many command line arguments for controlling which discovered tests actually are executed.
 
-    1) modulename: Simply specify the module name to run only tests from the module.
-    2) directoryname: Runs any tests found in the specified directory.
+    1) modulename     : Simply specify the module name to run only tests from the module.
+    2) directoryname  : Runs any tests found in the specified directory.
     3) -k "expression": It can include module name, class name or function name.
     4) -m "expression": It matches tests that have `pytest.mark` decorator. 
 
 Some other useful command line arguments are
 
-    -v: runs the test in verbose mode
-    -q: runs the test in quiet mode
-    -s: show print statements on the console
-    --ignore: specfiy the directory path to ignore when discovery tests
+    -v       : runs the test in verbose mode
+    -q       : runs the test in quiet mode
+    -s       : show print statements on the console
+    --ignore : specfiy the directory path to ignore when discovery tests
     --maxfail: specify the maximum fails before the test stops
     
 Let's do some test run. For that we created 3 modules as below
