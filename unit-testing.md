@@ -1355,7 +1355,7 @@ With the test fixture `mock_open()` we will now update both the unit tests to us
         with raises(Exception):
             result = readFromFile("blah")
 
-After code refactor, we still have both test passed.
+After code refactor, we still have both tests passed.
 
     test_mock.py::test_return_correct_string PASSED
     test_mock.py::test_throws_exception_with_bad_file PASSED
