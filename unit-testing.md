@@ -8,6 +8,7 @@
 - [Exceptions](#exceptions)
 - [PyTest CLI](#pytest-cli)
 - [Test Doubles](#test-doubles)
+- [Mock Example](#mock-example)
 
 **Disclaimer:** These are my notes after attending the course [**Unit Testing and Test Driven Development in Python**](https://www.linkedin.com/learning/unit-testing-and-test-driven-development-in-python)
 
@@ -1161,13 +1162,43 @@ The `unittest.mock` also provides `MagicMock` class and it is derived from `Mock
     2) dictionary entries
     3) environment variables
 
+## Mock Example
+***
 
+Let's try to show how `MagicMock` works. For this we a module `LineReader.py` and unit test `test_mock.py`.
 
+Following the **TDD** rules, we will create a test and get into `RED` phase
 
+    # test_mock.py
+    import pytest
 
+    # case 1: can call readFromFile()
+    def test_can_call_readFromFile():
+        readFromFile("blah")
 
-   
+We get failed test as expected.
 
+    test_mock.py::test_can_call_readFromFile FAILED
+    
+Now we will write enough production to pass the unit test.
+
+    # LineReader.py
+    def readFromFile(filename):
+        pass
+
+With this, we now import the module `LineReader` in unit test
+
+    # test_mock.py
+    import pytest
+    from LineReader import readFromFile
+
+    # case 1: can call readFromFile()
+    def test_can_call_readFromFile():
+        readFromFile("blah")
+
+The test now PASSED with the above changes.
+
+    test_mock.py::test_can_call_readFromFile PASSED
 
 
 
