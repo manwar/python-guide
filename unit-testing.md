@@ -1327,7 +1327,7 @@ Finally we have both tests passed.
 
 Anything to refactor now?
 
-Yes. plenty of scope. We see lots code repetition. We will use `fixture` to clean up the unit test.
+Yes. plenty of scope. We see lots of code repetition. We will use `fixture` to clean up the unit test.
 
     @pytest.fixture()
     def mock_open(monkeypatch):
