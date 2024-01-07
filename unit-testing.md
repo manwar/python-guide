@@ -230,8 +230,8 @@ Time to update the production code to get into `GREEN` phase
 
     # production code
     def fizzBuzz(value) -> str:
-        if value == 3:
-            return "Fizz"
+        if value == 3:          # Line added
+            return "Fizz"       # Line added
         return str(value)
 
 With small changes to the production code, we are back in `GREEN` phase
@@ -261,8 +261,8 @@ Time to update the production code to get into `GREEN` phase
     def fizzBuzz(value) -> str:
         if value == 3:
             return "Fizz"
-        if value == 5:
-            return "Buzz"
+        if value == 5:          # Line added
+            return "Buzz"       # Line added
         return str(value)
 
 That was easy change, we are in `GREEN` now.
