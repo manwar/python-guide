@@ -1212,7 +1212,7 @@ Now we will add another test case as below and also import `MagicMock` at the to
         mock_open.assert_called_once_with("blah", "r")
         assert result == "test line"
 
-Now have failed test again as expected
+Now we have failed test again as expected
 
     test_mock.py::test_can_call_readFromFile PASSED
     test_mock.py::test_return_correct_string FAILED
