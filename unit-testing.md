@@ -16,45 +16,42 @@
 
 Levels of Testing
 
-a) **Unit Testing**: Testing at the function level
-
-b) **Component Testing**: Testing is at the library and compiled binary level
-
-c) **System Testing**: Tests the external interface of a system
-
-d) **Performance Testing**: Testing at system level to verify timing and resource usages.
+    a) **Unit Testing**: Testing at the function level
+    b) **Component Testing**: Testing is at the library and compiled binary level
+    c) **System Testing**: Tests the external interface of a system
+    d) **Performance Testing**: Testing at system level to verify timing and resource usages.
 
 **Test Driven Development (TDD)** expect us to do the following
 
-  1) Write unit test before any production code
-  2) **DO NOT** write all unit test or production code at once.
-  3) Test and production code are written for one use case at a time
+    a) Write unit test before any production code
+    b) **DO NOT** write all unit test or production code at once.
+    c) Test and production code are written for one use case at a time
 
 **TDD** follows 3 phases:
 
-  1) **RED**: Write a failing unit test
-  2) **GREEN**: Write just `ENOUGH` production code to make test pass
-  3) **REFACTOR**: clean up and remove duplicate code from unit test and production code
+    1) **RED**: Write a failing unit test
+    2) **GREEN**: Write just `ENOUGH` production code to make test pass
+    3) **REFACTOR**: clean up and remove duplicate code from unit test and production code
 
 Repeat the cycle until you have covered all the use cases.
 
 The **THREE** laws of **TDD**
 
-  1) Do not write any production code until you have written a failing test
-  2) Do not write more than the needed unit test to fail
-  3) Do not write more than the needed production code to pass the test
+    1) Do not write any production code until you have written a failing test
+    2) Do not write more than the needed unit test to fail
+    3) Do not write more than the needed production code to pass the test
      
 `pytest` automatically discovers test based on standard naming conventions.
 
-  1) test function name should start with 'test'
-  2) class with test should have class name start with 'Test' and do not have __init__() method
-  3) Filename should start or end with 'test'
+    1) test function name should start with 'test'
+    2) class with test should have class name start with 'Test' and do not have __init__() method
+    3) Filename should start or end with 'test'
 
 Suppose in the current folder we have only 3 files as below
 
-  1) test_file.py
-  2) file_test.py
-  3) ignore-me.py
+    1) test_file.py
+    2) file_test.py
+    3) ignore-me.py
 
 They all have the following lines of code
 
@@ -1002,21 +999,10 @@ By default `pytest` automatically discovers all unit test following the standard
 
 But there are many command line arguments for controlling which discovered tests actually are executed.
 
-1) modulename
-
-    Simply specify the module name to run only tests from the module.
-
-2) directoryname
-
-    Runs any tests found in the specified directory.
-
-3) -k "expression"
-
-    It can include module name, class name or function name.
-
-4) -m "expression"
-
-     It matches tests that have `pytest.mark` decorator. 
+    1) modulename: Simply specify the module name to run only tests from the module.
+    2) directoryname: Runs any tests found in the specified directory.
+    3) -k "expression": It can include module name, class name or function name.
+    4) -m "expression": It matches tests that have `pytest.mark` decorator. 
 
 Some other useful command line arguments are
 
@@ -1136,58 +1122,44 @@ Test doubles are objects that are used in unit tests as replacements to the real
 
 Types of Test Doubles
 
-1) Dummy
-
-    Objects that can be passed around as necessary but do not have any type of test implementation
-
-2) Fake
-
-    These object generally have a simplified functional implementation for testing only
-
-3) Stub
-
-    These object provide implementations with canned answers that are suitable for the test
-
-4) Spies
-
-    These object provide implementationas that record the value that were passed in so they can be used in the test
-
-5) Mock
-
-    These objects are pre-programmed to expect specific calls and parameters
+    1) Dummy - Objects that can be passed around as necessary but do not have any type of test implementation
+    2) Fake - These object generally have a simplified functional implementation for testing only
+    3) Stub - These object provide implementations with canned answers that are suitable for the test
+    4) Spies - These object provide implementationas that record the value that were passed in so they can be used in the test
+    5) Mock - These objects are pre-programmed to expect specific calls and parameters
 
 `Python` provides mocking framework called `unittest.mock`
 
 Mock provides many initialization parameters that can be used to control the mock behaviour.
 
-1) The `spec` parameter specifies the interface that Mock object is implementing
-2) The `side_effect` parameter specifies a function that should be called when the mock is called
-3) The `return_value` parameter specifies the return value when the mock is called
+    1) The `spec` parameter specifies the interface that Mock object is implementing
+    2) The `side_effect` parameter specifies a function that should be called when the mock is called
+    3) The `return_value` parameter specifies the return value when the mock is called
 
 Mock verification
 
-1) assert_called: Assert the mock was called
-2) assert_called_once - Assert the mock was called once
-3) assert_called_with - Assert the last call to the mock was with the specified parameters
-4) assert_called_once_with - Assert the mock was called once with the specified parameters
-5) assert_any_call - Assert the mock was ever called with the specified parameters
-6) assert_not_called - Assert the mock was not called
+    1) assert_called: Assert the mock was called
+    2) assert_called_once - Assert the mock was called once
+    3) assert_called_with - Assert the last call to the mock was with the specified parameters
+    4) assert_called_once_with - Assert the mock was called once with the specified parameters
+    5) assert_any_call - Assert the mock was ever called with the specified parameters
+    6) assert_not_called - Assert the mock was not called
 
 Mock provides additional attributes for verification
 
-1) assert_has_calls - Assert the mock was called with the list of calls
-2) called - A boolean value indicating if the mock was ever called
-3) call_count - An integer value reoresenting the number of times the mock object was called
-4) call_args - The arguments the mock was last called with
-5) call_args_list - A list containing the arguments that were used for each call to the mock
+    1) assert_has_calls - Assert the mock was called with the list of calls
+    2) called - A boolean value indicating if the mock was ever called
+    3) call_count - An integer value reoresenting the number of times the mock object was called
+    4) call_args - The arguments the mock was last called with
+    5) call_args_list - A list containing the arguments that were used for each call to the mock
 
 The `unittest.mock` also provides `MagicMock` class and it is derived from `Mock` class and provides a default implementation of many of the default magic methods. For example `__str__`. However there are some not implemented by default, like `__getattr__`, `__setattr__`, `__init__`, `__new__`, `__prepare__`, `__instancecheck__`, `__subclascheck__` and `__del__`.
 
 `pytest` provides the `monekypatch` test fixture to allow a test to dynamically replace the followings:
 
-1) module and class attributes
-2) dictionary entries
-3) environment variables
+    1) module and class attributes
+    2) dictionary entries
+    3) environment variables
 
 
 
