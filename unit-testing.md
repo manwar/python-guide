@@ -1186,7 +1186,7 @@ Now we will write enough production to pass the unit test.
     def readFromFile(filename):
         pass
 
-With this, we now import the module `LineReader` in unit test
+With this, we now import the function `readFromFile()` from the module `LineReader` in unit test
 
     # test_mock.py
     import pytest
