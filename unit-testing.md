@@ -1337,7 +1337,7 @@ Yes. plenty of scope. We see lots of code repetition. We will use `fixture` to c
         monkeypatch.setattr("builtins.open", mock_open)
         return mock_open
 
-With the test fixture `mock_open()` we will now update both unit test to use it.
+With the test fixture `mock_open()` we will now update both the unit tests to use it.
 
     # case 1: can call readFromFile()
     # case 2: readFromFile returns correct string
