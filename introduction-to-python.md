@@ -5,8 +5,8 @@
 - [DataType](#datatype)
 - [Function](#function)
 - [Module](#module)
-- [Condition](#condition)
-- [Loop](#loop)
+- [Conditions](#conditions)
+- [Loops](#loops)
 - [Recursion](#recursion)
 - [Class](#class)
 - [Exception](#exception)
@@ -380,19 +380,19 @@ Here is the output
 In a nutshell, there are three ways to reverse a sequence
 
     a) reverse()
-        - reverse a mutable sequence in-place
-        - not avaialbe for immutable sequences
+        - Reverse a mutable sequence in-place
+        - Not avaialbe for immutable sequences
     
     b) slicing[::-1]
-        - creates a reversed copy of a sequence
+        - Creates a reversed copy of a sequence
         - Fastest but makes a copy of the sequence
-        - memory considerations to reverse millions of items?
-        - used for both mutable and immutable sequences
+        - Memory considerations to reverse millions of items?
+        - Used for both mutable and immutable sequences
 
     c) reversed()
-        - returns a reverse iterator
-        - scales well to millions of items
-        - used for both mutable and immutable sequences
+        - Returns a reverse iterator
+        - Scales well to millions of items
+        - Used for both mutable and immutable sequences
 
 #### min() / max()
 
@@ -404,9 +404,9 @@ In a nutshell, there are three ways to reverse a sequence
 
 Suppose we want to find out the country with the smallest population.
 
-First create tuple by zipping countries and population
+First create tuple by zipping `countries` and `populations`
 
-    print(list(zip(countries, population))  
+    print(list(zip(countries, populations))  
 
 You should get something like this:
 
@@ -414,7 +414,7 @@ You should get something like this:
 
 Now try `min()` to the tuples as below:
 
-    print(min(zip(countries, population))) # ('Japan', 128000000)
+    print(min(zip(countries, populations))) # ('Japan', 128000000)
 
 We can even provide function to the `min()` function like below:
 
@@ -422,15 +422,15 @@ We can even provide function to the `min()` function like below:
         country, population = pair
         return population
 
-    print(min(zip(countries, population), key=get_population)) # ('Jordan', 100000000)
+    print(min(zip(countries, populations), key=get_population)) # ('Jordan', 100000000)
     
 We can solve the same problem with the help of `lambda` function
 
-    print(min(zip(countries, population), key=lambda x: x[1])) # ('Jordan', 100000000)
+    print(min(zip(countries, populations), key=lambda x: x[1])) # ('Jordan', 100000000)
 
 Here is anoher cheat solution by changing the order of zip, in this case we don't need anything else
 
-    print(min(zip(population, countries))) # ('Jordan', 100000000)
+    print(min(zip(populations, countries))) # ('Jordan', 100000000)
 
 #### sorted(iterable, *, key=None, reverse=False)
 
@@ -543,7 +543,7 @@ Shuffle the given list
       
       random.shuffle(alpha)
 
-## Condition
+## Conditions
 ***
 
     age = 10
@@ -584,7 +584,7 @@ For `Python 3.10` or above, we can use the following construct.
 
 Conditions can be comnined using keyword `"and"`
 
-## Loop
+## Loops
 ***
 
 Count vowels in a word
