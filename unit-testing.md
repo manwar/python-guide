@@ -192,7 +192,7 @@ We now move into `REFACTOR` phase. We can see plenty of duplicate unit test code
 
 Let's refactor that.
 
-First we will create funtion `checkFizzBuzz()` as below
+First we will create function `checkFizzBuzz()` as below
 
     def checkFizzBuzz(value, expectedValue) -> bool:
         retVal = fizzBuzz(value)
