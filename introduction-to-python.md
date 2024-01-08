@@ -105,7 +105,7 @@ List: Square bracket `[]` can be used to create a list
     print(list[2]) # prints 6
 
     list[2] = 60
-    print(list[2]) #  now prints 60
+    print(list[2]) # prints 60
 
 Slice a list using syntax `list[startindex: endindex: step]`
 Default `startndex` is `0` and default `step` is `1`.
@@ -115,7 +115,7 @@ Default `startndex` is `0` and default `step` is `1`.
 
 Reverse a given list using the slice syntax
 
-    print(list[::-1]) # prints [10, 8, 6, 4, 2]
+    print(list[::-1])  # prints [10, 8, 6, 4, 2]
 
 #### NOTE: Elements in a list can be changed. Also elements do not have to be of one type. You can have elements of different data types.
 
