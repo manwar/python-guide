@@ -101,7 +101,7 @@ Let us apply what we learnt so far in the `FizzBuzz` example. First we will crea
     # unit test code
     import pytest
 
-    # case 1: can call fzzBuzz()?
+    # case 1: can call fizzBuzz()?
     def test_can_call_fizzBuzz():
         fizzBuzz(1)
 
@@ -155,7 +155,7 @@ Let's clean up the code and merged the two use cases into one as below
     # unit test code
     import pytest
 
-    # case 1: can call fzzBuzz()?
+    # case 1: can call fizzBuzz()?
     # case 2: return "1" when 1 passed in
     def test_return_1_when_1_passed_in():
         retVal = fizzBuzz(1)
@@ -200,7 +200,7 @@ First we will create funtion `checkFizzBuzz()` as below
 
 Then update the unit test to use it
 
-    # case 1: can call fzzBuzz()?
+    # case 1: can call fizzBuzz()?
     # case 2: return "1" when 1 passed in
     def test_return_1_when_1_passed_in():
         assert checkFizzBuzz(1, "1")
@@ -428,7 +428,7 @@ The complete solution looks like this after the exercise.
         retVal = fizzBuzz(value)
         return retVal == expectedValue
 
-    # case 1: can call fzzBuzz()?
+    # case 1: can call fizzBuzz()?
     # case 2: return "1" when 1 passed in
     def test_return_1_when_1_passed_in():
         assert checkFizzBuzz(1, "1")
