@@ -101,7 +101,7 @@ Let us apply what we learnt so far in the `FizzBuzz` example. First we will crea
     # unit test code
     import pytest
 
-    # case 1: can call fizzBuzz()?
+    # case 1: can call fizzBuzz()
     def test_can_call_fizzBuzz():
         fizzBuzz(1)
 
@@ -155,7 +155,7 @@ Let's clean up the code and merged the two use cases into one as below
     # unit test code
     import pytest
 
-    # case 1: can call fizzBuzz()?
+    # case 1: can call fizzBuzz()
     # case 2: return "1" when 1 passed in
     def test_return_1_when_1_passed_in():
         retVal = fizzBuzz(1)
@@ -200,7 +200,7 @@ First we will create funtion `checkFizzBuzz()` as below
 
 Then update the unit test to use it
 
-    # case 1: can call fizzBuzz()?
+    # case 1: can call fizzBuzz()
     # case 2: return "1" when 1 passed in
     def test_return_1_when_1_passed_in():
         assert checkFizzBuzz(1, "1")
@@ -428,7 +428,7 @@ The complete solution looks like this after the exercise.
         retVal = fizzBuzz(value)
         return retVal == expectedValue
 
-    # case 1: can call fizzBuzz()?
+    # case 1: can call fizzBuzz()
     # case 2: return "1" when 1 passed in
     def test_return_1_when_1_passed_in():
         assert checkFizzBuzz(1, "1")
@@ -482,7 +482,7 @@ For that, I am using another module `unittest` and here is the complete `FizzBuz
         return retVal == expectedRetVal
 
     class TestFizzBuzz(unittest.TestCase):
-        # case 1: can call fzzBuzz()?
+        # case 1: can call fizzBuzz()
         # case 2: return "1" when 1 passed in
         def test_return_1_when_1_passed_in(self):
             self.assertTrue(checkFizzBuzz(1, "1"))
@@ -518,12 +518,13 @@ For that, I am using another module `unittest` and here is the complete `FizzBuz
 
 `Python` provides `XUnit` styled setup/teardown functions that get executed before and after.
 
-    module: setup_module() / teardown_module()
-    function: setup_function() / teardown_function()
-    class: setup_class() / teardown_class() / setup_method() / teardown_method()
+    module  : setup_module(), teardown_module()
+    function: setup_function(), teardown_function()
+    class   : setup_class(), teardown_class(), setup_method(), teardown_method()
 
 Let us see in action and create a file named `test_xunit.py`
 
+    # test_xunit.py
     import pytest
 
     def test_1():
@@ -554,7 +555,11 @@ We will first try `setup_function()` and `teardown_function()` as below:
 
 The above `setup_function()` and `teardown_function()` gets executed for each unit test function.
 
-Let's check the result by using the command `pytest -v -s`. The `-v` switch we used earlier also is for running test in `verbose` mode. And the `-s` swith is to allow dump print to the console.
+Let's check the result by using the command `pytest -v -s`. 
+
+The `-v` switch we used earlier also is for running test in `verbose` mode. 
+
+And the `-s` switch is to allow dump print to the console.
 
       test_xunit.py::test_1 
       setup test_1
@@ -568,7 +573,7 @@ Let's check the result by using the command `pytest -v -s`. The `-v` switch we u
       PASSED
       teardown test_2
 
-What if we want similar function but one for `module`      
+What if we want similar function but for `module`      
 
     def setup_module():
         print("\nsetup module")
@@ -576,7 +581,7 @@ What if we want similar function but one for `module`
      def teardown_module():
         print("\nteardown module")      
 
-Let see what happens now
+Let's see what happens now
 
       test_xunit.py::test_1
       setup module
@@ -598,6 +603,7 @@ Now the fun starts with class level setup and teardown.
 
 We will re-use the above code and change it to class.
 
+    # test_xunit.py
     import pytest
 
     class TestClass():
@@ -660,6 +666,7 @@ Test fixtures allow for re-use of setup and teardown code across tests.
 
 Let's start with the basic unit test in a file named `test_fixtures.py`
 
+    # test_fixtures.py
     import pytest
 
     @pytest.fixture()
@@ -676,14 +683,14 @@ Let's start with the basic unit test in a file named `test_fixtures.py`
 
 It is exactly the same code we used before except we added function `setup()` with decorator `@pytest.fixture()` 
 
-    test_fixture.py::test_1 
+    test_fixtures.py::test_1 
     executing test_1
     PASSED
-    test_fixture.py::test_2 
+    test_fixtures.py::test_2 
     executing test_2
     PASSED
 
-If you noticed `setup()` didn't get executed. Let configure unit test `test_1()` to execute the test fixture `setup()`
+If you noticed `setup()` didn't get executed. Let's configure unit test `test_1()` to execute the test fixture `setup()`
 
     def test_1(setup):
         print("executing test_1")
@@ -691,11 +698,11 @@ If you noticed `setup()` didn't get executed. Let configure unit test `test_1()`
 
 You now see this when you run the test. The fixture `setup()` is executed before `test_1()` only.
 
-    test_fixture.py::test_1 
+    test_fixtures.py::test_1 
     setup test
     executing test_1
     PASSED
-    test_fixture.py::test_2 
+    test_fixtures.py::test_2 
     executing test_2
     PASSED
 
@@ -708,18 +715,18 @@ There is another way you can use test fixture using the decorator `@pytest.mark.
 
 You now see `setup()` gets execute before both unit tests.
 
-    test_fixture.py::test_1 
+    test_fixtures.py::test_1 
     setup test
     executing test_1
     PASSED
-    test_fixture.py::test_2 
+    test_fixtures.py::test_2 
     setup test    
     executing test_2
     PASSED
 
-If we want test fixture to be use before each unit test then it is a big job to change each unit test.
+If we want test fixture to be used before each unit test then it is a big job to change each unit test.
 
-There is shortcut tothat issue like below
+There is shortcut to that issue like below
 
     @pytest.fixture(autouse=True)
     def setup():
@@ -737,11 +744,11 @@ Then you don't need to do anything to your unit test.
 
 Here is the result:
 
-    test_fixture.py::test_1 
+    test_fixtures.py::test_1 
     setup test
     executing test_1
     PASSED
-    test_fixture.py::test_2 
+    test_fixtures.py::test_2 
     setup test    
     executing test_2
     PASSED
@@ -763,13 +770,13 @@ The `yield` keyword is a replacement for the `return` keyword so any return valu
 
 Here is outcome:
 
-    test_fixture.py::test_1
+    test_fixtures.py::test_1
     setup test
     executing test_1
     PASSED
     teardown!
 
-    test_fixture.py::test_2
+    test_fixtures.py::test_2
     setup test
     executing test_2
     PASSED
@@ -804,13 +811,13 @@ Updated the following two unit tests, one uses `setup()` and other uses `setup2(
 
 Time for some result.
 
-    test_fixture.py::test_1 
+    test_fixtures.py::test_1 
     setup test
     executing test_1
     PASSED
     teardown!
     
-    test_fixture.py::test_2 
+    test_fixtures.py::test_2 
     setup 2  
     executing test_2
     PASSED
@@ -820,14 +827,15 @@ Time for some result.
 Test fixtures Scope
 
     1) Function - Run the fixture once for each test
-    2) Class - Run the fixture once for each class of tests
-    3) Module - Run once the module goes in scope
-    4) Session - The fixture is run whey pytest starts
+    2) Class    - Run the fixture once for each class of tests
+    3) Module   - Run once the module goes in scope
+    4) Session  - The fixture is run whey pytest starts
 
-Let us see in action, we would two modules, say `test_fixture.py` and `test_fixture2.py`
+Let us see in action, we would create two modules, say `test_fixture.py` and `test_fixture2.py`
 
 Below is the content of `test_fixture.py`
 
+    # test_fixture.py
     import pytest
 
     @pytest.fixture(scope="session", autouse=True)
@@ -852,6 +860,7 @@ Below is the content of `test_fixture.py`
 
 Below is the content of `test_fixture2.py`
 
+    # test_fixture2.py
     import pytest
 
     @pytest.fixture(scope="module", autouse=True)
@@ -908,6 +917,7 @@ When a `"params"` argument is specified then the test will be called one time wi
 
 We will show the use in the example below
 
+    # test_fixture.py
     import pytest
     
     @pytest.fixture(params = [1,2,3)
@@ -939,7 +949,7 @@ Checkout the result as below:
 ## Data Comparison
 ***    
 
-`Python` assert statements can be used data verification in unit test. All Python data can be compared using the standard operators, `>`, `<`, `==`, `>=`, `<=` and `!=`. 
+`Python` assert statements can be used for data verification in unit test. All Python data can be compared using the standard operators, `>`, `<`, `==`, `>=`, `<=` and `!=`. 
 
 **Example:**
 
@@ -963,7 +973,7 @@ Checkout the result as below:
 
 The above test would `FAIL`.
 
-`pytest` provdes `approx()` function to deal with the issue.
+`pytest` provIdes `approx()` function to deal with the issue.
 
     def test_good_float_values()
         assert (0.1 + 0.2) == approx(0.3)
@@ -973,6 +983,7 @@ The above test would `FAIL`.
 
 Python provides the `raises` helper to verify exception using the `with` keyword.
 
+    # test_exceptions.py
     from pytest import raises
 
     def testValueException():
@@ -1125,7 +1136,7 @@ Types of Test Doubles
     1) Dummy - Objects that can be passed around as necessary but do not have any type of test implementation
     2) Fake  - These object generally have a simplified functional implementation for testing only
     3) Stub  - These object provide implementations with canned answers that are suitable for the test
-    4) Spies - These object provide implementationas that record the value that were passed in so they can be used in the test
+    4) Spies - These object provide implementations that record the value that were passed in so they can be used in the test
     5) Mock  - These objects are pre-programmed to expect specific calls and parameters
 
 `Python` provides mocking framework called `unittest.mock`
@@ -1149,7 +1160,7 @@ Mock provides additional attributes for verification
 
     1) assert_has_calls - Assert the mock was called with the list of calls
     2) called           - A boolean value indicating if the mock was ever called
-    3) call_count       - An integer value reoresenting the number of times the mock object was called
+    3) call_count       - An integer value representing the number of times the mock object was called
     4) call_args        - The arguments the mock was last called with
     5) call_args_list   - A list containing the arguments that were used for each call to the mock
 
@@ -1199,7 +1210,7 @@ The test now **PASSED** with the above changes.
 
     test_mock.py::test_can_call_readFromFile PASSED
 
-Now we will add another test case as below and also import `MagicMock` at the top.
+Now we will add another test case as below and also import `MagicMock` at the top i.e. `from unittest.mock import MagicMock`
 
     # case 2 readFromFile returns correct string
     def test_return_correct_string(monkeypatch):
@@ -1304,7 +1315,7 @@ This now made the first test **FAILED** now as below
     test_mock.py::test_return_correct_string FAILED
     test_mock.py::test_throws_exception_with_bad_file PASSED
 
-We would need to update the unit test `test_return_correct_string()` to handle the file exists case as production code now checks that.
+We would need to update `test_return_correct_string()` to handle the file exists case as production code now checks that.
 
     # case 1: can call readFromFile()
     # case 2: readFromFile returns correct string
