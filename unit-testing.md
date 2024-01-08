@@ -240,7 +240,7 @@ With small changes to the production code, we are back in `GREEN` phase
     test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
     test_fizzbuzz.py::test_return_Fizz_when_3_passed_in PASSED
 
-Anything to refactor after that? Nothiong for now.
+Anything to refactor after that? Nothing for now.
 
 Let's get to the fifth use case, similar to the fourth use case
 
