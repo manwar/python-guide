@@ -31,7 +31,7 @@ Levels of Testing
 **TDD** follows 3 phases:
 
     1) RED     : Write a failing unit test
-    2) GREEN   : Write just `ENOUGH` production code to make test pass
+    2) GREEN   : Write just ENOUGH production code to make test pass
     3) REFACTOR: Clean up and remove duplicate code from unit test and production code
 
 Repeat the cycle until you have covered all the use cases.
