@@ -346,7 +346,7 @@ Again with one line change, we are in the `GREEN` phase now.
 
 We have a duplicate production code, lets get in the `REFACTOR` phase and clean the code.
 
-We will define new function `def isMultiple()` as below:
+We will define new function `isMultiple()` as below:
 
     def isMultiple(value, mod) -> bool:
         return (value % mod) == 0
