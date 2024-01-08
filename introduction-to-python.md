@@ -43,7 +43,7 @@ Look up environment name
 
 For single line comment, you can use `#` same as in `Perl`
 
-For multi-lines comment, it is little funny that you have to use `'''` i.e. 3 single quotes in the beginning and in the end.
+For multilines comment, you have to use `'''` i.e. 3 single quotes in the beginning and in the end.
 
 ## Variable
 ***
