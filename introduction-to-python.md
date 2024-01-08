@@ -2,7 +2,7 @@
 ***
 - [Hello World](#hello-world)
 - [Variable](#variable)
-- [DataType](#datatype)
+- [DataTypes](#datatypes)
 - [Function](#function)
 - [Module](#module)
 - [Conditions](#conditions)
@@ -91,7 +91,7 @@ You can even undefine a variable
     del name
     print(name) # throw error
     
-## DataType
+## DataTypes
 ***
 
 1) Boolean defined with keyword `bool` and can only have value `True`/`False`
