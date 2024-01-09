@@ -572,6 +572,45 @@ Finally we have done it correctly
 
     [('Portual', 'iso10000000'), ('Jordan', 'iso10000000'), ('Netherlands', 'iso17500000'), ('Taiwan', 'iso24000000'), ('Niger', 'iso24000000'), (    'Nepal', 'iso30000000'), ('Japan', 'iso128000000'), ('Nigeria', 'iso198000000')]
 
+#### iter()
+
+You can use `iter()` function to generator iterator from a list.
+
+    days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    i = iter(days)
+
+Then we use the iternator `i` and print the next element until the last element in the list.
+
+    print(next(i))  # prints Sun
+    print(next(i))  # prints Mon
+    print(next(i))  # prints Tue
+
+You can use iterator to read each line in a file.
+
+Suppose we have a text file `sample.txt` containing the following lines.
+
+    This is line 1.
+    This is line 2.
+    This is line 3.
+    This is line 4.
+    This is line 5.
+
+Let's use the `iter()` function to read each line of the above file.
+
+    with open("sample.txt", "r") as fp:
+        for line in iter(fp.readline(), ''):
+            print(line)
+
+The above code would dump this on the console.
+
+    This is line 1.
+    This is line 2.
+    This is line 3.
+    This is line 4.
+    This is line 5.
+
+The function call `iter(fp.readline(), '')` mean iterator would stop when the `fp.readline()` returns an empty string as the second paramter indicates to the `iter()` function.
+
 ## Module
 ***
 
