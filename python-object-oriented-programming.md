@@ -397,6 +397,7 @@ The interface feature of `OOP` can be implemented using the `Abstract Class` and
 
 Let's take a look of the above class definitions
 
+    from abc`import ABC, abstractmethod
     class GraphicalShape(ABC):
         def __init__(self):
             super().__init__()
