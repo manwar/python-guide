@@ -3,7 +3,7 @@
 - [Hello World](#hello-world)
 - [Variable](#variable)
 - [DataTypes](#datatypes)
-- [Function](#function)
+- [Functions](#functions)
 - [Module](#module)
 - [Conditions](#conditions)
 - [Loops](#loops)
@@ -36,6 +36,26 @@ Even you can do something like below
 
     print('Hi {0} {1} !!'.format('Jo', 'Blog'))    # prints Hi Joe Blog !!
 
+#### String Template
+
+We can use `Template` class from the `string` module.
+
+    from string import Template
+    templ = Template("You are reading ${book} by ${author}.")
+    s = templ.substiture(book="Perl Hacks", author="Damian Conway")
+
+    print(s)    # prints You are reading Perl Hacks by Damian Conway.
+
+There is an alternative, we can use dictionary too like belew
+
+    data = {
+        "book": "Perl Hacks",
+        "author": "Damian Conway"
+    }
+    s1 = templ.substitute(data)
+
+    print(s1)   # prints You are reading Perl Hacks by Damian Conway.
+    
 Look up environment name
 
     import os
@@ -132,7 +152,6 @@ What if encode the string using 'utf-32' encoding?
 
 **NOTE**: String and Byte are not the same.
 
-
 List: Square bracket `[]` can be used to create a list
 
     list = [2, 4, 6, 8, 10]
@@ -170,7 +189,7 @@ Reverse a given list using the slice syntax
     
 Built-in function `type()` can be used to identify the data type.
 
-## Function
+## Functions
 ***
 
 User can define function using keyword `def` as below
@@ -210,6 +229,8 @@ Function with variable number of parameters.
     print(addAll(1,2,3,4))  # prints 10
     
 Built-in functions in Python
+
+You can get the complete list [**here**](https://docs.python.org/3/library/functions.html).
 
     a) print("") 
     b) input("") returns string typed user data.
