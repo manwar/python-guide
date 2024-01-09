@@ -391,7 +391,7 @@ You should see something like this:
 ## Interface
 ***
 
-The interface feature of `OOP` can be implemented using the `Abstract Class` and `Multiple Inheritance` features of the `Python` language as there is no native direct implementation.
+The interface feature of `OOP` can be implemented using the `Abstract Class` and `Multiple Inheritance` features of the `Python` language as there is no native implementation.
 
 `Interface` is like making a promise to provide certain behaviour.
 
