@@ -32,6 +32,10 @@ Or something like this
     hello = 'Hello {} !!'
     print(hello.format(name))  # prints Hello World !!
 
+Even you can do something like below
+
+    print('Hi {0} {1} !!'.format('Jo', 'Blog'))    # prints Hi Joe Blog !!
+
 Look up environment name
 
     import os
@@ -98,6 +102,36 @@ You can even undefine a variable
 2) Integer defined with keyword `int`
 3) Floating defined with keyword `float`
 4) String defined with keyword `str`
+
+Strings contain unicode whereas Bytes are raw 8-bits values
+
+    s = "Hi there!"
+    b = bytes([0x41, 0x42, 0x43])
+
+    print(s)  # prints Hi there!
+    print(b)  # prints b'ABC'
+
+We can't combine string and byte using `+` operator.
+
+    print(s+b)   # would throw error as print() expects string and not byte
+
+To solve the issue, we have to decode the bytes using 'utf-8' encoding like below
+
+    s1 = b.decode('utf-8')
+    print(s+s1)   # prints Hi there!ABC
+
+Or we could encode the srting using 'utf-8' encoding and concatenate
+
+    b1 = s.encode('utf-8')
+    print(b1+b)    # prints b'Hi there!ABC'
+
+What if encode the string using 'utf-32' encoding?
+
+    b2 = s.encode('utf-32')
+    print(b2)      # prints lots of hexadecimal numbers representing the string.
+
+**NOTE**: String and Byte are not the same.
+
 
 List: Square bracket `[]` can be used to create a list
 
