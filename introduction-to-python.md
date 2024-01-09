@@ -579,7 +579,7 @@ You can use `iter()` function to generator iterator from a list.
     days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     i = iter(days)
 
-Then we use the iternator `i` and print the next element until the last element in the list.
+Then we use the iterator `i` and print the next element until the last element in the list.
 
     print(next(i))  # prints Sun
     print(next(i))  # prints Mon
@@ -610,6 +610,66 @@ The above code would dump this on the console.
     This is line 5.
 
 The function call `iter(fp.readline(), '')` mean iterator would stop when the `fp.readline()` returns an empty string as the second paramter indicates to the `iter()` function.
+
+#### filter()
+
+The `filter()` can be used to filter a given sequence.
+
+    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+Suppose we want to filter all odd numbers in the list.
+
+    def is_even(n):
+        if n % 2 == 0:
+            return True
+        return False
+
+    print(list(filter(is_even, nums)))   # prints [2, 4, 6, 8, 10]
+
+Similarly, if we have string as below
+
+    s = "abcDefGHIjk"
+
+Let's filter out characters in lower case.
+
+    def is_upper(c):
+        if c.isupper():
+            return True
+        return False
+
+    print(list(filter(is_upper, s)))     # prints ['D', 'G', 'H', 'I']
+
+
+#### map()
+
+The `map()` function creates a new list given one or more sequences.
+
+    nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+Let's create a new list of square numbers of each element in the given list.
+
+    def squares(n):
+        return n**2
+
+    print(list(map(squares, nums)))    # prints [1, 4, 9, 16, 25, 36, 49, 64, 81. 100]
+    
+Try one more example as below
+
+    scores = [89, 75, 94,61, 82]
+
+    def grades(n):
+        if n >= 90:
+            return "A"
+        elif (n >= 80 and n < 90):
+            return "B"
+        elif (n >= 70 and n < 80):
+            return "C"
+        elif (n >= 60 and n < 70):
+            return "D"
+        else:
+            return "E"
+
+    print(list(map(grades, sorted(scores))))  # prints ['D', 'C', 'B', 'B', 'A']
 
 ## Module
 ***
