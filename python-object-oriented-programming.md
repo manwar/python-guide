@@ -420,7 +420,7 @@ Let's take a look of the above class definitions
         def calc_area(self):
             return self.side * self.side  
 
-Suppose we want to have JSONify feature in the `Circle` and `Square` class, we could add that in the base class `GraphicalShape`. 
+Suppose we want to have `JSONify` feature in the `Circle` and `Square` class, we could add that in the base class `GraphicalShape`. 
 
 What if we want the same in other base class?          
 
