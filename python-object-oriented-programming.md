@@ -353,7 +353,7 @@ Well the order of inheritance is the key, class `A` is the first in the list and
 
 Here `Python` used something called `method resolution order (mro)`.
 
-So it starts with the current class, if not find what they are looking for then jump to the first super class in the list and still can't find then go the next one in the list, so on so forth.
+So it starts with the current class, if not find what they are looking for then jump to the first super class in the list and still can't find then go to the next one in the list, so on so forth.
 
 In the above case, the attribute `name` is not defined the current class `C`, so the next step would be look into the first super class in the list i.e. `A` and then `B`.
 Since we have attribute `name` defined in the class `A`, the search stops there and we get the result as above.
