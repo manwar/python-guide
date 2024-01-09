@@ -582,7 +582,7 @@ We can solve the above problem by overriding `__str__()` magic method
 
 Check the reselt now
 
-    print(b1) # prints Learning Perl by brian d foy costs 50
+    print(b1)       # prints Learning Perl by brian d foy costs 50
     print(str(b1))  # sames as print(b1)
 
 #### `__repr__()`
@@ -626,7 +626,7 @@ Let's do the comparison now
 
     print(b1 == b2) # prints True
     print(b1 == b3) # prints False
-    print(b1 == 12) # throw exception as expected
+    print(b1 == 12) # throws exception as expected
 
 #### `__ge__()`
 
@@ -708,7 +708,7 @@ It gets called everytime we try to access an object attribute.
             self.title  = title
             self.price  = price
             self.author = author
-            self._discount = 0.1 # 10% discount
+            self._discount = 0.1      # 10% discount
 
         def __str__(self):
             return f"{self.title} by {self.author} costs {self.price}"
@@ -839,7 +839,7 @@ How about setting default values to data class?
 Test the default values
 
     b = Book()
-    print(b) # prints Book(title='No Title', author='No Author', pages=0, price=0.0)
+    print(b)        # prints Book(title='No Title', author='No Author', pages=0, price=0.0)
 
 **NOTE:** Non default attributes should come first then default value attribute
 
