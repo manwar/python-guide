@@ -237,6 +237,7 @@ We can use the module `abc` and import class `ABC` and `abstractmethod`
 
 Let's change the class `GraphicalShape` definition and make it inherit class `ABC`. Also turn the method `calc_area()` into `abstract method`.
 
+    from abc`import ABC, abstractmethod
     class GraphicalShape(ABC):
         def __init__(self):
             super().__init__()
