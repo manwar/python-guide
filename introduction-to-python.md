@@ -74,16 +74,16 @@ For multilines comment, you have to use `'''` i.e. 3 single quotes in the beginn
 ## Variable
 ***
 
-Variable declaration
+Variable declaration as simple as below:
 
     name = "Joe"
     age = 20
 
-or you can combined both in one line as below
+or you can combine both in one line as below:
 
     name, age = "Joe", 20
 
-Global/Local variable
+#### Global/Local variable
 
     # Global variable
     name = "Joe"
