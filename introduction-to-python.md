@@ -135,12 +135,12 @@ String contains unicode whereas Byte is raw 8-bits values
 
 We can't combine string and byte using `+` operator.
 
-    print(s+b)   # would throw error as print() expects string and not byte
+    print(s+b)     # would throw error as print() expects string and not byte
 
 To solve the issue, we have to decode the bytes using `'utf-8'` encoding like below:
 
     s1 = b.decode('utf-8')
-    print(s+s1)   # prints Hi there!ABC
+    print(s+s1)    # prints Hi there!ABC
 
 Or we could encode the string using '`utf-8'` encoding and concatenate like this:
 
