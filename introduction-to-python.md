@@ -125,7 +125,7 @@ You can even undefine a variable
 3) Floating defined with keyword `float`
 4) String defined with keyword `str`
 
-Strings contain unicode whereas Bytes are raw 8-bits values
+String contains unicode whereas Byte is raw 8-bits values
 
     s = "Hi there!"
     b = bytes([0x41, 0x42, 0x43])
@@ -137,12 +137,12 @@ We can't combine string and byte using `+` operator.
 
     print(s+b)   # would throw error as print() expects string and not byte
 
-To solve the issue, we have to decode the bytes using 'utf-8' encoding like below
+To solve the issue, we have to decode the bytes using 'utf-8' encoding like below:
 
     s1 = b.decode('utf-8')
     print(s+s1)   # prints Hi there!ABC
 
-Or we could encode the srting using 'utf-8' encoding and concatenate
+Or we could encode the string using 'utf-8' encoding and concatenate like this:
 
     b1 = s.encode('utf-8')
     print(b1+b)    # prints b'Hi there!ABC'
