@@ -408,7 +408,9 @@ Why? Because we don't need it as shown below:
     
 #### reversed(sequence)    
 
-**Sequence** is a subset of iterables that have `a length`, `an index` and `can be sliced`. For examples `strings`, `lists` and `tuples`.
+**Sequence** is a subset of iterables that have `a length`, `an index` and `can be sliced`. 
+
+For examples `strings`, `lists` and `tuples` are `sequences`.
 
 Example of iterables that are not sequences are `dictionaries`, `files`, `sets` and `generators`.
 
@@ -490,7 +492,7 @@ We can solve the same problem with the help of `lambda` function
 
     print(min(zip(countries, populations), key=lambda x: x[1])) # ('Jordan', 100000000)
 
-Here is anoher cheat solution by changing the order of zip, in this case we don't need anything else
+Here is another cheat solution by changing the order of zip, in this case we don't need anything else.
 
     print(min(zip(populations, countries))) # ('Jordan', 100000000)
 
@@ -515,41 +517,45 @@ Here is anoher cheat solution by changing the order of zip, in this case we don'
                     Country('Japan', 128_000_000)
     ]
 
-Sort the country by population
+Sort the country by population.
 
     sorted(country_list, key=lambda x: x.population)
 
-Then you get the following
+Then you get the following:
 
     [Country('Portugal', 10_000_000), Country('Jordan', 10_000_000), Country('Netherlands', 17_500_000), Country('Taiwan', 24_000_000), Country('Niger', 24_000_000), Country('Nepal', 30_000_000), Country('Japan', 128_000_000), Country('Nigeria', 198_000_000)]
 
     sorted(country_list, key=lambda x: x.population, reverse=True)
 
-Sort order is reversed now 
+Sort order is reversed now.
 
     [Country('Nigeria', 198_000_000), Country('Japan', 128_000_000), Country('Nepal', 30_000_000), Country('Taiwan', 24_000_000), Country('Niger', 24_000_000),  Country('Netherlands', 17_500_000), Country('Portugal', 10_000_000), Country('Jordan', 10_000_000)]
 
-We can get the same result doing this
+We can get the same result doing this:
 
     sorted(country_list, key=lambda x: -x.population)
 
-Reverse order as before
+Reverse order as before.
 
     [Country('Nigeria', 198_000_000), Country('Japan', 128_000_000), Country('Nepal', 30_000_000), Country('Taiwan', 24_000_000), Country('Niger', 24_000_000),  Country('Netherlands', 17_500_000), Country('Portugal', 10_000_000), Country('Jordan', 10_000_000)]
 
-If you noticed, Taiwan and Niger both have the populations 24_000_000 but Taiwan appears before Niger. In theory Niger should come first.
+If you noticed, `Taiwan` and `Niger` both have the populations `24_000_000` but `Taiwan` appears before `Niger`. 
 
-Let's sort in decreasing order of population and increasing name alphabetically
+In theory `Niger` should come first.
+
+Let's sort in decreasing order of population and increasing name alphabetically.
 
     sorted(country_list, key=lambda x: (-x.population, x.name))
 
     [Country('Nigeria', 198_000_000), Country('Japan', 128_000_000), Country('Nepal', 30_000_000), Country('Niger', 24_000_000), Country('Taiwan', 24_000_000), Country('Netherlands', 17_500_000), Country('Jordan', 10_000_000), Country('Portugal', 10_000_000)]
 
-What if we want to sort reverse by name too? Well you can't do `-x.name`, instead you would need to do like below
+What if we want to sort reverse by name too? 
 
-    print(sorted(country_list, key=lambda x: (x.population, x.name), reverse=True)) # reverse osrt by population and name
+Well you can't do `-x.name`, instead you would need to do like below:
 
-Now if you want to sort on field that haa alphnumeric characters, something like below
+    print(sorted(country_list, key=lambda x: (x.population, x.name), reverse=True))
+
+Now if you want to sort on field that has alphnumeric characters, something like below:
 
     iso = [('Taiwan', 'iso24000000'), ('Portual', 'iso10000000'), ('Netherlands', 'iso17500000'), ('Nigeria', 'iso198000000'), ('Jordan', 'iso100000    00'), ('Nepal', 'iso30000000'), ('Niger', 'iso24000000'), ('Japan', 'iso128000000')]
 
@@ -565,7 +571,9 @@ Below is what we get back:
 
     [('Portual', 'iso10000000'), ('Jordan', 'iso10000000'), ('Japan', 'iso128000000'), ('Netherlands', 'iso17500000'), ('Nigeria', 'iso198000000')    , ('Taiwan',         'iso24000000'), ('Niger', 'iso24000000'), ('Nepal', 'iso30000000')]
 
-Did you notice it didn't quite done correctly? Japan comes before Netherlands since sorting done alphabetically 128000000 appears before 17000000.    
+Did you notice it didn't do as expected? 
+
+`Japan` comes before `Netherlands` since sorting done alphabetically `128_000_000` appears before `17_000_000`.    
 
 We can handle this issue very easily using type cast.
 
@@ -683,11 +691,11 @@ Try one more example as below:
 
 Most commonly used modules in **Python** are `calendar`, `math`, `random`.
 
-The following line returns calendar for the month `Jan 2024`
+The following line returns calendar for the month `Jan 2024`.
 
       cal = calendar.month(2024, 1)
 
-Square root of a given number and returns result in floating number
+Square root of a given number and returns result in floating number.
 
       result = math.sqrt(49) # 7.0
 
@@ -700,7 +708,7 @@ Picks random entry from the given sequence.
       alpha = [ "a", "b", "c", "d" ]
       rand = random.choice(alpha)
 
-Shuffles the given list
+Shuffles the given list.
       
       random.shuffle(alpha)
 
@@ -715,7 +723,7 @@ Shuffles the given list
      else:
         print("age is less than 5.")
 
-Compact `if-else` condition
+Compact `if-else` condition.
 
     x, y = 1, 2
     if x < y:
@@ -763,23 +771,23 @@ Built-in function `range(start, stop, step)` can also be used in `For` loop.
 
 Default `start` is `0` and `step` is `1`. The `stop` is **NOT** inclusive.
 
-The following would print `0,1,2,3`
+The following would print `0,1,2,3`.
 
       for i in range(4):
           print(i)
 
-The following would print `1,3,5,7`
+The following would print `1,3,5,7`.
 
       for i in range(1,8,2):
           print(i)
 
-Print each element in the list
+Print each element in the list.
 
       vowels = ["a", "e", "i", "o", "u"]
       for v in vowels:
           print(v)
 
-Same with While loop
+Same with While loop.
 
       vowels = ["a", "e", "i", "o", "u"]
       i = 0
@@ -787,7 +795,7 @@ Same with While loop
           print(vowels[i])
           i += 1
 
-Use of `break` in loop structure
+Use of `break` in loop structure.
 
     for i in range(5, 10):
         if i == 7:
@@ -796,7 +804,7 @@ Use of `break` in loop structure
 
 The above code prints only `5,6` as when it reached `7` the loop terminates.
 
-Use of `continue` in loop
+Use of `continue` in loop.
 
     for i in range(5, 10):
         if i % 2 == 0:
@@ -837,6 +845,8 @@ The code would print like below:
     Sum of digits = 1st digit + 2nd digit + ... + second to last digit + last digit
                     or 
                     sum of digits before last digit + last digit
+
+Define a function `sumDigits()` as below to return the sum of digits.
 
     def sumDigits(n):
         if n < 10:
