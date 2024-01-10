@@ -177,6 +177,69 @@ Elements in a list can be changed.
 
 Also elements do not have to be of one type. 
 
+Search an element in a list and return the count using the `count()` method.
+
+    chars = ["a", "b", "a", "a", "c", "d"]
+    print(chars.count("a"))  # prints 3
+
+You can merge two lists like below:
+
+    vowels = ["a", "e", "i", "o", "u"]
+    print(chars + vowels)    # prints ['a', 'b', 'a', 'a', 'c', 'd', 'a', 'e', 'i', 'o', 'u']
+
+Find the length of a list.
+
+    print(len(chars))        # prints 6
+
+Working with two dimension list.
+
+    matrix = [[1,2,3],[4,5,6],[7,8,9]]
+    print(matrix[0][0])      # prints 1
+    print(matrix[2][2])      # prints 9
+
+You can update an element of a list.
+
+     matrix[0][0] = 0
+     print(matrix[0][0])     # prints 0
+
+Remove an entry from the list using `remove()` method.
+
+    vowels.remove("e")
+    print(vowels)            # prints ['a', 'i', 'o', 'u']
+
+You can also insert an element at a given index like below:
+
+    chars.insert(0, "z")
+    print(chars)             # prints ['z', 'a', 'b', 'a', 'a', 'c', 'd']
+
+You can even remmove an element from any index in the list using `pop()`.
+
+If nothing passed to `pop()` it would remove the last element in the list.
+
+    last = chars.pop()
+    print(last)              # prints d
+    print(chars)             # prints ['z', 'a', 'b', 'a', 'a', 'c']
+
+Let's pop the third element in the list.
+
+    third = chars.pop(2)
+    print(third)             # prints b
+    print(chars)             # prints ['z', 'a', 'a', 'a', 'c']
+
+You can use `sort()` method and `sorted()` function with list for sorting purpose.
+
+    nums = [1, 3, 2, 5, 4]
+    nums.sort()
+    print(nums)              # prints [1, 2, 3, 4, 5]
+
+    new_sorted = sorted(nums)
+    print(new_sorted)        # prints [1, 2, 3, 4, 5]
+
+You can add element at any index in the list.
+
+    nums.append(6)
+    print(nums)              # prints [1, 2, 3, 4, 5, 6]
+
 You can have elements of different data types.
 
     list = ["Adam", 50, True, 1.5]
