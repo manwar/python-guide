@@ -67,7 +67,7 @@ Look up environment name
 
 #### Comments
 
-For single line comment, you can use `#` same as in `Perl`
+For single line comment, you can use `#` same as in `Perl`.
 
 For multilines comment, you have to use `'''` i.e. 3 single quotes in the beginning and in the end.
 
