@@ -345,16 +345,16 @@ We get this
     capitals = ['Amsterdam', 'Abuja', 'Amman', 'Kathmandu', 'Niamey', 'Tokyo']
 
     for country, capital in zip(countries, capitals):
-        print(f'The capital city of {country} is {capital}')
+        print(f'The capital city of {country} is {capital}.')
 
 Here is the output of the above code.
 
-    The capital city of Netherlands is Amsterdam
-    The capital city of Nigeria is Abuja
-    The capital city of Jordan is Amman
-    The capital city of Nepal is Kathmandu
-    The capital city of Niger is Niamey
-    The capital city of Japan is Tokyo
+    The capital city of Netherlands is Amsterdam.
+    The capital city of Nigeria is Abuja.
+    The capital city of Jordan is Amman.
+    The capital city of Nepal is Kathmandu.
+    The capital city of Niger is Niamey.
+    The capital city of Japan is Tokyo.
 
 If the both list has same number of elements then you get the above result.
 
@@ -364,14 +364,14 @@ However what if one has less elements than the other?
     capitals = ['Amsterdam', 'Abuja', 'Amman', 'Kathmandu']
 
     for country, capital in zip(countries, capitals):
-        print(f'The capital city of {country} is {capital}')
+        print(f'The capital city of {country} is {capital}.')
         
 You only see the result for elements in the smaller list as below:
 
-    The capital city of Netherlands is Amsterdam
-    The capital city of Nigeria is Abuja
-    The capital city of Jordan is Amman
-    The capital city of Nepal is Kathmandu
+    The capital city of Netherlands is Amsterdam.
+    The capital city of Nigeria is Abuja.
+    The capital city of Jordan is Amman.
+    The capital city of Nepal is Kathmandu.
 
 What if we wanted the entire list? 
 
@@ -383,16 +383,16 @@ We could import `zip_longest` from `itertools` module to handle the missing entr
     capitals = ['Amsterdam', 'Abuja', 'Amman', 'Kathmandu']
 
     for country, capital in zip_longest(countries, capitals, fillvalue='Unknown'):
-        print(f'The capital city of {country} is {capital}')
+        print(f'The capital city of {country} is {capital}.')
 
 We now have missing entries listed too.
 
-    The capital city of Netherlands is Amsterdam
-    The capital city of Nigeria is Abuja
-    The capital city of Jordan is Amman
-    The capital city of Nepal is Kathmandu
-    The capital city of Niger is Unknown
-    The capital city of Japan is Unknown
+    The capital city of Netherlands is Amsterdam.
+    The capital city of Nigeria is Abuja.
+    The capital city of Jordan is Amman.
+    The capital city of Nepal is Kathmandu.
+    The capital city of Niger is Unknown.
+    The capital city of Japan is Unknown.
 
 There is no `unzip()` function in `Python`.
 
