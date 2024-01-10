@@ -226,10 +226,22 @@ We get this result:
     age = 20
     sex = male
     location = London
-    
+
+There is another wa you can fetch each item in the dictionary by calling `items()` method as below:
+
+    for k,v in users.items():
+        print(f'{k} = {v}')
+
+You get the same result as above:
+
+    name = Joe
+    age = 20
+    sex = male
+    location = London
+
 How about fetching all values in the dictionary?
 
-    print(users.keys())  # prints dict_values(['Joe', 20, 'male', 'London'])
+    print(users.values())  # prints dict_values(['Joe', 20, 'male', 'London'])
 
 If you have two dictionaries and wants to merge into one then do this:
 
