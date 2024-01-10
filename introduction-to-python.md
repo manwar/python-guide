@@ -34,7 +34,7 @@ Or something like this
 
 Even you can do something like below
 
-    print('Hi {0} {1} !!'.format('Jo', 'Blog'))    # prints Hi Joe Blog !!
+    print('Hi {0} {1} !!'.format('Joe', 'Blog'))    # prints Hi Joe Blog !!
 
 #### String Template
 
