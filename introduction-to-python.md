@@ -356,7 +356,7 @@ Here is the output of the above code.
     The capital city of Niger is Niamey.
     The capital city of Japan is Tokyo.
 
-If the both list has same number of elements then you get the above result.
+If both lists has the same number of elements then you get the above result.
 
 However what if one has less elements than the other?
 
@@ -408,9 +408,9 @@ Why? Because we don't need it as shown below:
     
 #### reversed(sequence)    
 
-**Sequence** is a subset of iterables that have `a length`, `an index` and `can be sliced`. 
+`Sequence` is a subset of iterables that have `a length`, `an index` and `can be sliced`. 
 
-For examples `strings`, `lists` and `tuples` are `sequences`.
+For example, `strings`, `lists` and `tuples` are `sequences`.
 
 Example of iterables that are not sequences are `dictionaries`, `files`, `sets` and `generators`.
 
@@ -488,7 +488,7 @@ We can even provide function to the `min()` function like below:
 
     print(min(zip(countries, populations), key=get_population)) # ('Jordan', 100000000)
     
-We can solve the same problem with the help of `lambda` function
+We can solve the same problem with the help of `lambda` function.
 
     print(min(zip(countries, populations), key=lambda x: x[1])) # ('Jordan', 100000000)
 
@@ -524,9 +524,11 @@ Then you get the following:
 
     [Country('Portugal', 10_000_000), Country('Jordan', 10_000_000), Country('Netherlands', 17_500_000), Country('Taiwan', 24_000_000), Country('Niger', 24_000_000), Country('Nepal', 30_000_000), Country('Japan', 128_000_000), Country('Nigeria', 198_000_000)]
 
+If you want to reverse the sort order.
+
     sorted(country_list, key=lambda x: x.population, reverse=True)
 
-Sort order is reversed now.
+Sort order is reversed now as you see below:
 
     [Country('Nigeria', 198_000_000), Country('Japan', 128_000_000), Country('Nepal', 30_000_000), Country('Taiwan', 24_000_000), Country('Niger', 24_000_000),  Country('Netherlands', 17_500_000), Country('Portugal', 10_000_000), Country('Jordan', 10_000_000)]
 
@@ -545,6 +547,8 @@ In theory `Niger` should come first.
 Let's sort in decreasing order of population and increasing name alphabetically.
 
     sorted(country_list, key=lambda x: (-x.population, x.name))
+
+Here is what we get.
 
     [Country('Nigeria', 198_000_000), Country('Japan', 128_000_000), Country('Nepal', 30_000_000), Country('Niger', 24_000_000), Country('Taiwan', 24_000_000), Country('Netherlands', 17_500_000), Country('Jordan', 10_000_000), Country('Portugal', 10_000_000)]
 
