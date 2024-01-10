@@ -195,7 +195,49 @@ Elements in `Tuple` **CAN NOT** be changed unlike `List`.
     users = { "name": "Joe", "age": 20 }
     print(users["name"]) # prints Joe
     print(users["age"])  # prints 20
+
+You can use `get()` method of dictionary to fetch value of the given key as below:
+
+    print(users.get("name"))  # prints Joe
+
+What if the given key doesn't exist in the dictionay?
+
+It would return `None` as shown below:
+
+    print(users.get("unknown"))  # prints None
+
+If you want to add new item to a dictionary, then you have two choices as shown below:
+
+    users["sex"] = "male"
+    users.update({ "location": "London" })
+
+To fetch all keys in the dictionary, you can do this:
+
+    print(users.keys())  # prints dict_keys(['name', 'age', 'sex', 'location'])
+
+If you want to loop through each key in the dictionary, try something this:
+
+    for k in users.keys():
+        print(f'{k} = {users[k]}')
+
+We get this result:
+
+    name = Joe
+    age = 20
+    sex = male
+    location = London
     
+How about fetching all values in the dictionary?
+
+    print(users.keys())  # prints dict_values(['Joe', 20, 'male', 'London'])
+
+If you have two dictionaries and wants to merge into one then do this:
+
+    dict1 = { "name": "Joe" }
+    dict2 = { "age": 20 }
+    dict1.update(dict2)
+    print(dict1)         # {'name': 'Joe', 'age': 20}
+
 Built-in function `type()` can be used to identify the data type.
 
 ## Functions
