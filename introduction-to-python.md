@@ -194,7 +194,7 @@ Built-in function `type()` can be used to identify the data type.
 ## Functions
 ***
 
-User can define function using keyword `def` as below
+User can define function using the keyword `def` as below:
 
     def addFive(n): -> int
         return n + 5
@@ -203,7 +203,7 @@ User can define function using keyword `def` as below
     print(result)  # prints 15
     print(addFive) # prints object name assgined to the function addFive()
 
-Function with default value.
+How about function with default value?
 
     def power(n, x = 1):
         result = 1
@@ -215,7 +215,7 @@ Function with default value.
     print(power(2))     # prints 2
     print(power(2, 3))  # prints 8
 
-Function can be called with named parameter in any order.
+Function can be called with named parameters in any order.
 
     print(power(x = 3, n = 2)) # prints 8
 
@@ -230,7 +230,7 @@ Function with variable number of parameters.
     print(addAll(1,2,3))    # prints 6
     print(addAll(1,2,3,4))  # prints 10
     
-Built-in functions in Python
+#### Built-in functions in Python
 
 You can get the complete list [**here**](https://docs.python.org/3/library/functions.html).
 
@@ -252,7 +252,7 @@ Let's try some most useful built-in functions
                 return False
             return True
 
-The above function can be re-written with the help of `all()` as below
+The above function can be re-written with the help of `all()` as below:
 
     def valid_rgb(rgb): -> bool
         return all(0 <= v <= 255
@@ -267,7 +267,7 @@ The syntax for `all()` can take the form below, it expects every condition to be
 
 #### any(iterable)
 
-Similar to `all()`, but it expects atleast one condition to be true
+Similar to `all()`, but it expects atleast one condition to be true.
 
     def contains_digit(n):
         for c in n:
@@ -275,7 +275,7 @@ Similar to `all()`, but it expects atleast one condition to be true
                 return True
         return False
 
-Now using the `any()` function, we can do something like below
+Now using the `any()` function, we can do something like below:
 
     def contains_digit(n):
         return any(c.isdigit()
@@ -296,7 +296,7 @@ You should see something like this:
     5. Niger
     6. Japan
     
-The above can be re-written using `enumerate()`
+The above can be re-written using `enumerate()`.
 
     for i in enumerate(countries, start=1):
         print(i)
@@ -310,12 +310,12 @@ Similar output but not exactly
     (5, 'Niger')
     (6, 'Japan')
 
-Let's get it output the result how we wanted.
+Let's get it print the result how we wanted.
 
     for i, c in enumerate(countries, start=1):
         print(f"{i}. {c}")
 
-Much cleaner and get the desired result
+Much cleaner and get the desired result.
 
     1. Netherlands
     2. Nigeria
@@ -355,7 +355,7 @@ Here is the output of the above code
     The capital city of Niger is Niamey
     The capital city of Japan is Tokyo
 
-If the both list has same number of elements, you get the above result.
+If the both list has same number of elements then you get the above result.
 
 However what if one has less elements than the other?
 
@@ -365,14 +365,16 @@ However what if one has less elements than the other?
     for country, capital in zip(countries, capitals):
         print(f'The capital city of {country} is {capital}')
         
-You only see the result for elements in the smaller list as below
+You only see the result for elements in the smaller list as below:
 
     The capital city of Netherlands is Amsterdam
     The capital city of Nigeria is Abuja
     The capital city of Jordan is Amman
     The capital city of Nepal is Kathmandu
 
-What if we wanted the entire list, we could import `zip_longest` from `itertools` module to handle the missing entries.
+What if we wanted the entire list? 
+
+We could import `zip_longest` from `itertools` module to handle the missing entries.
 
     from iterutils import zip_longest
     
@@ -391,7 +393,9 @@ We now have missing entries listed too.
     The capital city of Niger is Unknown
     The capital city of Japan is Unknown
 
-There is no `unzip()` function in `Python`, why? Because we don't need it as shown below
+There is no `unzip()` function in `Python`.
+
+Why? Because we don't need it as shown below:
 
     countries = ['Netherlands', 'Nigeria', 'Jordan', 'Nepal', 'Niger', 'Japan']
     capitals = ['Amsterdam', 'Abuja', 'Amman', 'Kathmandu', 'Niamey', 'Tokyo']
@@ -403,7 +407,7 @@ There is no `unzip()` function in `Python`, why? Because we don't need it as sho
     
 #### reversed(sequence)    
 
-**Sequence** is a subset of iterables that have a length, an index and can be sliced. For examples `strings`, `lists` and `tuples`.
+**Sequence** is a subset of iterables that have `a length`, `an index` and `can be sliced`. For examples `strings`, `lists` and `tuples`.
 
 Example of iterables that are not sequences are `dictionaries`, `files`, `sets` and `generators`.
 
@@ -434,7 +438,7 @@ Here is the output
     Nigeria
     Netherlands
 
-In a nutshell, there are three ways to reverse a sequence
+In a nutshell, there are three ways to reverse a sequence:
 
     a) reverse()
         - Reverse a mutable sequence in-place
@@ -534,7 +538,7 @@ Reverse order as before
 
 If you noticed, Taiwan and Niger both have the populations 24_000_000 but Taiwan appears before Niger. In theory Niger should come first.
 
-Let sort in decreasing order of population and increasing alphabetically
+Let's sort in decreasing order of population and increasing name alphabetically
 
     sorted(country_list, key=lambda x: (-x.population, x.name))
 
@@ -556,13 +560,13 @@ As you see the population has the three letter codes `iso` at the start.
  
      print(sorted(iso, key=get_population))
 
-Below is what we get back
+Below is what we get back:
 
     [('Portual', 'iso10000000'), ('Jordan', 'iso10000000'), ('Japan', 'iso128000000'), ('Netherlands', 'iso17500000'), ('Nigeria', 'iso198000000')    , ('Taiwan',         'iso24000000'), ('Niger', 'iso24000000'), ('Nepal', 'iso30000000')]
 
 Did you notice it didn't quite done correctly? Japan comes before Netherlands since sorting done alphabetically 128000000 appears before 17000000.    
 
-We can handle this issue very easily using type cast
+We can handle this issue very easily using type cast.
 
     def get_population1(pair):
         country, population = pair
@@ -570,7 +574,7 @@ We can handle this issue very easily using type cast
  
      print(sorted(iso, key=get_population1))
 
-Finally we have done it correctly
+Finally we have done it correctly.
 
     [('Portual', 'iso10000000'), ('Jordan', 'iso10000000'), ('Netherlands', 'iso17500000'), ('Taiwan', 'iso24000000'), ('Niger', 'iso24000000'), (    'Nepal', 'iso30000000'), ('Japan', 'iso128000000'), ('Nigeria', 'iso198000000')]
 
@@ -628,7 +632,7 @@ Suppose we want to filter all odd numbers in the list.
 
     print(list(filter(is_even, nums)))   # prints [2, 4, 6, 8, 10]
 
-Similarly, if we have string as below
+Similarly, if we have string as below:
 
     s = "abcDefGHIjk"
 
@@ -655,7 +659,7 @@ Let's create a new list of square numbers of each element in the given list.
 
     print(list(map(squares, nums)))    # prints [1, 4, 9, 16, 25, 36, 49, 64, 81. 100]
     
-Try one more example as below
+Try one more example as below:
 
     scores = [89, 75, 94,61, 82]
 
@@ -676,9 +680,9 @@ Try one more example as below
 ## Module
 ***
 
-Most commonly used modules in **Python** are `calendar`, `math`, `random`
+Most commonly used modules in **Python** are `calendar`, `math`, `random`.
 
-Return calendar for the month `Jan 2024`
+The following line returns calendar for the month `Jan 2024`
 
       cal = calendar.month(2024, 1)
 
@@ -686,16 +690,16 @@ Square root of a given number and returns result in floating number
 
       result = math.sqrt(49) # 7.0
 
-Return random number between `1` and `10` both inclusive
+Returns random number between `1` and `10` both inclusive.
       
       rand = random.randint(1, 10)
 
-Pick random entry from the given sequence
+Picks random entry from the given sequence.
       
       alpha = [ "a", "b", "c", "d" ]
       rand = random.choice(alpha)
 
-Shuffle the given list
+Shuffles the given list
       
       random.shuffle(alpha)
 
@@ -738,7 +742,7 @@ For `Python 3.10` or above, we can use the following construct.
     print(result)
 
 
-Conditions can be comnined using keyword `"and"`
+Conditions can be comnined using the keyword `"and"`.
 
 ## Loops
 ***
@@ -755,6 +759,7 @@ Count vowels in a word
       print(count)
   
 Built-in function `range(start, stop, step)` can also be used in `For` loop.
+
 Default `start` is `0` and `step` is `1`. The `stop` is **NOT** inclusive.
 
 The following would print `0,1,2,3`
@@ -799,13 +804,13 @@ Use of `continue` in loop
 
 The above code skips even number and only prints odd number between 5 and 10 i.e. `5, 7, 9`.
 
-Enumerate a list in loop
+Enumerate a list in loop as below:
 
     days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
     for i,d in enumarate(days):
         print(i, d)
 
-The code would print like below
+The code would print like below:
 
     0 Mon
     1 Tue
@@ -926,7 +931,7 @@ The code would print like below
 ## Exception
 ***
 
-Exception is handle using `try` block
+Exception is handle using `try` block.
 
     try:
         answer = prompt("What should I divide 10 by?")
@@ -972,7 +977,9 @@ Read file contents line by line.
         for line in lines:
             print(line)
 
-If you want to play with csv file then you would need to import `csv` module. We are also using `pprint` module for pretty print data structure.
+If you want to play with csv file then you would need to import `csv` module. 
+
+We are also using `pprint` module for pretty print data structure.
 
     import csv
     from pprint import pprint
@@ -1033,7 +1040,7 @@ There is also a very handy `requests` module for pulling data from web.
 You can install the module if missing using the command `pip install requests` or `python3 -m pip install requests`.
 
     import requests
-    response = requests.get("http://api.worldbank.org/v2/countries/USA/indicators/SP.POP.TOTL?perlpage=5000&format=json")
+    response = requests.get("http://api.worldbank.org/v2/countries/USA/indicators/SP.POP.TOTL?perpage=5000&format=json")
 
     last_twenty_years = response.json()[1][:20]
     for year in last_twenty_years:
@@ -1044,11 +1051,10 @@ You can install the module if missing using the command `pip install requests` o
 Find OS name.
 
     import os
-    from os import path
 
     print(os.name)
 
-Check if file exists
+Check if file exists, we can import `path` class from the module `os`.
 
     import os
     from os import path
@@ -1070,13 +1076,13 @@ Last modification time
     print(time.ctime(path.getmtime("test.txt")))
     print(datetime.datetime.fromtimestamp(path.getmtime("test.txt")))
 
-How long ago the file was modified    
+How long ago the file was modified?
 
     td = datetime.datetime.now() - datetime.datetime.fromtimestamp(path.getmtime("test.txt"))
     print("It has been", td, "since the file was modified.")
     print("Or,", td.total_seconds(), "seconds.")
 
-Using filesystem shell methods
+Using filesystem shell methods.
 
     import os
     from os import path
@@ -1090,7 +1096,7 @@ Using filesystem shell methods
 
         os.rename("test.txt", "newtest.txt")
 
-Archive folder
+#### Archive folder
 
     import os
     from os import path
@@ -1107,7 +1113,7 @@ Archive folder
             newzip.write("newtest.txt")
             newzip.write("test.txt.bak")
 
-File info
+#### File info
 
     import os
 
@@ -1143,117 +1149,119 @@ File info
     t = datetime.time(now)
     print("The current time is", t)
 
-Format datetime
+#### Format datetime
 
-1) `%y / %Y` Year
-2) `%a / %A` Weekday
-3) `%b / %B` Month
-4) `%d` day of month
-5) `%c` Locale's date and time
-6) `%x` Locale's date
-7) `%X` Locale's time
-8) `%I / %H` 12/24 Hour
-9) `%M` Minute
-10) `%S` Second
-11) `%p` Locale's AM/PM
+     1) %y / %Y Year
+     2) %a / %A Weekday
+     3) %b / %B Month
+     4) %d day of month
+     5) %c Locale's date and time
+     6) %x Locale's date
+     7) %X Locale's time
+     8) %I / %H 12/24 Hour
+     9) %M Minute
+    10) %S Second
+    11) %p Locale's AM/PM
 
-        from datetime import datetime
+Let's use it in the following examples:
 
-        now = datetime.now()
+    from datetime import datetime
+
+    now = datetime.now()
         
-        print(now.strftime("The current year: %Y"))
-        print(now.strftime("%a, %d %B, %y"))
+    print(now.strftime("The current year: %Y"))
+    print(now.strftime("%a, %d %B, %y"))
 
-        print(now.strftime("Local's date and time: %c"))
-        print(now.strftime("Local's date: %x"))
-        print(now.strftime("Local's time: %X"))
+    print(now.strftime("Local's date and time: %c"))
+    print(now.strftime("Local's date: %x"))
+    print(now.strftime("Local's time: %X"))
 
-        print(now.strftime("Current time is %I:%M:%S %p"))
-        print(now.strftime("24-hour time is %H:%M:%S %p"))
+    print(now.strftime("Current time is %I:%M:%S %p"))
+    print(now.strftime("24-hour time is %H:%M:%S %p"))
 
-Timedelta
+#### Timedelta
 
-        from datetime import datetime
-        from datetime import timedelta
+    from datetime import datetime
+    from datetime import timedelta
 
-        print(timedelta(days = 365, hours=5, minutes=2))
+    print(timedelta(days = 365, hours=5, minutes=2))
 
-        now = datetime.now()
-        print("Today is", now)
-        print("One year from now it will be", str(now + timedelta(days=365)))
-        print("In 2 weeks and 3 days from now it will be", str(now + timedelta(weeks=2, days=3)))
+    now = datetime.now()
+    print("Today is", now)
+    print("One year from now it will be", str(now + timedelta(days=365)))
+    print("In 2 weeks and 3 days from now it will be", str(now + timedelta(weeks=2, days=3)))
 
-        t = now - timedelta(weeks=1)
-        s = t.strftime("%A %B %d, %y")
-        print("One week ago it was", s)
+    t = now - timedelta(weeks=1)
+    s = t.strftime("%A %B %d, %y")
+    print("One week ago it was", s)
 
-        # How many days until next April Fools Day
-        today = date.today()
-        afd = date(today.year, 4, 1)
-        if afd < today:
-            print("April Fools day already went by:", ((today-afd).days))
-            afd = afd.replace(year = today.year + 1)
+    # How many days until next April Fools Day
+    today = date.today()
+    afd = date(today.year, 4, 1)
+    if afd < today:
+        print("April Fools day already went by:", ((today-afd).days))
+        afd = afd.replace(year = today.year + 1)
 
-        time_to_afd = afd - today
-        print("It is", time_to_afd.days, "days unitl the next April Fools Day")
+    time_to_afd = afd - today
+    print("It is", time_to_afd.days, "days unitl the next April Fools Day")
 
 ## Calendar
 ***
 
-        import calendar
+    import calendar
 
-        # Calendar week starts with Sunday        
-        c = calendar.TextCalendar(calendar.SUNDAY)
-        str = c.formatmonth(2024, 1, 0, 0)
-        print(str)
+    # Calendar week starts with Sunday        
+    c = calendar.TextCalendar(calendar.SUNDAY)
+    str = c.formatmonth(2024, 1, 0, 0)
+    print(str)
 
-        # Calendar week starts with Monday        
-        c = calendar.TextCalendar(calendar.MONDAY)
-        str = c.formatmonth(2024, 1, 0, 0)
-        print(str)
+    # Calendar week starts with Monday        
+    c = calendar.TextCalendar(calendar.MONDAY)
+    str = c.formatmonth(2024, 1, 0, 0)
+    print(str)
 
-        c = calendar.HTMLCalendar(calendar.SUNDAY)
-        str = c.formatmonth(2024, 1, 0, 0)
-        print(str)
+    c = calendar.HTMLCalendar(calendar.SUNDAY)
+    str = c.formatmonth(2024, 1, 0, 0)
+    print(str)
 
-        # Loop over days of a month
-        for i in c.itermonthdays(2024,1):
-            print(i)
+    # Loop over days of a month
+    for i in c.itermonthdays(2024,1):
+        print(i)
 
-        for name in calendar.month_name:
-            print(name)
+    for name in calendar.month_name:
+        print(name)
 
-        for day in calendar.day_name:
-            print(day)
+    for day in calendar.day_name:
+        print(day)
 
-First Friday of each month
+First Friday of each month:
 
-        for m in range(1, 13):
-            cal = calendar.monthcalendar(2024, m)
-            weekone = cal[0]
-            weektwo = cal[1]
-            if weekone[calendar.FRIDAY] != 0:
-                meetday = weekone[calendar.FRIDAY]
-            else:
-                meetday = weektwo[calendar.FRIDAY]
+    for m in range(1, 13):
+        cal = calendar.monthcalendar(2024, m)
+        weekone = cal[0]
+        weektwo = cal[1]
+        if weekone[calendar.FRIDAY] != 0:
+            meetday = weekone[calendar.FRIDAY]
+        else:
+            meetday = weektwo[calendar.FRIDAY]
 
-            print(calendar.month_name[m], meetday)
+        print(calendar.month_name[m], meetday)
 
 Count the given day in month year
 
-        import calendar
+    import calendar
 
-        def count_days(year, month, whichday):
-            # returns an array of weeklist
-            # [
-            #    [0,0,1,1,1,1,1],
-            #    [1,1,1,1,1,1,1],
-            #    [1,1,1,1,1,1,1],
-            #    [1,1,1,1,1,0,0],            
-            # ]
-            m = calendar.monthcalendar(year,month)
-            d = sum(1 for x in m if x[whichday] != 0)
-            return d
+    def count_days(year, month, whichday):
+        # returns an array of weeklist
+        # [
+        #    [0,0,1,1,1,1,1],
+        #    [1,1,1,1,1,1,1],
+        #    [1,1,1,1,1,1,1],
+        #    [1,1,1,1,1,0,0],            
+        # ]
+        m = calendar.monthcalendar(year,month)
+        d = sum(1 for x in m if x[whichday] != 0)
+        return d
 
 ## Data Formats
 ***
@@ -1307,7 +1315,7 @@ Count the given day in month year
 
 #### HTML
 
-sample.html
+Let's we have `sample.html` like below:
 
     <!DOCTYPE html>
     <html lang="en">
@@ -1322,7 +1330,7 @@ sample.html
         </body>
     </html>
 
-Create subclass myHTMLParser
+Create subclass `myHTMLParser` like below:
 
     from html.parser import HTMLParser
 
@@ -1355,7 +1363,7 @@ Create subclass myHTMLParser
             pos = self.getpos()
             print("At line:", pos[0], " position", pos[1])
 
-Use myHTMLParser to parse the html data
+Use `myHTMLParser` class to parse the html data.
 
     parser = myHTMLParser()
     f = open("sample.html")
@@ -1367,7 +1375,7 @@ Use myHTMLParser to parse the html data
 
 #### XML
 
-sample.xml
+Suppose we have `sample.xml` as below:
 
     <?xml version = "1.0" encoding="UTF-8" ?>
     <person>
@@ -1379,7 +1387,8 @@ sample.xml
         <skill name="Raku"/>
     </person>
 
-    
+ See how we can read/write the xml file.
+ 
     import xml.dom.minidom
 
     doc = xml.dom.minidom.parse("sample.xml")
@@ -1404,7 +1413,7 @@ sample.xml
 
 Let's play with Python's web framework `Flask`.
 
-You can install the framework using command `pip install Flask`
+You can install the framework using command `pip install Flask`.
 
     from flask import Flask
 
