@@ -181,9 +181,9 @@ You can have elements of different data types.
 
     list = ["Adam", 50, True, 1.5]
   
-`Tuples`, braces `()` can be used to create `Tuple`. 
+Braces `()` can be used to create a `Tuple`. 
 
-Elements in tuple **CAN NOT** be changed unlike `List`.
+Elements in `Tuple` **CAN NOT** be changed unlike `List`.
 
     child = ("Joe", "male", 2, "UK")
     print(child[0]) # prints child name
