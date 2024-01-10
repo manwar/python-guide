@@ -206,6 +206,10 @@ It would return `None` as shown below:
 
     print(users.get("unknown"))  # prints None
 
+In case, you don't want `None` if key is missing key then you can provide the optional value as second parameter to the `get()` method.
+
+    print(users.get("unknown", "Perl"))  # prints Perl
+
 If you want to add new item to a dictionary, then you have two choices as shown below:
 
     users["sex"] = "male"
