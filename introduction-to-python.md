@@ -83,7 +83,7 @@ or you can combine both in one line as below:
 
     name, age = "Joe", 20
 
-#### Global/Local variable
+#### Global / Local variable
 
     # Global variable
     name = "Joe"
