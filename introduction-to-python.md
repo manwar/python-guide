@@ -137,17 +137,17 @@ We can't combine string and byte using `+` operator.
 
     print(s+b)   # would throw error as print() expects string and not byte
 
-To solve the issue, we have to decode the bytes using 'utf-8' encoding like below:
+To solve the issue, we have to decode the bytes using `'utf-8'` encoding like below:
 
     s1 = b.decode('utf-8')
     print(s+s1)   # prints Hi there!ABC
 
-Or we could encode the string using 'utf-8' encoding and concatenate like this:
+Or we could encode the string using '`utf-8'` encoding and concatenate like this:
 
     b1 = s.encode('utf-8')
     print(b1+b)    # prints b'Hi there!ABC'
 
-What if encode the string using 'utf-32' encoding?
+What if encode the string using `'utf-32'` encoding?
 
     b2 = s.encode('utf-32')
     print(b2)      # prints lots of hexadecimal numbers representing the string.
@@ -162,21 +162,22 @@ List: Square bracket `[]` can be used to create a list
     list[2] = 60
     print(list[2]) # prints 60
 
-Slice a list using syntax `list[startindex: endindex: step]`
-Default `startndex` is `0` and default `step` is `1`.
+Slice a list using syntax `list[startindex: endindex: step]`.
+
+Default `startindex` is `0` and default `step` is `1`.
 
     print(list[1:3])   # prints [4, 6]
     print(list[0:5,2]) # prints [2, 6, 10]
 
-Reverse a given list using the slice syntax
+Reverse a given list using the slice syntax.
 
     print(list[::-1])  # prints [10, 8, 6, 4, 2]
 
-#### NOTE: Elements in a list can be changed. Also elements do not have to be of one type. You can have elements of different data types.
+#### Elements in a list can be changed. Also elements do not have to be of one type. You can have elements of different data types.
 
     list = ["Adam", 50, True, 1.5]
   
-  Tuples: Braces `()` can be used to create `Tuple`. Elements in tuples **CAN NOT** be changed unlike `List`.
+**Tuples**: Braces `()` can be used to create `Tuple`. Elements in tuple **CAN NOT** be changed unlike `List`.
 
     child = ("Joe", "male", 2, "UK")
     print(child[0]) # prints child name
@@ -244,7 +245,7 @@ Let's try some most useful built-in functions
 
 #### all(iterable)
 
-**NOTE:** An iterable is anythihg you can loop over using a `for` loop. For example, `lists`, `tuples`, `strings`, `sets` and `dictionaries`.
+An `iterable` is anything you can loop over using a `for` loop. For example, `lists`, `tuples`, `strings`, `sets` and `dictionaries`.
 
     def valid_rgb(rgb): -> bool
         for v in rgb:
@@ -258,7 +259,7 @@ The above function can be re-written with the help of `all()` as below:
         return all(0 <= v <= 255
             for v in rgb)
 
-The syntax for `all()` can take the form below, it expects every condition to be true
+The syntax for `all()` can take the form below, it expects every condition to be true.
 
     all(
         condition(item)
@@ -301,7 +302,7 @@ The above can be re-written using `enumerate()`.
     for i in enumerate(countries, start=1):
         print(i)
 
-Similar output but not exactly
+Similar output but not exactly.
 
     (1, 'Netherlands')
     (2, 'Nigeria')
@@ -324,7 +325,7 @@ Much cleaner and get the desired result.
     5. Niger
     6. Japan
 
-For simple use case
+For simple use case:
 
     for c in countries:
         print(c)
@@ -346,7 +347,7 @@ We get this
     for country, capital in zip(countries, capitals):
         print(f'The capital city of {country} is {capital}')
 
-Here is the output of the above code
+Here is the output of the above code.
 
     The capital city of Netherlands is Amsterdam
     The capital city of Nigeria is Abuja
