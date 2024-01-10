@@ -200,7 +200,7 @@ You can use `get()` method of dictionary to fetch value of the given key as belo
 
     print(users.get("name"))  # prints Joe
 
-What if the given key doesn't exist in the dictionay?
+What if the given key doesn't exist in the dictionary?
 
 It would return `None` as shown below:
 
