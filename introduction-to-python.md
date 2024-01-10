@@ -235,7 +235,7 @@ You can use `sort()` method and `sorted()` function with list for sorting purpos
     nums_sorted = sorted(nums)
     print(nums_sorted)       # prints [1, 2, 3, 4, 5]
 
-You can add element at any index in the list.
+You can add element at the end of the list using `append()` method.
 
     nums.append(6)
     print(nums)              # prints [1, 2, 3, 4, 5, 6]
