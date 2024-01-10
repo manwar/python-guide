@@ -243,6 +243,20 @@ How about fetching all values in the dictionary?
 
     print(users.values())  # prints dict_values(['Joe', 20, 'male', 'London'])
 
+To delete an item from the dictionary, you can use `pop()` method as below:
+
+    value = users.pop("sex")
+    print(value)  # print male
+
+    for k,v in users.items():
+        print(f'{k} = {v}')
+
+You see the key `sex` missing from the dictionary.    
+
+    name = Joe
+    age = 20
+    location = London
+
 If you have two dictionaries and wants to merge into one then do this:
 
     dict1 = { "name": "Joe" }
