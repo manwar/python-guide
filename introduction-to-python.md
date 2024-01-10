@@ -22,17 +22,17 @@
 ***
     print('Hello World !!')
 
-Let's try special `f''` function
+Let's try special `f''` function.
 
     name = 'World'
     print(f'Hello {name} !!')  # prints Hello World !!
 
-Or something like this
+Or something like this:
 
     hello = 'Hello {} !!'
     print(hello.format(name))  # prints Hello World !!
 
-Even you can do something like below
+Even you can do something like below:
 
     print('Hi {0} {1} !!'.format('Joe', 'Blog'))    # prints Hi Joe Blog !!
 
@@ -46,7 +46,7 @@ We can use `Template` class from the `string` module.
 
     print(s)    # prints You are reading Perl Hacks by Damian Conway.
 
-There is an alternative, we can use dictionary too like below
+There is an alternative, we can use dictionary too like below:
 
     data = {
         "book": "Perl Hacks",
@@ -56,7 +56,7 @@ There is an alternative, we can use dictionary too like below
 
     print(s1)   # prints You are reading Perl Hacks by Damian Conway.
     
-Look up environment name
+Look up environment name.
 
     import os
     print(os.environ.get("ENV_NAME")) # prints value of environment name "ENV_NAME".
@@ -96,7 +96,7 @@ or you can combine both in one line as below:
     showName()   # prints Blog
     print(name)  # prints Joe
 
-Override global variable inside the function
+Override global variable inside the function.
 
     # Global variable
     name = "Joe"
@@ -110,7 +110,7 @@ Override global variable inside the function
     showName()   # prints Blog
     print(name)  # prints Blog
 
-You can even undefine a variable
+You can even undefine a variable.
 
     name = "Joe"
     print(name) # prints Joe
@@ -125,7 +125,7 @@ You can even undefine a variable
 3) Floating defined with keyword `float`
 4) String defined with keyword `str`
 
-String contains unicode whereas Byte is raw 8-bits values
+`String` contains unicode whereas `Byte` is raw 8-bits values.
 
     s = "Hi there!"
     b = bytes([0x41, 0x42, 0x43])
@@ -152,9 +152,9 @@ What if encode the string using `'utf-32'` encoding?
     b2 = s.encode('utf-32')
     print(b2)      # prints lots of hexadecimal numbers representing the string.
 
-**NOTE**: String and Byte are not the same.
+**NOTE**: `String` and `Byte` are not the same.
 
-List: Square bracket `[]` can be used to create a list
+List: Square bracket `[]` can be used to create a list.
 
     list = [2, 4, 6, 8, 10]
     print(list[2]) # prints 6
@@ -162,7 +162,7 @@ List: Square bracket `[]` can be used to create a list
     list[2] = 60
     print(list[2]) # prints 60
 
-Slice a list using syntax `list[startindex: endindex: step]`.
+Slice a list using the syntax `list[startindex: endindex: step]`.
 
 Default `startindex` is `0` and default `step` is `1`.
 
@@ -241,7 +241,7 @@ You can get the complete list [**here**](https://docs.python.org/3/library/funct
     d) str() returns string value of the input data.
     e) + operator can be used for string concatenation e.g. print("Hello " + name)
 
-Let's try some most useful built-in functions
+Let's try some most useful built-in functions.
 
 #### all(iterable)
 
