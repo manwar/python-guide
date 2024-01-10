@@ -154,7 +154,7 @@ What if we encode the string using `'utf-32'` encoding?
 
 **NOTE**: `String` and `Byte` are not the same.
 
-List: Square bracket `[]` can be used to create a list.
+`List`: Square bracket `[]` can be used to create a list.
 
     list = [2, 4, 6, 8, 10]
     print(list[2]) # prints 6
@@ -173,18 +173,24 @@ Reverse a given list using the slice syntax.
 
     print(list[::-1])  # prints [10, 8, 6, 4, 2]
 
-#### Elements in a list can be changed. Also elements do not have to be of one type. You can have elements of different data types.
+Elements in a list can be changed. 
+
+Also elements do not have to be of one type. 
+
+You can have elements of different data types.
 
     list = ["Adam", 50, True, 1.5]
   
-**Tuples**: Braces `()` can be used to create `Tuple`. Elements in tuple **CAN NOT** be changed unlike `List`.
+`Tuples`, braces `()` can be used to create `Tuple`. 
+
+Elements in tuple **CAN NOT** be changed unlike `List`.
 
     child = ("Joe", "male", 2, "UK")
     print(child[0]) # prints child name
 
-    tyoe(child) # prints tuple
+    type(child) # prints tuple
 
-**Dictionary** is a key-value list, just like `hash` in **Perl**.
+`Dictionary` is a key-value list, just like `hash` in `Perl`.
 
     users = { "name": "Joe", "age": 20 }
     print(users["name"]) # prints Joe
