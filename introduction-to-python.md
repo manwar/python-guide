@@ -42,7 +42,7 @@ We can use `Template` class from the `string` module.
 
     from string import Template
     templ = Template("You are reading ${book} by ${author}.")
-    s = templ.substiture(book="Perl Hacks", author="Damian Conway")
+    s = templ.substitute(book="Perl Hacks", author="Damian Conway")
 
     print(s)    # prints You are reading Perl Hacks by Damian Conway.
 
