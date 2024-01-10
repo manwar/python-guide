@@ -147,7 +147,7 @@ Or we could encode the string using '`utf-8'` encoding and concatenate like this
     b1 = s.encode('utf-8')
     print(b1+b)    # prints b'Hi there!ABC'
 
-What if encode the string using `'utf-32'` encoding?
+What if we encode the string using `'utf-32'` encoding?
 
     b2 = s.encode('utf-32')
     print(b2)      # prints lots of hexadecimal numbers representing the string.
