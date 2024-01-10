@@ -46,7 +46,7 @@ We can use `Template` class from the `string` module.
 
     print(s)    # prints You are reading Perl Hacks by Damian Conway.
 
-There is an alternative, we can use dictionary too like belew
+There is an alternative, we can use dictionary too like below
 
     data = {
         "book": "Perl Hacks",
