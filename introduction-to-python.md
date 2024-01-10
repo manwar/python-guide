@@ -212,7 +212,7 @@ You can also insert an element at a given index like below:
     chars.insert(0, "z")
     print(chars)             # prints ['z', 'a', 'b', 'a', 'a', 'c', 'd']
 
-You can even remmove an element from any index in the list using `pop()`.
+You can even remove an element from any index in the list using `pop()`.
 
 If nothing passed to `pop()` it would remove the last element in the list.
 
@@ -220,7 +220,7 @@ If nothing passed to `pop()` it would remove the last element in the list.
     print(last)              # prints d
     print(chars)             # prints ['z', 'a', 'b', 'a', 'a', 'c']
 
-Let's pop the third element in the list.
+Let's pop the third element from the list.
 
     third = chars.pop(2)
     print(third)             # prints b
@@ -232,8 +232,8 @@ You can use `sort()` method and `sorted()` function with list for sorting purpos
     nums.sort()
     print(nums)              # prints [1, 2, 3, 4, 5]
 
-    new_sorted = sorted(nums)
-    print(new_sorted)        # prints [1, 2, 3, 4, 5]
+    nums_sorted = sorted(nums)
+    print(nums_sorted)       # prints [1, 2, 3, 4, 5]
 
 You can add element at any index in the list.
 
