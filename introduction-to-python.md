@@ -231,7 +231,7 @@ We get this result:
     sex = male
     location = London
 
-There is another wa you can fetch each item in the dictionary by calling `items()` method as below:
+There is another way you can fetch each item in the dictionary by calling `items()` method as below:
 
     for k,v in users.items():
         print(f'{k} = {v}')
