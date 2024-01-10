@@ -120,10 +120,10 @@ You can even undefine a variable.
 ## DataTypes
 ***
 
-1) Boolean defined with keyword `bool` and can only have value `True`/`False`
-2) Integer defined with keyword `int`
-3) Floating defined with keyword `float`
-4) String defined with keyword `str`
+1) `Boolean` defined with keyword `bool` and can only have value `True`/`False`
+2) `Integer` defined with keyword `int`
+3) `Floating` defined with keyword `float`
+4) `String` defined with keyword `str`
 
 `String` contains unicode whereas `Byte` is raw 8-bits values.
 
@@ -133,7 +133,7 @@ You can even undefine a variable.
     print(s)  # prints Hi there!
     print(b)  # prints b'ABC'
 
-We can't combine string and byte using `+` operator.
+We can't combine `String` and `Byte` using `+` operator.
 
     print(s+b)     # would throw error as print() expects string and not byte
 
