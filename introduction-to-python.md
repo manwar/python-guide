@@ -330,7 +330,7 @@ For simple use case:
     for c in countries:
         print(c)
 
-We get this
+We get this:
 
     Netherlands
     Nigeria
@@ -432,7 +432,7 @@ The `reversed()` function returns an iterator.
     for country in reversed(countries):
         print(country)
 
-Here is the output
+Here is the output:
 
     Japan
     Niger
@@ -468,7 +468,7 @@ In a nutshell, there are three ways to reverse a sequence:
 
 Suppose we want to find out the country with the smallest population.
 
-First create tuple by zipping `countries` and `populations`
+First create tuple by zipping `countries` and `populations`.
 
     print(list(zip(countries, populations))  
 
@@ -505,16 +505,15 @@ Here is another cheat solution by changing the order of zip, in this case we don
         def __repr__(self):
             return f'Country {self.name}, {self.population}'
 
-
     country_list = [
-                    Country('Taiwan', 24_000_000),
-                    Country('Portugal', 10_000_000),
-                    Country('Netherlands', 17_500_000),
-                    Country('Nigeria', 198_000_000),
-                    Country('Jordan', 10_000_000),
-                    Country('Nepal', 30_000_000),
-                    Country('Niger', 24_000_000),
-                    Country('Japan', 128_000_000)
+        Country('Taiwan', 24_000_000),
+        Country('Portugal', 10_000_000),
+        Country('Netherlands', 17_500_000),
+        Country('Nigeria', 198_000_000),
+        Country('Jordan', 10_000_000),
+        Country('Nepal', 30_000_000),
+        Country('Niger', 24_000_000),
+        Country('Japan', 128_000_000)
     ]
 
 Sort the country by population.
@@ -555,11 +554,11 @@ Well you can't do `-x.name`, instead you would need to do like below:
 
     print(sorted(country_list, key=lambda x: (x.population, x.name), reverse=True))
 
-Now if you want to sort on field that has alphnumeric characters, something like below:
+Now if you want to sort on a field that has alphnumeric characters, something like below:
 
     iso = [('Taiwan', 'iso24000000'), ('Portual', 'iso10000000'), ('Netherlands', 'iso17500000'), ('Nigeria', 'iso198000000'), ('Jordan', 'iso100000    00'), ('Nepal', 'iso30000000'), ('Niger', 'iso24000000'), ('Japan', 'iso128000000')]
 
-As you see the population has the three letter codes `iso` at the start.
+As you see the population has the three letters code `iso` at the start.
 
     def get_population(pair):
         country, population = pair
