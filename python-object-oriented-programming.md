@@ -183,7 +183,7 @@ Let's extract that out in a separate class `Periodical` with the help of `Public
             self.period = period
             self.publisher = publisher
 
-Now with the help `Periodical` class, we can cleanup the `Magazine` and `Newspaper` class.
+Now with the help of `Periodical` class, we can cleanup the `Magazine` and `Newspaper` class.
 
     class Magazine(Periodical):
         def __init__(self, title, publisher, price, period):
@@ -206,7 +206,7 @@ Use the new refined class definitions like below
 ## Abstract Class
 ***
 
-Suppose we have the following class definition
+Suppose we have the following class definition.
 
     class GraphicalShape:
         def __init__(self):
@@ -223,7 +223,7 @@ Suppose we have the following class definition
         def __init__(self, side):
             self.side = side
 
-Make use of the above classes
+Make use of the above classes.
 
     g = GraphicalShape()
     c = Circle(10)
@@ -233,9 +233,9 @@ Make use of the above classes
 
 Here we want to enforce two things, first stop user to create an instance of class `GraphicalShape` and make sure anyone inheriting `GraphicalShape` must implement `calc_area()`.
 
-We can use the module `abc` and import class `ABC` and `abstractmethod`
+We can use the module `abc` and import class `ABC` and `abstractmethod`.
 
-Let's change the class `GraphicalShape` definition and make it inherit class `ABC`. Also turn the method `calc_area()` into `abstract method`.
+Let's change the class `GraphicalShape` definition and makes it inherit class `ABC`. Also turn the method `calc_area()` into `abstract method`.
 
     from abc import ABC, abstractmethod
     class GraphicalShape(ABC):
@@ -246,15 +246,15 @@ Let's change the class `GraphicalShape` definition and make it inherit class `AB
         def calc_area(self):
             pass
 
-Now run the above code would throw error as you can't instantiate abstract class
+Now run the above code and it would throw an error as you can't instantiate abstract class.
 
     g = GraphicalShape()
 
-Even the following line would throw error as it expects class `Circle` to implement method `calc_area()`
+Even the following line would throw error as it expects class `Circle` to implement the method `calc_area()`.
 
     c = Circle(10)
 
-We can resolve this very easily
+We can resolve this very easily.
 
     class Circle(GraphicalShape):
         def __init__(self, radius):
@@ -263,7 +263,7 @@ We can resolve this very easily
         def calc_area(self):
             return 3.14 * (self.radius ** 2)
 
-Similarly we can fix the class `Square`
+Similarly we can fix the class `Square`.
 
      class Square(GraphicalShape):
         def __init__(self, side):
@@ -272,7 +272,7 @@ Similarly we can fix the class `Square`
         def calc_area(self):
             return self.side * self.side            
 
-Let's run the same code, you should see the result as below
+Let's run the same code, you should see the result as below:
 
     c = Circle(10)
     print(c.calc_area()) # prints 314
@@ -282,7 +282,7 @@ Let's run the same code, you should see the result as below
 ## Multiple Inheritance
 ***
 
-Assume we have class `A` and `B` defined as below
+Assume we have class `A` and `B` defined as below:
 
     class A:
         def __init__(self):
@@ -304,14 +304,14 @@ Then we have another class `C` which inherits both class `A` and `B` in the orde
             print(self.prop1)
             print(self.prop2)
 
-Time for some action now
+Time for some action now.
 
     c = C()
     c.showprops() # prints "prop1" and "prop2" as expected
 
 So far so good.
 
-What if the super classes share common attributes as below
+What if the super classes share common attributes as below:
 
     class A:
         def __init__(self):
@@ -325,7 +325,7 @@ What if the super classes share common attributes as below
             self.prop2 = "prop2"
             self.name = "Class B"
 
-Now update the method `showprops()` in the class `C`
+Now update the method `showprops()` in the class `C`.
 
     class C(A, B):
         def __init__(self):
@@ -341,7 +341,7 @@ What do you expect the following code would print?
     c = C()
     c.showprops()
 
-It would print something like
+It would print something like:
 
     prop1
     prop2
@@ -355,10 +355,11 @@ Here `Python` used something called `method resolution order (mro)`.
 
 So it starts with the current class, if not find what they are looking for then jump to the first super class in the list and still can't find then go to the next one in the list, so on so forth.
 
-In the above case, the attribute `name` is not defined the current class `C`, so the next step would be look into the first super class in the list i.e. `A` and then `B`.
+In the above case, the attribute `name` is not defined in the current class `C`, so the next step would be look into the first super class in the list i.e. `A` and then `B`.
+
 Since we have attribute `name` defined in the class `A`, the search stops there and we get the result as above.
 
-Let's prove the theory now by changing the order of super class
+Let's prove the theory now by changing the order of super class.
 
     class C(B, A):
         def __init__(self):
@@ -369,18 +370,18 @@ Let's prove the theory now by changing the order of super class
             print(self.prop2)
             print(self.name)
 
-Execute the code below
+Execute the code below:
 
     c = C()
     c.showprops()
 
-It would now print something like
+It would now print something like:
 
     prop1
     prop2
     Class B
 
-If you are interesting in finding the method resolution order, you can do so using the special class attribute `__mro__`
+If you are interesting in finding the method resolution order, you can do so using the special class attribute `__mro__`.
 
     print(C.__mro__)
 
