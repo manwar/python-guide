@@ -35,8 +35,8 @@
         def setDiscount(self, amount):
             self._discount = amount
 
-Attribute name starts with `_` consider to be private attribute.
-But there is a better way to try to hide attribute from outside world by prefixing with `__` double underscore.
+Attribute name starts with `_` considered to be private attribute.
+But there is a better way to try to hide attribute from the outside world by prefixing with the `__` double underscore.
 Since `_discount` was not declared in the `__init__()` so we have to check it before using anywhere in the method
 
 #### Create instance
