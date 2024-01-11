@@ -396,7 +396,7 @@ The interface feature of `OOP` can be implemented using the `Abstract Class` and
 
 `Interface` is like making a promise to provide certain behaviour.
 
-Let's take a look of the above class definitions
+Let's take a look of the above class definitions.
 
     from abc import ABC, abstractmethod
     class GraphicalShape(ABC):
@@ -425,14 +425,14 @@ Suppose we want to have `JSONify` feature in the `Circle` and `Square` class, we
 
 What if we want the same in other base class?          
 
-We could just create another abstract class `JSONify`
+We could just create another abstract class `JSONify`.
 
     class JSONify(ABC):
         @abstractmethod
         def toJSON(self):
             pass
 
-Now we can use the abstract class `JSONify` like below
+Now we can use the abstract class `JSONify` like below:
 
     class Circle(GraphicalShape, JSONify):
         def __init__(self, radius):
@@ -441,12 +441,12 @@ Now we can use the abstract class `JSONify` like below
         def calc_area(self):
             return 3.14 * (self.radius ** 2)
 
-We would now need to implement the abstract method `toJSON()`
+We would now need to implement the abstract method `toJSON()`.
 
         def toJSON(self):
             return f"{{'Circle': {str(self.calc_area())}}}"
 
-Time for some action
+Time for some action.
 
     c = Circle(10)
     print(c.calc_area()) # prints 314
@@ -455,19 +455,19 @@ Time for some action
 ## Composition
 ***
 
-We have done `Interface` earlier something like
+We have done `Interface` earlier something like:
 
     Publication -> Book
                 -> Periodical -> Magazine
 
-`Composition` is slightly different as below
+`Composition` is slightly different as below:
 
     Book -> Title
             Price
             Author -> First Name
                       Last Name
 
-Let's re-create class `Book` as below
+Let's re-create class `Book` as below:
 
     class Book:
         def __init__(self, title, price, authorfname, authorlname):
@@ -482,7 +482,7 @@ Let's re-create class `Book` as below
         def addchapter(self, name, pages):
             self.chapters.append((name, pages))
 
-Use the class now
+Use the class now:
 
     b = Book("Perl Hacks", 60, "Damian", "Conway")
     b.addchapter("Chapter 1", 101)
@@ -490,19 +490,19 @@ Use the class now
     b.addchapter("Chapter 3", 103)
     print(b.title)
 
-It would be nice to extract out author information in its own class
+It would be nice to extract out author information in its own class.
 
     class Author:
         def __init__(self, firstname, lastname):
             self.firstname = firstname
             self.lastname  = lastname
 
-Let's override built-in `str()` function to return the string representation of the object
+Let's override built-in `str()` function to return the string representation of the object.
 
         def __str__(self):
             return f"{self.firstname} {self.lastname}"
 
-We can now redefine `Book` class to use the `Author` class
+We can now redefine `Book` class to use the `Author` class.
 
     class Book:
         def __init__(self, title, price, author = None):
@@ -515,14 +515,14 @@ We can now redefine `Book` class to use the `Author` class
         def addchapter(self, name, pages):
             self.chapters.append((name, pages))
 
-We can now do the same with `Chapter` class
+We can now do the same with `Chapter` class.
 
     class Chapter:
         def __init__(self, name, pagecount):
             self.name = name
             self.pagecount = pagecount
 
-Time for another attempt to use `Chapter`
+Time for another attempt to use `Chapter`.
 
     class Book:
         def __init__(self, title, price, author = None):
@@ -535,7 +535,7 @@ Time for another attempt to use `Chapter`
         def addchapter(self, chapter):
             self.chapters.append(chapter)
 
-Let's add method `getbookpagecount()` to the `Book` class
+Let's add method `getbookpagecount()` to the `Book` class.
 
         def getbookpagecount(self):
             count = 0
@@ -543,7 +543,7 @@ Let's add method `getbookpagecount()` to the `Book` class
                 count += chapter.pagecount
             return count
 
-Finally we can use the new `Book` class like below
+Finally we can use the new `Book` class like below:
 
     author = Author("Damian", "Conway")
     b = Book("Perl Hacks", 60, author)
@@ -558,7 +558,7 @@ Finally we can use the new `Book` class like below
 ## Magic Methods
 ***
 
-Let's re-use the `Book` class from earlier chapter
+Let's re-use the `Book` class from earlier chapter.
 
     class Book:
         def __init__(self, title, author, price):
@@ -566,7 +566,7 @@ Let's re-use the `Book` class from earlier chapter
             self.author = author
             self.price  = price
 
-Standard use of the class
+Standard use of the class.
 
     b1 = Book("Learning Perl", "brian d foy", 50)
     b2 = Book("Perl Hacks", "Damian Conway", 60)
@@ -576,24 +576,24 @@ Standard use of the class
 
 #### `__str__()`
 
-We can solve the above problem by overriding `__str__()` magic method
+We can solve the above problem by overriding `__str__()` magic method.
 
         def __str__(self):
             return f"{self.title} by {self.author} costs {self.price}"
 
-Check the reselt now
+Check the reselt now:
 
     print(b1)       # prints Learning Perl by brian d foy costs 50
     print(str(b1))  # sames as print(b1)
 
 #### `__repr__()`
 
-We will now another magic method `__repr__()`
+We will now another magic method `__repr__()`.
 
         def __repr__(self):
             return f"title={self.title}, author={self.author}, price={self.price}"
 
-Now check how it behaves
+Now check how it behaves.
 
     print(repr(b2)) # prints title=Perl Hacks, author=Damian Conway price=60    
 
@@ -613,7 +613,7 @@ Believe it or not, it would print `False` but why?
 
 Because `Python` doesn't do attribute comparison.
 
-We can solve this issue by overriding magic method `__eq__()` like below
+We can solve this issue by overriding magic method `__eq__()` like below:
 
         def __eq__(self, otherobject):
             if not isinstance(otherobject, Book):
@@ -623,7 +623,7 @@ We can solve this issue by overriding magic method `__eq__()` like below
                     self.author == otherobject.author and
                     self.price == otherobject.price)
 
-Let's do the comparison now
+Let's do the comparison now.
 
     print(b1 == b2) # prints True
     print(b1 == b3) # prints False
@@ -631,7 +631,7 @@ Let's do the comparison now
 
 #### `__ge__()`
 
-We can overried magic method `__ge__()` to test greater than or equal comparison
+We can override magic method `__ge__()` to test greater than or equal comparison.
 
         def __ge__(self, otherobject):
             if not isinstance(otherobject, Book):
@@ -639,14 +639,14 @@ We can overried magic method `__ge__()` to test greater than or equal comparison
                 
             return self.price >= otherobject.price
 
-Test the comparison
+Test the comparison.
 
     print(b1 >= b2) # prints False
     print(b2 >= b1) # prints True
 
 #### `__gt__()`
 
-We can overried magic method `__gt__()` to test greater than comparison
+We can overried magic method `__gt__()` to test greater than comparison.
 
         def __gt__(self, otherobject):
             if not isinstance(otherobject, Book):
@@ -654,14 +654,14 @@ We can overried magic method `__gt__()` to test greater than comparison
                 
             return self.price > otherobject.price
 
-Test the comparison
+Test the comparison.
 
     print(b1 > b2) # prints False
     print(b2 > b1) # prints True
 
 #### `__le__()`
 
-We can overried magic method `__le__()` to test less than or equal comparison
+We can overried magic method `__le__()` to test less than or equal comparison.
 
         def __le__(self, otherobject):
             if not isinstance(otherobject, Book):
@@ -669,14 +669,14 @@ We can overried magic method `__le__()` to test less than or equal comparison
                 
             return self.price <= otherobject.price
 
-Test the comparison
+Test the comparison.
 
     print(b1 <= b2) # prints True
     print(b2 <= b1) # prints False
 
 #### `__lt__()`
 
-We can overried magic method `__lt__()` to test less than comparison
+We can overried magic method `__lt__()` to test less than comparison.
 
         def __lt__(self, otherobject):
             if not isinstance(otherobject, Book):
@@ -684,7 +684,7 @@ We can overried magic method `__lt__()` to test less than comparison
                 
             return self.price < otherobject.price
 
-Test the comparison
+Test the comparison.
 
     print(b1 < b2) # prints True
     print(b2 < b1) # prints False    
@@ -721,7 +721,7 @@ It gets called everytime we try to access an object attribute.
                 return p - (p * d)
             return super().__getattribute__(name)
 
-Now test the magic method
+Now test the magic method.
 
     b1 = Book("Learning Perl", "brian d foy", 50)
     print(b1) # prints Learning Perl by brian d foy costs 45
@@ -733,13 +733,13 @@ The magic method `__getattr__()` only kicks in when `__getattribute__()` lookup 
         def __getattr__(self, name):
             return name + " is not here!"
 
-So this would get caught
+So this would get caught.
 
     print(b1.unknownprop) # print unknownprop is not here!
 
 #### `__setattr__()`  
 
- Now we will try to intercept setting attribute action by overriding magic method `__setattr__()`
+ Now we will try to intercept setting attribute action by overriding magic method `__setattr__()`.
 
          def __setattr__(self, name, value):
             if name == "price":
@@ -747,11 +747,11 @@ So this would get caught
                     raise ValueError("The 'price' attribute must be a float.")
             return super().__setattr__(name, value)       
 
-Test the change
+Test the change.
 
     b1.price = 50 # throw exception as the value is not float
 
-We can work around this by cast
+We can work around this by cast.
 
     b1.price = float(50) # all good now
 
@@ -764,7 +764,7 @@ The magic method `__call__()` can be used to call the object like a function.
             self.author = author
             self.price  = price
 
-Time for some action now
+Time for some action now.
 
     b1 = Book("Learning Perl", "brian d foy", 50)
     print(b1) # prints Learning Perl by brian d foy costs 50
@@ -785,7 +785,7 @@ In `Python 3.7`, the data class was introduced to automate the attribute setting
         pages: int
         price: float
 
-Test the data class now
+Test the data class now.
 
     b1 = Book("Learning Perl", "brian d foy", 800, 50.0)
     b2 = Book("Perl Hacks", "Damian Conway", 600, 60.0)  
@@ -798,7 +798,7 @@ Test the data class now
     print(b1 == b3) # True
     print(b1 == b2) # False
 
-You can even add regular method to data class
+You can even add regular method to data class.
 
     from dataclasses import dataclass
 
@@ -812,17 +812,17 @@ You can even add regular method to data class
         def bookinfo(self):
             return f"{self.title} by {self.author}"
 
-Try the regular method in data class
+Try the regular method in data class.
 
     b1 = Book("Learning Perl", "brian d foy", 800, 50.0)   
     print(b1.bookinfo()) # prints Learning Perl by brian d foy
 
-You can manage the post initialisation stage by overriding magic method `__post_init__()`
+You can manage the post initialisation stage by overriding magic method `__post_init__()`.
 
         def __post_init__(self):
             self.description = f"{self.title} by {self.author}, {self.pages} pages"
 
-Magic works eventually
+Magic works eventually.
 
     print(b1.description) # prints Learning Perl by brian d foy, 800
 
@@ -837,14 +837,14 @@ How about setting default values to data class?
         pages: int = 0
         price: float = 0.0
 
-Test the default values
+Test the default values.
 
     b = Book()
     print(b)        # prints Book(title='No Title', author='No Author', pages=0, price=0.0)
 
-**NOTE:** Non default attributes should come first then default value attribute
+**NOTE:** Non default attributes should come first then default value attribute.
 
-So the following definition would throw error
+So the following definition would throw error.
 
     from dataclasses import dataclass
 
@@ -866,7 +866,7 @@ You can also use `field()` function to provide default value.
         pages: int = 0
         price: float = field(default = 10.0)
 
-Let's checkout the change
+Let's checkout the change.
 
     b1 = Book("Learning Perl", "brian d foy", 800)
     b2 = Book("Perl Hacks", "Damian Conway", 600)
@@ -889,7 +889,7 @@ You can use function for default value too.
         pages: int = 0
         price: float = field(default_factory=price_func)
 
-Test the random default using function
+Test the random default using function.
 
     b1 = Book("Learning Perl", "brian d foy", 800)
     b2 = Book("Perl Hacks", "Damian Conway", 600)
@@ -906,13 +906,13 @@ Test the random default using function
         value1: str = "Value 1"
         value2: int = 0
 
-Test the immutable data class
+Test the immutable data class.
 
     c = ImmutableClass()
     print(c.value1, c.value2)
     c.value1 = "Another value" # throw error
 
-Even function wouldn't allow change as below
+Even function wouldn't allow change as below:
 
     from dataclasses import dataclass
 
@@ -924,12 +924,12 @@ Even function wouldn't allow change as below
         def some_func(self, newval):
             self.value2 = newval
 
-Try this, you should see error
+Try this, you should see error.
 
     c = ImmutableClass()
     c.some_func(10)
 
-You must note, object creation stage you can set any value you like
+You must note, object creation stage you can set any value you like.
 
     c = ImmutableClass("New Val", 10)
     print(c.value1, c.value2)   # prints New Val 10
