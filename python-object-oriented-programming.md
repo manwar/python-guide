@@ -116,14 +116,14 @@ Every class in `Python` is a sub class of generic super class `object`. So this 
             else:
                 self.booktype = booktype
 
-Call class method
+Call class method.
 
       print(Book.get_book_types())
 
       book1 = Book("Learning Perl", "HARDCOVER")  # OK
       book2 = Book("Perl Hacks", "COMIC")         # Throw error
 
-Call static method
+Call static method.
 
       thebooks = Book.get_book_list()
       thebooks.append(Book("Learning Perl", "HARDCOVER"))
@@ -165,7 +165,7 @@ We can solve this using `inheritance`. First extract, `title` and `price` in a s
             self.title = title
             self.price = price
 
-With this new class `Publication`, we can now redefine the class `Book` as below
+With this new class `Publication`, we can now redefine the class `Book` as below:
 
     class Book(Publication):
         def __init__(self, title, author, pages, price):
@@ -193,7 +193,7 @@ Now with the help of `Periodical` class, we can cleanup the `Magazine` and `News
         def __init__(self, title, publisher, price, period):
             super().__init__(title, publisher, price, period)
 
-Use the new refined class definitions like below
+Use the new refined class definitions like below:
 
     b1 = Book("Learning Perl", "brian d foy", 800, 40)
     n1 = Newspaper("Evening Standard", "Evening Standard Ltd.", 4, "Daily")
