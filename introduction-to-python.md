@@ -95,6 +95,17 @@ You can also create documentation of user defined function like below:
 
     print(addFive.__doc__)
 
+#### Docstring Best Practices
+
+    1) Enclose docstrings in tripe quotes.
+    2) First line should be summary sentence of functionality.
+    3) Modules: List important classes, functions, exceptions.
+    4) Classes: List important methods.
+    5) Functions: 
+       a) List parameters and explain each, one per line. 
+       b) If there is a return value then list it otherwise leave it. 
+       c) If it raises exception then mention it.
+
 ## Variables
 ***
 
