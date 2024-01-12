@@ -406,6 +406,11 @@ Function with variable number of parameters.
 
     print(addAll(1,2,3))    # prints 6
     print(addAll(1,2,3,4))  # prints 10
+
+What if we already have a list and wants to pass it as variable arguments.
+
+    nums = [1,2,3]
+    print(addAll(*nums))    # prints 6
     
 #### Built-in functions in Python
 
