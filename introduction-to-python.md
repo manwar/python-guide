@@ -1,10 +1,10 @@
 ## Introduction to Python
 ***
 - [Hello World](#hello-world)
-- [Variable](#variable)
+- [Variables](#variables)
 - [DataTypes](#datatypes)
 - [Functions](#functions)
-- [Module](#module)
+- [Modules](#modules)
 - [Conditions](#conditions)
 - [Loops](#loops)
 - [Recursion](#recursion)
@@ -71,7 +71,7 @@ For single line comment, you can use `#` same as in `Perl`.
 
 For multilines comment, you have to use `'''` i.e. 3 single quotes in the beginning and in the end.
 
-## Variable
+## Variables
 ***
 
 Variable declaration as simple as below:
@@ -830,7 +830,7 @@ Try one more example as below:
 
     print(list(map(grades, sorted(scores))))  # prints ['D', 'C', 'B', 'B', 'A']
 
-## Module
+## Modules
 ***
 
 Most commonly used modules in **Python** are `calendar`, `math`, `random`.
@@ -855,6 +855,73 @@ Picks random entry from the given sequence.
 Shuffles the given list.
       
       random.shuffle(alpha)
+
+#### itertools
+
+The `itertools` is a very powerful module of `Python` and it cames with the source, so you don't need to install it separately.
+
+It is used to create iterators.
+
+The different types of iterator that you can create are as follow:
+
+    1) Cycle Iterator
+    2) Count Iterator
+    3) Accumulate Iterator
+    4) Chain Iterator
+    5) dropwhile
+    6) takewhile
+
+The `Cycle` iterator is used to create infinite iterator as shown below:
+
+    import itertools
+    
+    names = ["Joe", "Blog", "Bill", "Gates"]
+    iter = itertools.cycle(names)
+    print(next(iter))     # prints Joe
+    print(next(iter))     # prints Blog
+    print(next(iter))     # prints Bill
+    print(next(iter))     # prints Gates
+    print(next(iter))     # prints Joe
+
+The `Count` iterator is used to create counter as shown below. 
+
+It takes starting value which defaults to `0` and step value which defaults to `1`.
+
+    counter = itertools.count(100, 10)
+    print(next(counter))  # prints 100
+    print(next(counter))  # prints 110
+    print(next(counter))  # prints 120
+
+The `Accumulate` iterator accumulates values.
+
+    scores = [10,20,50,20,40,30]
+    accum = itertools.accumulate(scores)
+    print(list(accum))    # prints 10, 30, 80, 100, 140, 170
+    
+We can change the default behaviour of `Accumulate` iterator which is `addition` to something else.
+
+    accum = itertools.accumulate(scores, max)
+    print(list(accum))    # prints 10, 20, 50, 50, 50, 50
+
+It you noticed, when it reached the max value, it keeps repeating until the list ends.
+
+The `Chain` iterator connects all the sequences together.
+
+    chain = itertools.chain("ABCD", "1234")
+    print(list(chain))    # prints ['A','B','C','D','1','2','3','4']
+
+The `dropwhile` and `takewhile` will return values until a certain condition is met that stops them.
+
+    def testFunction(s):
+        return s < 40
+
+    scores = [10,20,50,20,40,30]
+    print(list(itertools.dropwhile(testFunction, scores)))  # prints [50,20,40,30]
+    print(list(itertools.takewhile(testFunction, scores)))  # prints [10,20]
+
+The `dropwhile` will drop score from the list where the `testFunction` returns true.
+
+The `takewhile` will take score from the list where the `testFunction` returns true.
 
 ## Conditions
 ***
