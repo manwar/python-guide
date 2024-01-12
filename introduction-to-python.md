@@ -71,6 +71,30 @@ For single line comment, you can use `#` same as in `Perl`.
 
 For multilines comment, you have to use `'''` i.e. 3 single quotes in the beginning and in the end.
 
+#### Documentations
+
+If you ever want to find documentation of any built-in functions in `Python` then you can use `__doc__`.
+
+    print(map.__doc__)
+
+It also applies to module too.
+
+    import itertools
+
+    print(itertools.__doc__)
+
+You can also create documentation of user defined function like below:
+
+    def addFive(n) -> int:
+        """addFive(n) --> adds 5 to the given number.
+
+        Parameters:
+        n: Any number.
+        """
+        return (n+5)
+
+    print(addFive.__doc__)
+
 ## Variables
 ***
 
