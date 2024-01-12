@@ -858,7 +858,7 @@ Shuffles the given list.
 
 #### itertools
 
-The `itertools` is a very powerful module of `Python` and it cames with the source, so you don't need to install it separately.
+The `itertools` is a very powerful module of `Python` and it is shipped with the source, so you don't need to install it separately.
 
 It is used to create iterators.
 
