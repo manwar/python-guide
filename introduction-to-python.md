@@ -396,6 +396,36 @@ Function can be called with named parameters in any order.
 
     print(power(x = 3, n = 2)) # prints 8
 
+If we want to force user to always call the function with named parameters?
+
+Let's redefine the above function `power()` to enforce named parameters calling.
+
+    def power(n, x = 1, *, suppressExceptions=False):
+        result = 1
+        for i in range(x):
+            result = result * n
+
+With the change, you can still call the function as below without any issues.
+
+    print(power(2, 3))  # prints 8
+
+However if we call like below then you would error.
+
+    print(power(2, 3, True))  # TypeError: power() takes from 1 to 2 positional arguments but 3 were given
+
+Let's call with `suppressExceptions=True` like below:
+
+    print(power(2, 3, suppressExceptions=True))  # prints 8
+
+or like this:
+
+    print(power(2, 3, suppressExceptions=False))  # prints 8
+
+or with named parameters like below:
+
+    print(power(x=2, n=3))  # prints 8
+    print(power(n=3, x=2))  # prints 8
+
 Function with variable number of parameters.
 
     def addAll(*args):
@@ -421,6 +451,26 @@ You can get the complete list [**here**](https://docs.python.org/3/library/funct
     c) int() returns integer value of the input data.
     d) str() returns string value of the input data.
     e) + operator can be used for string concatenation e.g. print("Hello " + name)
+
+#### Lambda Functions
+
+The `Lambda` function is like anonymous function in `Perl`.
+
+    def CelciusToFahrenheit(temp):
+        return (temp * 9/5) + 32
+    def FahrenheitToCelcius(temp):
+        return (temp - 32) * 5/9
+
+    celcius = [0, 12, 34, 100]
+    fahrenheit = 32, 65, 100, 212]
+
+    print(list(map(FahrenheitToCelcius, fahrenheit)))
+    print(list(map(CelciusToFahrenheit, celcius)))
+
+Let's use the `lambda` function instead of regular function.
+
+    print(list(map(lambda t: (t - 32) * 5/9, fahrenheit)))
+    print(list(map(lambda t: (t * 9/5) + 32, celcius)))
 
 Let's try some most useful built-in functions.
 
