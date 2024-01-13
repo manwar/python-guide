@@ -1247,6 +1247,92 @@ You can autogenerate unique value for names using the `auto` class.
     fruits[Fruit.BANANA] = "Healthy Fruit"
     print(fruits[Fruit.BANANA])       # prints Healthy Fruit
 
+#### Class String Functions
+
+The `object.__str__(self)` function is called for `str(object)`, `print(object)` and `"{0}".format(object)`.
+
+The `object.__repr__(self)` funciton is called for `repr(object`.
+
+The `object.__format__(self, format_spec)` is called for `format(object, format_spec)`.
+
+The `object.__bytes__(self)` is called for `bytes(object)`.
+
+Let's us see some examples:
+
+    class Author():
+        def __init__(self):
+            self.fname = "Damian"
+            self.lname = "Conway"
+            self.book  = "Perl Hacks"
+
+    author = Author()
+    print(author)                              # prints <__main__.Author object at 0x7f26446c6640>
+    print(str(author))                         # prints <__main__.Author object at 0x7f26446c6640>
+    print(repr(author))                        # prints <__main__.Author object at 0x7f26446c6640>
+    print("Formatted: {0}".format(author))     # prints Formatted: <__main__.Author object at 0x7f26446c6640>
+
+Let's override string function `__repr__()`
+
+    class Author():
+        def __init__(self):
+            self.fname = "Damian"
+            self.lname = "Conway"
+            self.book  = "Perl Hacks"
+
+        def __repr__(self):
+            return "<Author Class - {0} {1} {2}>".format(self.fname, self.lname, self.book)
+
+    author = Author()
+    print(author)                              # prints <Author Class - Damian Conway Perl Hacks>
+    print(str(author))                         # prints <Author Class - Damian Conway Perl Hacks>
+    print(repr(author))                        # prints <Author Class - Damian Conway Perl Hacks>
+    print("Formatted: {0}".format(author))     # prints Formatted: <Author Class - Damian Conway Perl Hacks>
+
+Let's override string function `__str__()` now.
+
+    class Author():
+        def __init__(self):
+            self.fname = "Damian"
+            self.lname = "Conway"
+            self.book  = "Perl Hacks"
+
+        def __repr__(self):
+            return "<Author Class - {0} {1} {2}>".format(self.fname, self.lname, self.book)
+
+        def __str__(self):
+            return "Author ({0}, {1}, {2})".format(self.fname, self.lname, self.book)
+
+    author = Author()
+    print(author)                              # prints Author(Damian Conway Perl Hacks)
+    print(str(author))                         # prints Author(Damian Conway Perl Hacks)
+    print(repr(author))                        # prints <Author Class - Damian Conway Perl Hacks>
+    print("Formatted: {0}".format(author))     # prints Formatted: Author(Damian Conway Perl Hacks)
+
+Finally let's override string function `__bytes__()` like here:
+
+    class Author():
+        def __init__(self):
+            self.fname = "Damian"
+            self.lname = "Conway"
+            self.book  = "Perl Hacks"
+
+        def __repr__(self):
+            return "<Author Class - {0} {1} {2}>".format(self.fname, self.lname, self.book)
+
+        def __str__(self):
+            return "Author ({0}, {1}, {2})".format(self.fname, self.lname, self.book)
+
+        def __bytes__(self):
+            val = "Author:{0}:{1}:{2}".format(self.fname, self.lname, self.book)
+            return bytes(val.encode('utf-8'))
+
+    author = Author()
+    print(author)                              # prints Author(Damian Conway Perl Hacks)
+    print(str(author))                         # prints Author(Damian Conway Perl Hacks)
+    print(repr(author))                        # prints <Author Class - Damian Conway Perl Hacks>
+    print("Formatted: {0}".format(author))     # prints Formatted: Author(Damian Conway Perl Hacks)
+    print(bytes(author))                       # prints b'Author:Damian:Conway:Perl Hacks'
+
 ## Conditions
 ***
 
