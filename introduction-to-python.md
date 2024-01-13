@@ -2053,9 +2053,22 @@ Let's apply filter to the `List Comprehension` like below:
     oddSquared = [e ** 2 for e in odds if e > 3 and e < 17]
     print(oddSquared)                                # prints [25, 49, 81, 121, 169, 225]
 
-#### Dictionay Comprehension
+#### Dictionary Comprehension
 
+    temps = [0, 12, 24, 100]
 
+Given the celcius temperature in the list, we want to build a dictionary mapping celcius temperature to it's corresponding fahrenheit temperature.
+
+    dict = {t: (t * 9/5) + 32 for t in temps if t < 100}
+    print(dict)                                      # prints {0: 32.0, 12: 53.6, 34: 93.2}
+    print(dict[12])                                  # prints 53.6
+
+Let's merge two dictionaries with comprehension.
+
+    team1 = {"Jones": 24, "Jameson": 18, "Smith": 58, "Burns": 7}
+    team2 = {"White": 12, "Macke": 88, "Perce": 4}
+    newteam = {k:v for team in (team1, team2) for k,v in team.items()}
+    print(newteam)                                   # prints {'Jones': 24, 'Jameson': 18, 'Smith': 58, 'White': 12, 'Macke': 88, 'Perce': 4}
 
 #### Set Comprehension
 
