@@ -280,16 +280,62 @@ Let's see some examples showing `Counter`:
 
     print(c1 & c2)                                     # prints Counter({'Frank': 1, 'James': 1})
 
- Let's see some examples showing `OrderedDict`:   
+Let's see some examples showing `OrderedDict`:   
 
+    from collections import OrderedDict
 
+    sportTeams = [("Royals", (18,12)), ("Rockets", (24,6)),
+                  ("Cardinals", (20,10)), ("Dragons", (22,8)),
+                  ("Kings", (15,15)), ("Charger", (20,10)),
+                  ("Jets", (16,14)), ("Warriors", (25,5))]
 
+    sortedTeams = sorted(sportTeams, key=lambda t: t[1][0], reverse=True)
+    teams = OrderedDict(sortedTeams)
+    print(teams)
 
+You should see something like below:
 
+    OrderedDict([("Warriors", (25,5)), ("Rockets", (24,6)), ("Dragons", (22,8)), ("Cardinals", (20,10)), ("Charger", (20,10)), ("Royals", (18,12)), ("Jets", (16,14)), ("Kings", (15,15))])
 
+Let's pop the top team and its win/loss numbers.
 
- 
+    team, winloss = teams.popitem(False)
+    print("Top Team: ", team, winloss)             # prints Top Team: Warrior (25,5)
 
+How about next Top 4 teams?
+
+    for i, team in enumerate(teams, start = 1):
+        print(i, team)
+        if i == 4:
+            break
+
+Here is result of the above code:
+
+    1 Rockets
+    2 Dragons
+    3 Cardinals
+    4 Chargers
+
+How about test for equality?
+
+    a = OrderedDict({"a": 1, "b": 2, "c": 3})
+    b = OrderedDict({"a": 1, "b": 2, "c": 3})    
+    print("Equality Test: ", a == b)            # prints Equality Test: True
+
+If we change the order of items?
+
+    a = OrderedDict({"a": 1, "b": 2, "c": 3})
+    b = OrderedDict({"a": 1, "c": 3, "b": 2})    
+    print("Equality Test: ", a == b)            # prints Equality Test: False
+
+If we change it to regular dictionary?
+
+    a = OrderedDict({"a": 1, "b": 2, "c": 3})
+    b = {"a": 1, "c": 3, "b": 2}
+    print("Equality Test: ", a == b)            # prints Equality Test: True
+
+Let's see some examples showing `Deque`:   
+    
 `List`: Square bracket `[]` can be used to create a list.
 
     list = [2, 4, 6, 8, 10]
