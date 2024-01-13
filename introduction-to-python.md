@@ -1437,7 +1437,80 @@ Let's override `__dir__()` function as below:
     print(mycolor.hexcolor)              # prints #7dc856
 
     print(dir(mycolor))                  # prints ("red", "green", "blue", "rgbcolor", "hexcolor")
+
+#### Class Numerical Operators
+
+The `object.__add__(self, other)` is same as `self + other`.
+
+The `object.__sub__(self, other)` is same as `self - other`.
+
+The `object.__mul__(self, other)` is same as `self * other`.
+
+The `object.__div__(self, other)` is same as `self / other`.
+
+The `object.__floordiv__(self, other)` is same as `self // other`.
+
+The `object.__pow__(self, other)` is same as `self ** other`.
+
+The `object.__and__(self, other)` is same as `self & other`.
+
+The `object.__or__(self, other)` is same as `self or other`.
+
+You can also use `in-place` operations like below:
+
+The `object.__iadd__(self, other)` is same as `self += other`.
+
+The `object.__isub__(self, other)` is same as `self -= other`.
+
+The `object.__imul__(self, other)` is same as `self *= other`.
+
+The `object.__itruediv__(self, other)` is same as `self /= other`.
+
+The `object.__ifloordiv__(self, other)` is same as `self //= other`.
+
+The `object.__ipow__(self, other)` is same as `self **= other`.
+
+The `object.__iand__(self, other)` is same as `self &= other`.
+
+The `object.__ior__(self, other)` is same as `self or= other`.
+
+Let's show some of the above functions in the following example:
+
+    class Point():
+        def __init__(self, x, y):
+            self.x = x
+            self.y = y
+
+        def __repr__(self):
+            return "<Point x:{0}, y:{1}>".format(self.x, self.y)
+
+        def __add__(self, other):
+            return Point(self.x + other.x, self.y + other.y)
+
+        def __sub__(self, other):
+            return Point(self.x - other.x, self.y - other.y)
     
+        def __iadd__(self, other):
+            self.x += other.x
+            self.y += other.y
+            return self
+
+    p1 = Point(10, 20)
+    p2 = Point(30, 30)
+
+    print(p1, p2)          # prints <Point x:10,y:20> <Point x:30,y:30)
+
+    p3 = p1 + p2
+    print(p3)              # prints <Point x:40,y:50>
+
+    p4 = p2 - p1
+    print(p4)              # prints <Point x:20,y:10>
+
+    p1 += p2
+    print(p1)              # prints <Point x:40,y:50>
+
+#### Class Comparison Operators
+            
 ## Conditions
 ***
 
