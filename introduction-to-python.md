@@ -1498,7 +1498,7 @@ Let's show some of the above functions in the following example:
     p1 = Point(10, 20)
     p2 = Point(30, 30)
 
-    print(p1, p2)          # prints <Point x:10,y:20> <Point x:30,y:30)
+    print(p1, p2)          # prints <Point x:10,y:20> <Point x:30,y:30>
 
     p3 = p1 + p2
     print(p3)              # prints <Point x:40,y:50>
@@ -1510,7 +1510,72 @@ Let's show some of the above functions in the following example:
     print(p1)              # prints <Point x:40,y:50>
 
 #### Class Comparison Operators
-            
+
+The `object.__gt__(self, other)` is same as `self > other`.
+
+The `object.__ge__(self, other)` is same as `self >= other`.
+
+The `object.__lt__(self, other)` is same as `self < other`.
+
+The `object.__le__(self, other)` is same as `self <= other`.
+
+The `object.__eq__(self, other)` is same as `self == other`.
+
+The `object.__ne__(self, other)` is same as `self != other`.
+
+    class Employee():
+        def __init__(self, fname, lname, level, years):
+            self.fname = fname
+            self.lname = lname
+            self.level = level
+            self.years = years
+
+        def __ge__(self, other):
+            if self.level == other.level:
+                return self.years >= other.years
+            return self.level >= other.level
+
+        def __gt__(self, other):
+            if self.level == other.level:
+                return self.years > other.years        
+            return self.level > other.level
+
+        def __le__(self, other):
+            if self.level == other.level:
+                return self.years <= other.years        
+            return self.level <= other.level
+
+        def __lt__(self, other):
+            if self.level == other.level:
+                return self.years < other.years        
+            return self.level < other.level
+
+        def __eq__(self, other):
+            pass
+
+    dept = []
+    dept.append(Employee("Tim", "Sims", 5, 9))
+    dept.append(Employee("John", "Doe", 4, 12))
+    dept.append(Employee("Jane", "Smith", 6, 6))
+    dept.append(Employee("Rebecca", "Rpbinson", 5, 13))
+    dept.append(Employee("Tyler", "Durden", 5, 12))    
+
+    print(dept[0] > dept[2])          # prints False
+    print(dept[4] < dept[3])          # prints True
+
+Now if we want to sort employee then you can do something like below:
+
+    emps = sorted(dept)
+    for emp in emps:
+        print(emp.lname)
+
+You should see the result like this:
+    Doe
+    Sims
+    Durden
+    Robinson
+    Smith
+        
 ## Conditions
 ***
 
