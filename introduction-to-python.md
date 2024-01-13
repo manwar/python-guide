@@ -302,7 +302,7 @@ Let's pop the top team and its win/loss numbers.
     team, winloss = teams.popitem(False)
     print("Top Team: ", team, winloss)             # prints Top Team: Warrior (25,5)
 
-How about next Top 4 teams?
+How about next `Top 4` teams?
 
     for i, team in enumerate(teams, start = 1):
         print(i, team)
@@ -335,6 +335,40 @@ If we change it to regular dictionary?
     print("Equality Test: ", a == b)            # prints Equality Test: True
 
 Let's see some examples showing `Deque`:   
+
+It is pronounced as `Double-ended Queue`.
+
+    d = collections.deque("abcdefg")
+
+It is like each letter in a cell of its own. 
+
+    ["a", "b", "c", "d", "e", "f", "g"]
+
+The `appendleft()` or `popleft()` applies to the side `"a"` i.e the start position.
+
+The `append()` or `pop()` applies to the side `"g"` i.e. the end position.
+
+There is also a `rotate()` function that operates in either direction. 
+
+It takes a parameter that indicates how many items to rotate and it defaults to 1. The positive number rotate to the `right` and negative number to the `left`.
+
+    import collections
+    import string
+
+    d = collections.deque(string.ascii_lowercase)
+    print("Item count: ", str(len(d)))             # prints Item count: 26
+
+    for elem in d:
+        print(elem.upper(), end=",")               # prints A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
+    
+    d.pop()                                        # removes 'z'
+    d.popleft()                                    # removes 'a'
+    d.append(2)                                    # adds '2' at the end
+    d.appendleft(1)                                # adds '1' at the start
+    print(d)                                       # prints deque(['1','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','2'])
+
+    d.rotate(10)
+    print(d)                                       # prints deque(['q','r','s','t','u','v','w','x','y','2','1','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p'])
     
 `List`: Square bracket `[]` can be used to create a list.
 
