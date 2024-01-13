@@ -189,6 +189,77 @@ What if we encode the string using `'utf-32'` encoding?
 
 **NOTE**: `String` and `Byte` are not the same.
 
+#### Basic Collections
+
+    1) List: Mutable sequence of values
+    2) Tuple: Fixed sequence of values
+    3) Set: Sequence of distinct values
+    4) Dictionary: Collection of key-value pairs
+
+On top of the above listed, the `collections` module provide some more like below:
+
+    1) namedtuple: Tuple with naned fields
+    2) OrderedDict, defaultdict: Dictionaries with special properties
+    3) Counter: Counts distinct values
+    4) deque: Double-ended list objects
+
+Let's see some examples showing `namedtuple`:
+
+    import collections
+
+    Point = collections.namedtuple("Point", "x, y")
+    p1 = Point(10,20)
+    p2 = Point(30,40)
+    print(p1, p2)       # prints Point(x=10, y=20) Point(x=30, y=40)
+    print(p1.x, p2.y)   # prints 10 40
+
+You can use `_replace` to create new instance.
+
+    p1 = p1._replace(x=100)
+    print(p1)           # prints Point(x=100, y=20)
+
+Now let's see some example showing `defaultdict`.
+
+    from collections import defaultdict
+
+    fruits = ['apple', 'pear', 'orange', 'banana',
+              'apple', 'grape', 'banana', 'banana' ]
+
+    fruitCounter = {}
+    for fruit in fruits:
+        fruitCounter[fruit] += 1
+
+The above code would throw `KeyError: 'apple'` as we try to set the counter without initialising.
+
+We can sort the issue like this:
+
+    for fruit in fruits:
+        if fruit in fruits.keys():
+            fruitCounter[fruit] += 1
+        else:
+            fruitCounter[fruit] = 1
+
+The above change in unnecessary and we can avoid it with the help of `defaultdict`.
+
+    fruitCounter = defaultdict(int)
+    for fruit in fruits:
+        fruitCounter[fruit] += 1
+
+Now you see no more error as before.
+
+We could even use `lambda` instead of `int` like this:
+
+    fruitCounter = defaultdict(lambda: 100)
+    for fruit in fruits:
+        fruitCounter[fruit] += 1
+
+You should see the count goes up by `100`.
+
+Let's see some examples showing `Counter`:
+
+
+
+
 `List`: Square bracket `[]` can be used to create a list.
 
     list = [2, 4, 6, 8, 10]
