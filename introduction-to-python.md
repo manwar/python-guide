@@ -297,7 +297,14 @@ Let's see some examples showing `OrderedDict`:
 
 You should see something like below:
 
-    OrderedDict([("Warriors", (25,5)), ("Rockets", (24,6)), ("Dragons", (22,8)), ("Cardinals", (20,10)), ("Charger", (20,10)), ("Royals", (18,12)), ("Jets", (16,14)), ("Kings", (15,15))])
+    OrderedDict([("Warriors", (25,5)), 
+                 ("Rockets", (24,6)), 
+                 ("Dragons", (22,8)), 
+                 ("Cardinals", (20,10)), 
+                 ("Charger", (20,10)), 
+                 ("Royals", (18,12)), 
+                 ("Jets", (16,14)), 
+                 ("Kings", (15,15))])
 
 Let's pop the top team and its win/loss numbers.
 
@@ -892,7 +899,12 @@ First create tuple by zipping `countries` and `populations`.
 
 You should get something like this:
 
-    [('Netherlands', 17500000), ('Nigeria', 190000000), ('Jordan', 10000000), ('Nepal', 30000000), ('Niger', 24000000), ('Japan', 128000000)]
+    [('Netherlands', 17500000), 
+     ('Nigeria', 190000000), 
+     ('Jordan', 10000000), 
+     ('Nepal', 30000000), 
+     ('Niger', 24000000), 
+     ('Japan', 128000000)]
 
 Now try `min()` to the tuples as below:
 
