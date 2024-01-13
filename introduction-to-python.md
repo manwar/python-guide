@@ -1300,13 +1300,13 @@ Let's override string function `__str__()` now.
             return "<Author Class - {0} {1} {2}>".format(self.fname, self.lname, self.book)
 
         def __str__(self):
-            return "Author ({0}, {1}, {2})".format(self.fname, self.lname, self.book)
+            return "Author ({0, {1}, {2})".format(self.fname, self.lname, self.book)
 
     author = Author()
-    print(author)                              # prints Author(Damian Conway Perl Hacks)
-    print(str(author))                         # prints Author(Damian Conway Perl Hacks)
+    print(author)                              # prints Author(Damian, Conway, Perl Hacks)
+    print(str(author))                         # prints Author(Damian, Conway, Perl Hacks)
     print(repr(author))                        # prints <Author Class - Damian Conway Perl Hacks>
-    print("Formatted: {0}".format(author))     # prints Formatted: Author(Damian Conway Perl Hacks)
+    print("Formatted: {0}".format(author))     # prints Formatted: Author(Damian, Conway, Perl Hacks)
 
 Finally let's override string function `__bytes__()` like here:
 
@@ -1327,10 +1327,10 @@ Finally let's override string function `__bytes__()` like here:
             return bytes(val.encode('utf-8'))
 
     author = Author()
-    print(author)                              # prints Author(Damian Conway Perl Hacks)
-    print(str(author))                         # prints Author(Damian Conway Perl Hacks)
+    print(author)                              # prints Author(Damian, Conway, Perl Hacks)
+    print(str(author))                         # prints Author(Damian, Conway, Perl Hacks)
     print(repr(author))                        # prints <Author Class - Damian Conway Perl Hacks>
-    print("Formatted: {0}".format(author))     # prints Formatted: Author(Damian Conway Perl Hacks)
+    print("Formatted: {0}".format(author))     # prints Formatted: Author(Damian, Conway, Perl Hacks)
     print(bytes(author))                       # prints b'Author:Damian:Conway:Perl Hacks'
 
 ## Conditions
