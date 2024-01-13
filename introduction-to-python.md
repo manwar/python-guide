@@ -1194,6 +1194,59 @@ The `dropwhile` will drop score from the list where the `testFunction` returns t
 
 The `takewhile` will take score from the list where the `testFunction` returns true.
 
+#### enum
+
+The `enum` module provides `Enum` class to define enumerations.
+
+    from enum import Enum
+    
+    class Fruit(Enum):
+        APPLE = 1
+        BANANA = 2
+        ORANGE = 3
+        TOMATO = 4
+
+    print(Fruit.APPLE)           # prints Fruit.APPLE
+    print(type(Fruit.APPLE))     # prints <enum 'Fruit'>
+    print(repr(Fruit.APPLE))     # prints <Fruit.APPLE: 1>
+
+Every enum has a `name` and a `value`.
+
+    print(Fruit.APPLE.name, Fruit.APPLE.value)     # Apple 1
+
+Enum names are always `UNIQUE` but can have same values.
+
+You can enforce checking values to be unique as well by importing `unique` class.
+
+    from enum import Enum,unique
+
+    @unique
+    class Fruit(Enum):
+        APPLE = 1
+        BANANA = 2
+        ORANGE = 3
+        TOMATO = 4
+
+You can autogenerate unique value for names using the `auto` class.
+
+    from enum import Enum,unique,auto
+
+    @unique
+    class Fruit(Enum):
+        APPLE = 1
+        BANANA = 2
+        ORANGE = 3
+        TOMATO = 4
+        PEAR = auto()
+
+    print(Fruit.PEAR.value)           # prints 5
+
+`enums` are hashable and can be used as keys.
+
+    fruits = {}
+    fruits[Fruit.BANANA] = "Healthy Fruit"
+    print(fruits[Fruit.BANANA])       # prints Healthy Fruit
+
 ## Conditions
 ***
 
