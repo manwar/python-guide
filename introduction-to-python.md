@@ -2029,7 +2029,7 @@ The same code can be re-written using the comprehension as below:
 
 #### List Comprehension
 
-Let's perform a mapping and filter function on a list.
+Let's perform a mapping function on a list.
 
     evens = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
     evenSquared = list(map(lambda e: e**2, evens))
