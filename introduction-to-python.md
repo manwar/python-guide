@@ -1956,7 +1956,7 @@ Let's add format str now.
 Now check the log file.
 
     2024-01-13 12:22:33,450: INFO: main Line:18 This is an info-level log message
-    2024-01-13 12:23:39,634: WARNING: main Line:19 This is an warning-level log message    
+    2024-01-13 12:23:39,634: WARNING: main Line:19 This is a warning-level log message    
 
 Let's add another function to log from and also date format string.
 
