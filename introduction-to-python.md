@@ -358,19 +358,23 @@ It takes a parameter that indicates how many items to rotate and it defaults to 
     import string
 
     d = collections.deque(string.ascii_lowercase)
-    print("Item count: ", str(len(d)))             # prints Item count: 26
+    print("Item count: ", str(len(d)))  # prints Item count: 26
 
     for elem in d:
-        print(elem.upper(), end=",")               # prints A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
+        print(elem.upper(), end=",")    # prints A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
     
-    d.pop()                                        # removes 'z'
-    d.popleft()                                    # removes 'a'
-    d.append(2)                                    # adds '2' at the end
-    d.appendleft(1)                                # adds '1' at the start
-    print(d)                                       # prints deque(['1','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','2'])
+    d.pop()                             # removes 'z'
+    d.popleft()                         # removes 'a'
+    d.append(2)                         # adds '2' at the end
+    d.appendleft(1)                     # adds '1' at the start
+    
+    print(d)        
+    # deque(['1','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','2'])
 
     d.rotate(10)
-    print(d)                                       # prints deque(['q','r','s','t','u','v','w','x','y','2','1','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p'])
+    
+    print(d)        
+    # deque(['q','r','s','t','u','v','w','x','y','2','1','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p'])
     
 `List`: Square bracket `[]` can be used to create a list.
 
@@ -2068,7 +2072,7 @@ Let's merge two dictionaries with comprehension.
     team1 = {"Jones": 24, "Jameson": 18, "Smith": 58, "Burns": 7}
     team2 = {"White": 12, "Macke": 88, "Perce": 4}
     newteam = {k:v for team in (team1, team2) for k,v in team.items()}
-    print(newteam)                                   # prints {'Jones': 24, 'Jameson': 18, 'Smith': 58, 'White': 12, 'Macke': 88, 'Perce': 4}
+    print(newteam)         # prints {'Jones': 24, 'Jameson': 18, 'Smith': 58, 'White': 12, 'Macke': 88, 'Perce': 4}
 
 #### Set Comprehension
 
