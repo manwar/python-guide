@@ -10,6 +10,7 @@
 - [Recursion](#recursion)
 - [Class](#class)
 - [Exception](#exception)
+- [Logging](#logging)
 - [File Management](#file-management)
 - [Date](#date)
 - [Calendar](#calendar)
@@ -1820,6 +1821,88 @@ Exception is handle using `try` block.
         print(e)
     finally:
         print("This code always runs")
+
+## Logging
+***
+
+The `logging` module can be used for adding log for different levels as below:
+
+    1) logging.debug("debug level")
+    2) logging.info("info level")
+    3) logging.warning("warning level")
+    4) logging.error("error level")
+    5) logging.critical("critical level")
+
+Let's us show some examples:
+
+    import logging
+
+    logging.debug("This is debug message")
+    logging.info("This is info message")
+    logging.warning("This is warning message")
+    logging.error("This is error message")
+    logging.critical("This is critical message")
+
+You should only see the following debug messages:
+
+    WARNING:root:This is warning message
+    ERROR:root:This is error message
+    CRITICAL:root:This is critical message
+
+So by default, `Python` only logs message level `WARNING` or above.
+
+We can change the default behaviour by calling `basicConfig()` method as below:
+
+    import logging
+
+    logging.basicConfig(level = logging.DEBUG)
+    logging.debug("This is debug message")
+    logging.info("This is info message")
+    logging.warning("This is warning message")
+    logging.error("This is error message")
+    logging.critical("This is critical message")
+
+Now you should see these logging messages:
+
+    DEBUG:root:This is debug message
+    INFO:root:This is info message
+    WARNING:root:This is warning message
+    ERROR:root:This is error message
+    CRITICAL:root:This is critical message
+
+By default logging message dump on the console but we can direct it to a log file like below:
+
+    import logging
+
+    logging.basicConfig(level = logging.DEBUG,
+                        filename = "output.log")
+    logging.debug("This is debug message")
+    logging.info("This is info message")
+    logging.warning("This is warning message")
+    logging.error("This is error message")
+    logging.critical("This is critical message")
+
+With the above changes all the log messages are now getting saved in the log file `output.log`.
+
+Be default log message would be appended to the log file.
+
+We can change this default behaviour by passing `filemode` parameter to the `basicConfig()` function like below:
+
+    import logging
+
+    logging.basicConfig(level = logging.DEBUG,
+                        filename = "output.log",
+                        filemode = "w")
+    logging.debug("This is debug message")
+    logging.info("This is info message")
+    logging.warning("This is warning message")
+    logging.error("This is error message")
+    logging.critical("This is critical message")
+
+    logging.info("Here is a {} variable and an int:".format("string", 10))
+
+#### Customized Logging
+
 
 ## File Management
 ***
