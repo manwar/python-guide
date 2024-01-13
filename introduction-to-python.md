@@ -1856,6 +1856,7 @@ We can change the default behaviour by calling `basicConfig()` method as below:
     import logging
 
     logging.basicConfig(level = logging.DEBUG)
+
     logging.debug("This is debug message")
     logging.info("This is info message")
     logging.warning("This is warning message")
@@ -1876,6 +1877,7 @@ By default logging message dump on the console but we can direct it to a log fil
 
     logging.basicConfig(level = logging.DEBUG,
                         filename = "output.log")
+
     logging.debug("This is debug message")
     logging.info("This is info message")
     logging.warning("This is warning message")
@@ -1893,6 +1895,7 @@ We can change this default behaviour by passing `filemode` parameter to the `bas
     logging.basicConfig(level = logging.DEBUG,
                         filename = "output.log",
                         filemode = "w")
+
     logging.debug("This is debug message")
     logging.info("This is info message")
     logging.warning("This is warning message")
@@ -1937,7 +1940,10 @@ Let's add format str now.
     import logging
 
     fmtstr = "%(asctime)s: %(levelname)s: %(funcName)s Line:%(lineno)d %(message)s"
-    logging.basicConfig(filename = "output.log", level = logging.DEBUG, filemode = "w", format = fmtstr)
+    logging.basicConfig(filename = "output.log", 
+                        level = logging.DEBUG, 
+                        filemode = "w", 
+                        format = fmtstr)
 
     logging.info("This is an info-level log message")
     logging.warning("This is a warning-level log message")
@@ -1969,7 +1975,7 @@ Let's add another function to log from and also date format string.
 With this you should see this the log file:
 
     2024-01-13 12:25:33 PM: INFO: main Line:18 This is an info-level log message
-    2024-01-13 12:25:33 PM: WARNING: main Line:19 This is an warning-level log message    
+    2024-01-13 12:25:33 PM: WARNING: main Line:19 This is a warning-level log message    
     2024-01-13 12:25:33 PM: DEBUG: anotherFunction Line:7 This is a debug-level log message
 
 Now if we want some additional information as well in the log file.
@@ -2000,7 +2006,7 @@ We could do something like this:
 Running the above code would generate the following logs:
 
     User:bill@gate.com 2024-01-13 12:30:25 PM: INFO: main Line:18 This is an info-level log message
-    User:bill@gate.com 2024-01-13 12:30:25 PM: WARNING: main Line:19 This is an warning-level log message    
+    User:bill@gate.com 2024-01-13 12:30:25 PM: WARNING: main Line:19 This is a warning-level log message    
     User:bill@gate.com 2024-01-13 12:30:25 PM: DEBUG: anotherFunction Line:7 This is a debug-level log message
    
 ## File Management
