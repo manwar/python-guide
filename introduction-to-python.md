@@ -1333,6 +1333,111 @@ Finally let's override string function `__bytes__()` like here:
     print("Formatted: {0}".format(author))     # prints Formatted: Author(Damian, Conway, Perl Hacks)
     print(bytes(author))                       # prints b'Author:Damian:Conway:Perl Hacks'
 
+#### Class Attribute Functions
+
+The `object.__getattribute__(self, attr)` is called for `object.attr`.
+
+The `object.__getattr__(self, attr)` is called for `object.attr`.
+
+The `object.__setattr__(self, attr, val)` is called for `object.attr = val`.
+
+The `object.__delattr__(self)` is called for `del object.attr`.
+
+The `object.__dir__(self)` is called for `dir(object)` to list class attributes.
+
+Let's look at some examples below:
+
+    class Color():
+        def __init__(self):
+            self.red = 50
+            self.green = 75
+            self.blue = 100
+
+        def __getattribute(self, attr):
+            if attr == "rgbcolor":
+                return (self.ref, self.green, self.blue)
+            elif attr == "hexcolor":
+                return "#{0:02x}{1:02x}{2:02x}".format(self.red, self.green, self.blue)
+            else:
+                attributeError
+
+    mycolor = Color()
+    print(mycolor.rgbcolor)              # prints (50, 75, 100)
+    print(mycolor.hexcolor)              # prints #324b64
+
+Let's override `__setattr__()` function as below:
+
+    class Color():
+        def __init__(self):
+            self.red = 50
+            self.green = 75
+            self.blue = 100
+
+        def __getattribute(self, attr):
+            if attr == "rgbcolor":
+                return (self.ref, self.green, self.blue)
+            elif attr == "hexcolor":
+                return "#{0:02x}{1:02x}{2:02x}".format(self.red, self.green, self.blue)
+            else:
+                attributeError
+
+        def __setattr__(self, attr, val):
+            if attr == "rgbcolor":
+                self.red = val[0]
+                self.green = val[1]
+                self.blue = val[2]
+            else:
+                super().__setattr__(attr, val)
+
+    mycolor = Color()
+    print(mycolor.rgbcolor)              # prints (50, 75, 100)
+    print(mycolor.hexcolor)              # prints #324b64
+
+    mycolor.rgbolor = (125, 200, 86)
+    print(mycolor.rgbcolor)              # prints (125, 200, 86)
+    print(mycolor.hexcolor)              # prints #7dc856
+
+You can still access regular attributes like below:
+
+    print(mycolor.red)                   # prints 125
+
+Let's override `__dir__()` function as below:
+
+    class Color():
+        def __init__(self):
+            self.red = 50
+            self.green = 75
+            self.blue = 100
+
+        def __getattribute(self, attr):
+            if attr == "rgbcolor":
+                return (self.ref, self.green, self.blue)
+            elif attr == "hexcolor":
+                return "#{0:02x}{1:02x}{2:02x}".format(self.red, self.green, self.blue)
+            else:
+                attributeError
+
+        def __setattr__(self, attr, val):
+            if attr == "rgbcolor":
+                self.red = val[0]
+                self.green = val[1]
+                self.blue = val[2]
+            else:
+                super().__setattr__(attr, val)
+
+        def __dir__(self):
+            return ("red", "green", "blue", "rgbcolor", "hexcolor")
+
+    mycolor = Color()
+    print(mycolor.rgbcolor)              # prints (50, 75, 100)
+    print(mycolor.hexcolor)              # prints #324b64
+
+    mycolor.rgbolor = (125, 200, 86)
+    print(mycolor.rgbcolor)              # prints (125, 200, 86)
+    print(mycolor.hexcolor)              # prints #7dc856
+
+    print(dir(mycolor))                  # prints ("red", "green", "blue", "rgbcolor", "hexcolor")
+    
 ## Conditions
 ***
 
