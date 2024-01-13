@@ -1210,11 +1210,11 @@ The `enum` module provides `Enum` class to define enumerations.
     print(type(Fruit.APPLE))     # prints <enum 'Fruit'>
     print(repr(Fruit.APPLE))     # prints <Fruit.APPLE: 1>
 
-Every enum has a `name` and a `value`.
+Every `enum` has a `name` and a `value`.
 
     print(Fruit.APPLE.name, Fruit.APPLE.value)     # Apple 1
 
-Enum names are always `UNIQUE` but can have same values.
+`enum` names are always `UNIQUE` but can have same values.
 
 You can enforce checking values to be unique as well by importing `unique` class.
 
