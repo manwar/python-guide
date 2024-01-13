@@ -1570,6 +1570,7 @@ Now if we want to sort employee then you can do something like below:
         print(emp.lname)
 
 You should see the result like this:
+
     Doe
     Sims
     Durden
