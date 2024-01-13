@@ -11,6 +11,7 @@
 - [Class](#class)
 - [Exception](#exception)
 - [Logging](#logging)
+- [Comprehensions](#comprehensions)
 - [File Management](#file-management)
 - [Date](#date)
 - [Calendar](#calendar)
@@ -644,7 +645,7 @@ The `Lambda` function is like anonymous function in `Perl`.
         return (temp - 32) * 5/9
 
     celcius = [0, 12, 34, 100]
-    fahrenheit = 32, 65, 100, 212]
+    fahrenheit = [32, 65, 100, 212]
 
     print(list(map(FahrenheitToCelcius, fahrenheit)))
     print(list(map(CelciusToFahrenheit, celcius)))
@@ -2008,7 +2009,58 @@ Running the above code would generate the following logs:
     User:bill@gate.com 2024-01-13 12:30:25 PM: INFO: main Line:18 This is an info-level log message
     User:bill@gate.com 2024-01-13 12:30:25 PM: WARNING: main Line:19 This is a warning-level log message    
     User:bill@gate.com 2024-01-13 12:30:25 PM: DEBUG: anotherFunction Line:7 This is a debug-level log message
-   
+
+## Comprehensions
+***
+
+Do you remember this code we did earlier?
+
+    def FahrenheitToCelcius(temp):
+        return (temp - 32) * 5/9
+        
+    fahrenheit = [32, 65, 100, 212]
+    print(list(map(FahrenheitToCelcius, fahrenheit)))
+
+The above functionality is very common in `Python` language so they came up with `Comprehensions` to deal with.
+
+The same code can be re-written using the comprehension as below:
+
+    print([ (t*9/5) + 32  for t in [32, 65, 100, 212] ])
+
+#### List Comprehension
+
+Let's perform a mapping and filter function on a list.
+
+    evens = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+    evenSquared = list(map(lambda e: e**2, evens))
+    print(evenSquared)                               # prints [4, 16, 36, 64, 100, 144, 196, 256, 324, 400]
+
+Now we will perform a mapping and filter function on a list.
+
+    evens = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+    evenSquared = list(
+        map(lambda e: e**2, filter(lambda e: e>4 and e<16, evens)))
+    print(evenSquared)                               # prints [36, 64, 100, 144, 196]
+
+Let's do the same using `List Comprehension` like below:
+
+    evenSquared = [e ** 2 for e in evens]
+    print(evenSquared)                               # prints [4, 16, 36, 64, 100, 144, 196, 256, 324, 400]
+
+Let's apply filter to the `List Comprehension` like below:
+
+    odds = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+    oddSquared = [e ** 2 for e in odds if e > 3 and e < 17]
+    print(oddSquared)                                # prints [25, 49, 81, 121, 169, 225]
+
+#### Dictionay Comprehension
+
+
+
+#### Set Comprehension
+
+
+
 ## File Management
 ***
 
