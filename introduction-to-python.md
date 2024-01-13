@@ -409,7 +409,7 @@ With the change, you can still call the function as below without any issues.
 
     print(power(2, 3))  # prints 8
 
-However if we call like below then you would error.
+However if we call like below then you would see error.
 
     print(power(2, 3, True))  # TypeError: power() takes from 1 to 2 positional arguments but 3 were given
 
