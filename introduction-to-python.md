@@ -237,7 +237,7 @@ We can sort the issue like this:
         else:
             fruitCounter[fruit] = 1
 
-The above change in unnecessary and we can avoid it with the help of `defaultdict`.
+The above change is unnecessary and we can avoid it with the help of `defaultdict`.
 
     from collections import defaultdict
     
