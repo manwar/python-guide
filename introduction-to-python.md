@@ -257,8 +257,38 @@ You should see the count goes up by `100`.
 
 Let's see some examples showing `Counter`:
 
+    from collections import Counter
+
+    class1 = ["Bob", "Becky", "Chad", "Darcy", "Frank", "Hannah",
+              "Kevin", "James", "James", "Melanie", "Penny", "Steve"]
+    class2 = ["Bill", "Barry", "Cindy", "Debbie", "Frank",
+              "Gabby", "Kelly", "James", "Joe", "Sam", "Tara", "Ziggy"]
+
+    c1 = Counter(class1)
+    c2 = Counter(class2)
+
+    print(c1["James"])                                 # prints 2
+    print(sum(c1.values()), " students in class 1.")   # prints 11 students in class 1.
+    
+    c1.update(class2)
+    print(sum(c1.values()), " students in class 1.")   # prints 23 students in class 1.    
+
+    print(c1.most_common(3))                           # prints [('James',3), ('Frank', 2), ('Bob', 1)]
+
+    c1.subtract(class2)
+    print(c1.most_common(3))                           # prints [('James',2), ('Bob', 1), ('Becky', 1)]
+
+    print(c1 & c2)                                     # prints Counter({'Frank': 1, 'James': 1})
+
+ Let's see some examples showing `OrderedDict`:   
 
 
+
+
+
+
+
+ 
 
 `List`: Square bracket `[]` can be used to create a list.
 
