@@ -220,8 +220,6 @@ You can use `_replace` to create new instance.
 
 Now let's see some example showing `defaultdict`.
 
-    from collections import defaultdict
-
     fruits = ['apple', 'pear', 'orange', 'banana',
               'apple', 'grape', 'banana', 'banana' ]
 
@@ -241,6 +239,8 @@ We can sort the issue like this:
 
 The above change in unnecessary and we can avoid it with the help of `defaultdict`.
 
+    from collections import defaultdict
+    
     fruitCounter = defaultdict(int)
     for fruit in fruits:
         fruitCounter[fruit] += 1
