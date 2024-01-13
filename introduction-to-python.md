@@ -18,7 +18,7 @@
 - [Data Formats](#data-formats)
 - [Web Framework](#web-framework)
 
-**Disclaimer:** These are my notes after attending the courses [[**Python Quick Start**](https://www.linkedin.com/learning/python-quick-start-22667553)], [[**Learning Python**](https://www.linkedin.com/learning/learning-python-14393370)] and [[**8 Things You Must Know in Python**](https://www.linkedin.com/learning/8-things-you-must-know-in-python)].
+**Disclaimer:** These are my notes after attending the courses [[**Python Quick Start**](https://www.linkedin.com/learning/python-quick-start-22667553)], [[**Learning Python**](https://www.linkedin.com/learning/learning-python-14393370)], [[**Advanced Python**](https://www.linkedin.com/learning/advanced-python)] and [[**8 Things You Must Know in Python**](https://www.linkedin.com/learning/8-things-you-must-know-in-python)].
 
 ## Hello World
 ***
@@ -2076,7 +2076,28 @@ Let's merge two dictionaries with comprehension.
 
 #### Set Comprehension
 
+    temps = [5, 10, 12, 14, 10, 23, 41, 30, 12, 24, 12, 18, 29]
 
+Suppose we want to build a set of unique fahrenheit temperatures of the given celcius temperatures.
+
+    ftemps1 =  [(t*9/5) + 32 for t in temps]
+    ftemps2 =  {(t*9/5) + 32 for t in temps}
+
+    print(ftemps1) # prints [41.0,50.0,53.6,57.2,50.0,73.4,105.8,86.0,53.6,64.4,84.2]
+    print(ftemps2) # prints {64.4,73.4,41.0,105.8,75.2,50.0,84.2,53.6,86.0,57.2}
+
+Let's build a set from input source.
+
+    text = "The quick brown fox jumped over the lazy dog"
+    chars = {c.upper() for c in text}
+    print(chars)
+    # {'B','N','H','V','Z','E','W','M','C','P','Q','L','Y','G','J','T','A','U','R','I',' ','O','D','K','F','X'}
+
+Let's get rid of space from the set.
+
+    chars = {c.upper() for c in text if not c.isspace()}
+    print(chars)
+    # {'B','N','H','V','Z','E','W','M','C','P','Q','L','Y','G','J','T','A','U','R','I','O','D','K','F','X'}
 
 ## File Management
 ***
@@ -2179,7 +2200,6 @@ You can install the module if missing using the command `pip install requests` o
     for year in last_twenty_years:
         display_width = year["value"] // 10_000_000
         print(f'{year["date"]}: {year["value"]}', "=" * display_width)
-
 
 Find OS name.
 
