@@ -1903,7 +1903,106 @@ We can change this default behaviour by passing `filemode` parameter to the `bas
 
 #### Customized Logging
 
+The `basicConfig()` function can be called with parameters `format` and `datefmt` to control how we want to log the message.
 
+Some examples that can be passed as format string to the function `basicConfig()`.
+
+    1. %(asctime)s   - Human readable date format when the log was created
+    2. %(filename)s  - File name when the log message originated
+    3. %(funcName)s  - Function name where the log message was originated
+    4. %(levelname)s - String representation of the message level
+    5. %(levelno)d   - Numeric representation of the message level
+    6. %(lineno)d    - Source line number where the logging call was issued
+    7. %(message)s   - The logged message string
+    8. %(module)s    - Module name portion of the filename where the message was logged
+
+Let's show some example:
+
+    import logging
+
+    logging.basicConfig(filename = "output.log", 
+                        level = logging.DEBUG, 
+                        filemode = "w")
+
+    logging.info("This is an info-level log message")
+    logging.warning("This is a warning-level log message")
+
+When we run the code as is we should see the following 2 lines in the log file `output.log`.
+
+    INFO:root:This is an info-level log message
+    WARNING:root:This is a warning-level log message
+
+Let's add format str now.
+
+    import logging
+
+    fmtstr = "%(asctime)s: %(levelname)s: %(funcName)s Line:%(lineno)d %(message)s"
+    logging.basicConfig(filename = "output.log", level = logging.DEBUG, filemode = "w", format = fmtstr)
+
+    logging.info("This is an info-level log message")
+    logging.warning("This is a warning-level log message")
+
+Now check the log file.
+
+    2024-01-13 12:22:33,450: INFO: main Line:18 This is an info-level log message
+    2024-01-13 12:23:39,634: WARNING: main Line:19 This is an warning-level log message    
+
+Let's add another function to log from and also date format string.
+
+    import logging
+
+    def anotherFunction():
+        logging.debug("This is a debug-level message")
+
+    fmtstr = "%(asctime)s: %(levelname)s: %(funcName)s Line:%(lineno)d %(message)s"
+    datestr = "%m/%d/%Y %I:%M:%S %p"
+    logging.basicConfig(filename = "output.log", 
+                        level = logging.DEBUG, 
+                        filemode = "w", 
+                        format = fmtstr,
+                        datefmt = datestr)
+
+    logging.info("This is an info-level log message")
+    logging.warning("This is a warning-level log message")
+    anotherFunction()
+
+With this you should see this the log file:
+
+    2024-01-13 12:25:33 PM: INFO: main Line:18 This is an info-level log message
+    2024-01-13 12:25:33 PM: WARNING: main Line:19 This is an warning-level log message    
+    2024-01-13 12:25:33 PM: DEBUG: anotherFunction Line:7 This is a debug-level log message
+
+Now if we want some additional information as well in the log file.
+
+We could do something like this:
+
+    import logging
+
+    extData = {
+        "user": "bill@gate.com"
+    }
+    
+    def anotherFunction():
+        logging.debug("This is a debug-level message", extra=extData)
+
+    fmtstr = "User: %(user)s %(asctime)s: %(levelname)s: %(funcName)s Line:%(lineno)d %(message)s"
+    datestr = "%m/%d/%Y %I:%M:%S %p"
+    logging.basicConfig(filename = "output.log", 
+                        level = logging.DEBUG, 
+                        filemode = "w", 
+                        format = fmtstr,
+                        datefmt = datestr)
+
+    logging.info("This is an info-level log message", extra=extData)
+    logging.warning("This is a warning-level log message", extra=extData)
+    anotherFunction()
+
+Running the above code would generate the following logs:
+
+    User:bill@gate.com 2024-01-13 12:30:25 PM: INFO: main Line:18 This is an info-level log message
+    User:bill@gate.com 2024-01-13 12:30:25 PM: WARNING: main Line:19 This is an warning-level log message    
+    User:bill@gate.com 2024-01-13 12:30:25 PM: DEBUG: anotherFunction Line:7 This is a debug-level log message
+   
 ## File Management
 ***
 
