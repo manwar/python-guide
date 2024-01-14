@@ -215,13 +215,15 @@ Let's try some basic examples of collections.
     l = [1,2,3,4]
     print(type(l))         # prints list
     print(len(l))          # prints 4
-    
+
+    print(l[0])            # prints 1
     print([1,2] == [1,2])  # prints True
     print([1,2] == [2,1])  # prints False
 
     t = (1,2,3)
     print(type(t))         # prints tuple
     print(len(t))          # prints 3
+    print(t[0])            # prints 1
 
     print((1,2) == (1,2))  # prints True
     print((1,2) == (2,1))  # prints False
@@ -229,6 +231,21 @@ Let's try some basic examples of collections.
     s = {1,2,2,3}
     print(type(s))         # prints set
     print(len(s))          # prints 3
+    print(s)               # prints {1,2,3}
+
+    s = set([1,2,3,4])
+    print(type(s))         # prints set
+    print(len(s))          # prints 4
+    print(s)               # prints {1,2,3,4}
+
+    s.add(5)
+    print(s)               # prints {1,2,3,4,5}
+
+    s.update([5,6,7])
+    print(s)               # prints {1,2,3,4,5,6,7}
+
+    s.update([4,5,8],'a')
+    print(s)               # prints {1,2,3,4,5,6,7,8,'a'}
     
     print({1,2} == {1,2})  # prints True
     print({1,2} == {2,1})  # prints True
