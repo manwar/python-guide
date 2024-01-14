@@ -158,10 +158,22 @@ You can even undefine a variable.
 ***
 
 1) `Boolean` defined with keyword `bool` and can only have value `True`/`False`
-2) `Integer` defined with keyword `int`
-3) `Floating` defined with keyword `float`
-4) `String` defined with keyword `str`
+2) `Whole Numbers` defined with keyword `int`
+3) `Decimal Numbers` defined with keyword `float`
+4) `Imaginary Numbers` defined with suffix `j` e.g. `x = 2j`
+5) `String` defined with keyword `str`
 
+`Numbers` are defined as below:
+
+    x = 1
+    print(type(x))   # prints <class 'int'>
+
+    y = 1.5
+    print(type(y))   # prints <class 'float'>
+    
+    z = 1j
+    print(type(z))   # prints <class 'complex'>
+   
 `String` contains unicode whereas `Byte` is raw 8-bits values.
 
     s = "Hi there!"
@@ -567,16 +579,16 @@ Built-in function `type()` can be used to identify the data type.
 
 User can define function using the keyword `def` as below:
 
-    def addFive(n): -> int
+    def addFive(n: int): -> int
         return n + 5
 
     result = addFive(10)
     print(result)  # prints 15
-    print(addFive) # prints object name assgined to the function addFive()
+    print(addFive) # prints <function addFive at 0x7fe8fcae2280>
 
 How about function with default value?
 
-    def power(n, x = 1):
+    def power(n: int, x: int = 1) -> int:
         result = 1
         for i in range(x):
             result = result * n
