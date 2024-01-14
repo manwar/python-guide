@@ -216,9 +216,13 @@ Let's try some basic examples of collections.
     print(type(l))         # prints list
     print(len(l))          # prints 4
 
+`List` element can be accessed with `0-indexed` key. The elements order is important for list.
+
     print(l[0])            # prints 1
     print([1,2] == [1,2])  # prints True
     print([1,2] == [2,1])  # prints False
+
+`Tuple` elements can't be changed and they can be with `0-indexed` key. The elements order is important for tuple.
 
     t = (1,2,3)
     print(type(t))         # prints tuple
@@ -227,7 +231,9 @@ Let's try some basic examples of collections.
 
     print((1,2) == (1,2))  # prints True
     print((1,2) == (2,1))  # prints False
-    
+
+`Set` can only have unique elements. It can be initialised passing a list to `set()` function.
+
     s = {1,2,2,3}
     print(type(s))         # prints set
     print(len(s))          # prints 3
@@ -238,25 +244,33 @@ Let's try some basic examples of collections.
     print(len(s))          # prints 4
     print(s)               # prints {1,2,3,4}
 
+New element can be added to a set using `add()` method.
+
     s.add(5)
     print(s)               # prints {1,2,3,4,5}
+
+More than one elements can be added to a set using `update()` method.
 
     s.update([5,6,7])
     print(s)               # prints {1,2,3,4,5,6,7}
 
     s.update([4,5,8],'a')
     print(s)               # prints {1,2,3,4,5,6,7,8,'a'}
-    
+
+For sets, order of element is NOT important.
+
     print({1,2} == {1,2})  # prints True
     print({1,2} == {2,1})  # prints True
+
+`Dictionary` can have unique keys only.
 
     d = {"a": 1, "b": 2}
     print(d["a"])          # prints 1
     print(d.keys())        # prints ["a","b"]
 
-On top of the above listed, the `collections` module provide some more like below:
+On top of the above listed, the `collections` module provides some more like below:
 
-    1) namedtuple: Tuple with naned fields
+    1) namedtuple: Tuple with named fields
     2) OrderedDict, defaultdict: Dictionaries with special properties
     3) Counter: Counts distinct values
     4) deque: Double-ended list objects
@@ -342,10 +356,14 @@ Let's see some examples showing `OrderedDict`:
 
     from collections import OrderedDict
 
-    sportTeams = [("Royals", (18,12)), ("Rockets", (24,6)),
-                  ("Cardinals", (20,10)), ("Dragons", (22,8)),
-                  ("Kings", (15,15)), ("Charger", (20,10)),
-                  ("Jets", (16,14)), ("Warriors", (25,5))]
+    sportTeams = [("Royals", (18,12)), 
+                  ("Rockets", (24,6)),
+                  ("Cardinals", (20,10)), 
+                  ("Dragons", (22,8)),
+                  ("Kings", (15,15)), 
+                  ("Charger", (20,10)),
+                  ("Jets", (16,14)), 
+                  ("Warriors", (25,5))]
 
     sortedTeams = sorted(sportTeams, key=lambda t: t[1][0], reverse=True)
     teams = OrderedDict(sortedTeams)
