@@ -579,7 +579,7 @@ Built-in function `type()` can be used to identify the data type.
 
 User can define function using the keyword `def` as below:
 
-    def addFive(n: int): -> int
+    def addFive(n: int) -> int:
         return n + 5
 
     result = addFive(10)
