@@ -205,10 +205,37 @@ What if we encode the string using `'utf-32'` encoding?
 
 #### Basic Collections
 
-    1) List: Mutable sequence of values
-    2) Tuple: Fixed sequence of values
-    3) Set: Sequence of distinct values
-    4) Dictionary: Collection of key-value pairs
+    1) List: Mutable sequence of values e.g. [1,2,3]
+    2) Tuple: Fixed sequence of values e.g. (1,2,3)
+    3) Set: Sequence of distinct values e.g. {1,2,3}
+    4) Dictionary: Collection of key-value pairs e.g. {"a":1, "b":2, "c":3}
+
+Let's try some basic examples of collections.
+
+    l = [1,2,3,4]
+    print(type(l))         # prints list
+    print(len(l))          # prints 4
+    
+    print([1,2] == [1,2])  # prints True
+    print([1,2] == [2,1])  # prints False
+
+    t = (1,2,3)
+    print(type(t))         # prints tuple
+    print(len(t))          # prints 3
+
+    print((1,2) == (1,2))  # prints True
+    print((1,2) == (2,1))  # prints False
+    
+    s = {1,2,2,3}
+    print(type(s))         # prints set
+    print(len(s))          # prints 3
+    
+    print({1,2} == {1,2})  # prints True
+    print({1,2} == {2,1})  # prints True
+
+    d = {"a": 1, "b": 2}
+    print(d["a"])          # prints 1
+    print(d.keys())        # prints ["a","b"]
 
 On top of the above listed, the `collections` module provide some more like below:
 
