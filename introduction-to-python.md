@@ -163,6 +163,34 @@ You can even undefine a variable.
 4) `Imaginary Numbers` defined with suffix `j` e.g. `x = 2j`
 5) `String` defined with keyword `str`
 
+`Booleans` are straight forward but here are some fun bits.
+
+    print(bool(1))           # prints True
+    print(bool(0))           # prints False
+    print(bool(-1))          # prints True
+    print(bool(1j))          # prints True
+    print(bool(0.0))         # prints False
+    print(bool(0j))          # prints False
+    print(bool('True'))      # prints True
+    print(bool('False'))     # prints False
+    print(bool(''))          # prints False
+    print(bool([]))          # prints False
+    print(bool([1,2]))       # prints True    
+    print(bool({}))          # prints False
+    print(bool(None))        # prints False    
+
+Here is some use case:
+
+    scores = [10,22,30]
+    if scores:
+        print("FFound some scores.")
+
+The above code is same as:
+
+    scores = [10,22,30]
+    if bool([10,22,30]):
+        print("Found some scores.")
+
 `Numbers` are defined as below:
 
     x = 1
