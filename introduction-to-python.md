@@ -192,7 +192,7 @@ Few other examples with different base:
 
 If doing calculation with floating numbers then you have to be extra vigilante.
 
-    print(1.2 - 1.0)         # prints 0.199999996
+    print(1.2 - 1.0)         # prints 0.19999999999999996
 
 To deal with this, we use `decimal` module as below:
 
@@ -204,7 +204,7 @@ Here we import `Decimal` class and `getcontext()` function.
 
 You should see the default settings for `Decimal` class as below:
 
-    Context(prec=28, rounding=ROUND_HALF_EVEN, ...)
+    Context([prec=28, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999, capitals=1, clamp=0, flags=[], traps=[InvalidOperation, DivisionByZero, Overflow])
 
 We can change the precision to 4 decimal places like below:
 
@@ -213,24 +213,24 @@ We can change the precision to 4 decimal places like below:
 
 You should now see something like below:
 
-    Context(prec=4, rounding=ROUND_HALF_EVEN, ...)
+    Context([prec=28, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999, capitals=1, clamp=0, flags=[], traps=[InvalidOperation, DivisionByZero, Overflow])
 
 Let's play with some numbers:
 
-    print(Decimal(1) / Decimal(3))     # prints Decimal('0.3333')
+    print(Decimal(1) / Decimal(3))     # prints 0.3333
 
 Or if we change it to 2 decimal places:
 
     getcontext().prec = 2
-    print(Decimal(1) / Decimal(3))     # prints Decimal('0.33')
+    print(Decimal(1) / Decimal(3))     # prints 0.33
 
 Here is some interesting aspects of floating point numbers:
 
-    print(Decimal(3.14))               # prints Decimal('3.14000000000000')
+    print(Decimal(3.14))               # prints 3.140000000000000124344978758017532527446746826171875
 
 But this is fine.
 
-    print(Decimal('31.4'))             # prints Decimal('3.14')
+    print(Decimal('31.4'))             # prints 3.14
 
     
 
