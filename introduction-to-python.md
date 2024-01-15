@@ -2360,7 +2360,7 @@ You can create custom exception class by extending `Exception` class.
 
     class ServerError(HttpException):
         statusCode = 500
-        message = 'The server messed up;
+        message = 'The server messed up!'
 
     def raiseServerError():
         raise ServerError()
