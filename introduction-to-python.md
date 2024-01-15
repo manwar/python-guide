@@ -313,7 +313,7 @@ Let's change the `4th` element of the bytearray with hexadecimal of 85.
 
 Check what it looks like now:
 
-    print(smiley.decode('utf-8'))      # prints 😊
+    print(smiley.decode('utf-8'))      # prints 😅
 
 #### Basic Collections
 
