@@ -2206,29 +2206,167 @@ In the class `UniqueList` we are extending the built-in `list` class.
 
 Did you notice, we used `super().append()` rather `self.append()` since we don't want to get trap in cycle.
 
-    list = UniqueList()
-    list.append(1)
-    list.append(1)
-    list.append(2)
-    print(list)              # prints [1, 2]
+    ul = UniqueList()
+    ul.append(1)
+    ul.append(1)
+    ul.append(2)
+    print(ul)              # prints [1, 2]
 
-## Exception
+## Exceptions
 ***
 
 Exception is handle using `try` block.
 
+    start = time.time()
     try:
+        time.sleep(0.5)
+        1/0
+    except Exception:
+        print("Exception caught")
+    finally:
+        print(f'It took {time.time() - start} seconds to execute.')
+
+How about catching exception by type?
+
+    start = time.time()
+    try:
+        time.sleep(0.5)
+        1/0
+    except ZeroDivisionError as e:
+        print("You can't devide by 0")
+        print(e)
+    finally:
+        print(f'It took {time.time() - start} seconds to execute.')
+
+Here is one more.
+
+    start = time.time()
+    try:
+        time.sleep(0.5)
+        1 + 'a'
+    except TypeError as e:
+        print("Type error exception caught")
+        print(e)
+    finally:
+        print(f'It took {time.time() - start} seconds to execute.')
+
+Wants some more? Here goes then ...
+        
+    start = time.time()
+    try:
+        time.sleep(0.5)
         answer = prompt("What should I divide 10 by?")
         num = int(answer)
         print(10/num)
     except ZeroDivisionError as e:
         print("You can't devide by 0")
+        print(e)
     except ValueError as e:
         print("You didn't give me a valid number!")
         print(e)
     finally:
-        print("This code always runs")
+        print(f'It took {time.time() - start} seconds to execute.')
 
+Always add generic exception in the end as below:
+
+    start = time.time()
+    try:
+        time.sleep(0.5)
+        1 / 0
+    except ZeroDivisionError as e:
+        print("Zero division error exception caught")
+        print(e)
+    except ValueError as e:
+        print("Value error exception caught")
+        print(e)
+    except Exception as e:
+        print("Generic exception caught")
+        print(e)
+    finally:
+        print(f'It took {time.time() - start} seconds to execute.')
+
+#### Custom Decorators
+
+    def handleException(func):
+        def wrapper():
+            try:
+                func()
+            except ZeroDivisionError:
+                print("Zero division error exception caught")
+            except ValueError:
+                print("Value error exception caught")
+            except Exception:
+                print("Generic exception caught")
+        return wrapper
+
+    @handleException
+    def causeError():
+        return 1/0
+
+    causeError()     # throws exception
+
+#### Raising Exception
+
+    @handleException
+    def raiseError(n):
+        if n == 0
+            raise Exception()
+        print(n)
+
+In the example above the `@handleException` decorator gets a function with a parameter.
+
+We would need to update the function `handleException()` like below:
+
+    def handleException(func):
+        def wrapper(*args):
+            try:
+                func(*args)
+            except ZeroDivisionError:
+                print("Zero division error exception caught")
+            except ValueError:
+                print("Value error exception caught")
+            except Exception:
+                print("Generic exception caught")
+        return wrapper
+
+Now let's raise error as below:
+
+    raiseError(1)      # prints 1
+    raiseError(0)      # raises exception
+    
+#### Custom Exception
+
+You can create custom exception class by extending `Exception` class.
+
+    class CustomException(Exception):
+        pass
+
+    def causeError():
+        raise CustomException("You called causeError() function!')
+
+    causeError()       # raises CustomException: You called causeError function!
+
+#### Adding Attribute
+
+    class HttpException(Exception):
+        statusCode = None
+        message = None
+        def __init__(self):
+            super().__init__(f'Status code: {self.statusCode} and message is {self.message}')
+            
+    class NotFound(HttpException):
+        statusCode = 404
+        message = 'Resource not found'
+
+    class ServerError(HttpException):
+        statusCode = 500
+        message = 'The server messed up;
+
+    def raiseServerError():
+        raise ServerError()
+
+    raiseServerError()
+    
 ## Logging
 ***
 
