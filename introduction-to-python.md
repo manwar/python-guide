@@ -173,7 +173,67 @@ You can even undefine a variable.
     
     z = 1j
     print(type(z))   # prints <class 'complex'>
-   
+
+The `int()` is very handy to convert string to int as below:
+
+    print(int('100')) # prints 100
+
+However if we pass the second argument to the `int()` then it will treat as base when converting.
+
+    print(int('100', 2))     # prints 4
+
+Even this throws error:
+
+    print(int(100, 2))       # TypeError: int() can't convert non-string with explicit base
+
+Few other examples with different base:
+
+    print(int('1ab', 16))    # prints 427
+
+If doing calculation with floating numbers then you have to be extra vigilante.
+
+    print(1.2 - 1.0)         # prints 0.199999996
+
+To deal with this, we use `decimal` module as below:
+
+    from decimal import Decimal, getcontext
+
+Here we import `Decimal` class and `getcontext()` function.
+
+    print(getcontext())
+
+You should see the default settings for `Decimal` class as below:
+
+    Context(prec=28, rounding=ROUND_HALF_EVEN, ...)
+
+We can change the precision to 4 decimal places like below:
+
+    getcontext().prec = 4
+    print(getcontext())
+
+You should now see something like below:
+
+    Context(prec=4, rounding=ROUND_HALF_EVEN, ...)
+
+Let's play with some numbers:
+
+    print(Decimal(1) / Decimal(3))     # prints Decimal('0.3333')
+
+Or if we change it to 2 decimal places:
+
+    getcontext().prec = 2
+    print(Decimal(1) / Decimal(3))     # prints Decimal('0.33')
+
+Here is some interesting aspects of floating point numbers:
+
+    print(Decimal(3.14))               # prints Decimal('3.14000000000000')
+
+But this is fine.
+
+    print(Decimal('31.4'))             # prints Decimal('3.14')
+
+    
+
 `String` contains unicode whereas `Byte` is raw 8-bits values.
 
     s = "Hi there!"
