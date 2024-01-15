@@ -213,7 +213,7 @@ We can change the precision to 4 decimal places like below:
 
 You should now see something like below:
 
-    Context([prec=28, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999, capitals=1, clamp=0, flags=[], traps=[InvalidOperation, DivisionByZero, Overflow])
+    Context([prec=4, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999, capitals=1, clamp=0, flags=[], traps=[InvalidOperation, DivisionByZero, Overflow])
 
 Let's play with some numbers:
 
