@@ -853,7 +853,7 @@ This time you should see this:
     (10, 20)
     {'message': 'hello'}
     
-THe parameters passed to a function can be fetched using `locals()` function as below:
+The parameters passed to a function can be fetched using `locals()` function as below:
 
     def func(x, y, op="sum"):
         print(locals())
