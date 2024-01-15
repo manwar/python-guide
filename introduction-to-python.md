@@ -828,7 +828,39 @@ What if we already have a list and wants to pass it as variable arguments.
 
     nums = [1,2,3]
     print(addAll(*nums))    # prints 6
+
+Function with variable keyword arguments too.
+
+    def func(*args, **kwargs):
+        print(args)
+        print(kwargs)
+
+Let's call the function like this:
+
+    func(10, 20)
+
+You should see something like below:
+
+    (10, 20)
+    {}
+
+How about calling with keyword arguments as well.
     
+    func(10, 20, message="hello")
+
+This time you should see this:
+
+    (10, 20)
+    {'message': 'hello'}
+
+        result = 0
+        for i in args:
+            result = result + i
+        return result
+
+    print(addAll(1,2,3))    # prints 6
+    print(addAll(1,2,3,4))  # prints 10
+
 #### Built-in functions in Python
 
 You can get the complete list [**here**](https://docs.python.org/3/library/functions.html).
@@ -1922,6 +1954,15 @@ Print each element in the list.
       for v in vowels:
           print(v)
 
+In `Python` we can use `for-else` loop as below:
+
+    for number in range(2, 100):
+        for factor in range(2, int(number ** 0.5)+1):
+            if number % factor == 0:
+                break
+        else:
+            print(f'{number} is prime')
+    
 Same with While loop.
 
       vowels = ["a", "e", "i", "o", "u"]
