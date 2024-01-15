@@ -295,9 +295,15 @@ What if we encode the string using `'utf-32'` encoding?
 
 Let's play with bytes in the following example it creates empty `Bytes` object of 4 bytes long.
 
-    print(bytes(4))         # prints b`\x00\x00\x00\x00'
+    print(bytes(4))                    # prints b`\x00\x00\x00\x00'
 
-    
+    smiley = bytes('😊', 'utf-8')
+    print(smiley)                      # prints b'\xf0\x9f\x98\x8a'
+
+We can decode the bytes as below:
+
+    print(smiley.decode('utf-8'))      # prints 😊
+
 #### Basic Collections
 
     1) List: Mutable sequence of values e.g. [1,2,3]
