@@ -262,8 +262,6 @@ But this is fine.
 
     print(Decimal('31.4'))             # prints 3.14
 
-    
-
 `String` contains unicode whereas `Byte` is raw 8-bits values.
 
     s = "Hi there!"
