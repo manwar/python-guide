@@ -166,19 +166,19 @@ You can even undefine a variable.
 `Numbers` are defined as below:
 
     x = 1
-    print(type(x))   # prints <class 'int'>
+    print(type(x))           # prints <class 'int'>
 
     y = 1.5
-    print(type(y))   # prints <class 'float'>
+    print(type(y))           # prints <class 'float'>
     
     z = 1j
-    print(type(z))   # prints <class 'complex'>
+    print(type(z))           # prints <class 'complex'>
 
 The `int()` is very handy to convert string to int as below:
 
-    print(int('100')) # prints 100
+    print(int('100'))        # prints 100
 
-However if we pass the second argument to the `int()` then it will treat as base when converting.
+However if we pass the second argument to the `int()` then it will treat it as base when converting.
 
     print(int('100', 2))     # prints 4
 
@@ -204,7 +204,8 @@ Here we import `Decimal` class and `getcontext()` function.
 
 You should see the default settings for `Decimal` class as below:
 
-    Context([prec=28, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999, capitals=1, clamp=0, flags=[], traps=[InvalidOperation, DivisionByZero, Overflow])
+    Context([prec=28, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999, capitals=1, 
+    clamp=0, flags=[], traps=[InvalidOperation, DivisionByZero, Overflow])
 
 We can change the precision to 4 decimal places like below:
 
@@ -213,7 +214,8 @@ We can change the precision to 4 decimal places like below:
 
 You should now see something like below:
 
-    Context([prec=4, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999, capitals=1, clamp=0, flags=[], traps=[InvalidOperation, DivisionByZero, Overflow])
+    Context([prec=4, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999, capitals=1, 
+    clamp=0, flags=[], traps=[InvalidOperation, DivisionByZero, Overflow])
 
 Let's play with some numbers:
 
