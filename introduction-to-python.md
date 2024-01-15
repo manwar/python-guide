@@ -864,6 +864,22 @@ You should see something like this:
 
     {"x": 10, "y": 20, "op": "multiply"}
 
+Here is another example:
+
+    def func1(varA, varB):
+        print(locals())
+
+    def func2(varC, varD):
+        print(locals())
+
+    func1(1,2)
+    func2(3,4)
+    
+The code above should print something like belw:
+
+    {"varA": 1, "varB": 2}
+    {"varC": 3, "varD": 4}
+
 Similar to `locals()`, we have a `globals()` function as well.
 
     print(globals())
