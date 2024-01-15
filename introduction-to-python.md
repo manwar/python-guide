@@ -1856,6 +1856,16 @@ Compact `if-else` condition.
     else:
         print("x is greater than or equal to y")
 
+The ternary operator in `Python` is a one-line shorthand for an if-else statement.
+
+    value_if_true if condition else value_if_false
+
+For example:
+
+    x = 2
+    message = 'Even' if x % 2 == 0 else 'Odd'
+    print(message)                                  # prints Even
+
 The above condition can also be done in one line.
 
     print("x is less than y") if x < y else print("x is greater or equal to y")
