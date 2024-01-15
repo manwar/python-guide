@@ -866,7 +866,17 @@ You should see something like this:
 
 Similar to `locals()`, we have a `globals()` function as well.
 
-    
+    print(globals())
+
+This is what we get back:
+
+    {'__name__': '__main__', 
+     '__doc__': None, 
+     '__package__': None, 
+     '__loader__': <class '_frozen_importlib.BuiltinImporter'>, 
+     '__spec__': None, 
+     '__annotations__': {}, 
+     '__builtins__': <module 'builtins' (built-in)>}        
 
 #### Built-in functions in Python
 
