@@ -829,6 +829,26 @@ What if we already have a list and wants to pass it as variable arguments.
     nums = [1,2,3]
     print(addAll(*nums))    # prints 6
 
+See how we call functions from a list.
+
+    def func1():
+        print("calling func1()"
+
+    def func2():
+        print("calling func2()"
+
+    def func3():
+        print("calling func3()"
+
+    for fun in ([func1, func3, func2]):
+        fun()
+
+Here is the result of the above code:
+
+    calling func1()
+    calling func3()
+    calling func2()
+
 Function with variable keyword arguments too.
 
     def func(*args, **kwargs):
