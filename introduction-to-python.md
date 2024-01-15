@@ -222,7 +222,7 @@ Let's try some basic examples of collections.
     print([1,2] == [1,2])  # prints True
     print([1,2] == [2,1])  # prints False
 
-`Tuple` elements can't be changed and they can be with `0-indexed` key. The elements order is important for tuple.
+`Tuple` elements can't be changed and they can be accessed with `0-indexed` key. The elements order is important for tuple.
 
     t = (1,2,3)
     print(type(t))         # prints tuple
