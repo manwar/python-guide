@@ -9,7 +9,7 @@
 - [Loops](#loops)
 - [Recursion](#recursion)
 - [Class](#class)
-- [Exception](#exception)
+- [Exceptions](#exceptions)
 - [Logging](#logging)
 - [Comprehensions](#comprehensions)
 - [File Management](#file-management)
