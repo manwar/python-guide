@@ -293,6 +293,11 @@ What if we encode the string using `'utf-32'` encoding?
 
 **NOTE**: `String` and `Byte` are not the same.
 
+Let's play with bytes in the following example it creates empty `Bytes` object of 4 bytes long.
+
+    print(bytes(4))         # prints b`\x00\x00\x00\x00'
+
+    
 #### Basic Collections
 
     1) List: Mutable sequence of values e.g. [1,2,3]
