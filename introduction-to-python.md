@@ -1930,7 +1930,33 @@ Same with While loop.
           print(vowels[i])
           i += 1
 
-Use of `break` in loop structure.
+Let's create code to pause for `2 seconds`.
+
+    import datetime
+    
+    two_seconds = datetime.now().second + 2
+    while datetime.now().second != two_second:
+        pass
+
+Or use `break` to do the same as below:
+
+    import datetime
+    
+    two_seconds = datetime.now().second + 2
+    while True:
+        if datetime.now().second == two_second:
+            break
+
+or use `continue` to do the same.
+
+    import datetime
+    
+    two_seconds = datetime.now().second + 2
+    while True:
+        if datetime.now().second < two_second:
+            continue
+           
+Use of `break` in for loop structure.
 
     for i in range(5, 10):
         if i == 7:
