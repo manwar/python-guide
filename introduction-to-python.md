@@ -417,9 +417,7 @@ If we change it to regular dictionary?
     b = {"a": 1, "c": 3, "b": 2}
     print("Equality Test: ", a == b)            # prints Equality Test: True
 
-Let's see some examples showing `Deque`:   
-
-It is pronounced as `Double-ended Queue`.
+Let's see some examples showing `Deque`. It is pronounced as `Double-ended Queue`.
 
     d = collections.deque("abcdefg")
 
