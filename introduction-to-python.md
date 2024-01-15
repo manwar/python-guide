@@ -709,6 +709,15 @@ We get this result:
 
 There is another way you can fetch each item in the dictionary by calling `items()` method as below:
 
+    d = {"a": 1, "b": 2, "c": 3}
+    print(d.items());
+
+It returns `dict_items()` object like below:
+
+    dict_items([{"a": 1, "b": 2, "c": 3}])
+
+Or we can fetch key, value individually like this:
+
     for k,v in users.items():
         print(f'{k} = {v}')
 
