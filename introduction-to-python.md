@@ -183,12 +183,12 @@ Here is some use case:
 
     scores = [10,22,30]
     if scores:
-        print("FFound some scores.")
+        print("Found some scores.")
 
 The above code is same as:
 
     scores = [10,22,30]
-    if bool([10,22,30]):
+    if bool(scores):
         print("Found some scores.")
 
 `Numbers` are defined as below:
