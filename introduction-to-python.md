@@ -1935,7 +1935,7 @@ Let's create code to pause for `2 seconds`.
     import datetime
     
     two_seconds = datetime.now().second + 2
-    while datetime.now().second != two_second:
+    while datetime.now().second != two_seconds:
         pass
 
 Or use `break` to do the same as below:
@@ -1944,7 +1944,7 @@ Or use `break` to do the same as below:
     
     two_seconds = datetime.now().second + 2
     while True:
-        if datetime.now().second == two_second:
+        if datetime.now().second == two_seconds:
             break
 
 or use `continue` to do the same.
@@ -1953,7 +1953,7 @@ or use `continue` to do the same.
     
     two_seconds = datetime.now().second + 2
     while True:
-        if datetime.now().second < two_second:
+        if datetime.now().second < two_seconds:
             continue
            
 Use of `break` in for loop structure.
