@@ -839,7 +839,7 @@ Let's call the function like this:
 
     func(10, 20)
 
-You should see something like below:
+You should see something like below, `*args` is a tuple and `**kwargs` is a dictionary.
 
     (10, 20)
     {}
@@ -852,14 +852,21 @@ This time you should see this:
 
     (10, 20)
     {'message': 'hello'}
+    
+THe parameters passed to a function can be fetched using `locals()` function as below:
 
-        result = 0
-        for i in args:
-            result = result + i
-        return result
+    def func(x, y, op="sum"):
+        print(locals())
 
-    print(addAll(1,2,3))    # prints 6
-    print(addAll(1,2,3,4))  # prints 10
+    func(10, 20, op="multiply")
+    
+You should see something like this:
+
+    {"x": 10, "y": 20, "op": "multiply"}
+
+Similar to `locals()`, we have a `globals()` function as well.
+
+    
 
 #### Built-in functions in Python
 
