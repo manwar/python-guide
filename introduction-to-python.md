@@ -302,6 +302,19 @@ We can decode the bytes as below:
 
     print(smiley.decode('utf-8'))      # prints 😊
 
+We can even create byte array using the `bytearray()` function like below:
+
+    smiley = bytearray('😊', 'utf-8')
+    print(smiley)                      # prints bytearray('\xf0\x9f\x98\x8a')
+
+Let's change the `4th` element of the bytearray with hexadecimal of 85.
+
+    smiley[3] = int('85', 16)
+
+Check what it looks like now:
+
+    print(smiley.decode('utf-8'))      # prints 😊
+
 #### Basic Collections
 
     1) List: Mutable sequence of values e.g. [1,2,3]
