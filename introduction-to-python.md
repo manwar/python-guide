@@ -40,7 +40,7 @@ Even you can do something like below:
 
 #### String Template
 
-We can use `Template` class from the `string` module.
+We can use `Template`  from the `string` module.
 
     from string import Template
     templ = Template("You are reading ${book} by ${author}.")
@@ -101,8 +101,8 @@ You can also create documentation of user defined function like below:
 
     1) Enclose docstrings in tripe quotes.
     2) First line should be summary sentence of functionality.
-    3) Modules: List important classes, functions, exceptions.
-    4) Classes: List important methods.
+    3) Modules: List important es, functions, exceptions.
+    4) es: List important methods.
     5) Functions: 
        a) List parameters and explain each, one per line. 
        b) If there is a return value then list it otherwise leave it. 
@@ -194,13 +194,13 @@ The above code is same as:
 `Numbers` are defined as below:
 
     x = 1
-    print(type(x))           # prints <class 'int'>
+    print(type(x))           # prints < 'int'>
 
     y = 1.5
-    print(type(y))           # prints <class 'float'>
+    print(type(y))           # prints < 'float'>
     
     z = 1j
-    print(type(z))           # prints <class 'complex'>
+    print(type(z))           # prints < 'complex'>
 
 The `int()` is very handy to convert string to int as below:
 
@@ -226,11 +226,11 @@ To deal with this, we use `decimal` module as below:
 
     from decimal import Decimal, getcontext
 
-Here we import `Decimal` class and `getcontext()` function.
+Here we import `Decimal`  and `getcontext()` function.
 
     print(getcontext())
 
-You should see the default settings for `Decimal` class as below:
+You should see the default settings for `Decimal`  as below:
 
     Context([prec=28, rounding=ROUND_HALF_EVEN, Emin=-999999, Emax=999999, capitals=1, 
     clamp=0, flags=[], traps=[InvalidOperation, DivisionByZero, Overflow])
@@ -443,23 +443,23 @@ Let's see some examples showing `Counter`:
 
     from collections import Counter
 
-    class1 = ["Bob", "Becky", "Chad", "Darcy", "Frank", "Hannah",
+    1 = ["Bob", "Becky", "Chad", "Darcy", "Frank", "Hannah",
               "Kevin", "James", "James", "Melanie", "Penny", "Steve"]
-    class2 = ["Bill", "Barry", "Cindy", "Debbie", "Frank",
+    2 = ["Bill", "Barry", "Cindy", "Debbie", "Frank",
               "Gabby", "Kelly", "James", "Joe", "Sam", "Tara", "Ziggy"]
 
-    c1 = Counter(class1)
-    c2 = Counter(class2)
+    c1 = Counter(1)
+    c2 = Counter(2)
 
     print(c1["James"])                                 # prints 2
-    print(sum(c1.values()), " students in class 1.")   # prints 11 students in class 1.
+    print(sum(c1.values()), " students in  1.")   # prints 11 students in  1.
     
-    c1.update(class2)
-    print(sum(c1.values()), " students in class 1.")   # prints 23 students in class 1.    
+    c1.update(2)
+    print(sum(c1.values()), " students in  1.")   # prints 23 students in  1.    
 
     print(c1.most_common(3))                           # prints [('James',3), ('Frank', 2), ('Bob', 1)]
 
-    c1.subtract(class2)
+    c1.subtract(2)
     print(c1.most_common(3))                           # prints [('James',2), ('Bob', 1), ('Becky', 1)]
 
     print(c1 & c2)                                     # prints Counter({'Frank': 1, 'James': 1})
@@ -2193,6 +2193,24 @@ Define a function `sumDigits()` as below to return the sum of digits.
     car1.drive(30)
     car2.drive(40)
     mc1.drive(50)
+
+Let's extend the `list()` class and make it add only unique elements since by default list can have duplicate elements.
+
+In the class `UniqueList` we are extending the built-in `list` class.
+
+    class UniqueList(list):
+        def append(self, elem):
+            if elem in self:
+                return
+            super().append(elem)
+
+Did you notice, we used `super().append()` rather `self.append()` since we don't want to get trap in cycle.
+
+    list = UniqueList()
+    list.append(1)
+    list.append(1)
+    list.append(2)
+    print(list)              # prints [1, 2]
 
 ## Exception
 ***
