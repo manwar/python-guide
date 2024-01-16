@@ -3384,7 +3384,7 @@ Time for some action:
     None
 
     $ py myapp.py --output out.txt
-    out.tx
+    out.txt
 
     $ py myapp.py --help
     usage: myapp.py [-h] [--output OUTPUT]
@@ -3438,3 +3438,14 @@ Let's give the user another option for `--output` argument like `-o`.
     args = parser.parse_args()
 
     print(args.output)
+
+Let's check the result.
+
+    $ py myapp.py --output out.txt
+    out.txt
+
+    $ py myapp.py --o out.txt
+    out.txt    
+
+    $ py myapp.py -o out.txt
+    out.txt       
