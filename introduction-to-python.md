@@ -3428,3 +3428,13 @@ Let's see what happens now:
     optional arguments:
       -h, --help       show this help message and exit
       --output OUTPUT  The output file name.
+
+Let's give the user another option for `--output` argument like `-o`.
+
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser()
+    parser.add_argument('--output', '-o', required=True, help='The output file name.')
+    args = parser.parse_args()
+
+    print(args.output)
