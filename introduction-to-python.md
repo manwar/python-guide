@@ -3542,13 +3542,17 @@ Let's update the module `primes` to use the module `factors` as below:
     
 Every module has a name and it is saved in a special atrribute `__name__`.
 
-For example, if we just create a regular module i.e. not inside a package and write the following line in the end.
+For example, if we write the following line in the end of `primes.py` file.
 
-    print(f'The module name is {__name__}')      # prints __main__
+    print(f'The module name is "{__name__}"')
 
-If we use the module then?
+Now see what happens:
 
-    import primes
+    $ py
+    Python 3.8.10 (default, Nov 22 2023, 10:22:35)
+    [GCC 9.4.0] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import primes
+    The module name is "primes".
 
-    print(f'The module name is {__name__}')      # prints __main__
     
