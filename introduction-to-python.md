@@ -2179,8 +2179,8 @@ For threading task, we can use the module `threading`.
         time.sleep(1)                         # sleeps for 1 second
         return n**2
 
-    t1 = threading.Thread(target=longSquare, args=(1,)
-    t2 = threading.Thread(target=longSquare, args=(2,)
+    t1 = threading.Thread(target=longSquare, args=(1,))
+    t2 = threading.Thread(target=longSquare, args=(2,))
 
     t1.start()
     t2.start()
@@ -2192,6 +2192,27 @@ Wait, but where is the result?
 
 So let's sort that out as below:
 
+We will create a dictionary and share with both threads.
+
+    import threading
+    import time
+
+    results = {}
+    
+    def longSquare(n, results):
+        time.sleep(1)                         # sleeps for 1 second
+        results[n] = n**2
+
+    t1 = threading.Thread(target=longSquare, args=(1, results))
+    t2 = threading.Thread(target=longSquare, args=(2, results))
+
+    t1.start()
+    t2.start()
+
+    t1.join()
+    t2.join()
+
+    print(results)
 
 ## Class
 ***
