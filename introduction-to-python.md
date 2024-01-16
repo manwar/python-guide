@@ -18,6 +18,7 @@
 - [Calendar](#calendar)
 - [Data Formats](#data-formats)
 - [Web Framework](#web-framework)
+- [CLI](#cli)
 
 **DISCLAIMER:** These are my notes after attending the courses [[**Python Quick Start**](https://www.linkedin.com/learning/python-quick-start-22667553)], [[**Learning Python**](https://www.linkedin.com/learning/learning-python-14393370)], [[**Advanced Python**](https://www.linkedin.com/learning/advanced-python)] and [[**8 Things You Must Know in Python**](https://www.linkedin.com/learning/8-things-you-must-know-in-python)].
 
@@ -3361,3 +3362,44 @@ Now we will extend the web application to dump the data from sample file used ab
         return jsonify(results)
                 
     app.run(debug=True)
+
+## CLI
+***
+
+We can `argparse` module for parsing command line arguments.
+
+For this purpose, let's create a file named, `myapp.py`, with the content as below:
+
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser()
+    parser.add_argument('--output')
+    args = parser.parse_args()
+
+    print(args.output)      # prints command line argument output
+
+Let's make the argument `--output` must required.
+
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser()
+    parser.add_argument('--output', required=True)
+    args = parser.parse_args()
+
+    print(args.output)      # prints command line argument output
+
+We can even provide help text for command line argument.
+
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser()
+    parser.add_argument('--output', required=True, help='The output file name.')
+    args = parser.parse_args()
+
+    print(args.output)      # prints command line argument output
+
+Let's see what happens now:
+
+    $ py myapp.py --help
+
+    
