@@ -3501,7 +3501,7 @@ We could just import the function rather than the whole module like below:
 
     from primes import isPrime
 
-    print(isPrime(5))      v     # prints True
+    print(isPrime(5))            # prints True
 
 **NOTE**: The package is a just a collection of modules.
 
@@ -3510,5 +3510,45 @@ Let's create another module, `factors.py` with just one function `getFactors()` 
     def getFactors(n):
         return [factor for factor in range(1, n+1) if n % factor == 0]
 
+We will now create a package, `numbers`.
 
+For this we would create a folder named `numbers` having the following 3 files as below:
+
+    __init__.py
+    factors.py
+    primes.py
+
+The `__init__.py` is an empty file. It is required to tell `Python`, it is a package.
+
+With this now we can import function like below:
+
+    from numbers.factors import getFactors
+    
+    print(getFactors(100))   # prints [1, 2, 4, 5, 10, 20, 25, 50, 100]
+
+Let's update the module `primes` to use the module `factors` as below:
+
+    from numbers.factors import getFactors
+    
+    def isPrime(n, foundPrimes=None):
+        return len(getFactors(n)) == 2
+
+    def listPrimes(max):
+        foundPrimes = []
+        for n in range(2, max):
+            if isPrime(n, foundPrimes):
+                foundPrimes.append(n)
+        return foundPrimes
+    
+Every module has a name and it is saved in a special atrribute `__name__`.
+
+For example, if we just create a regular module i.e. not inside a package and write the following line in the end.
+
+    print(f'The module name is {__name__}')      # prints __main__
+
+If we use the module then?
+
+    import primes
+
+    print(f'The module name is {__name__}')      # prints __main__
     
