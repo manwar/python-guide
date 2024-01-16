@@ -3555,4 +3555,4 @@ Now see what happens:
     >>> import primes
     The module name is "primes".
 
-    
+**NOTE**: If the module is called directly and not `import`ed then name would be `__main__`.
