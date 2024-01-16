@@ -3376,8 +3376,24 @@ For this purpose, let's create a file named, `myapp.py`, with the content as bel
     parser.add_argument('--output')
     args = parser.parse_args()
 
-    print(args.output)      # prints command line argument output
+    print(args.output)
 
+Time for some action:
+
+    $ py myapp.py
+    None
+
+    $ py myapp.py --output out.txt
+    ut.tx
+
+    $ py myapp.py --help
+    usage: myapp.py [-h] [--output OUTPUT]
+
+    optional arguments:
+      -h, --help       show this help message and exit
+      --output OUTPUT
+    
+    
 Let's make the argument `--output` must required.
 
     from argparse import ArgumentParser
@@ -3386,7 +3402,13 @@ Let's make the argument `--output` must required.
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
 
-    print(args.output)      # prints command line argument output
+    print(args.output)
+
+Let's try again:
+
+    $ py myapp.py
+    usage: myapp.py [-h] --output OUTPUT
+    myapp.py: error: the following arguments are required: --output
 
 We can even provide help text for command line argument.
 
@@ -3396,10 +3418,13 @@ We can even provide help text for command line argument.
     parser.add_argument('--output', required=True, help='The output file name.')
     args = parser.parse_args()
 
-    print(args.output)      # prints command line argument output
+    print(args.output)
 
 Let's see what happens now:
 
     $ py myapp.py --help
+    usage: myapp.py [-h] [--output OUTPUT]
 
-    
+    optional arguments:
+      -h, --help       show this help message and exit
+      --output OUTPUT  The output file name.
