@@ -8,7 +8,7 @@
 - [Conditions](#conditions)
 - [Loops](#loops)
 - [Recursions](#recursions)
-- [Threads]/#threads)
+- [Threads](#threads)
 - [Class](#class)
 - [Exceptions](#exceptions)
 - [Logging](#logging)
