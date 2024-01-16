@@ -3505,6 +3505,10 @@ We could just import the function rather than the whole module like below:
 
 **NOTE**: The package is a just a collection of modules.
 
+Let's create another module, `factors.py` with just one function `getFactors()` as below:
+
+    def getFactors(n):
+        return [factor for factor in range(1, n+1) if n % factor == 0]
 
 
     
