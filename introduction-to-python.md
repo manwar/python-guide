@@ -2150,6 +2150,49 @@ Define a function `sumDigits()` as below to return the sum of digits.
 ## Threads
 ***
 
+When we run a program, it starts a process and inside the process thread begins the task.
+
+And when we run another program, it starts another process with its own thread to do the task.
+
+In threading, we could run both programs in one process and do the individual tasks in a separate thread but share the data.
+
+#### Multithread
+
+Let's take a simple use case/
+
+    import time
+    
+    def longSquare(n):
+        time.sleep(1)                         # sleeps for 1 second
+        return n**2
+
+    print([longSquare(n) for n in range(5)])  # prints [0, 1, 4, 9, 16]
+
+Let's change the above code to use threads.
+
+For threading task, we can use the module `threading`.
+
+    import threading
+    import time
+
+    def longSquare(n):
+        time.sleep(1)                         # sleeps for 1 second
+        return n**2
+
+    t1 = threading.Thread(target=longSquare, args=(1,)
+    t2 = threading.Thread(target=longSquare, args=(2,)
+
+    t1.start()
+    t2.start()
+
+    t1.join()
+    t2.join()
+
+Wait, but where is the result?
+
+So let's sort that out as below:
+
+
 ## Class
 ***
 
