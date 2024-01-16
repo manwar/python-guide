@@ -2789,14 +2789,14 @@ Let's get rid of space from the set.
 
 Open file for writing and create it if doesn't exist.
 
-    myfile = open("test.txt", "w+")
+    myfile = open("test.txt", "w")
     for i in range(10):
         myfile.write("This is demo line.\n")
     myfile.close()
 
 Or you can use `writer()` function as below:
 
-    with open("test.txt", "w+") as f:
+    with open("test.txt", "w") as f:
         writer = csv.writer(f)
         writer.writerow("This is demo line.\n")
 
