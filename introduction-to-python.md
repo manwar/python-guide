@@ -2158,7 +2158,7 @@ In threading, we could run both programs in one process and do the individual ta
 
 #### Multithread
 
-Let's take a simple use case/
+Let's take a simple use case.
 
     import time
     
@@ -2196,13 +2196,12 @@ We will create a dictionary and share with both threads.
 
     import threading
     import time
-
-    results = {}
     
     def longSquare(n, results):
         time.sleep(1)                         # sleeps for 1 second
         results[n] = n**2
 
+    results = {}
     t1 = threading.Thread(target=longSquare, args=(1, results))
     t2 = threading.Thread(target=longSquare, args=(2, results))
 
@@ -2212,7 +2211,24 @@ We will create a dictionary and share with both threads.
     t1.join()
     t2.join()
 
-    print(results)
+    print(results)                            # prints {2: 4, 1: 1}
+
+This can be improved. How?
+
+    import threading
+    import time
+    
+    def longSquare(n, results):
+        time.sleep(1)                         # sleeps for 1 second
+        results[n] = n**2
+
+    results = {}
+    threads = [threading.Thread(target=longSquare, args=(n, results)) for n in range(5)]
+
+    [t.start() for t in threads]
+    [t.join()  for t in threads]
+
+    print(results)                            # prints {2: 4, 1: 1, 3: 9, 0: 0, 4: 16}
 
 ## Class
 ***
