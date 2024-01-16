@@ -2156,7 +2156,7 @@ And when we run another program, it starts another process with its own thread t
 
 In threading, we could run both programs in one process and do the individual tasks in a separate thread but share the data.
 
-#### Multithread
+#### Multithreading
 
 Let's take a simple use case.
 
@@ -2213,7 +2213,7 @@ We will create a dictionary and share with both threads.
 
     print(results)                            # prints {2: 4, 1: 1}
 
-This can be improved. How?
+This can be improved a bit. How?
 
     import threading
     import time
@@ -2229,6 +2229,17 @@ This can be improved. How?
     [t.join()  for t in threads]
 
     print(results)                            # prints {2: 4, 1: 1, 3: 9, 0: 0, 4: 16}
+
+#### Multiprocessing
+
+Let's create file named, `1000seconds.py` as below:
+
+    import time
+    [time.sleep(1) for i in range(1000)]
+
+Now we would run the code in two different tabs so that it is run in separate process.
+
+Now what?
 
 ## Class
 ***
