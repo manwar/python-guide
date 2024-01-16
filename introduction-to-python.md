@@ -2900,6 +2900,45 @@ Now if we want to read `sample.csv` file and create a new `sample.json` file.
 
 **NOTE**: Here we have used `json.dump()` and not `json.dumps()`.
 
+#### Custom JSON Decoders
+
+Let's create simple `Animal` class as below:
+
+    import json
+    
+    class Animal():
+        def __init__(self, name):
+            self.name = name
+
+    dict = {'b': Animal('bear'), 'c': Animal('cat'), 'd': Animal('donkey')}
+    print(json.dumps(dict))
+
+You should see `TypeError` as below:
+
+    TypeError: object of type Animal is not JSON serializable
+
+Let's resolve this by importing `JSONEncoder` like this:
+
+    import json
+    from json import JSONEncoder
+
+    class Animal():
+        def __init__(self, name):
+            self.name = name
+            
+    class AnimalEncoder(JSONEncoder):
+        def default(self, o):
+            if isinstance(o, Animal):
+                return o.name
+            super().default(o)
+            
+    dict = {'b': Animal('bear'), 'c': Animal('cat'), 'd': Animal('donkey')}
+    print(json.dumps(dict, cls=AnimalEncoder))
+
+You shoud now see result like below:
+
+    {'b': 'bear', 'c': 'cat', 'd': 'donkey'}
+
 There is also a very handy `requests` module for pulling data from web. 
 
 You can install the module if missing using the command `pip install requests` or `python3 -m pip install requests`.
