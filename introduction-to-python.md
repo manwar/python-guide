@@ -3444,8 +3444,27 @@ Let's check the result.
     $ py myapp.py --output out.txt
     out.txt
 
-    $ py myapp.py --o out.txt
-    out.txt    
-
     $ py myapp.py -o out.txt
     out.txt       
+
+We will add another command line argument, `--text` as below:
+
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser()
+    parser.add_argument('--output', '-o', required=True, help='The output file name.')
+    parser.add_argument('--text', '-t', required=True, help='The text to write to file.')    
+    args = parser.parse_args()
+
+    with open(args.output, "w") as f:
+        f.write(args.text + '\n')
+
+    print(f'Wrote "{args.txt}" to the file "{args.output}".')
+
+Time for some action now:
+
+    $ py myapp.py -o out.txt -t "My first line in the file."
+    Wrote "My first line in the file." to the file "out.txt".
+
+    $ cat out.txt
+    My first line in the file.
