@@ -2239,7 +2239,43 @@ Let's create file named, `1000seconds.py` as below:
 
 Now we would run the code in two different tabs so that it is run in separate process.
 
-Now what?
+This is too much work, if I have to start say 100 processes.
+
+`Python` provides a module, `multiprocessing`, for this purpose.
+
+**NOTE**: In some OS, the `mutiprocessing` module doesn't spinoff a process to run a function if it is defined in the same file as opposed to import.
+
+There is a third party module, `multiprocess` to deal with the above issue. You can install the module like `pip install multiprocess`.
+
+It works exactly how the system `mutltiprocessing` module works but it doesn't care where the function is defined.
+
+The following code looks very similar to the threading code we did earlier.
+
+    from multiprocess import Process
+    import time
+    
+    def longSquare(n, results):
+        time.sleep(1)                         # sleeps for 1 second
+        results[n] = n**2
+
+    results = {}
+    p1 = Process(target=longSquare, args=(1, results))
+    p2 = Process(target=longSquare, args=(2, results))
+
+    p1.start()
+    p2.start()
+
+    p1.join()
+    p2.join()
+
+    print(results)                            # prints {}    
+
+What, we don't have any results? 
+
+Since process do not share data.
+
+
+
 
 ## Class
 ***
