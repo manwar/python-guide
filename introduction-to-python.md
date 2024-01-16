@@ -2798,7 +2798,8 @@ Or you can use `writer()` function as below:
 
     with open("test.txt", "w") as f:
         writer = csv.writer(f)
-        writer.writerow("This is demo line.\n")
+        for i in range(10):
+            writer.writerow("This is demo line.\n")
 
 Did you notice, there is no `close()` function call? 
 
@@ -2828,6 +2829,8 @@ Read file contents line by line.
 
 However, there is a `readline()` function that reads just one line at a time.
 
+#### CSV
+
 If you want to play with csv file then you would need to import `csv` module. 
 
 We are also using `pprint` module for pretty print data structure.
@@ -2856,7 +2859,18 @@ You should see something like this:
      'sex': 'm',
      'surname': 'Blogg'}
 
+#### JSON
+
 And if you want to play with `JSON` then there is a `json` module.
+
+    import json
+    from json import JSONDecodeError
+
+    jsonstring = '{"a": 1, "b":2, "c":3,}'
+    try:
+        json.loads(jsonstring)
+    except JSONDecodeError:
+        print("Could not parse JSON")
 
 To convert a `dictionary` into `JSON` we could do something like below to the above code
 
