@@ -2794,6 +2794,16 @@ Open file for writing and create it if doesn't exist.
         myfile.write("This is demo line.\n")
     myfile.close()
 
+Or you can use `writer()` function as below:
+
+    with open("test.txt", "w+") as f:
+        writer = csv.writer(f)
+        writer.writerow("This is demo line.\n")
+
+Did you notice, there is no `close()` function call? 
+
+We get that for FREE when using `with open()` syntax.
+
 Open file and append new text at the end.
 
     myfile = open("test.txt", "a+")
@@ -2815,6 +2825,8 @@ Read file contents line by line.
         lines = myfile.readlines()
         for line in lines:
             print(line)
+
+However, there is a `readline()` function that reads just one line at a time.
 
 If you want to play with csv file then you would need to import `csv` module. 
 
