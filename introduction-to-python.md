@@ -3491,4 +3491,20 @@ Let's create a module `primes.py` as below:
                 foundPrimes.append(n)
         return foundPrimes
 
+Now we will import the newly created module.
 
+    import primes
+
+    print(primes.isPrime(5))     # prints True
+    
+We could just import the function rather than the whole module like below:
+
+    from primes import isPrime
+
+    print(isPrime(5))      v     # prints True
+
+**NOTE**: The package is a just a collection of modules.
+
+
+
+    
