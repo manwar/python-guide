@@ -3384,7 +3384,7 @@ Time for some action:
     None
 
     $ py myapp.py --output out.txt
-    ut.tx
+    out.tx
 
     $ py myapp.py --help
     usage: myapp.py [-h] [--output OUTPUT]
