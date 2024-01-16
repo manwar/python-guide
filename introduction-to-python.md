@@ -7,7 +7,8 @@
 - [Modules](#modules)
 - [Conditions](#conditions)
 - [Loops](#loops)
-- [Recursion](#recursion)
+- [Recursions](#recursions)
+- [Threads]/#threads)
 - [Class](#class)
 - [Exceptions](#exceptions)
 - [Logging](#logging)
@@ -2084,7 +2085,7 @@ The code would print like below:
     5 Sat
     6 Sun
 
-## Recursion
+## Recursions
 ***
 
 #### a) Factorial using the formula `n! = n * (n-1)!`
@@ -2145,6 +2146,9 @@ Define a function `sumDigits()` as below to return the sum of digits.
         if newstr == reversestr:
             return True
         return False
+
+## Threads
+***
 
 ## Class
 ***
