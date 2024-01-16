@@ -11,7 +11,7 @@
 - [Magic Methods](#magic-methods)
 - [Data Class](#data-class)
 
-**Disclaimer:** These are my notes after attending the course [**Python Object-Oriented Programming**](https://www.linkedin.com/learning/python-object-oriented-programming-22888296).
+**DISCLAIMER:** These are my notes after attending the course [**Python Object-Oriented Programming**](https://www.linkedin.com/learning/python-object-oriented-programming-22888296).
 
 ## Basic Class
 ***
