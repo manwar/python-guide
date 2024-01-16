@@ -2272,10 +2272,24 @@ The following code looks very similar to the threading code we did earlier.
 
 What, we don't have any results? 
 
-Since process do not share data.
+Since process do not share memory.
 
+Let's improve the code a bit as below:
 
+    from multiprocess import Process
+    import time
+    
+    def longSquare(n, results):
+        time.sleep(1)                         # sleeps for 1 second
+        results[n] = n**2
 
+    results = {}
+    processes = [Process(target=longSquare, args=(n, results) for n in range(5))]
+    
+    [p.start() for p in processes]
+    [p.join() for p in processes]
+
+    print(results)                            # prints {}    
 
 ## Class
 ***
