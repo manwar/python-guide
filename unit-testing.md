@@ -22,7 +22,7 @@ Levels of Testing
     c) System Testing     : Tests the external interface of a system
     d) Performance Testing: Testing at system level to verify timing and resource usages.
 
-**Test Driven Development (TDD)** expects us to do the following
+**Test Driven Development (TDD)** expects us to do the followings:
 
     a) Write unit test before any production code
     b) DO NOT write all unit test or production code at once.
@@ -48,13 +48,13 @@ The **THREE** laws of **TDD**
     2) Class with test should have class name start with 'Test' and do not have __init__() method
     3) Filename should start or end with 'test'
 
-Suppose in the current folder we have only 3 files as below
+Suppose in the current folder we have only 3 files as below:
 
     1) test_file.py
     2) file_test.py
     3) ignore-me.py
 
-They all have the following lines of code
+They all have the following lines of code.
 
     import pytest
     def test_1():
@@ -71,7 +71,7 @@ Now if we run the command `pytest -v` inside the folder, you would get this:
 
 As you see, `pytest` only executed test in the files `test_file.py` and `file_test.py`. It completely ignored `ignore-me.py`.
 
-We will now create another file `test_class.py` as below in the same folder
+We will now create another file `test_class.py` as below in the same folder.
 
     import pytest
     class TestOne:
@@ -94,7 +94,7 @@ If you noticed, `pytest` ignored the class `IgnoreMe`.
 ## FizzBuzz Example
 ***
 
-Let us apply what we learnt so far in the `FizzBuzz` example. First we will create file named `test_fizzbuzz.py`
+Let us apply what we learnt so far in the `FizzBuzz` example. First we will create file named `test_fizzbuzz.py`.
 
     # production code
 
@@ -130,7 +130,7 @@ So we will repeat the cycle and get into the `RED` phase again by creating anoth
         retVal = fizzBuzz(1)
         assert(retVal == "1")
 
-We are in `RED` phase as shown below
+We are in `RED` phase as shown below:
 
     test_fizzbuzz.py::test_can_call_fizzBuzz PASSED
     test_fizzbuzz.py::test_return_1_when_1_passed_in FAILED
@@ -150,7 +150,7 @@ Want to do some code refactor?
 
 We can clearly see some code duplication now. The method `fizzBuzz()` is called twice, first in `def test_can_call_fizzBuzz()` and then again `def test_return_1_when_1_passed_in()`.  
 
-Let's clean up the code and merged the two use cases into one as below
+Let's clean up the code and merged the two use cases into one as below:
 
     # unit test code
     import pytest
@@ -161,7 +161,7 @@ Let's clean up the code and merged the two use cases into one as below
         retVal = fizzBuzz(1)
         assert retVal == "1"
 
-The test method `test_return_1_when_1_passed_in()` covered both use cases. The test still pass after refactor as shown here
+The test method `test_return_1_when_1_passed_in()` covered both use cases. The test still pass after refactor as shown here:
 
     test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
 
@@ -192,7 +192,7 @@ We now move into `REFACTOR` phase. We can see plenty of duplicate unit test code
 
 Let's refactor that.
 
-First we will create function `checkFizzBuzz()` as below
+First we will create function `checkFizzBuzz()` as below:
 
     def checkFizzBuzz(value, expectedValue) -> bool:
         retVal = fizzBuzz(value)
@@ -226,7 +226,7 @@ With that we now enter into `RED` phase.
     test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
     test_fizzbuzz.py::test_return_Fizz_when_3_passed_in FAILED
 
-Time to update the production code to get into `GREEN` phase
+Time to update the production code to get into `GREEN` phase.
 
     # production code
     def fizzBuzz(value) -> str:
@@ -234,7 +234,7 @@ Time to update the production code to get into `GREEN` phase
             return "Fizz"       # Line added
         return str(value)
 
-With small changes to the production code, we are back in `GREEN` phase
+With small changes to the production code, we are back in `GREEN` phase.
 
     test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
     test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
@@ -242,20 +242,20 @@ With small changes to the production code, we are back in `GREEN` phase
 
 Anything to refactor after that? Nothing for now.
 
-Let's get to the fifth use case, similar to the fourth use case
+Let's get to the fifth use case, similar to the fourth use case.
 
     # case 5: return "Buzz" when 5 passed in
     def test_return_Buzz_when_5_passed_in():
         assert checkFizzBuzz(5, "Buzz")
 
-As expected with the addition new unit test function we are back in the `RED` phase
+As expected with the addition new unit test function we are back in the `RED` phase.
 
     test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
     test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
     test_fizzbuzz.py::test_return_Fizz_when_3_passed_in PASSED
     test_fizzbuzz.py::test_return_Buzz_when_5_passed_in FAILED
 
-Time to update the production code to get into `GREEN` phase
+Time to update the production code to get into `GREEN` phase.
 
     # production code
     def fizzBuzz(value) -> str:
@@ -280,7 +280,7 @@ Now we will add the sixth use case to the unit test code.
     def test_return_Fizz_when_6_passed_in():
         assert checkFizzBuzz(6, "Fizz")
 
-We are again in `RED` phase as shown below        
+We are again in `RED` phase as shown below:      
 
     test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
     test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
@@ -300,7 +300,7 @@ Just one line change, from `if value == 3:` to `if value % 3 == 0:`
             return "Buzz"
         return str(value)
 
-One line change in the production code got us into the `GREEN` phase
+One line change in the production code got us into the `GREEN` phase.
 
     test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
     test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
@@ -314,7 +314,7 @@ Let us work on the 7th use case.
     def test_return_Buzz_when_10_passed_in():
         assert checkFizzBuzz(10, "Buzz") 
 
-We are back in the `RED` phase
+We are back in the `RED` phase.
 
     test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
     test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
@@ -325,7 +325,7 @@ We are back in the `RED` phase
 
 Let quickly update the production code to get the test pass.
 
-Just one line change, from `if value == 5:` to `if value % 5 == 0:` same as before
+Just one line change, from `if value == 5:` to `if value % 5 == 0:` same as before.
 
     # production code
     def fizzBuzz(value) -> str:
@@ -375,7 +375,7 @@ Last use case to deal with now.
     def test_return_FizzBuzz_when_15_passed_in():
         assert checkFizzBuzz(15, "FizzBuzz")
 
-With the new unit test, we are in the `RED` phase
+With the new unit test, we are in the `RED` phase.
 
     test_fizzbuzz.py::test_return_1_when_1_passed_in PASSED
     test_fizzbuzz.py::test_return_2_when_2_passed_in PASSED
@@ -522,7 +522,7 @@ For that, I am using another module `unittest` and here is the complete `FizzBuz
     function: setup_function(), teardown_function()
     class   : setup_class(), teardown_class(), setup_method(), teardown_method()
 
-Let us see in action and create a file named `test_xunit.py`
+Let us see in action and create a file named `test_xunit.py`.
 
     # test_xunit.py
     import pytest
@@ -573,7 +573,7 @@ And the `-s` switch is to allow dump print to the console.
       PASSED
       teardown test_2
 
-What if we want similar function but for `module`      
+What if we want similar function but for `module`.
 
     def setup_module():
         print("\nsetup module")
@@ -581,7 +581,7 @@ What if we want similar function but for `module`
      def teardown_module():
         print("\nteardown module")      
 
-Let's see what happens now
+Let's see what happens now.
 
       test_xunit.py::test_1
       setup module
@@ -639,7 +639,7 @@ We will re-use the above code and change it to class.
             print("executing test_2")
             assert True   
 
-After running the command `pytest -v -s` we get this
+After running the command `pytest -v -s` we get this:
 
     test_xunit.py::TestClass::test_1 
     setup TestClass
@@ -664,7 +664,7 @@ As you see `setup_class()` and `teardown_class()` only executed once. But `setup
 
 Test fixtures allow for re-use of setup and teardown code across tests.
 
-Let's start with the basic unit test in a file named `test_fixtures.py`
+Let's start with the basic unit test in a file named `test_fixtures.py`.
 
     # test_fixtures.py
     import pytest
@@ -681,7 +681,7 @@ Let's start with the basic unit test in a file named `test_fixtures.py`
         print("\nexecuting test_2")
         assert True
 
-It is exactly the same code we used before except we added function `setup()` with decorator `@pytest.fixture()` 
+It is exactly the same code we used before except we added function `setup()` with decorator `@pytest.fixture()`.
 
     test_fixtures.py::test_1 
     executing test_1
@@ -690,7 +690,7 @@ It is exactly the same code we used before except we added function `setup()` wi
     executing test_2
     PASSED
 
-If you noticed `setup()` didn't get executed. Let's configure unit test `test_1()` to execute the test fixture `setup()`
+If you noticed `setup()` didn't get executed. Let's configure unit test `test_1()` to execute the test fixture `setup()`.
 
     def test_1(setup):
         print("executing test_1")
@@ -706,7 +706,7 @@ You now see this when you run the test. The fixture `setup()` is executed before
     executing test_2
     PASSED
 
-There is another way you can use test fixture using the decorator `@pytest.mark.usefixtures()` as we see below
+There is another way you can use test fixture using the decorator `@pytest.mark.usefixtures()` as we see below:
 
     @pytest.mark.usefixtures("setup")
     def test_2():
@@ -726,7 +726,7 @@ You now see `setup()` gets execute before both unit tests.
 
 If we want test fixture to be used before each unit test then it is a big job to change each unit test.
 
-There is shortcut to that issue like below
+There is shortcut to that issue like below:
 
     @pytest.fixture(autouse=True)
     def setup():
@@ -831,9 +831,9 @@ Test fixtures Scope
     3) Module   - Run once the module goes in scope
     4) Session  - The fixture is run whey pytest starts
 
-Let us see in action, we would create two modules, say `test_fixture.py` and `test_fixture2.py`
+Let us see in action, we would create two modules, say `test_fixture.py` and `test_fixture2.py`.
 
-Below is the content of `test_fixture.py`
+Below is the content of `test_fixture.py`:
 
     # test_fixture.py
     import pytest
@@ -858,7 +858,7 @@ Below is the content of `test_fixture.py`
         print("\nexecuting test_2")
         assert True
 
-Below is the content of `test_fixture2.py`
+Below is the content of `test_fixture2.py`.
 
     # test_fixture2.py
     import pytest
@@ -884,7 +884,7 @@ Below is the content of `test_fixture2.py`
             print("\nexecuting test_2")
             assert True
 
-Testing the fixtures by command `pytest -s`
+Testing the fixtures by command `pytest -s`.
 
       test_fixture.py
       setup session
@@ -915,7 +915,7 @@ The optional `"params"` array argument in the fixture decorator can be used to s
 
 When a `"params"` argument is specified then the test will be called one time with each value specified.
 
-We will show the use in the example below
+We will show the use in the example below:
 
     # test_fixture.py
     import pytest
@@ -966,7 +966,7 @@ Checkout the result as below:
     def test_dict_assert()
         assert {"1": 1} == {"1": 1}
 
-**NOTE**: Be careful comparing floating point values
+**NOTE**: Be careful comparing floating point values.
 
     def test_bad_float_values()
         assert (0.1 + 0.2) == 0.3
@@ -993,7 +993,7 @@ Python provides the `raises` helper to verify exception using the `with` keyword
         with raises(ValueError):
             raiseValueException()
 
-Test the code now by command `pytest -v`
+Test the code now by command `pytest -v`.
 
     test_exceptions.py::test_exception PASSED
 
@@ -1009,7 +1009,7 @@ But there are many command line arguments for controlling which discovered tests
     3) -k "expression": It can include module name, class name or function name.
     4) -m "expression": It matches tests that have `pytest.mark` decorator. 
 
-Some other useful command line arguments are
+Some other useful command line arguments are:
 
     -v       : runs the test in verbose mode
     -q       : runs the test in quiet mode
@@ -1017,7 +1017,7 @@ Some other useful command line arguments are
     --ignore : specfiy the directory path to ignore when discovery tests
     --maxfail: specify the maximum fails before the test stops
     
-Let's do some test run. For that we created 3 modules as below
+Let's do some test run. For that we created 3 modules as below:
 
 ## test_file_1.py
 
@@ -1058,7 +1058,7 @@ Running the command `pytest -v -s` shows this:
     Test 3
     PASSED
 
-Now if we want to run the `test_file_1.py` module only then we would do something like below
+Now if we want to run the `test_file_1.py` module only then we would do something like below:
 
     pytest -v -s test_file_1.py
 
@@ -1076,7 +1076,7 @@ What if I want to run only tests found in a specified directory?
     Test 3
     PASSED
 
-Let's try `-k` parameter. Here we want to run only test named `test_2`
+Let's try `-k` parameter. Here we want to run only test named `test_2`.
 
     pytest -v -s -k "test_2"
 
@@ -1084,7 +1084,7 @@ Let's try `-k` parameter. Here we want to run only test named `test_2`
     Test 2
     PASSED
 
-If we want to run test named  `"test_2"` or `"test_3"`
+If we want to run test named  `"test_2"` or `"test_3"`.
 
     pytest -v -s -k "test_2 or test_3"
 
@@ -1095,9 +1095,9 @@ If we want to run test named  `"test_2"` or `"test_3"`
     Test 3
     PASSED    
 
-Now we wlll try `-m` command line argument. For this we need to add the decorator `@pytest.mark`
+Now we wlll try `-m` command line argument. For this we need to add the decorator `@pytest.mark`.
 
-For demo purpose, we would only mark `test_1` and `test_3` as below
+For demo purpose, we would only mark `test_1` and `test_3` as below:
 
     # test_file_1.py
     import pytest
@@ -1131,7 +1131,7 @@ We are ready to try the `-m` switch as below:
 
 Test doubles are objects that are used in unit tests as replacements to the real production systems.
 
-Types of Test Doubles
+Types of Test Doubles:
 
     1) Dummy - Objects that can be passed around as necessary but do not have any type of test implementation
     2) Fake  - These object generally have a simplified functional implementation for testing only
@@ -1139,7 +1139,7 @@ Types of Test Doubles
     4) Spies - These object provide implementations that record the value that were passed in so they can be used in the test
     5) Mock  - These objects are pre-programmed to expect specific calls and parameters
 
-`Python` provides mocking framework called `unittest.mock`
+`Python` provides mocking framework called `unittest.mock`.
 
 Mock provides many initialization parameters that can be used to control the mock behaviour.
 
@@ -1147,7 +1147,7 @@ Mock provides many initialization parameters that can be used to control the moc
     2) The `side_effect` parameter specifies a function that should be called when the mock is called
     3) The `return_value` parameter specifies the return value when the mock is called
 
-Mock verification
+Mock verification:
 
     1) assert_called           - Assert the mock was called
     2) assert_called_once      - Assert the mock was called once
@@ -1156,7 +1156,7 @@ Mock verification
     5) assert_any_call         - Assert the mock was ever called with the specified parameters
     6) assert_not_called       - Assert the mock was not called
 
-Mock provides additional attributes for verification
+Mock provides additional attributes for verification:
 
     1) assert_has_calls - Assert the mock was called with the list of calls
     2) called           - A boolean value indicating if the mock was ever called
@@ -1177,7 +1177,7 @@ The `unittest.mock` also provides `MagicMock` class and it is derived from `Mock
 
 Let's try to show how `MagicMock` works. For this we would create a module `LineReader.py` and unit test `test_mock.py`.
 
-Following the **TDD** rules, we will create a test and get into `RED` phase
+Following the **TDD** rules, we will create a test and get into `RED` phase.
 
     # test_mock.py
     import pytest
@@ -1196,7 +1196,7 @@ Now we will write enough production to pass the unit test.
     def readFromFile(filename):
         pass
 
-With this, we now import the function `readFromFile()` from the module `LineReader` in unit test
+With this, we now import the function `readFromFile()` from the module `LineReader` in unit test.
 
     # test_mock.py
     import pytest
@@ -1210,7 +1210,7 @@ The test now **PASSED** with the above changes.
 
     test_mock.py::test_can_call_readFromFile PASSED
 
-Now we will add another test case as below and also import `MagicMock` at the top i.e. `from unittest.mock import MagicMock`
+Now we will add another test case as below and also import `MagicMock` at the top i.e. `from unittest.mock import MagicMock`.
 
     # case 2 readFromFile returns correct string
     def test_return_correct_string(monkeypatch):
@@ -1222,7 +1222,7 @@ Now we will add another test case as below and also import `MagicMock` at the to
         mock_open.assert_called_once_with("blah", "r")
         assert result == "test line"
 
-Now we have failed test again as expected
+Now we have failed test again as expected.
 
     test_mock.py::test_can_call_readFromFile PASSED
     test_mock.py::test_return_correct_string FAILED
@@ -1310,7 +1310,7 @@ Get the production code raise exception when file doesn't exist.
         line = infile.readline()
         return line
 
-This now made the first test **FAILED** now as below
+This now made the first test **FAILED** now as below:
 
     test_mock.py::test_return_correct_string FAILED
     test_mock.py::test_throws_exception_with_bad_file PASSED
