@@ -7,3 +7,8 @@
 ## Simple Storage Services
 ***
 
+Setting up `Amazon CLI`.
+
+  1) Goto Amazon S3 console.
+  2) Click your "username" on the top right corner and select `Security credentials`.
+  3) In the `Access Keys` section, click the button named, `Create access key`.
