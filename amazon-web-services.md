@@ -1,10 +1,10 @@
 ## Amazon Web Services
 ***
-- [Simple Storage Services](#simple-storage-services)
+- [Amazon S3](#amazon-s3)
 
 **DISCLAIMER:** These are my notes after attending the course [[**AWS for Developers: S3**]()].
 
-## Simple Storage Services
+## Amazon S3
 ***
 
 First we need to install the `AWS CLI` if not already installed using `sudo apt install awscli`.
