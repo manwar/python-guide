@@ -41,5 +41,5 @@ Time to create our first bucket.
     $ aws s3 mb s3://manwar-bucket-20240118-1
     make_bucket: manwar-bucket-20240118-1
 
-Go to AWS Console on the web and check if you have the bucket with the name as above.
+Go to `AWS S3 Console` on the web and check if you have the bucket with the name as above.
 
