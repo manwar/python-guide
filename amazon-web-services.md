@@ -27,8 +27,8 @@ Now open up a terminal and do the followings:
     $ aws configure
     AWS Access Key ID [None]:
     AWS Secret Access Key [None]:
-    Default region name [None]:
-    Default output format [None]:
+    Default region name [None]: eu-west-2
+    Default output format [None]: json
 
 Let's test the installation.
 
@@ -43,3 +43,20 @@ Time to create our first bucket.
 
 Go to `AWS S3 Console` on the web and check if you have the bucket with the name as above.
 
+Let's try delete the bucket as below:
+
+    $ aws s3 rb s3://manwar-bucket-20240118-1
+    remove_bucket: manwar-bucket-20240118-1
+
+Go the console and referesh the page, there shouldn't be any bucket there.
+
+To continue with rest of `CLI` commands we would need a bucket, so let's create the bucket again.
+
+    $ aws s3 mb s3://manwar-bucket-20240118-1
+    make_bucket: manwar-bucket-20240118-1
+
+Refresh the console page and you should have a bucket now.
+
+
+
+    
