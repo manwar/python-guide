@@ -57,6 +57,17 @@ To continue with rest of `CLI` commands we would need a bucket, so let's create 
 
 Refresh the console page and you should have a bucket now.
 
+We would create a folder `s3` and in that we would then create two text files as below:
 
-
+    $ mkdir s3
+    $ cd s3
+    $ echo "This is file 1." > file1.txt
+    $ echo "This is file 2." > file2.txt
     
+Now we will copy a local text to the bucket we created earlier.
+
+    $ aws s3 cp file1.txt s3://manwar-bucket-20240118-1 
+    upload: ./file1.txt to s3://manwar-bucket-20240118-1/file1.txt
+
+Check the console, the file `file1.txt` should appear in the bucket.
+
