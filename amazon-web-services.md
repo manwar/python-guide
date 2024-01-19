@@ -384,7 +384,7 @@ We will now add another function `prevent_public_access()` as below:
         try:
             s3.meta.client.put_public_access_block(
                 Bucket=bucket,
-                PublicAccessLockConfiguration={
+                PublicAccessBlockConfiguration={
                     'BlockPublicAcls': True,
                     'IgnorePublicAcls': True,
                     'BlockPublicPolicy': True,
