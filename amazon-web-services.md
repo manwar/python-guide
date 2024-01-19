@@ -71,3 +71,97 @@ Now we will copy a local text to the bucket we created earlier.
 
 Check the console, the file `file1.txt` should appear in the bucket.
 
+Let's try moving file `file2.txt` to the bucket.
+
+    $ ls
+    file1.txt file2.txt
+    $ aws s3 mv file2.txt s3://manwar-bucket-20240118-1 
+    move: ./file2.txt to s3://manwar-bucket-20240118-1/file2.txt
+    $ ls
+    file1.txt
+
+The file `file2.txt` should now be listed in the bucket on the console if you refresh.
+
+What if I want to move file `file2.txt` from the bucket to local folder.
+
+    $ aws s3 mv s3://manwar-bucket-20240118-1/file2.txt ./
+    move: s3://manwar-bucket-20240118-1/file2.txt to ./file2.txt
+    $ ls
+    file1.txt file2.txt
+
+We have 2 files again but on the console, there is just one file `file1.txt` listed.
+
+Let's try to delete the file `file2.txt` from the bucket.
+
+    $ aws s3 rm s3://manwar-bucket-20240118-1/file2.txt
+    delete: s3://manwar-bucket-20240118-1/file2.txt
+
+Now we have just one file `file2.txt` in the bucket on console.
+
+Let's try to copy file to bucket with new name.
+
+    $ aws s3 cp file1.txt s3://manwar-bucket-20240118-1/file1mod.txt
+    upload: ./file1.txt to s3://manwar-bucket-20240118-1/file1mod.txt
+
+As per the console, we now have two files, `file1.txt` and `file1mod.txt` in the bucket.
+
+Let's empty the bucket in the console.
+
+Now try to list the files in remote bucket.
+
+    $ aws s3 ls s3://manwar-bucket-20240118-1
+    $
+
+We got nothing back i.e. the bucket is empty.
+
+Let's try to sync the local directory to S3 bucket.
+
+    $ ls
+    file1.txt file2.txt
+    $ aws s3 sync ./ s3://manwar-bucket-20240118-1
+    upload: ./file1.txt to s3://manwar-bucket-20240118-1/file1.txt
+    upload: ./file2.txt to s3://manwar-bucket-20240118-1/file2.txt
+
+Let's create another file `file3.txt` locally.
+
+    $ echo "This is file 3." > file3.txt
+
+Now if sync the local folder again, it would only upload the new file as the other two files didn't change.
+
+    $ ls
+    file1.txt file2.txt file3.txt
+    $ aws s3 sync ./ s3://manwar-bucket-20240118-1
+    upload: ./file3.txt to s3://manwar-bucket-20240118-1/file3.txt
+
+Let's edit the file `file3.txt` and add one more line to it
+
+    $ echo "Adding new line to file 3." >> file3.txt
+
+Let's sync the local folder again.
+
+    $ aws s3 sync ./ s3://manwar-bucket-20240118-1
+    upload: ./file3.txt to s3://manwar-bucket-20240118-1/file3.txt
+
+If we now refresh the bucket on the console, we should see three files listed there.
+
+Let's delete the file `file3.txt` from the bucket on the console.
+
+Now let's sync from the bucket to the local folder.
+
+    $ aws s3 sync s3://manwar-bucket-20240118-1 ./
+    $ ls
+    file1.txt file2.txt file3.txt
+    
+Nothing happened but why?
+
+Because we have everything that the bucket has, it is safe.
+
+Hoeever if we want sync to delete the file locally then we have explicitly mention it.
+
+    $ aws s3 sync s3://manwar-bucket-20240118-1 ./ --delete
+    delete: ./file3.txt
+    $ ls
+    file1.txt file2.txt
+
+
+    
