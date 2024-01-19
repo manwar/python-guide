@@ -163,5 +163,26 @@ Hoeever if we want sync to delete the file locally then we have explicitly menti
     $ ls
     file1.txt file2.txt
 
+We now play with two buckets. For that we would now create one more bucket as below:
 
+    $ aws s3 mb s3://manwar-bucket-20240119-1
+    make_bucket: manwar-bucket-20240119-1
+    
+You should now see two buckets on the `S3` console.
+
+Let's try to sync files from the bucket `manwar-bucket-20240118-1` to the bucket `manwar-bucket-20240119-1`.
+
+    $ aws s3 sync s3://manwar-bucket-20240118-1 s3://manwar-bucket-20240119-1
+    copy: s3://manwar-bucket-20240118-1/file1.txt to s3://manwar-bucket-20240119-1/file1.txt
+    copy: s3://manwar-bucket-20240118-1/file2.txt to s3://manwar-bucket-20240119-1/file2.txt
+
+If you now check both the buckets on the console, they should both have two files.
+
+Let's try to empty the bucket `manwar-bucket-20240119-1`.
+
+    $ aws s3 rm s3://manwar-bucket-20240119-1 --recursive
+    delete: s3://manwar-bucket-20240119-1/file1.txt
+    delete: s3://manwar-bucket-20240119-1/file2.txt
+    
+    
     
