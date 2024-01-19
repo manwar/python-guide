@@ -418,10 +418,10 @@ Let's add function `generate_download_link()` like below:
 
     def generate_download_link(bucket, key, expiration_seconds, s3):
         try:
-            response = s3.meta.client.generate_presigned_url('get_object', Parans={
+            response = s3.meta.client.generate_presigned_url('get_object', Params={
                 'Bucket': bucket,
                 'Key': key
-            }, ExoiresIn=expiration_seconds)
+            }, ExpiresIn=expiration_seconds)
             print(response)
         except ClientError as ce:
             print("ERROR: ", ce)
