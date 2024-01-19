@@ -2791,14 +2791,14 @@ Let's get rid of space from the set.
 
 Open file for writing and create it if doesn't exist.
 
-    myfile = open("test.txt", "w")
+    myfile = open("test.txt", "w", encoding="utf-8")
     for i in range(10):
         myfile.write("This is demo line.\n")
     myfile.close()
 
 Or you can use `writer()` function as below:
 
-    with open("test.txt", "w") as f:
+    with open("test.txt", "w", encoding="utf-8") as f:
         writer = csv.writer(f)
         for i in range(10):
             writer.writerow("This is demo line.\n")
@@ -2809,21 +2809,21 @@ We get that for FREE when using `with open()` syntax.
 
 Open file and append new text at the end.
 
-    myfile = open("test.txt", "a+")
+    myfile = open("test.txt", "a+", encoding="utf-8")
     for i in range(10):
         myfile.write("This is additional demo line.\n")
     myfile.close()
 
 Read the file contents. You do **NOT** need to close the file.
 
-    myfile = open("test.txt", "r")
+    myfile = open("test.txt", "r", encoding="utf-8")
     if myfile.mode == 'r':
         contents = myfile.read() # read the entire contents in one go
         print(contents)
 
 Read file contents line by line.
 
-    myfile = open("test.txt", "r")
+    myfile = open("test.txt", "r", encoding="utf-8")
     if myfile.mode == 'r':
         lines = myfile.readlines()
         for line in lines:
@@ -2893,11 +2893,11 @@ Now if we want to read `sample.csv` file and create a new `sample.json` file.
     # Joe,Blogg,20,"m","Lodon"
     # Christie,Slate,18,"f","Dublin"
 
-    with open("sample.csv", "r") as f:
+    with open("sample.csv", "r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         lines = list(reader)
 
-    with open("sample.json", "w") as f:
+    with open("sample.json", "w", encoding="utf-8") as f:
         json.dump(lines, f, indent=2)
 
 **NOTE**: Here we have used `json.dump()` and not `json.dumps()`.
