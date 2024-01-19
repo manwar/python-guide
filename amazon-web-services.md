@@ -1,10 +1,11 @@
 ## Amazon Web Services
 ***
-- [Amazon S3 CLI](#amazon-s3-cli)
+- [AWS S3 CLI](#aws-s3-cli)
+- [AWS SDK for Python](#aws-sdk-for-python)
 
 **DISCLAIMER:** These are my notes after attending the course [[**AWS for Developers: S3**]()].
 
-## Amazon S3 CLI
+## AWS S3 CLI
 ***
 
 First we need to install the `AWS CLI` if not already installed using `sudo apt install awscli`.
@@ -184,5 +185,23 @@ Let's try to empty the bucket `manwar-bucket-20240119-1`.
     delete: s3://manwar-bucket-20240119-1/file1.txt
     delete: s3://manwar-bucket-20240119-1/file2.txt
     
-    
-    
+Finally we will remove the bucket too.
+
+    $ aws s3 rb s3://manwar-bucket-20240119-1
+    remove_bucket: manwar-bucket-20240119-1
+
+Presign URLS, gives access to object for a limited time.    
+
+Let's create presign urls giving access to the file `file1.txt` for `30 seconds`.
+
+    $ aws s3 presign s3://manwar-bucket-20240118-1/file1.txt --expires-in 30
+    https://manwar-bucket-20240118-1.s3.amazonaws.com/file1.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU6GDZVJ6J7FOVW55%2F20240119%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240119T004746Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=1dda38022e06f7912e0947d8c7649531a5a7431672a1834b402d33afdb56e202
+
+Now copy the url and open it in a browser, you should the contents of file `file1.txt`.
+
+Wait for `30 seconds` and try to access it again.
+
+We got the error as expected.
+
+## AWS SDK for Python
+*** 
