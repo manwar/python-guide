@@ -210,7 +210,7 @@ Let's create a folder `pys3` and under that folder create file called `pys3.py`.
 
     #!/usr/bin/env python3
 
-    # -*- encoding:utf-9 -*-
+    # -*- coding:utf-9 -*-
 
     """A python script for working with amazon S3."""
 
@@ -228,7 +228,7 @@ Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
 
     #!/usr/bin/env python3
 
-    # -*- encoding:utf-9 -*-
+    # -*- coding:utf-8 -*-
 
     """A python script for working with amazon S3."""
     import os
