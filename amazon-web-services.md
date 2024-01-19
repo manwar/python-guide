@@ -377,3 +377,40 @@ Let's update function `main()` like below:
         copy_file(PRIMARY_BUCKET_NAME, TRANSIENT_BUCKET_NAME, F2, F2, s3
 
         list_objects(TRANSIENT_BUCKET_NAME, s3)
+
+We will now add another function `prevent_public_access()` as below:
+
+    def prevent_public_access(bucket, s3):
+        try:
+            s3.meta.client.put_public_access_block(
+                Bucket=bucket,
+                PublicAccessLockConfiguration={
+                    'BlockPublicAcls': True,
+                    'IgnorePublicAcls': True,
+                    'BlockPublicPolicy': True,
+                    'RestrictPublicBuckets': True
+                })
+        except ClientError as ce:
+            print("ERROR: ", ce)
+
+Let's also update the function `create_bucket()` that we created earlier.
+
+    def create_bucket(name, s3, secure=False):
+        try:
+            s3.create_bucket(
+                Bucket=name,
+                CreateBucketConfiguration={'LocationConstraint': 'eu-west-2'})
+            if secure:
+                prevent_public_access(name, s3)
+        except ClientError as ce:
+            print("ERROR: ", ce)
+
+Now we will create a bucket with no public access as below:
+
+    def main():
+        access = os.getenv(ACCESS_KEY)
+        secret = os.getenv(SECRET_KEY)
+        s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
+
+        create_bucket(TRANSIENT_BUCKET_NAME, s3)
+        
