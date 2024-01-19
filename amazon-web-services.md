@@ -340,7 +340,7 @@ Let's add function `list_objects()` like below:
 
     def list_objects(bucket, s3):
         try:
-            response = s3.meta.Client.list_objects(Bucket=bucket)
+            response = s3.meta.client.list_objects(Bucket=bucket)
             objects = []
             for content in response['Contents']:
                 objects.append(content['Key'])
@@ -360,3 +360,20 @@ We will also add another function `copy_file()` like this:
             s3.Bucket(destination_bucket).copy(source, destination_key)
         except ClientError as ce:
             print("ERROR: ", ce)
+
+Let's update function `main()` like below:
+
+    def main():
+        access = os.getenv(ACCESS_KEY)
+        secret = os.getenv(SECRET_KEY)
+        s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
+
+        upload_file(PRIMARY_BUCKET_NAME, DIR, F1, s3)    
+        upload_file(PRIMARY_BUCKET_NAME, DIR, F2, s3)
+        upload_file(PRIMARY_BUCKET_NAME, DIR, F3, s3)
+
+        create_bucket(TRANSIENT_BUCKET_NAME, s3)
+            
+        copy_file(PRIMARY_BUCKET_NAME, TRANSIENT_BUCKET_NAME, F2, F2, s3
+
+        list_objects(TRANSIENT_BUCKET_NAME, s3)
