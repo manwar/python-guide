@@ -412,5 +412,25 @@ Now we will create a bucket with no public access as below:
         secret = os.getenv(SECRET_KEY)
         s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
 
-        create_bucket(TRANSIENT_BUCKET_NAME, s3)
+        create_bucket(TRANSIENT_BUCKET_NAME, s3, True)
         
+Let's add function `generate_download_link()` like below:
+
+    def generate_download_link(bucket, key, expiration_seconds, s3):
+        try:
+            response = s3.meta.client.generate_presigned_url('get_object', Parans={
+                'Bucket': bucket,
+                'Key': key
+            }, ExoiresIn=expiration_seconds)
+            print(response)
+        except ClientError as ce:
+            print("ERROR: ", ce)
+
+Now we will update function `main()` to generate download link:
+
+    def main():
+        access = os.getenv(ACCESS_KEY)
+        secret = os.getenv(SECRET_KEY)
+        s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
+
+        generate_download_link(PRIMARY_BUCKET_NAME, F3, 30, 3)
