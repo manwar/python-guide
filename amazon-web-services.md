@@ -433,4 +433,22 @@ Now we will update function `main()` to generate download link:
         secret = os.getenv(SECRET_KEY)
         s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
 
-        generate_download_link(PRIMARY_BUCKET_NAME, F3, 30, 3)
+        generate_download_link(PRIMARY_BUCKET_NAME, F3, 30, s3)
+
+Finally add function to delete a bucket.
+
+    def delete_bucket(bucket, s3):
+        try:
+            s3.Bucket(bucket).delete()
+        except ClientError as ce:
+            print("ERROR: ", ce)
+
+Now update function `main()` to test the delete bucket function.
+
+    def main():
+        access = os.getenv(ACCESS_KEY)
+        secret = os.getenv(SECRET_KEY)
+        s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
+
+        create_bucket(TRANSIENT_BUCKET_NAME, s3)
+        delete_bucket(PRIMARY_BUCKET_NAME, s3)
