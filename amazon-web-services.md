@@ -244,12 +244,13 @@ Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
     F3 = 'file3.txt'
     DIR = '/home/manwar/practice-aws/s3'
     DOWN_DIR = '/home/manwar/practice-aws/s3alt'
+    REGION = 'eu-west-2'
 
     def create_bucket(name, s3):
         try:
             s3.create_bucket(
                 Bucket=name,
-                CreateBucketConfiguration={'LocationConstraint': 'eu-west-2'})
+                CreateBucketConfiguration={'LocationConstraint': REGION})
         except ClientError as ce:
             print("ERROR: ", ce)
 
