@@ -289,3 +289,29 @@ Also add function `download_file()` as below:
             s3.Bucket(bucket).download_file(key_name, file_path)
         except ClientError as ce:
             print("ERROR: ", ce)
+
+Finally we will add function `delete_files()` like this:
+
+    def delete_files(bucket, keys, s3):
+        objects = []
+        for key in keys:
+            objects.append({"Key": key})
+        try:
+            s3.Bucket(bucket).delete_objects(Delete={'Objects': objects})
+        except ClientError as ce:
+            print("ERROR: ", ce)
+
+Now let's upload the local file to the bucket.
+
+    def main():
+        access = os.getenv(ACCESS_KEY)
+        secret = os.getenv(SECRET_KEY)
+        s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
+
+        upload_file(PRIMARY_BUCKET_NAME, DIR, F1, s3)    
+        upload_file(PRIMARY_BUCKET_NAME, DIR, F2, s3)
+        upload_file(PRIMARY_BUCKET_NAME, DIR, F3, s3)
+
+        download_file(PRIMARY_BUCKET_NAME, DOWN_DIR, F3, F3, s3)
+
+        delete_files(PRIMARY_BUCKET_NAME, [F1, F2, F3], s3)
