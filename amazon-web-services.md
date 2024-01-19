@@ -335,3 +335,28 @@ Finally let's delete all three files from the bucket.
         delete_files(PRIMARY_BUCKET_NAME, [F1, F2, F3], s3)       
 
 After the run, check the console and there shouldn't be any files in the bucket.
+
+Let's add function `list_objects()` like below:
+
+    def list_objects(bucket, s3):
+        try:
+            response = s3.meta.Client.list_objects(Bucket=bucket)
+            objects = []
+            for content in response['Contents']:
+                objects.append(content['Key'])
+            print(bucket, 'contains', len(objects), 'files')
+            return objects
+        except ClientError as ce:
+            print("ERROR: ", ce)
+
+We will also add another function `copy_file()` like this:
+
+    def copy_file(source_bucket, destination_bucket, source_key, destination_key, s3):
+        try:
+            source = {
+                'Bucket': source_bucket,
+                'Key': source_key
+            }
+            s3.Bucket(destination_bucket).copy(source, destination_key)
+        except ClientError as ce:
+            print("ERROR: ", ce)
