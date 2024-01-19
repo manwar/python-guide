@@ -1,10 +1,10 @@
 ## Amazon Web Services
 ***
-- [Amazon S3](#amazon-s3)
+- [Amazon S3 CLI](#amazon-s3-cli)
 
 **DISCLAIMER:** These are my notes after attending the course [[**AWS for Developers: S3**]()].
 
-## Amazon S3
+## Amazon S3 CLI
 ***
 
 First we need to install the `AWS CLI` if not already installed using `sudo apt install awscli`.
