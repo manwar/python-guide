@@ -197,7 +197,7 @@ Let's create presign urls giving access to the file `file1.txt` for `30 seconds`
     $ aws s3 presign s3://manwar-bucket-20240118-1/file1.txt --expires-in 30
     https://manwar-bucket-20240118-1.s3.amazonaws.com/file1.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAU6GDZVJ6J7FOVW55%2F20240119%2Feu-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240119T004746Z&X-Amz-Expires=30&X-Amz-SignedHeaders=host&X-Amz-Signature=1dda38022e06f7912e0947d8c7649531a5a7431672a1834b402d33afdb56e202
 
-Now copy the url and open it in a browser, you should the contents of file `file1.txt`.
+Now copy the url and opens it in a browser, you should see the contents of file `file1.txt`.
 
 Wait for `30 seconds` and try to access it again.
 
