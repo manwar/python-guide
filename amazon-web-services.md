@@ -312,6 +312,24 @@ Now let's upload the local file to the bucket.
         upload_file(PRIMARY_BUCKET_NAME, DIR, F2, s3)
         upload_file(PRIMARY_BUCKET_NAME, DIR, F3, s3)
 
+After the run, check the console and you should see the three files in the bucket.
+
+Now we will download the file `file3.txt` from the bucket.
+
+    def main():
+        access = os.getenv(ACCESS_KEY)
+        secret = os.getenv(SECRET_KEY)
+        s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
+
         download_file(PRIMARY_BUCKET_NAME, DOWN_DIR, F3, F3, s3)
 
-        delete_files(PRIMARY_BUCKET_NAME, [F1, F2, F3], s3)
+After the run, you should check the DOWN_DIR locally and see `file3.txt` in it.
+
+Finally let's delete all three files.
+
+    def main():
+        access = os.getenv(ACCESS_KEY)
+        secret = os.getenv(SECRET_KEY)
+        s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
+
+        delete_files(PRIMARY_BUCKET_NAME, [F1, F2, F3], s3)       
