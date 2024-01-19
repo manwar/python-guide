@@ -264,7 +264,7 @@ Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
     if __name__ == "__main__":
         main()
 
-We would to set two environment keys `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` before we can run the script.
+We would need to set two environment keys `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` before we can run the script.
 
 Now run the script like `py pys3.py` should create the bucket. Refresh the S3 console.
 
