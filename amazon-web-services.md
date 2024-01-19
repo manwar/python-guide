@@ -266,3 +266,26 @@ Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
 We would to set two environment keys `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` before we can run the script.
 
 Now run the script like `py pys3.py` should create the bucket. Refresh the S3 console.
+
+We can now delete the newly created bucket from the console.
+
+Let's add function `upload_file()` to the file.
+
+    def upload_file(bucket, directory, file, s3, s3path=None):
+        file_path = directory + '/' + file
+        remote_path = s3path
+        if remote_path is None:
+            remote_path = file
+        try:
+            s3.Bucket(bucket).upload_file(file_path, remote_path)
+        except ClientError as ce:
+            print("ERROR: ", ce)
+
+Also add function `download_file()` as below:
+
+    def download_file(bucket, directory, local_name, key_name, s3):
+        file_path = directory + '/' + local_name
+        try:
+            s3.Bucket(bucket).download_file(key_name, file_path)
+        except ClientError as ce:
+            print("ERROR: ", ce)
