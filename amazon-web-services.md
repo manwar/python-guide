@@ -231,8 +231,12 @@ Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
     # -*- coding:utf-9 -*-
 
     """A python script for working with amazon S3."""
-    ACCESS_KEY = ''
-    SECRET_KEY = ''
+    import os
+    import boto3
+    from botocore.exceptions import ClientError
+    
+    ACCESS_KEY = 'AWS_ACCESS_KEY_ID'
+    SECRET_KEY = 'AWS_SECRET_ACCESS_KEY'
     PRIMARY_BUCKET_NAME = 'manwar-bucket-20240118-1'
     TRANSIENT_BUCKET_NAME = 'manwar-bucket-20240119-1'
     F1 = 'file1.txt'
@@ -241,8 +245,24 @@ Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
     DIR = '/home/manwar/practice-aws/s3'
     DOWN_DIR = '/home/manwar/practice-aws/s3alt'
 
+    def create_bucket(name, s3):
+        try:
+            bucket = s3.create_bucket(
+                Bucket=name,
+                CreateBucketConfiguration={'LocationConstraint': 'eu-west-2'})
+        except ClientError as ce:
+            print("ERROR: ", ce)
+
     def main():
-        """ entry point """
+        access = os.getenv(ACCESS_KEY)
+        secret = os.getenv(SECRET_KEY)
+        s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
+
+        create_bucket(TRANSIENT_BUCKET_NAME, s3)
 
     if __name__ == "__main__":
         main()
+
+We would to set two environment keys `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` before we can run the script.
+
+Now run the script like `py pys3.py` should create the bucket. Refresh the S3 console.
