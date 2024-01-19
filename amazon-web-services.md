@@ -205,3 +205,44 @@ We got the error as expected.
 
 ## AWS SDK for Python
 *** 
+
+Let's create a folder `pys3` and under that folder create file called `pys3.py`.
+
+    #!/usr/bin/env python3
+
+    # -*- coding:utf-9 -*-
+
+    """A python script for working with amazon S3."""
+
+    def main():
+        """ entry point """
+
+    if __name__ == "__main__":
+        main()
+
+Now we want `boto3` which is an `Amazon SDK`. We can install it using command `py -m pip install boto3`.
+
+Let's edit the python file `pys3.py`.
+
+Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
+
+    #!/usr/bin/env python3
+
+    # -*- coding:utf-9 -*-
+
+    """A python script for working with amazon S3."""
+    ACCESS_KEY = ''
+    SECRET_KEY = ''
+    PRIMARY_BUCKET_NAME = 'manwar-bucket-20240118-1'
+    TRANSIENT_BUCKET_NAME = 'manwar-bucket-20240119-1'
+    F1 = 'file1.txt'
+    F2 = 'file2.txt'
+    F3 = 'file3.txt'
+    DIR = '/home/manwar/practice-aws/s3'
+    DOWN_DIR = '/home/manwar/practice-aws/s3alt'
+
+    def main():
+        """ entry point """
+
+    if __name__ == "__main__":
+        main()
