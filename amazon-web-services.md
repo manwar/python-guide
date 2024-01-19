@@ -451,4 +451,4 @@ Now update function `main()` to test the delete bucket function.
         s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
 
         create_bucket(TRANSIENT_BUCKET_NAME, s3)
-        delete_bucket(PRIMARY_BUCKET_NAME, s3)
+        delete_bucket(TRANSIENT_BUCKET_NAME, s3)
