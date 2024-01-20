@@ -96,7 +96,7 @@ What if I want to move file `file2.txt` from the bucket to local folder.
     $ ls
     file1.txt file2.txt
 
-We have 2 files again but on the console and there is just one file `file1.txt` listed on S3 console.
+We have 2 files again locally but on the S3 console, there is just one file `file1.txt`.
 
 #### Delete Object
 
@@ -264,7 +264,7 @@ Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
     if __name__ == "__main__":
         main()
 
-We would need to set two environment keys `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` before we can run the script.
+We would need to set up two environment keys `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` before we can run the script.
 
 #### Create Bucket
 
@@ -287,9 +287,9 @@ Update the function `main()` to call the function `create_bucket()`
 
         create_bucket(TRANSIENT_BUCKET_NAME, s3)
 
-Now run the script like `py pys3.py` should create the bucket. Refresh the S3 console.
+Now run the script like `py pys3.py` and it should create the bucket. Refresh the S3 console.
 
-We can now delete the newly created bucket from the console.
+Delete the newly created bucket from the S3 console.
 
 #### Upload File
 
