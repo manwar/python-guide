@@ -294,6 +294,7 @@ Delete the newly created bucket from the S3 console.
 #### Upload File
 
 Let's add function `upload_file()` as below:
+
     def upload_file(bucket, directory, file, s3, s3path=None):
         file_path = directory + '/' + file
         remote_path = s3path
