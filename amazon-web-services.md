@@ -220,7 +220,7 @@ We got the error as expected.
 ## AWS SDK for Python
 *** 
 
-Let's create a folder `pys3` and under that folder create file called `pys3.py`.
+Let's create a folder `pys3` and under that folder create file called `s3.py`.
 
     #!/usr/bin/env python3
 
@@ -234,9 +234,9 @@ Let's create a folder `pys3` and under that folder create file called `pys3.py`.
 
 Now we want `boto3` which is an `Amazon SDK`. We can install it using command `py -m pip install boto3`.
 
-Let's edit the python file `pys3.py`.
-
 Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
+
+Let's edit the python file `s3.py`.
 
     #!/usr/bin/env python3
 
@@ -287,7 +287,7 @@ Update the function `main()` to call the function `create_bucket()`
 
         create_bucket(TRANSIENT_BUCKET_NAME, s3)
 
-Now run the script like `py pys3.py` and it should create the bucket. Refresh the S3 console.
+Now run the script like `py s3.py` and it should create the bucket. Refresh the S3 console.
 
 Delete the newly created bucket from the S3 console.
 
