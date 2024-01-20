@@ -17,7 +17,7 @@ I encountered few issues on my ubuntu environment and I solved it doing this:
   
 Setting up `Amazon CLI`.
 
-    1) Goto Amazon S3 console.
+    1) Goto Amazon Simple Storage Services (S3) console.
     2) Click your "username" on the top right corner and select `Security credentials`.
     3) In the `Access Keys` section, click the button named, `Create access key`. 
     
@@ -210,7 +210,7 @@ Let's create a folder `pys3` and under that folder create file called `pys3.py`.
 
     #!/usr/bin/env python3
 
-    """A python script for working with amazon S3."""
+    """A python script for working with Amazon S3."""
 
     def main():
         """ entry point """
@@ -226,7 +226,7 @@ Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
 
     #!/usr/bin/env python3
 
-    """A python script for working with amazon S3."""
+    """A python script for working with Amazon S3."""
     import os
     import boto3
     from botocore.exceptions import ClientError
