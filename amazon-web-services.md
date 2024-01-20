@@ -7,7 +7,6 @@
 **DISCLAIMER:** These are my notes after attending the course [**AWS for Developers: S3**](https://www.linkedin.com/learning/aws-for-developers-s3).
 
 ## AWS IAM
-***
 
 When you create an account in `AWS`, you get `root` user created by default. 
 
@@ -50,7 +49,6 @@ Select the `"AdministratorAccess"` policy from the list of `"permission policies
 Now we have created a group `"admin"` and a user `"admin"` in the group.
 
 ## AWS S3 CLI
-***
 
 First we need to install the `AWS CLI` (written in `Python`) if not already installed using `sudo apt install awscli`.
 
@@ -262,7 +260,6 @@ Wait for `30 seconds` and try to access it again.
 We got the error as expected.
 
 ## AWS SDK for Python
-*** 
 
 Let's create a folder `pys3` and under that folder create a file named `s3.py`.
 
