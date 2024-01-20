@@ -8,7 +8,7 @@
 ## AWS S3 CLI
 ***
 
-First we need to install the `AWS CLI` if not already installed using `sudo apt install awscli`.
+First we need to install the `AWS CLI` (written in `Python`) if not already installed using `sudo apt install awscli`.
 
 I encountered few issues on my Ubuntu 20.04 environment and I solved it doing this:
 
