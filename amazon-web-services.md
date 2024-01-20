@@ -68,7 +68,7 @@ It would be something like: `"<username>_credentials.csv"`.
 
 You get the option to change the password (one-time only).
 
-Finally you are in the as the `"IAM user"`.
+Finally you are in as the `"IAM user"`.
 
 #### Create Group
 
