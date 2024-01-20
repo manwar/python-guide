@@ -268,7 +268,7 @@ We would need to set two environment keys `AWS_ACCESS_KEY_ID` and `AWS_SECRET_AC
 
 #### Create Bucket
 
-Let's defined function `create_bucket()` to create bucket as below:
+Let's define function `create_bucket()` to create bucket as below:
 
     def create_bucket(name, s3):
         try:
