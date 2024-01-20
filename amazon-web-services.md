@@ -320,7 +320,7 @@ After the run, check the S3 console and you should see the three files in the bu
 
 #### Download File
 
-Also add function `download_file()` as below:
+Let's add function `download_file()` as below:
 
     def download_file(bucket, directory, local_name, key_name, s3):
         file_path = directory + '/' + local_name
