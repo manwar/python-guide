@@ -62,7 +62,9 @@ The next page would show, `"Access key"` and `"Secret access key"`. It is recomm
 
 Sign out of your root account from AWS.
 
-Get the sign-in link, user name and password from the csv file you downloaded earlier, it would be something like `"<username>_credentials.csv"`.
+Get the sign-in link, user name and password from the csv file you downloaded earlier.
+
+It would be something like: `"<username>_credentials.csv"`.
 
 You get the option to change the password (one-time only).
 
