@@ -17,6 +17,34 @@ To do this, we can use `AWS IAM` service. `IAM` is `Indentity Management Service
 
 Login to your `AWS` account and go to `IAM Dashboard` by searching for `IAM`.
 
+#### Create User
+
+We will create user first.
+
+Click `"Users"` link in the left hand side and then click the button `"Create user"` in the top right corner.
+
+Enter user name and click the checkbox `"Provide user access to the AWS Management Console"`.
+
+Then select `"I want to create an IAM user"` option.
+
+Then click then `"Next"` button.
+
+Select the option `"Add user to group"` and click the `"Next"` button.
+
+Finally click the `"Create user"` button.
+
+**NOTE**: Copy the autogenerate password for the user.
+
+#### Create Group
+
+Click `"User groups"` link under the `"Access Management"` then click the `"Create group"` button in the top right corner.
+
+Give the group name and select the user to be member of this group.
+
+Select the `"AdministratorAccess"` policy from the list of `"permission policies"` and click the button `"Create group"`.
+
+Now we have created a group `"admin"` and a user `"admin"` in the group.
+
 ## AWS S3 CLI
 ***
 
