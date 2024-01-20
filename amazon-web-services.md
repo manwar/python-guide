@@ -34,9 +34,9 @@ Then click then `"Next"` button.
 
 Select the option `"Add user to group"` and click the `"Next"` button.
 
-The select the user group you want to the new user to be a member from the list below `"User groups"`.
+Then select the user group you want the new user to be a member of from the list below `"User groups"`.
 
-Then click then `"Next"` button.
+Then click the `"Next"` button.
 
 Finally click the `"Create user"` button.
 
