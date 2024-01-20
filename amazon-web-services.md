@@ -37,12 +37,16 @@ Let's test the installation.
 
 You should see JSON dump on the console.
 
+#### Create Bucket
+
 Time to create our first bucket.
 
     $ aws s3 mb s3://manwar-bucket-20240118-1
     make_bucket: manwar-bucket-20240118-1
 
 Go to `AWS S3 Console` on the web and check if you have the bucket with the name as above.
+
+#### Delete Bucket
 
 Let's try delete the bucket as below:
 
@@ -72,6 +76,8 @@ Now we will copy a local text to the bucket we created earlier.
 
 Check the console, the file `file1.txt` should appear in the bucket.
 
+#### Move Object
+
 Let's try moving file `file2.txt` to the bucket.
 
     $ ls
@@ -92,12 +98,16 @@ What if I want to move file `file2.txt` from the bucket to local folder.
 
 We have 2 files again but on the console, there is just one file `file1.txt` listed.
 
+#### Delete Object
+
 Let's try to delete the file `file2.txt` from the bucket.
 
     $ aws s3 rm s3://manwar-bucket-20240118-1/file2.txt
     delete: s3://manwar-bucket-20240118-1/file2.txt
 
 Now we have just one file `file2.txt` in the bucket on console.
+
+#### Copy Object
 
 Let's try to copy file to bucket with new name.
 
@@ -114,6 +124,8 @@ Now try to list the files in remote bucket.
     $
 
 We got nothing back i.e. the bucket is empty.
+
+#### Sync Bucket
 
 Let's try to sync the local directory to S3 bucket.
 
@@ -190,6 +202,8 @@ Finally we will remove the bucket too.
     $ aws s3 rb s3://manwar-bucket-20240119-1
     remove_bucket: manwar-bucket-20240119-1
 
+#### Presign URL
+
 Presign URLS, gives access to object for a limited time.    
 
 Let's create presign urls giving access to the file `file1.txt` for `30 seconds`.
@@ -242,6 +256,20 @@ Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
     DOWN_DIR = '/home/manwar/practice-aws/s3alt'
     REGION = 'eu-west-2'
 
+    def main():
+        access = os.getenv(ACCESS_KEY)
+        secret = os.getenv(SECRET_KEY)
+        s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
+
+    if __name__ == "__main__":
+        main()
+
+We would need to set two environment keys `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` before we can run the script.
+
+#### Create Bucket
+
+Let's defined function `create_bucket()` to create bucket as below:
+
     def create_bucket(name, s3):
         try:
             s3.create_bucket(
@@ -250,6 +278,8 @@ Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
         except ClientError as ce:
             print("ERROR: ", ce)
 
+Update the function `main()` to call the function `create_bucket()`
+
     def main():
         access = os.getenv(ACCESS_KEY)
         secret = os.getenv(SECRET_KEY)
@@ -257,14 +287,11 @@ Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
 
         create_bucket(TRANSIENT_BUCKET_NAME, s3)
 
-    if __name__ == "__main__":
-        main()
-
-We would need to set two environment keys `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` before we can run the script.
-
 Now run the script like `py pys3.py` should create the bucket. Refresh the S3 console.
 
 We can now delete the newly created bucket from the console.
+
+#### Upload File
 
 Let's add function `upload_file()` to the file.
 
@@ -278,6 +305,8 @@ Let's add function `upload_file()` to the file.
         except ClientError as ce:
             print("ERROR: ", ce)
 
+#### Download File
+
 Also add function `download_file()` as below:
 
     def download_file(bucket, directory, local_name, key_name, s3):
@@ -286,6 +315,8 @@ Also add function `download_file()` as below:
             s3.Bucket(bucket).download_file(key_name, file_path)
         except ClientError as ce:
             print("ERROR: ", ce)
+
+#### Delete File
 
 Finally we will add function `delete_files()` like this:
 
@@ -333,6 +364,8 @@ Finally let's delete all three files from the bucket.
 
 After the run, check the console and there shouldn't be any files in the bucket.
 
+#### List Objects
+
 Let's add function `list_objects()` like below:
 
     def list_objects(bucket, s3):
@@ -345,6 +378,8 @@ Let's add function `list_objects()` like below:
             return objects
         except ClientError as ce:
             print("ERROR: ", ce)
+
+#### Copy File
 
 We will also add another function `copy_file()` like this:
 
@@ -374,6 +409,8 @@ Let's update function `main()` like below:
         copy_file(PRIMARY_BUCKET_NAME, TRANSIENT_BUCKET_NAME, F2, F2, s3
 
         list_objects(TRANSIENT_BUCKET_NAME, s3)
+
+#### Prevent Object Access
 
 We will now add another function `prevent_public_access()` as below:
 
@@ -410,6 +447,8 @@ Now we will create a bucket with no public access as below:
         s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
 
         create_bucket(TRANSIENT_BUCKET_NAME, s3, True)
+
+#### Generate Download Link
         
 Let's add function `generate_download_link()` like below:
 
@@ -431,6 +470,8 @@ Now we will update function `main()` to generate download link:
         s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
 
         generate_download_link(PRIMARY_BUCKET_NAME, F3, 30, s3)
+
+#### Delete Bucket
 
 Finally add function to delete a bucket.
 
