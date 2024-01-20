@@ -40,13 +40,33 @@ Then click then `"Next"` button.
 
 Finally click the `"Create user"` button.
 
-In the next page, you get the choice to download the sign-in details. It is recommended you download this `csv file` as this information is never recovered later.
+In the next page, you get the choice to download the sign-in details. 
+
+It is recommended you download this `csv file` as this information is never recovered later.
 
 **NOTE**: Copy the autogenerate password for the user.
 
+Once the user is created then you get the `"IAM Users"` page listing all the users created so far.
+
+Click the user name, you just created.
+
+In the `summary` section, click the `"Create access key"` link and select the use case `"Command Line Interface (CLI)"`.
+
+Select the checkbox for confirmation.
+
+Click the `"Next"` button.
+
+Enter `"Description tag value"` and click the button `"Create access key"`.
+
+The next page would show, `"Access key"` and `"Secret access key"`. It is recommended you download this `csv file`.
+
 Sign out of your root account from AWS.
 
-Log back in as `"IAM"` user with usual credentials.
+Get the sign-in link, user name and password from the csv file you downloaded earlier, it would be something like `"<username>_credentials.csv"`.
+
+You get the option to change the password (one-time only).
+
+Finally you are in the as the `"IAM user"`.
 
 #### Create Group
 
