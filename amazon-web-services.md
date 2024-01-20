@@ -13,7 +13,7 @@ When you create an account in `AWS`, you get `root` user created by default.
 
 However it is advisable to keep `root` user away from public and create `admin` user for most activities.
 
-To do this, we can use `AWS IAM` service. `IAM` is `Indentity Management Services`.
+To do this, we can use `AWS IAM` service. `IAM` is `Indentity Access Management`.
 
 Login to your `AWS` account and go to `IAM Dashboard` by searching for `IAM`.
 
