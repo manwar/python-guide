@@ -1,9 +1,21 @@
 ## Amazon Web Services
 ***
+- [AWS IAM](#aws-iam)
 - [AWS S3 CLI](#aws-s3-cli)
 - [AWS SDK for Python](#aws-sdk-for-python)
 
 **DISCLAIMER:** These are my notes after attending the course [**AWS for Developers: S3**](https://www.linkedin.com/learning/aws-for-developers-s3).
+
+## AWS IAM
+***
+
+When you create an account in `AWS`, you get `root` user created by default. 
+
+However it is advisable to keep `root` user away from public and create `admin` user for most activities.
+
+To do this, we can use `AWS IAM` service. `IAM` is `Indentity Management Services`.
+
+Login to your `AWS` account and go to `IAM Dashboard` by searching for `IAM`.
 
 ## AWS S3 CLI
 ***
