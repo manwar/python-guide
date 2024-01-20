@@ -48,7 +48,7 @@ Go to `AWS S3 Console` on the web and check if you have the bucket with the name
 
 #### Delete Bucket
 
-Let's try delete the bucket as below:
+Let's try to delete the bucket as below:
 
     $ aws s3 rb s3://manwar-bucket-20240118-1
     remove_bucket: manwar-bucket-20240118-1
@@ -96,7 +96,7 @@ What if I want to move file `file2.txt` from the bucket to local folder.
     $ ls
     file1.txt file2.txt
 
-We have 2 files again but on the console, there is just one file `file1.txt` listed.
+We have 2 files again but on the console and there is just one file `file1.txt` listed on S3 console.
 
 #### Delete Object
 
@@ -105,7 +105,7 @@ Let's try to delete the file `file2.txt` from the bucket.
     $ aws s3 rm s3://manwar-bucket-20240118-1/file2.txt
     delete: s3://manwar-bucket-20240118-1/file2.txt
 
-Now we have just one file `file2.txt` in the bucket on console.
+Now we have just one file `file1.txt` in the bucket on console.
 
 #### Copy Object
 
