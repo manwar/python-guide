@@ -35,6 +35,10 @@ Finally click the `"Create user"` button.
 
 **NOTE**: Copy the autogenerate password for the user.
 
+Sign out of your root account from AWS.
+
+Log back in as `"IAM"` user with usual credentials.
+
 #### Create Group
 
 Click `"User groups"` link under the `"Access Management"` then click the `"Create group"` button in the top right corner.
