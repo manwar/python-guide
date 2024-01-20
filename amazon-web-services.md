@@ -220,7 +220,7 @@ We got the error as expected.
 ## AWS SDK for Python
 *** 
 
-Let's create a folder `pys3` and under that folder create file called `s3.py`.
+Let's create a folder `pys3` and under that folder create a file named `s3.py`.
 
     #!/usr/bin/env python3
 
@@ -232,9 +232,9 @@ Let's create a folder `pys3` and under that folder create file called `s3.py`.
     if __name__ == "__main__":
         main()
 
-Now we want `boto3` which is an `Amazon SDK`. We can install it using command `py -m pip install boto3`.
+Now we want `boto3` which is an `Amazon SDK`. We can install it using the command `py -m pip install boto3`.
 
-Don't forget to create the download dir `/home/manwar/practice-aws/s3alt`.
+Don't forget to create the download directory `/home/manwar/practice-aws/s3alt`.
 
 Let's edit the python file `s3.py`.
 
@@ -293,8 +293,7 @@ Delete the newly created bucket from the S3 console.
 
 #### Upload File
 
-Let's add function `upload_file()` to the file.
-
+Let's add function `upload_file()` as below:
     def upload_file(bucket, directory, file, s3, s3path=None):
         file_path = directory + '/' + file
         remote_path = s3path
@@ -302,30 +301,6 @@ Let's add function `upload_file()` to the file.
             remote_path = file
         try:
             s3.Bucket(bucket).upload_file(file_path, remote_path)
-        except ClientError as ce:
-            print("ERROR: ", ce)
-
-#### Download File
-
-Also add function `download_file()` as below:
-
-    def download_file(bucket, directory, local_name, key_name, s3):
-        file_path = directory + '/' + local_name
-        try:
-            s3.Bucket(bucket).download_file(key_name, file_path)
-        except ClientError as ce:
-            print("ERROR: ", ce)
-
-#### Delete File
-
-Finally we will add function `delete_files()` like this:
-
-    def delete_files(bucket, keys, s3):
-        objects = []
-        for key in keys:
-            objects.append({"Key": key})
-        try:
-            s3.Bucket(bucket).delete_objects(Delete={'Objects': objects})
         except ClientError as ce:
             print("ERROR: ", ce)
 
@@ -340,7 +315,18 @@ Now let's upload the local file to the bucket.
         upload_file(PRIMARY_BUCKET_NAME, DIR, F2, s3)
         upload_file(PRIMARY_BUCKET_NAME, DIR, F3, s3)
 
-After the run, check the console and you should see the three files in the bucket.
+After the run, check the S3 console and you should see the three files in the bucket.
+
+#### Download File
+
+Also add function `download_file()` as below:
+
+    def download_file(bucket, directory, local_name, key_name, s3):
+        file_path = directory + '/' + local_name
+        try:
+            s3.Bucket(bucket).download_file(key_name, file_path)
+        except ClientError as ce:
+            print("ERROR: ", ce)
 
 Now we will download the file `file3.txt` from the bucket.
 
@@ -353,7 +339,20 @@ Now we will download the file `file3.txt` from the bucket.
 
 After the run, you should check the DOWN_DIR locally and see `file3.txt` in it.
 
-Finally let's delete all three files from the bucket.
+#### Delete File
+
+Finally we will add function `delete_files()` like this:
+
+    def delete_files(bucket, keys, s3):
+        objects = []
+        for key in keys:
+            objects.append({"Key": key})
+        try:
+            s3.Bucket(bucket).delete_objects(Delete={'Objects': objects})
+        except ClientError as ce:
+            print("ERROR: ", ce)
+
+Let's delete all three files from the bucket.
 
     def main():
         access = os.getenv(ACCESS_KEY)
@@ -362,22 +361,7 @@ Finally let's delete all three files from the bucket.
 
         delete_files(PRIMARY_BUCKET_NAME, [F1, F2, F3], s3)       
 
-After the run, check the console and there shouldn't be any files in the bucket.
-
-#### List Objects
-
-Let's add function `list_objects()` like below:
-
-    def list_objects(bucket, s3):
-        try:
-            response = s3.meta.client.list_objects(Bucket=bucket)
-            objects = []
-            for content in response['Contents']:
-                objects.append(content['Key'])
-            print(bucket, 'contains', len(objects), 'files')
-            return objects
-        except ClientError as ce:
-            print("ERROR: ", ce)
+After the run, check the S3 console, there shouldn't be any files in the bucket.
 
 #### Copy File
 
@@ -399,14 +383,30 @@ Let's update function `main()` like below:
         access = os.getenv(ACCESS_KEY)
         secret = os.getenv(SECRET_KEY)
         s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
-
-        upload_file(PRIMARY_BUCKET_NAME, DIR, F1, s3)    
-        upload_file(PRIMARY_BUCKET_NAME, DIR, F2, s3)
-        upload_file(PRIMARY_BUCKET_NAME, DIR, F3, s3)
-
-        create_bucket(TRANSIENT_BUCKET_NAME, s3)
             
-        copy_file(PRIMARY_BUCKET_NAME, TRANSIENT_BUCKET_NAME, F2, F2, s3
+        copy_file(PRIMARY_BUCKET_NAME, TRANSIENT_BUCKET_NAME, F2, F2, s3)
+
+#### List Objects
+
+Let's add function `list_objects()` like below:
+
+    def list_objects(bucket, s3):
+        try:
+            response = s3.meta.client.list_objects(Bucket=bucket)
+            objects = []
+            for content in response['Contents']:
+                objects.append(content['Key'])
+            print(bucket, 'contains', len(objects), 'files')
+            return objects
+        except ClientError as ce:
+            print("ERROR: ", ce)
+
+Let's update function `main()` like below:
+
+    def main():
+        access = os.getenv(ACCESS_KEY)
+        secret = os.getenv(SECRET_KEY)
+        s3 = boto3.resource("s3", aws_access_key_id=access, aws_secret_access_key=secret)
 
         list_objects(TRANSIENT_BUCKET_NAME, s3)
 
