@@ -10,7 +10,7 @@
 
 First we need to install the `AWS CLI` if not already installed using `sudo apt install awscli`.
 
-I encountered few issues on my ubuntu environment and I solved it doing this:
+I encountered few issues on my Ubuntu 20.04 environment and I solved it doing this:
 
     py -m pip install --upgrade requests
     py -m pip install requests "urllib3<2"
