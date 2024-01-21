@@ -3,7 +3,7 @@
 - [AWS S3 CLI](#aws-s3-cli)
 - [AWS SDK for Python](#aws-sdk-for-python)
 
-**DISCLAIMER:** These are my notes after attending the course [**AWS for Developers: S3**](https://www.linkedin.com/learning/aws-for-developers-s3).
+**DISCLAIMER:** These are my notes after attending the course [[**AWS for Developers: S3**](https://www.linkedin.com/learning/aws-for-developers-s3)] and [[**Learning Amazon Web Services Lambda**](https://www.linkedin.com/learning/learning-amazon-web-services-lambda-22774748)].
 
 ***
 
