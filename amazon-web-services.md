@@ -293,6 +293,8 @@ Wait for `30 seconds` and try to access it again.
 
 We got the error as expected.
 
+***
+
 ## AWS SDK for Python
 
 Let's create a folder `pys3` and under that folder create a file named `s3.py`.
