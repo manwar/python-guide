@@ -364,9 +364,9 @@ Update the function `main()` to call the function `create_bucket()`
 
         create_bucket(TRANSIENT_BUCKET_NAME, s3)
 
-Now run the script like `py s3.py` and it should create the bucket. Refresh the S3 console.
+Now run the script like `py s3.py` and it should create the bucket. Refresh the `S3 console`.
 
-Delete the newly created bucket from the S3 console.
+Delete the newly created bucket from the `S3 console`.
 
 #### Upload File
 
