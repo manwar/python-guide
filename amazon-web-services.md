@@ -393,7 +393,7 @@ Now let's upload the local file to the bucket.
         upload_file(PRIMARY_BUCKET_NAME, DIR, F2, s3)
         upload_file(PRIMARY_BUCKET_NAME, DIR, F3, s3)
 
-After the run, check the S3 console and you should see the three files in the bucket.
+After the run, check the `S3 console` and you should see the three files in the bucket.
 
 #### Download File
 
@@ -415,7 +415,7 @@ Now we will download the file `file3.txt` from the bucket.
 
         download_file(PRIMARY_BUCKET_NAME, DOWN_DIR, F3, F3, s3)
 
-After the run, you should check the DOWN_DIR locally and see `file3.txt` in it.
+After the run, you should check the `DOWN_DIR` locally and see `file3.txt` in it.
 
 #### Delete File
 
