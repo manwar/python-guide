@@ -18,7 +18,7 @@ Login to your `AWS` account and go to `IAM Dashboard` by searching for `IAM`.
 
 #### Create User
 
-We will create user first.
+We will create `IAM user` first.
 
 Click `"Users"` link in the left hand side and then click the button `"Create user"` in the top right corner.
 
