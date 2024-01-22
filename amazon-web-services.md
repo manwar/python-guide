@@ -158,7 +158,7 @@ You see the result.
 
 You can even use the `API endpoint` to test the function.
 
-https://6px2eh7aa7.execute-api.us-east-1.amazonaws.com/default/myFirstLambdaFunction
+    https://6px2eh7aa7.execute-api.us-east-1.amazonaws.com/default/myFirstLambdaFunction
 
 Let's setup environment variable(s) for the lambda function.
 
@@ -182,8 +182,14 @@ Go back to code and change to print the value of environment variable `API_USER`
         print(f"Hello {API_USER} from Lambda!")
         return {
             'statusCode': 200,
-            'body': json.dumps('Hello from Lambda!')
+            'body': json.dumps(f"Hello {API_USER} from Lambda!")
         }
+
+Let's test the API again: `https://6px2eh7aa7.execute-api.us-east-1.amazonaws.com/default/myFirstLambdaFunction`
+
+You should see the result as below:
+
+    "Hello manwar from Lambda!"
 
 
 ***
