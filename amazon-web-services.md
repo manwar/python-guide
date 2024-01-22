@@ -191,6 +191,30 @@ You should see the result as below:
 
     "Hello manwar from Lambda!"
 
+#### Environment Key Encryption
+
+`AWS` makes it very easy to encrypt the environment variables using `AWS Key Management Service (KMS)`.
+
+Follow the guide to create keys [**here**]([https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html#create-keys-console](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html)).
+
+Once you have encrypted the key, you can decrypt in the function as below:
+
+    import boto3
+    import os
+    import json
+    from base64 import b64decode
+
+    enc_API_USER = os.environ["API_USER"]
+    dec_API_USER = boto3.client('kms').decrypt(CiphertextBlob=b64decode(enc_API_USER))['Plaintext'].decode('utf-8')
+        
+    def lambda_handler(event, context):
+        print(f"Hello {dec_API_USER} from Lambda!")
+        return {
+            'statusCode': 200,
+            'body': json.dumps(f"Hello {dec_API_USER} from Lambda!")
+        }
+
+Please note, decryption is done outside the function.
 
 ***
 
