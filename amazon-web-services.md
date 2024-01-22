@@ -1,5 +1,6 @@
 ## Amazon Web Services
 - [AWS IAM](#aws-iam)
+- [AWS Lambda](#aws-lambda)
 - [AWS S3 CLI](#aws-s3-cli)
 - [AWS SDK for Python](#aws-sdk-for-python)
 
@@ -80,6 +81,17 @@ Give the group name and select the user to be member of this group.
 Select the `"AdministratorAccess"` policy from the list of `"permission policies"` and click the button `"Create group"`.
 
 Now we have created a group `"admin"` and a user `"admin"` in the group.
+
+***
+
+## AWS Lambda
+
+Search for `lambda` in the services.
+
+On the `AWS Lambda` page, click the button `"Create function"` in the top right corner.
+
+
+
 
 ***
 
