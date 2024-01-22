@@ -195,7 +195,7 @@ You should see the result as below:
 
 `AWS` makes it very easy to encrypt the environment variables using `AWS Key Management Service (KMS)`.
 
-Follow the guide to create keys [**here**]([https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html#create-keys-console](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html)).
+Follow the guide to create keys [**here**](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html#create-keys-console](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
 
 Once you have encrypted the key, you can decrypt in the function as below:
 
