@@ -108,7 +108,7 @@ Then select the option `"Create a new API"`.
 
 Select the option `"HTTP API"` from the `"API type"` section.
 
-Select `"Open"` from the `"Security" dropdown.
+Select `"Open"` from the `"Security"` dropdown.
 
 Click the button `"Add"`.
 
