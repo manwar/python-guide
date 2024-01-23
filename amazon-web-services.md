@@ -11,7 +11,7 @@
 
 ## Docker
 
-First check the version of OS runningL
+First check the version of OS running:
 
     $ lsb_release -a
     No LSB modules are available.
