@@ -1,51 +1,10 @@
 ## Amazon Web Services
-- [Docker](#docker)
 - [AWS IAM](#aws-iam)
 - [AWS Lambda](#aws-lambda)
 - [AWS S3 CLI](#aws-s3-cli)
 - [AWS SDK for Python](#aws-sdk-for-python)
 
 **DISCLAIMER:** These are my notes after attending the courses [[**AWS for Developers: S3**](https://www.linkedin.com/learning/aws-for-developers-s3)] and [[**Learning Amazon Web Services Lambda**](https://www.linkedin.com/learning/learning-amazon-web-services-lambda-22774748)].
-
-***
-
-## Docker
-
-First check the version of OS running:
-
-    $ lsb_release -a
-    No LSB modules are available.
-    Distributor ID: Ubuntu
-    Description:    Ubuntu 20.04.6 LTS
-    Release:        20.04
-    Codename:       focal
-
-OR
-
-    $ lsb_release -d
-    Description:    Ubuntu 20.04.6 LTS
-
-OR
-
-    $ cat /etc/lsb-release
-    DISTRIB_ID=Ubuntu
-    DISTRIB_RELEASE=20.04
-    DISTRIB_CODENAME=focal
-    DISTRIB_DESCRIPTION="Ubuntu 20.04.6 LTS"
-
-Just make sure you have latest packages:
-
-    $ sudo apt update
-    $ sudo apt upgrade
-
-Time to install `Docker` now.
-
-    $ sudo apt install docker.io
-
-Check the installed version.
-
-    $ docker --version
-    Docker version 24.0.5, build 24.0.5-0ubuntu1~20.04.1
 
 ***
 
