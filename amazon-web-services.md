@@ -249,6 +249,17 @@ Let's test the installation.
 
 You should see JSON dump on the console.
 
+### ERROR
+
+If you get the following error when you do `aws --version`
+
+    ImportError: cannot import name 'docevents' from 'botocore.docs.bcdoc'
+
+Then try this:
+
+    $ sudo python3 -m pip install --upgrade pip
+    $ pip3 install --upgrade awscli
+
 #### Create Bucket
 
 Time to create our first bucket.
