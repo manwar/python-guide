@@ -2,6 +2,8 @@ Course: https://www.linkedin.com/learning/advanced-python-working-with-data
 
 Source: https://github.com/manwar/advanced-python-working-with-data-4312001
 
+Transcripts: https://gist.github.com/manwar/d9143b6d63c700cedf5d648f119fdc02
+
 ***
 
 Built-in Data Functions:
