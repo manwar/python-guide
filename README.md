@@ -7,3 +7,4 @@
 - [Unit Testing](unit-testing.md)
 - [Amazon Web Services](amazon-web-services.md)
 - [AWS Serverless](aws-serverless.md)
+- [CLF-C02: Cloud Concepts](CLF-C02-Cloud-Concepts.md)
