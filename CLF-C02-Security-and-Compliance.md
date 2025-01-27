@@ -1,4 +1,4 @@
-## CLF-C02: 2 - Ssecurity and Compliance
+## CLF-C02: 2 - Security and Compliance
 
 https://www.linkedin.com/learning/aws-certified-cloud-practitioner-clf-c02-cert-prep-2-security-and-compliance
 
