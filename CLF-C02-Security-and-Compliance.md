@@ -1,0 +1,8 @@
+## CLF-C02: 2 - Ssecurity and Compliance
+
+https://www.linkedin.com/learning/aws-certified-cloud-practitioner-clf-c02-cert-prep-2-security-and-compliance
+
+### Introduction
+
+Security in the cloud
+- You've probably heard of the cloud in the past few years referring to ambiguous things that no one quite seems to define. You might have also heard of Amazon Web Services. Perhaps your company is considering utilizing it, or you're looking to find out more about this cloud computing platform that's taking the world by storm for your own career advancement. Whatever the reason may be that got you to click on this course, I'm glad you're here. I want to help you start from what even is the cloud to getting excited about Amazon Web Services, cloud computing, and potentially even consider taking the AWS Certified Cloud Practitioner Exam. Hi, I'm Hiro Nishimura, and I'm a special education teacher turned systems administrator, turned technical writer, and my mission is to introduce cloud computing and Amazon Web services to people with non-traditional technical backgrounds. In Introduction to AWS for Non-Engineers 2: Security, we will be focusing on security in the cloud and how it is similar and different from security in legacy IT infrastructure. We'll learn about security-related services offered through Amazon Web Services and various security-related concepts that are important to keep in mind as you consider moving your resources onto the cloud. This course is also a vital part of your exam prep if you are thinking about taking the AWS Certified Cloud Practitioner Exam. I can't wait to begin our cloud journey. Let's get started.
