@@ -1,4 +1,4 @@
-## CLF-C02 - 3 Cloud Technology and Services
+## CLF-C02: 3 - Cloud Technology and Services
 
 https://www.linkedin.com/learning/aws-certified-cloud-practitioner-clf-c02-cert-prep-3-cloud-technology-and-services/
 
