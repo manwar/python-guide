@@ -89,3 +89,94 @@ Beyond the standard library
   $ %prun find_closest_kd((lat, lng), tree)
 ```
 
+### Tricks of the Trade
+
+Local caching of names
+- Knowing how Python operates will give you more tools for optimization. Let's take a look at some language features and tools that might give your code a boost. Let's say we want to normalize a list of numbers. So, we have a configuration at line three for the factor and the threshold. And then in line nine, we have a normalize. We'd go over the numbers and if they're above the threshold, we divide them by the factor. And then return. In line 23, we just regenerate a list of numbers, so we can test. Let's run the code. So, ipython and then run norm.py. Let's time it, timeit normalize of numbers. So, 198 microsecond. At first, it doesn't look like there's much delay but let's look at how Python compiles this function. So, we import the dis module and we do dis.dis of normalize. We see that twice we have LOAD_GLOBAL and after it, LOAD_ATTR. So, Python is looking for the name config in the global and then looking for the attribute threshold inside. The same here, we have LOAD_GLOBAL for config, load attribute for the factor. Python does this lookup on every duration of the loop. Attribute lookup is fast, but it's still a dictionary lookup. And since config is global, we also look for its name in the global's dictionary, which is another lookup. Let's save these values at the beginning of the function. So here we have normalize2. normalize2, at line 21 and 22, we save locally the threshold and the factor, and then run. Let's see how it's affect. Don't forget to save, and then let's run again. And let's first disassemble to see what we have. So, dis.dis of normalize2 and we see that we do the LOAD_GLOBAL and the LOAD_ATTR outside of the loop, which starts here. And let's measure our old code and the new code. And we can do 120 divided by 184. So, it's about 35% speedup. This optimization comes at the cost of some code complexity, so consider if the trade-off is worthy. If we look at disassembly, we still do one more lookup, which is for norm.append. We can get rid of it as well. So here we have normalize3, which in line 38 we also cache the norm.append, so we don't have to look it up. Let's save the code and run it again. And let's time it. So, this is normalize3 now and it's about half the time of the original implementation. So, attribute caching can help you with optimization.
+
+```
+  $ ipython
+  $ %run norm.py
+  $ %timeit normalize(numbers)
+  $ import dis
+  $ dis.dis(normalize)
+  $ %run norm.py
+  $ %timeit normalize2(numbers)
+  $ %run norm.py
+  $ %timeit normalize3(numbers)
+```
+
+Remove function calls
+- Functions are a great way to organize your code. You get modularity, re-usability, readability, and more. You might have seen this acronym, T-A-N-S-T-A-A-F-L. It means there ain't no such thing as a free lunch. There is a cost to functions, and it's the overhead of calling them. How much time are we talking about? Let's see. So ipython, we'll define an empty function that does nothing, and we'll use timeit to see how much time it takes to call it. So 66.3 nanoseconds, which is pretty fast, but still considered a lot for a function call. Here's an example. We'd like to fix a list of numbers and make the even numbers absolute. So we define a function for abs_even in line four, and then in line 17 we just do a list comprehension to create this number. And in line 22 I'm creating such a list of numbers so we can time it. Let's benchmark. So run fncall.py, and then we did timeit on fix_nums of numbers. Please note that the numbers might be a little bit different when you edit the code. And this is the new code. And now let's run it. So, we're going to run again fncall.py, and let's time this time the inline inversion. Right, then you can do 95.3 divided by 148. So we get about 35% speed up. This comes at a great cost to program structure and make code harder to test. However, sometimes to squeeze more speed from your program, you do inline function. Sometimes function calls are hidden from us. This is mostly the case of properties. I see people use properties all over the place without realizing the cost. In Python we use properties only if you have a good reason and not by default like with Java or C++ where you add getter and setter to everything. Here is a small example. In this case I have two classes. One is a simple point with X and Y, and one, which I called PPoint, which have properties for the X and the Y for setter and get. Let's time this code. So run prop.py, and then I'm creating a regular point, and I'm doing timeit of accessing the X. Now I'm going to create another point and this time one with the properties class, and, again, timeit p2.x. This is about four times slower. Try to use properties only if you have a good reason and be conscious of the performance penalties.
+
+```
+  $ ipython
+  In [1]: def noop():
+  ...:        pass
+  ...:
+  In [2]: %timeit noop()
+  In [3]: %run fncall.py
+  In [4]: %timeit fix_nums(numbers)
+  In [5]: %run fncall.py
+  In [6]: %timeit fix_nums_inline(numbers)
+  In [7]: %run prop.py
+  In [8]: p1 = Point(1, 2)
+  In [9]: %timeit p1.x
+  In [10]: p2 = PPoint(1, 2)
+  In [11]: %timeit p2.x
+```
+
+Using __slots__
+- There are cases, when we create a lot of small objects. In most cases, this is fine, but it might be an issue, when the number of objects becomes very big. Python Objects store attributes in a dictionary called __dict__. Or dunder dict for short. Dictionaries in Python are optimized for access speed, and most of the time are 1/3 empty. Carrying a 1/3 empty dictionary per instance, can be a big overhead sometimes. For just these cases, Python offers us dunder slots, which remove the dunder dict. The downside of using dunder slots, is that you can't add new attributes to objects. Let's have a look at our code, in slots.py We have a class Point, which is the usual class. And we have the class SPoint, which, the only difference, is that we define, in line 17 dunder slots. In the main, we define two functions to allocate points. Once, in line 29, we allocate regular points, and in line 32, we allocate SPoints, with the dunder slots. And in line 35 to 37, we allocate the points themselves. Let's see how much memory are we talking about, ipython, and then we %run slots.py And then, let's check the memory. So we import the sys model, and sys.getsizeof(points) And then, we look at the slot points. So, sys.getsizeof(SPoints) Looks like there is no improvement, but once we remember that the list holds references to objects, this makes sense. These are lists of one million pointers. And these pointers are of the same size. Understanding how much memory an object consumes in Python can be tricky. A lot of objects hold reference or pointers to other objects. There are objects shared by several other objects, and other considerations. I'm going to use Memory Profiler, to see how much memory we allocate. You can install Memory Profiler using Pip or Conda. Once you have Memory Profiler installed, you can start using it by %load_ext and memory_profiler. And now we're going to run, using the the mprun magic command. %mprun -f alloc_points so it will profile the alloc points. And we call alloc_points with that number that we gave before, which is one million. If you look at the Increment column, we see that we allocated around 190 megabytes. And now we'll do the same for the SPoints. So the alloc_spoints and alloc_spoints. And run this one. We're down to 85.2 megabytes. This is less than half of the memory, by adding one line of code. Smaller objects might also make your program faster, since they can fit in a CPU cache line, which means that when the CPU tries to access them, it will be much faster than fetching them from main memory.
+
+```
+  $ ipython
+  In [1]: %run slots.py
+  In [2]: import sys
+  In [3]: sys.getsizeof(points)
+  In [4]: sys.getsizeof(spoints)
+  In [5]: %load_ext memory_profiler
+  In [6]: %mprun -f alloc_points alloc_points(n)
+  In [7]: %mprun -f alloc_spoints alloc_spoints(n)
+```
+
+Built-ins
+- Let's say that we have a list of tasks. Each task is a tuple, where the first field is the task name and the second field is the priority. You can see it in our code in builtin.py at line 14. We'd like to solve the tasks by priority. In Python, tuples are sorted in lexicographical order, which means if we'll sort as-is, we'll get the tasks sorted by their name. Tasks names are strings, and the string '3' is bigger than string "200". Let's see an example. "iphython" and when we do three bigger than 200, we get True. Python provides a "key" argument to sort. Key is a function that gets the object we'd like to compare and returns a value representing this object. For example, if we have names equal "tweety" and "bugs" and "daffy" and "elmer", if we'll do sorted of names, we'll get them sorted by lexicographical order. However, we can do sorted names and the key equal len, and then we'll get the names sorted by their length. We can use that to sort our tasks. In line 5 we define a function called sort_tasks, which the key function is a lambda, an anonymous function that gets a task and return the second element which is the priority of the task. Let's run it. So let's time it using the timeit magic. timeit sort_tasks of tasks, so 286 microseconds. How can we do better? Our lambda function is called once per object, and yes, it's once per object, not n log n, since Python caches the results. Since sorting by different fields is very common, Python provides functions that do that but are written in C and will be a bit faster. Let's see. Here we have the new code. We import itemgetter from the model operator in line 3. And in line 10, I define the new function that uses this itemgetter. Let's save it and see the difference. So, we do run of builtin.py and this time we're going to check our new function, sort_tasks_ig, and 252 microseconds. So we got about 10% speedup and less code. Python also provides attrgetter that gets the attribute to return and there are many functions Python already provides which are written in C, such as sum, max and others. If you'd some time learning what the standard library offers and try to avoid writing your own functions.
+
+```
+  $ ipython
+  In [1]: %run builtin.py
+  In [2]: %timeit sort_tasks(tasks)
+  In [3]: %run builtin.py
+  In [4]: %timeit sort_tasks_ig(tasks)
+```
+
+Allocate
+- Let's say we have a pool of workers and we'd like to know how many tasks each worker has done. We can start with a list in the length of the workers, filled with zeros, and have each worker increment their value in their index. This allocation can happen many time if you frequently allocate the pool of workers. Let's write a function to create this list. The code is in alloc.py. So in line four, we define allocz which creates a list filled with zero for a given size. And let's time it, ipython and then we run alloc.py. And let's time it of 1000. How can we do better? In Python, if you multiply a list with a number, we get n copies of this list. For example, if I take the list of one, two, and three and I multiply it by three, I'll get this list three times. Let's use this in our code. In a new code, I wrote a function called allocz fixed, which returns a list of one element with zero times the size. Don't forget to save the code and let's try it out. So we run again the code to load it, and then we're going to time the new function. Okay, this is about 10 times faster than the previous code. When you create a list and append to it, Python needs to reallocate memory for the list. To avoid reallocation on every append, the list grows in fixed sizes. The sizes are zero, four, eight, 16, 25, etc. However, when we create a list with multiplication, Python knows the size of the list in advance and creates it in one allocation. Note that the initial value is duplicated, and in Python because everything is a reference, this might have a surprising effect. If you have an array, which is the empty list times five. And then we appending to the first list in the array the number one, and we look at the array we got the number one in all of them. Make sure you initialized with immutable volumes, like numbers, strings, and tables, otherwise you will have to get back to our initial implementation. Another option is to use numpy, which provides ultra fast arrays. So, we import numpy as np and time it np.zeros of 1000. So we got 968 nanoseconds, versus 2.24 microseconds in the allocz fixed, so it's about two and a half times faster. For faster memory allocation, consider using fixed size allocation or numpy.
+
+```
+  $ ipython
+  In [1]: %run alloc.py
+  In [2]: %timeit allocz(1000)
+  In [3]: %run alloc.py
+  In [4]: %timeit allocz_fixed(1000)
+  In [5]: import numpy as np
+  In [6]: %timeit np.zeros(1000)
+```
+
+### Caching
+
+Overview
+- Caching is the act of saving computation results and reusing them instead of running the calculations again. It is very common practice and will speed up your code in many scenarios. The price you pay is the memory used to hold the computed values. This runtime versus memory trade off is very common in computer science. Let's see an example. The Fibonacci sequence is defined as the first two values of one and every value after it is the sum of the two values before it. In fib.py, we have an implementation which is a cause. If the number in line six is smaller than two, we return one otherwise we return Fibonacci of N minus one plus Fibonacci of N minus two. Let's time it. So, ipython and then we run fib.py. And then, let's run timeit of fib of 20. So, it's 2.82 milliseconds. This implementation is slow since we do a lot of repeated calculation. When we compute Fibonacci of four, we'll call Fibonacci of one three times, Fibonacci of two two times, et cetera, et cetera. By the way, don't try to run Fibonacci of 100. You'll wait a long time. Let's cache the results. In the new code, in line 11, we have Fibonacci cache which is dictionary holding the computed values. And then, we have the function fibc in line 14. And, in line 19, we try to see if we have the value already in the cache. And only if it's not in the cache, we compute it and place it in the cache. Don't forget to save your code. And, let's try it out. So, we run again the Fibonacci dot py and this time, we're going to time the fibc function, which is much faster. Note that these are 240 nanoseconds which is 2.18 milliseconds. So, it's about a thousand time faster. Our naive cache implementation will grow indefinitely which might become a problem. Also, if our functions are not pure, meaning they might return different values at different times. For example, when we ask the database how many users there were in the last 24 hours. We need to update the cache. There are methods of evicting or invalidating values from the cache. They can get tricky. There's a saying that the two hardest problems in computer science are naming things and caching validation. And, I find it to be true. Depending on your data, you need to pick a good cache eviction strategy. There's a lot of research out there on the subject. Do your homework.
+
+```
+  $ ipython
+  In [1]: %run fib.py
+  In [2]: %timeit fib(20)
+  In [3]: %run fib.py
+  In [4]: %timeit fibc(20)
+```
+
+Pre-calculating
+- We'd like to count how many beats in a number for set one. This is sometimes known as pop count for population count. Knowing the number of set base is useful in several algorithms such as hemmingway. Here's an implementation. In line four, we have nbits, which does the wire loop on the number and checks how many beats are there and in line 16, we define a test for that, which checks the number of beats. And in the main in line 28, we call this test. Let's try it out. So ipython. And then we run nbits.py. And since we don't have an error, we're good to go. And now we can time. Time it nbits of, let's say, 350. It's 1.07 microseconds. How can we speed this up? The test might be less than ideal. We can precalculate the value for each number once and then we turn these values. This works well with the numbers are bounded by size. Let's assume that our numbers can have a maximum of 16 beats. What's the largest value you can get with 16 beats? So we can use python for that. You do int of one times 16, so we'll get a string of 16 ones. And we tell python that this is in phase two. So this is the largest number you can get for 16 beats. Now, we can initialize an array with a number of beats and return them. We'll also update our test. Here's the new code. We update the test to get the function and check that the function returns the right value. In line 32 we define a cache. We run the original function for all 16 beats now. And then in line 35, the nbits fixed, just look at the number in this cache. And we edit the test for this one as well in line 44. Don't forget to save your code before trying it out. So we'll do a run of nbits.py and it finished without an error, which means that the test is passing. And now we can time it. So this time, we're going to time nbits fixed. So 147 nanoseconds versus one microsecond. Much faster. We traded memory for speed. This will work if the function we precalculate is pure, meaning it will return the same value for the same input every time.
+
