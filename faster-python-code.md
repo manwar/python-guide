@@ -58,9 +58,9 @@ deque
 
 ```
   $ ipython
-  $ %run tasks.py
-  $ %timeit test_queue(1000)
-  $ %timeit test_queue(1000, cls=DTaskQueue)
+  In [1]: %run tasks.py
+  In [2]: %timeit test_queue(1000)
+  In [3]: %timeit test_queue(1000, cls=DTaskQueue)
 ```
 
 heapq
@@ -68,11 +68,11 @@ heapq
 
 ```
   $ ipython
-  $ %run ptasks.py
-  $ cases = gen_cases(1000)
-  $ %timeit benchmark_pq(cases)
-  $ %prun benchmark_pq(cases)
-  $ %prun benchmark_pq(cases, cls=HPriorityQueue)
+  In [1]: %run ptasks.py
+  In [2]: cases = gen_cases(1000)
+  In [3]: %timeit benchmark_pq(cases)
+  In [4]: %prun benchmark_pq(cases)
+  In [5]: %prun benchmark_pq(cases, cls=HPriorityQueue)
 ```
 
 Beyond the standard library
@@ -80,13 +80,13 @@ Beyond the standard library
 
 ```
   $ ipython
-  $ %run drivers.py
-  $ lat, lng = 34.3852712, -119.487444
-  $ drivers = gen_drivers(lat, lng)
-  $ %timeit find_closest((lat, lng), drivers)
-  $ %prun find_closest((lat, lng), drivers)
-  $ tree = KDTree(drivers)
-  $ %prun find_closest_kd((lat, lng), tree)
+  In [1]: %run drivers.py
+  In [2]: lat, lng = 34.3852712, -119.487444
+  In [3]: drivers = gen_drivers(lat, lng)
+  In [4]: %timeit find_closest((lat, lng), drivers)
+  In [5]: %prun find_closest((lat, lng), drivers)
+  In [6]: tree = KDTree(drivers)
+  In [7]: %prun find_closest_kd((lat, lng), tree)
 ```
 
 ### Tricks of the Trade
@@ -96,14 +96,14 @@ Local caching of names
 
 ```
   $ ipython
-  $ %run norm.py
-  $ %timeit normalize(numbers)
-  $ import dis
-  $ dis.dis(normalize)
-  $ %run norm.py
-  $ %timeit normalize2(numbers)
-  $ %run norm.py
-  $ %timeit normalize3(numbers)
+  In [1]: %run norm.py
+  In [2]: %timeit normalize(numbers)
+  In [3]: import dis
+  In [4]: dis.dis(normalize)
+  In [5]: %run norm.py
+  In [6]: %timeit normalize2(numbers)
+  In [7]: %run norm.py
+  In [8]: %timeit normalize3(numbers)
 ```
 
 Remove function calls
