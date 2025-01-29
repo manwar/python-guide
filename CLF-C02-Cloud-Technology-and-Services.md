@@ -23,7 +23,7 @@
 - [AWS Backup](#AWS-Backup)
 - [Study break: Reviewing storage services](#Study-break-Reviewing-storage-services)
 - [Database Services](#Database-Services)
-- [Evaluate: Hosted or managed database?](#Evaluate-Hosted-or-managed-database?)
+- [Evaluate: Hosted or managed database?](#Evaluate-Hosted-or-managed-database)
 - [Study break: Reviewing database services](#Study-break-Reviewing-database-services)
 - [Amazon VPC](#Amazon-VPC)
 - [Amazon CloudFront](#Amazon-CloudFront)
