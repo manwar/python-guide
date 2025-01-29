@@ -12,7 +12,7 @@
 - [Principle of least privilege](#Principle-of-least-privilege)
 - [Keeping accounts secured](#Keeping-accounts-secured)
 - [AWS Systems Manager](#AWS-Systems-Manager)
-- [AWS WAF (web application firewall)](#AWS-WAF-(web-application-firewall))
+- [AWS WAF (web application firewall)](#AWS-WAF-web-application-firewall)
 - [AWS Shield](#AWS-Shield)
 - [Amazon Inspector](#Amazon-Inspector)
 - [AWS Trusted Advisor](#AWS-Trusted-Advisor)
