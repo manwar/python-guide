@@ -48,9 +48,9 @@ bisect
 
 ```
   $ ipython
-  $ %run grades.py
-  $ %timeit grade(74)
-  $ %timeit grade2(74)
+  In [1]: %run grades.py
+  In [2]: %timeit grade(74)
+  In [3]: %timeit grade2(74)
 ```
 
 deque
