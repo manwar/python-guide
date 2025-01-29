@@ -52,10 +52,10 @@
 - [Future: Python demo](#Future-Python-demo)
 - [Divide and conquer](#Divide-and-conquer)
 - [Divide and conquer: Python demo](#Divide-and-conquer-Python-demo)
-- [Speedup, latency, and throughput](#Speedup, latency, and throughput)
-- [Amdahl's law](#Amdahl's law)
-- [Measure speedup](#Measure speedup)
-- [Measure speedup: Python demo](#Measure speedup: Python demo)
+- [Speedup, latency, and throughput](#Speedup-latency-and-throughput)
+- [Amdahl's law](#Amdahl's-law)
+- [Measure speedup](#Measure-speedup)
+- [Measure speedup: Python demo](#Measure-speedup-Python-demo)
 - [Partitioning](#Partitioning)
 - [Communication](#Communication)
 - [Agglomeration](#Agglomeration)
@@ -67,6 +67,8 @@
 - [Solution: Merge sort in Python](#Solution-Merge-sort-in-Python)
 - [Challenge: Download images in Python](#Challenge-Download-images-in-Python)
 - [Solution: Download images in Python](#Solution-Download-images-in-Python)
+
+***
 
 Course:
 
