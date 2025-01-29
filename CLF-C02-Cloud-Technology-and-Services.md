@@ -45,8 +45,6 @@
 
 Course: https://www.linkedin.com/learning/aws-certified-cloud-practitioner-clf-c02-cert-prep-3-cloud-technology-and-services/
 
-## Deploying and Operating in AWS Cloud
-
 ## Technology highlights
 - You probably heard of "the cloud" in the past few years referring to ambiguous things that no one quite seems to define. You might have also heard of Amazon Web Services. Perhaps your company is considering utilizing it, or you're looking to find out more about this cloud computing platform that's taking the world by storm for your own career advancement. Whatever the reason may be that got you to click on this course, I'm glad you're here. I want to help you start from what even is the cloud to getting excited about Amazon Web Services, cloud computing, and potentially even consider taking the AWS Certified Cloud Practitioner Exam. Hi, I'm Hiro Nishimura and I'm a special education teacher turned systems administrator, turned technical writer. And my mission is to introduce cloud computing and Amazon Web services to people with non-traditional technical backgrounds. An introduction to AWS for non-engineers three core services. We will be making a dive into dozens of services AWS offers by learning about the services that make up the core services. This course is also a vital part of your exam prep. If you're thinking about taking the AWS Certified Cloud practitioner exam, as we will go over concepts like deploying and operating in the AWS Cloud and AWS's global infrastructure. I can't wait to begin our cloud journey. Let's get started.
 
