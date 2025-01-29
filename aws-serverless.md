@@ -1,7 +1,7 @@
 ## Cloud Native Projects: AWS Serverless
 
 - [Flexibility with Lambda](#Flexibility-with-Lambda)
-- [What you need to know](#What-you-need-to know)
+- [What you need to know](#What-you-need-to-know)
 - [Introducing AWS Lambda](#Introducing-AWS-Lambda)
 - [Understanding serverless](#Understanding-serverless)
 - [Benefits of serverless](#Benefits-of-serverless)
