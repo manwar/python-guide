@@ -8,7 +8,7 @@
 - [Well-architected framework](#Well-architected-framework)
 - [AWS cloud security, governance, and compliance concepts](#AWS-cloud-security-governance-and-compliance-concepts)
 - [Providing access in AWS](#Providing-access-in-AWS)
-- [Identity access management (IAM)](#Identity-access-management-(IAM))
+- [Identity access management (IAM)](#Identity-access-management-IAM)
 - [Principle of least privilege](#Principle-of-least-privilege)
 - [Keeping accounts secured](#Keeping-accounts-secured)
 - [AWS Systems Manager](#AWS-Systems-Manager)
