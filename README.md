@@ -4,6 +4,7 @@
 - [Working with data](working-with-data.md)
 - [Parallel and Concurrent Programming](parallel-and-concurrent-programming.md)
 - [Python Object-Oriented Programming](python-object-oriented-programming.md)
+- [Faster Python Code](faster-python-code.md)
 - [Unit Testing](unit-testing.md)
 - [Amazon Web Services](amazon-web-services.md)
 - [AWS Serverless](aws-serverless.md)
