@@ -45,7 +45,7 @@
 - [Barrier](#barrier)
 - [Barrier: Python demo](#Barrier-Python-demo)
 - [Computational graph](#Computational-graph)
-- [Thread pool](#thread-poo)
+- [Thread pool](#thread-pool)
 - [Thread pool: Python demo](#Thread-pool-Python-demo)
 - [Process pool: Python demo](#Process-pool-Python-demo)
 - [Future](#Future)
